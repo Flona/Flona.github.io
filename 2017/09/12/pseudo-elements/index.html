@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/favicon.ico?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="CSS," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="背景一直以来对伪元素和伪类都稀里糊涂的，貌似就知道a标签常用的那4个状态，但是也不知道是叫伪元素还是叫伪类，哈哈哈，这次项目中有个需求关系到了相关知识，索性学习整理一下吧 其实会越来越觉得像是CSS很多属性啊，光看一些官方文档的那种方式学很容易会觉得这个东西有这样的作用，但是很难能想到说通过组合或者在什么场景下用会做出很牛逼的样式效果，但是当在某种情况下，通常都是设计出了某种没做过的效果，然后一头">
+<meta name="keywords" content="CSS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="伪元素～伪类～傻傻分不清">
+<meta property="og:url" content="http://www.yvonne.party/2017/09/12/pseudo-elements/index.html">
+<meta property="og:site_name" content="Yvonne">
+<meta property="og:description" content="背景一直以来对伪元素和伪类都稀里糊涂的，貌似就知道a标签常用的那4个状态，但是也不知道是叫伪元素还是叫伪类，哈哈哈，这次项目中有个需求关系到了相关知识，索性学习整理一下吧 其实会越来越觉得像是CSS很多属性啊，光看一些官方文档的那种方式学很容易会觉得这个东西有这样的作用，但是很难能想到说通过组合或者在什么场景下用会做出很牛逼的样式效果，但是当在某种情况下，通常都是设计出了某种没做过的效果，然后一头">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/pseudo-elements/pseudo2.gif">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/pseudo-elements/pseudo1.jpg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/pseudo-elements/pseudo3.jpg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/pseudo-elements/pseudo4.gif">
+<meta property="og:updated_time" content="2017-12-14T11:52:31.950Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="伪元素～伪类～傻傻分不清">
+<meta name="twitter:description" content="背景一直以来对伪元素和伪类都稀里糊涂的，貌似就知道a标签常用的那4个状态，但是也不知道是叫伪元素还是叫伪类，哈哈哈，这次项目中有个需求关系到了相关知识，索性学习整理一下吧 其实会越来越觉得像是CSS很多属性啊，光看一些官方文档的那种方式学很容易会觉得这个东西有这样的作用，但是很难能想到说通过组合或者在什么场景下用会做出很牛逼的样式效果，但是当在某种情况下，通常都是设计出了某种没做过的效果，然后一头">
+<meta name="twitter:image" content="http://www.yvonne.party/img/blogImg/pseudo-elements/pseudo2.gif">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.yvonne.party/2017/09/12/pseudo-elements/"/>
+
+
+
+
+
+  <title>伪元素～伪类～傻傻分不清 | Yvonne</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Yvonne</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.yvonne.party/2017/09/12/pseudo-elements/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yvonne">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yvonne">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">伪元素～伪类～傻傻分不清</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-12T10:26:27+08:00">
+                2017-09-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>一直以来对伪元素和伪类都稀里糊涂的，貌似就知道a标签常用的那4个状态，但是也不知道是叫伪元素还是叫伪类，哈哈哈，这次项目中有个需求关系到了相关知识，索性学习整理一下吧</p>
+<p>其实会越来越觉得像是<code>CSS</code>很多属性啊，光看一些官方文档的那种方式学很容易会觉得这个东西有这样的作用，但是很难能想到说通过组合或者在什么场景下用会做出很牛逼的样式效果，但是当在某种情况下，通常都是设计出了某种没做过的效果，然后一头雾水的情况下去思考要怎么实现，然后会搜索一些没有用过但是看过的属性，通过一定的思路组合组装最终实现了，就会暗自觉得，哇，这些属性真牛逼，哈哈哈<br><a id="more"></a></p>
+<p>什么意思呢，就是多做多思考才会领悟更多技术的奥妙，哈哈哈，一堆废话</p>
+<p><img src="/img/blogImg/pseudo-elements/pseudo2.gif" style="max-width:400px"></p>
+<p>需求是这样的滴： </p>
+<p><img src="/img/blogImg/pseudo-elements/pseudo1.jpg" style="max-width:400px"></p>
+<h3 id="开发前的小思考"><a href="#开发前的小思考" class="headerlink" title="开发前的小思考"></a>开发前的小思考</h3><p>内容通过长得像进度条一样的点线联起来，每个点做为一段内容的标志，点之间连线，所以当存在一个点的时候咩有连线的，最重要的是你会发现这个线的长度是随着内容的多少自适应的，所以不能做成固定长度的一条线</p>
+<p>这种真的没做过，对于我来说棘手的地方有几点，一是线的高度，二是点线与内容一致，即一条内容一个点，多点才连线，先蹦出来疑点是点线和内容是分开写还是属于一个父元素下呢，分开确实能拿到点的数量，但是线的高度怎么弄，不会是用js获取吧，哈哈哈，再加上点线的定位等等，肯定不行，这是个不能开心敲代码的死路</p>
+<p>正常点的思路是每个点和每条内容是一个整体，然后这个点可以做同样的定位在左上，OK，然后这个线是什么鬼，首先这个线的高度是跟着内容的多少占高来定的，上面有说分开的话不方便取高度，能用<code>CSS</code>设置的就不要傻逼似的用<code>JS</code>取了吧（我每次都会接受不了看到一些代码经常用<code>js</code>来计算高度，而且是那种明显可以直接<code>CSS</code>设置就可以的），我的想法是让其能够在整体内以整体高度为基点设置百分比做为线的高度，所以其实说到底还是很直观的分裂成点线内容一个区块，然后最后一个点是属于特殊判断的，如果是最后一个点的话（涵盖了只存在一条内容的情况）就没有线</p>
+<p>整体思路定了，想法很美好，哈哈哈</p>
+<p>咋做啊。。。</p>
+<p>点和内容没问题，至于点线这种设计样式自然也会想起伪元素，但是就是很迟疑靠伪元素来做这条线能不能成功以整体高度为基点设置百分比呢，光想没用，直接按照这个完美思路测试一下敲吧</p>
+<h3 id="测试开发"><a href="#测试开发" class="headerlink" title="测试开发"></a>测试开发</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">	&lt;ul&gt;</span><br><span class="line">		&lt;li v-for=&quot;(item,index) in list&quot;&gt;</span><br><span class="line">			&lt;div :class=&quot;[&apos;circle&apos;,index==list.length-1?&apos;&apos;:&apos;circle-line&apos;]&quot;&gt;&lt;/div&gt;</span><br><span class="line">			&lt;div class=&quot;content&quot;&gt;&#123;&#123;item&#125;&#125;&lt;/div&gt;</span><br><span class="line">		&lt;/li&gt;</span><br><span class="line">	&lt;/ul&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">	export default&#123;</span><br><span class="line">		data()&#123;</span><br><span class="line">			return&#123;</span><br><span class="line">				list: [&apos;喂？是小仙女吗&apos;,&apos;我是小公举我是小公举我是小公举我是小公举我是小公举我是小公举&apos;,&apos;测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试&apos;]</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">	li&#123;</span><br><span class="line">		/*从始至终只有区块最外层有定位，内部特别的点圆不能有定位，这样伪元素线就可以都是以li高度为基点设置百分比*/</span><br><span class="line">		position: relative;</span><br><span class="line">		width: 90%;</span><br><span class="line">		margin: 0 auto;</span><br><span class="line">		display: block;</span><br><span class="line">		/*设置两个区块的间距要通过padding，这样线的100%高度才是可视高度，点线能连上，不然用margin设置线就会短于两点距离*/</span><br><span class="line">		padding: 10px 0;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	.content&#123;</span><br><span class="line">		display: inline-block;</span><br><span class="line">		background-color: #f9f9f9;</span><br><span class="line">		padding: 10px;</span><br><span class="line">		word-wrap: break-word; </span><br><span class="line">		word-break: normal; </span><br><span class="line">		width: 88%;</span><br><span class="line">		/*这个蛮重要的，设置成顶部对齐，大大方便了点的定位*/</span><br><span class="line">		vertical-align: top;</span><br><span class="line">	&#125;</span><br><span class="line">	.circle&#123;</span><br><span class="line">		display: inline-block;</span><br><span class="line">		width: 5px;</span><br><span class="line">		height: 5px;</span><br><span class="line">		border-radius: 50%;</span><br><span class="line">		background-color: pink;</span><br><span class="line">	&#125;</span><br><span class="line">	.circle-line:after&#123;</span><br><span class="line">		content: &apos;&apos;;</span><br><span class="line">		width: 1px;</span><br><span class="line">		height: 100%;</span><br><span class="line">		background-color: pink;</span><br><span class="line">		position: absolute;</span><br><span class="line">		/*这个定位依靠园的宽度，我设置的园正好是单数，直接定位2px就居中了，双数的话需要再设置transform:translate(-50%,0)*/</span><br><span class="line">		left: 2px;</span><br><span class="line">		top: 23px;</span><br><span class="line">	&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<p>测试证明开始的思路完全是对的，暗暗自喜，效果图：</p>
+<p><img src="/img/blogImg/pseudo-elements/pseudo3.jpg" style="max-width:400px"></p>
+<p>有几个点需要注意的地方我在在代码里注释了，最最最重要之一就是为了让伪元素设置的高百分比是以区块的高度为基点的，一定不要设置点做定位，一旦点有定位，那么线设置百分比就会以点为基点啦，那么怎么样设置点的位置，就用到了<code>vertical-align</code>属性来定位，如果距离还和设计有出入，可以加一些<code>margin</code>的负值来细微的调，最最最重要之二就是区块间距千万不能用<code>margin</code>，高度不包含<code>margin</code>的值的，所以基点高度会和两点的高度有误差，因此要用<code>padding</code>来做间距，这样的行为会影响到线的定位哦，注意下线的定位调整，其余的没啥特殊的了</p>
+<p>最终在项目中的效果： </p>
+<p><img src="/img/blogImg/pseudo-elements/pseudo4.gif" style="max-width:400px"></p>
+<p>最后附上<a href="&#39;http://www.w3school.com.cn/css/css_pseudo_elements.asp&#39;,&#39;伪元素&#39;">伪元素</a>和<a href="&#39;http://www.w3school.com.cn/css/css_pseudo_classes.asp&#39;,&#39;伪类&#39;">伪类</a>的链接</p>
+<h3 id="提炼"><a href="#提炼" class="headerlink" title="提炼"></a>提炼</h3><h5 id="伪元素"><a href="#伪元素" class="headerlink" title="伪元素"></a>伪元素</h5><p>:first-line ——  设置文本首行样式（只应用于块元素）<br>    可设置的属性： font,color,background,word-spacing,letter-spacing,text-decoration,vertical-align,text-transform,line-height,clear</p>
+<p>:first-letter —— 设置文本首字母样式（只应用于块元素）<br>    可设置的属性： font,color,background,margin,padding,border,text-decoration,vertical-align(当float为none时),text-transform,line-height,float,clear</p>
+<p>:before —— 元素内容之后插入新内容</p>
+<p>:after —— 元素内容之前插入新内容</p>
+<h5 id="伪类"><a href="#伪类" class="headerlink" title="伪类"></a>伪类</h5><p>CSS1锚伪类</p>
+<p>a:link —— 未访问<br>a:visited —— 已访问<br>a:hover —— 鼠标滑过（必须在link和visited之后才有效）<br>a:active —— 点击（必须在hover之后设置才生效）</p>
+<p>CSS2</p>
+<p>:focus —— 获取焦点的元素<br>:first-child —— 某元素的第一个子元素（p:first-child代表第一个p元素）<br>:lang —— 对指定lang属性的元素添加样式<br>    例：<br>    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">html</span><br><span class="line">&lt;q lang=&quot;no&quot;&gt;A quote in a paragraph&lt;/q&gt;</span><br><span class="line">css</span><br><span class="line">q:lang(no)&#123;</span><br><span class="line">	quotes: &quot;~&quot; &quot;~&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>so !!!! <code>a</code>标签那四个状态人家叫伪类不叫伪元素，知道了吧！！！！！！！</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CSS/" rel="tag"># CSS</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/08/car-reverse/" rel="next" title="卡牌翻转">
+                <i class="fa fa-chevron-left"></i> 卡牌翻转
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/09/14/click-delay/" rel="prev" title="click延迟300ms解决方案">
+                click延迟300ms解决方案 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpeg"
+                alt="Yvonne" />
+            
+              <p class="site-author-name" itemprop="name">Yvonne</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">Artikel</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">Tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x80CC;&#x666F;" class="headerlink" title="&#x80CC;&#x666F;"></a>&#x80CC;&#x666F;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开发前的小思考"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x5F00;&#x53D1;&#x524D;&#x7684;&#x5C0F;&#x601D;&#x8003;" class="headerlink" title="&#x5F00;&#x53D1;&#x524D;&#x7684;&#x5C0F;&#x601D;&#x8003;"></a>&#x5F00;&#x53D1;&#x524D;&#x7684;&#x5C0F;&#x601D;&#x8003;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试开发"><span class="nav-number">3.</span> <span class="nav-text"><a href="#&#x6D4B;&#x8BD5;&#x5F00;&#x53D1;" class="headerlink" title="&#x6D4B;&#x8BD5;&#x5F00;&#x53D1;"></a>&#x6D4B;&#x8BD5;&#x5F00;&#x53D1;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#提炼"><span class="nav-number">4.</span> <span class="nav-text"><a href="#&#x63D0;&#x70BC;" class="headerlink" title="&#x63D0;&#x70BC;"></a>&#x63D0;&#x70BC;</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#伪元素"><span class="nav-number">4.0.1.</span> <span class="nav-text"><a href="#&#x4F2A;&#x5143;&#x7D20;" class="headerlink" title="&#x4F2A;&#x5143;&#x7D20;"></a>&#x4F2A;&#x5143;&#x7D20;</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#伪类"><span class="nav-number">4.0.2.</span> <span class="nav-text"><a href="#&#x4F2A;&#x7C7B;" class="headerlink" title="&#x4F2A;&#x7C7B;"></a>&#x4F2A;&#x7C7B;</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yvonne</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

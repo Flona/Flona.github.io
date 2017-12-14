@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/favicon.ico?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="JS,ES5,读书笔记," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="所有方法-typeof-Boolean-isFinite-isNaN-Number-parseInt-parseFloat">
+<meta name="keywords" content="JS,ES5,读书笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="读书笔记：ES5-basics(上)">
+<meta property="og:url" content="http://www.yvonne.party/2017/10/31/ES5-basics1/index.html">
+<meta property="og:site_name" content="Yvonne">
+<meta property="og:description" content="所有方法-typeof-Boolean-isFinite-isNaN-Number-parseInt-parseFloat">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basics/basics1.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basics/basics2.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basics/basics3.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basics/basics4.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basics/basics5.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basics/basics6.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basics/basics7.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basics/basics8.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basics/basics9.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basics/basics10.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basics/basics11.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basics/basics12.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basics/basics13.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basics/basics14.jpeg">
+<meta property="og:updated_time" content="2017-12-14T11:25:35.823Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="读书笔记：ES5-basics(上)">
+<meta name="twitter:description" content="所有方法-typeof-Boolean-isFinite-isNaN-Number-parseInt-parseFloat">
+<meta name="twitter:image" content="http://www.yvonne.party/img/blogImg/es5-basics/basics1.jpeg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.yvonne.party/2017/10/31/ES5-basics1/"/>
+
+
+
+
+
+  <title>读书笔记：ES5-basics(上) | Yvonne</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Yvonne</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.yvonne.party/2017/10/31/ES5-basics1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yvonne">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yvonne">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">读书笔记：ES5-basics(上)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-31T23:25:07+08:00">
+                2017-10-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="所有方法"><a href="#所有方法" class="headerlink" title="所有方法"></a>所有方法</h3><p>-<code>typeof</code><br>-<code>Boolean</code><br>-<code>isFinite</code><br>-<code>isNaN</code><br>-<code>Number</code><br>-<code>parseInt</code><br>-<code>parseFloat</code><br><a id="more"></a><br>-<code>hasOwnProperty</code><br>-<code>isPrototypeOf</code><br>-<code>propertyIsEnumerable</code><br>-<code>toLocaleString</code><br>-<code>toString</code><br>-<code>valueOf</code></p>
+<h3 id="前提基础"><a href="#前提基础" class="headerlink" title="前提基础"></a>前提基础</h3><p>补一下前面基础的基础，哈哈哈</p>
+<h5 id="javaScript"><a href="#javaScript" class="headerlink" title="javaScript"></a>javaScript</h5><p><code>javaScript</code> = <code>ECMAScript</code>(核心) + <code>DOM</code>(文档对象模型) + <code>BOM</code>(浏览器对象模型)</p>
+<p><code>ECMAScript</code>与浏览器没有任何依赖关系，Web浏览器只是<code>ECMAScript</code>实现可能的宿主环境之一</p>
+<p><code>DOM</code>内容很多，后面章节详细学习记录。。。</p>
+<p><code>BOM</code> =&gt; 处理浏览器窗口和框架，但是习惯性针对浏览器的<code>javaScript</code>扩展算作<code>BOM</code>的一部分，包括以下内容：<br>    弹出新浏览器窗口功能；<br>    移动／缩放／关闭浏览器窗口功能；<br>    <code>navigator</code>；<br>    <code>location</code>；<br>    <code>screen</code>；<br>    <code>cookies</code>；<br>    <code>XMLHttpRequest</code>/<code>ActiveXObject</code></p>
+<h5 id="script标签"><a href="#script标签" class="headerlink" title="script标签"></a>script标签</h5><p><code>javaScript</code>代码从上至下依次解释</p>
+<p>解析器对元素内的所有代码(外部脚本文件／内部嵌入代码)求值完毕之前，页面中的其余内容都不会被浏览器加载或显示，所以把脚本放在页面底部(<code>&lt;/body&gt;</code>之前)减少页面空白时间，是最好的选择</p>
+<p>内部嵌入代码中有<code>&#39;&lt;/script&gt;&#39;</code>字符串，需要’\’转义 =&gt; <code>&#39;&lt;\/script&gt;&#39;</code></p>
+<p><code>script</code>标签引入外部文件不存在跨域限制，同<code>img</code>标签一样都可以引入不同域下的文件</p>
+<p>同时引入外部文件和嵌入代码，只对外部文件有效，嵌入代码被忽略</p>
+<p>属性：</p>
+<p>说<code>async</code>和<code>defer</code>之前，先说明下<code>DOMContentLoaded</code>是 =&gt; the browser fully loaded HTML, and the DOM tree is built, but external resources like pictures <code>&lt;img&gt;</code> and stylesheets may be not yet loaded.在<code>document</code>上的事件，而正常下（无async或defer）内部嵌套脚本／外部引入脚本在加载和执行时会阻塞<code>DOM</code>构建，所以DOMContentLoaded may only happen after all such scripts are executed。<a href="http://javascript.info/onload-ondomcontentloaded" title="DOMContentLoaded" target="_blank" rel="noopener">参考链接</a></p>
+<p>⚠️<code>DOMContentLoaded</code>其它点，正常是不用等待外部资源的加载和执行的，但是有个陷阱就是如果在<code>&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;</code>后紧跟着<code>&lt;script&gt;</code>，那么<code>&lt;script&gt;</code>脚本会等待<code>style</code>脚本加载和执行后再执行，所以<code>DOMContentLoaded</code>因为要等待<code>script</code>脚本所以也就等待了这样的<code>style</code>样式表</p>
+<p>⚠️Page lifeCycle events:</p>
+<blockquote>
+<ol>
+<li>DOMContentLoaded event triggers on document when DOM is ready. We can apply JavaScript to elements at this stage.<br> <code>*</code> All scripts are executed except those that are external with async or defer<br> <code>*</code> Images and other resources may still continue loading.</li>
+<li>load event on window triggers when the page and all resources are loaded. We rarely use it, because there’s usually no need to wait for so long.</li>
+<li>beforeunload event on window triggers when the user wants to leave the page. If it returns a string, the browser shows a question whether the user really wants to leave or not.</li>
+<li>unload event on window triggers when the user is finally leaving, in the handler we can only do simple things that do not involve delays or asking a user. Because of that limitation, it’s rarely used.</li>
+<li>document.readyState is the current state of the document, changes can be tracked in the readystatechange event:<br> <code>*</code> loading – the document is loading.<br> <code>*</code> interactive – the document is parsed, happens at about the same time as DOMContentLoaded, but before it.<br> <code>*</code> complete – the document and resources are loaded, happens at about the same time as window.onload, but before it.</li>
+</ol>
+</blockquote>
+<p>-<code>async</code> =&gt; 可选，立即下载和执行（<strong><em>in background</em></strong>），但是不影响其他页面中的其他操作(下载其他资源／等待加载其他脚本)，<strong>仅对外部文件有效</strong> ，不保证按照先后顺序执行，当<code>document</code>过长且脚本很小时会出现脚本执行在<code>DOM</code>构建完成之前，所以建议异步脚本不要在加载期间改变DOM，所以不一定在<code>DOMContentLoaded</code>事件之前／之后执行，一定会在<code>load</code>事件之前执行</p>
+<p>-<code>defer</code> =&gt; 可选，立即下载，但是延迟到文档完全被解析和显示之后再执行，<strong>仅对外部文件有效</strong>，理论上先后有两个延迟脚本，会按照先后顺序执行，同时会先于<code>DOMContentLoaded</code>事件执行，但是实际上不一定按照先后顺序，也不一定先于<code>DOMContentLoaded</code>事件执行，所以最好只设置一个延迟脚本</p>
+<p>⚠️One of minor benefits in using async and defer for external scripts – they don’t block DOMContentLoaded and don’t delay browser autofill.</p>
+<p>-<code>src</code> =&gt; 链接外部js文件的URL</p>
+<p>-<code>type</code> =&gt; 已经是非必需的啦，选项很多，不选默认是<code>text/javascript</code><br>还有其他的属性不重要</p>
+<p>只要不存在<code>async</code>，<code>defer</code>属性，都会按照<code>&lt;script&gt;</code>出现顺序依次解析</p>
+<p>浏览器不支持js／浏览器禁用了js脚本，可用<code>&lt;noscript&gt;</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;noscript&gt;</span><br><span class="line">	&lt;p&gt;本页面需要浏览器支持（启用）js&lt;/p&gt;</span><br><span class="line">  &lt;/noscript&gt;</span><br><span class="line">&lt;/body&gt;&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><h5 id="标识符"><a href="#标识符" class="headerlink" title="标识符"></a>标识符</h5><p>概念：变量，函数，属性的名字</p>
+<p>规则：首个字符是 $／字母／下划线，其余字符可以是 $／字母／下划线／数字，建议驼峰格式，与<code>ECMAScript</code>内置函数和对象命名格式保持一致</p>
+<p>注意⚠️：不要用关键字和保留字做标识符</p>
+<h5 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h5><p>概念：表示控制语句的开始或结束，或者执行特定操作</p>
+<p><code>break</code>,<code>do</code>,<code>instanceOf</code>,<code>typeof</code>,<code>case</code>,<code>else</code>,<code>finally</code>,<code>void</code>,<code>debugger</code>,<code>delete</code>,<code>in</code>,<code>new</code>,<code>var</code>,<code>continue</code>,<code>for</code>,<code>switch</code>,<code>while</code>,<code>this</code>,<code>with</code>,<code>function</code>,<code>try</code>,<code>catch</code>,<code>if</code>,<code>default</code>等等等</p>
+<h5 id="保留字"><a href="#保留字" class="headerlink" title="保留字"></a>保留字</h5><p>概念：暂时没有用途，可能在将来做为关键字</p>
+<p><code>let</code>,<code>const</code>,<code>export</code>,<code>extends</code>,<code>import</code>,<code>class</code>,<code>abstract</code>,<code>enum</code>,<code>int</code>,<code>short</code>,<code>boolean</code>,<code>interface</code>,<code>static</code>,<code>byte</code>,<code>long</code>,<code>super</code>,<code>char</code>,<code>final</code>,<code>native</code>,<code>synchronized</code>,<code>float</code>,<code>package</code>,<code>throws</code>,<code>goto</code>,<code>private</code>,<code>transient</code>,<code>implements</code>,<code>protected</code>,<code>volatile</code>,<code>double</code>,<code>public</code>,<code>yield</code>等等等<br>其实前面几个在ES6中已经成为关键字了！！！！</p>
+<h5 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h5><p>松散类型 =&gt; 每个变量仅仅是一个用来保存值的占位符而已</p>
+<p><code>var</code>声明变量，使其是在当前作用域的局部变量，没有<code>var</code>声明则是全局变量</p>
+<p>可以同时声明多个变量：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var name = &apos;hemiao&apos;,</span><br><span class="line">  age = 24,</span><br><span class="line">  sex = &apos;woman&apos;;</span><br></pre></td></tr></table></figure>
+<h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><p>5种简单基本数据类型： <code>Undefined</code>,<code>Null</code>,<code>Number</code>,<code>String</code>,<code>Boolean</code></p>
+<p>1种复杂数据类型： <code>Object</code></p>
+<p><code>typeof</code> ：<br>    未定义的值 =&gt; <code>undefined</code><br>    <code>null</code>/对象 =&gt; <code>object</code><br>    布尔 =&gt; <code>boolean</code><br>    字符串 =&gt; <code>string</code><br>    数值 =&gt; <code>number</code><br>    函数 =&gt; <code>function</code></p>
+<p><img src="/img/blogImg/es5-basics/basics1.jpeg" style="max-width:400px"></p>
+<p><code>tyoeof</code>是操作符，所以后面可以跟括号也可以不跟</p>
+<p><code>typeof</code>针对对象的情况不能细分出是数组还是其他，就出现了<code>instanceOf</code></p>
+<p>从技术上讲，函数也是对象，但是函数会有一些特殊的属性，所以能够判断出是函数还是对象很有必要的</p>
+<p>补充正则的情况：<br><img src="/img/blogImg/es5-basics/basics2.jpeg" style="max-width:400px"></p>
+<h5 id="Undefined类型"><a href="#Undefined类型" class="headerlink" title="Undefined类型"></a>Undefined类型</h5><p>该数据类型只有一个值：<code>undefined</code></p>
+<p>表示<code>var</code>声明但未初始化</p>
+<p>对于未声明的变量只能执行一个方法<code>typeof</code>，执行其他操作会报错，但是！！对未声明的变量执行该方法与对声明未初始化的变量执行该方法返回值一样都是<code>undefined</code></p>
+<p><img src="/img/blogImg/es5-basics/basics3.jpeg" style="max-width:400px"></p>
+<p>所以严格做到用到的变量都声明，这样返回<code>undefined</code>就可以代表未初始化而不是未声明</p>
+<h5 id="Null类型"><a href="#Null类型" class="headerlink" title="Null类型"></a>Null类型</h5><p>该数据类型只有一个值：<code>null</code></p>
+<p>表示空对象指针</p>
+<p><code>undefined</code>派生自<code>null</code>，所以<code>==</code>返回true，<code>===</code>不等</p>
+<p>对于意在存储对象的变量，在未存储对象之前，先存储<code>null</code>，方便清楚分辨该变量是否已经存储了对象，同时也与<code>undefined</code>区分</p>
+<h5 id="Boolean类型"><a href="#Boolean类型" class="headerlink" title="Boolean类型"></a>Boolean类型</h5><p>该数据类型有两个值： <code>true</code>和<code>false</code></p>
+<p><code>Boolean()</code>方法将其他数据类型转换成布尔值</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Boolean</th>
+<th style="text-align:center">true</th>
+<th style="text-align:center">false</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Number</td>
+<td style="text-align:center">非0</td>
+<td style="text-align:center">0/NaN</td>
+</tr>
+<tr>
+<td style="text-align:center">String</td>
+<td style="text-align:center">非””</td>
+<td style="text-align:center">“”</td>
+</tr>
+<tr>
+<td style="text-align:center">Object</td>
+<td style="text-align:center">任何对象</td>
+<td style="text-align:center">null</td>
+</tr>
+<tr>
+<td style="text-align:center">Undefined</td>
+<td style="text-align:center">n/a</td>
+<td style="text-align:center">undefined</td>
+</tr>
+</tbody>
+</table>
+<p>所以要注意对于没有数据的空对象，<code>[]</code>/<code>{}</code>也会转换成<code>true</code>，只有<code>null</code>才会转换成<code>false</code>，所以在<code>if</code>语句中会自动执行<code>Boolean</code>要仔细⚠️</p>
+<p><img src="/img/blogImg/es5-basics/basics4.jpeg" style="max-width:400px"></p>
+<h5 id="Number类型"><a href="#Number类型" class="headerlink" title="Number类型"></a>Number类型</h5><p>该数据类型使用IEEE754格式表示整数和浮点数，数值字面量格式包含十进制／八进制（前置0后跟0-7，严格模式下会报错，ES6整体提升到严格模式了哟）／十六进制（前置0x后跟0-9和A-F，A-F大小写都可以），计算时最终都会转变成十进制数值</p>
+<h6 id="浮点数"><a href="#浮点数" class="headerlink" title="-浮点数"></a>-浮点数</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var floatNum = 1.1;</span><br><span class="line">//可以识别但是不推荐小数点前面没有整数的写法</span><br><span class="line">var floatNum = .1;</span><br></pre></td></tr></table></figure>
+<p>保存浮点数占用的内存空间是整数的两倍，所以<code>ECMAScript</code>会不失时机的把浮点数转换成整数，类似1.0/1.的情况</p>
+<p>e表示法：0.4e7 =&gt; $ 0.4*10^7 $，e大小写均可以</p>
+<p>对于极小数值，默认当小数点后面0超过6个就自动转变成e表示法</p>
+<p>浮点数值计算时精准度不够，例0.1+0.2会等于0.30000000000000004，这是IEEE754的问题，所以不要做这样的判断</p>
+<h6 id="数值范围"><a href="#数值范围" class="headerlink" title="-数值范围"></a>-数值范围</h6><p><code>Number.MIN_VALUE</code> - <code>Number.MAX_VALUE</code></p>
+<p>超过范围的值用<code>Infinity</code>表示，具体到<code>-Infinity</code>和<code>+Infinity</code>，分别在<code>Number.NEGATIVE_INFINITY</code>和<code>Nnmber.POSITIVE_INFINITY</code>中存储</p>
+<p><code>isFinite()</code>判断是否在有效数值内</p>
+<p><img src="/img/blogImg/es5-basics/basics5.jpeg" style="max-width:400px"></p>
+<h6 id="NaN"><a href="#NaN" class="headerlink" title="-NaN"></a>-NaN</h6><p>Not a Number，本应返回数值但是未返回数值</p>
+<p>不会存在像其他编程语言那样任何数值除以0都会导致错误，在<code>ECMAScript</code>中0/0=<code>NaN</code>，整数／0=<code>+Infinity</code>，负数／0=<code>-Infinity</code></p>
+<p>特点： 任何涉及<code>NaN</code>的操作都会返回<code>NaN</code>；<code>NaN</code>与任何值都不相等，包括自己本身</p>
+<p><img src="/img/blogImg/es5-basics/basics6.jpeg" style="max-width:400px"></p>
+<p><code>isNaN()</code>，参数可以是任何类型数据，对参数进行转换数值操作，不能转换成数值的情况返回<code>true</code></p>
+<p>对于字符串的转换情况，可以看出用的方法应该是<code>Number()</code>，比如<code>&quot;1bule&quot;</code>都没有转换成数值</p>
+<p><img src="/img/blogImg/es5-basics/basics7.jpeg" style="max-width:400px"></p>
+<p>对于对象转换情况，先调用<code>valueOf()</code>，若不能返回数值再调用<code>toString()</code>，这是参考高级程序设计这本书中说的，但是在实际情况中执行时发现有<code>valueOf()</code>时，不管能不能转换成数值都不会执行<code>toString()</code>，没有<code>valueOf()</code>时才会取<code>toString()</code>的值为基准</p>
+<p><img src="/img/blogImg/es5-basics/basics8.jpeg" style="max-width:400px"></p>
+<h6 id="数值转换"><a href="#数值转换" class="headerlink" title="-数值转换"></a>-数值转换</h6><p><code>Number()</code>: 将任何数据类型转换成数值类型</p>
+<p>⚠️ 布尔值<code>true</code>=&gt;1，<code>false</code>=&gt;0<br>⚠️ <code>null</code>=&gt;0<br>⚠️ <code>undefined</code>=&gt;NaN<br>⚠️ 字符串，<code>&quot;&quot;</code>=&gt;0，字符串内是正常的数值即转成此数值，不识别八进制，识别十六进制，除此外包含其他非数值的返回<code>NaN</code><br>⚠️ 对象依然是前面提到的问题，只要有<code>valueOf()</code>就不会以<code>toString()</code>为结果</p>
+<p><img src="/img/blogImg/es5-basics/basics9.jpeg" style="max-width:400px"></p>
+<p><code>parseInt()</code>: 将字符串转换成整数数值</p>
+<p>⚠️ 从第一个字符开始解析，一直解析到非数值为止，所以空字符返回<code>NaN</code><br>⚠️ ES5开始不能识别八进制，即忽略前导0，能识别十六进制，建议始终传入第二个参数指定几进制解析</p>
+<p><img src="/img/blogImg/es5-basics/basics10.jpeg" style="max-width:400px"></p>
+<p><code>parseFloat</code>: 将字符串转换成浮点数</p>
+<p>⚠️ 从第一个字符开始解析，知道解析到无效的浮点数值，第二个小数点无效<br>⚠️ 只解析十进制，始终忽略前导0，没有第二个参数代表几进制基数<br>⚠️ 可被解析为整数的情况，解析为整数</p>
+<p><img src="/img/blogImg/es5-basics/basics11.jpeg" style="max-width:400px"></p>
+<h5 id="String类型"><a href="#String类型" class="headerlink" title="String类型"></a>String类型</h5><p>用法：<code>&quot;&quot;</code>或<code>&#39;&#39;</code>，不能混用</p>
+<p>字符字面量 =&gt; 转义序列 =&gt; 非打印字符或具有其他用途的字符</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">字符字面量</th>
+<th style="text-align:center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">\n</td>
+<td style="text-align:center">换行</td>
+</tr>
+<tr>
+<td style="text-align:center">\f</td>
+<td style="text-align:center">进纸</td>
+</tr>
+<tr>
+<td style="text-align:center">\b</td>
+<td style="text-align:center">空格</td>
+</tr>
+<tr>
+<td style="text-align:center">\r</td>
+<td style="text-align:center">回车</td>
+</tr>
+<tr>
+<td style="text-align:center">\t</td>
+<td style="text-align:center">制表</td>
+</tr>
+<tr>
+<td style="text-align:center">\</td>
+<td style="text-align:center">斜杠</td>
+</tr>
+<tr>
+<td style="text-align:center">\’</td>
+<td style="text-align:center">单引号</td>
+</tr>
+<tr>
+<td style="text-align:center">\”</td>
+<td style="text-align:center">双引号</td>
+</tr>
+<tr>
+<td style="text-align:center">\xnn</td>
+<td style="text-align:center">十六进制nn表示一个字符（n为A-F）,例\x41是A</td>
+</tr>
+<tr>
+<td style="text-align:center">\unnnn</td>
+<td style="text-align:center">十六进制nnnn表示一个unicode字符（n为A-F），例\u03a3是希腊字符Σ</td>
+</tr>
+</tbody>
+</table>
+<p>包含双字节字符，<code>length</code>会不准确</p>
+<p>特点：字符串不可变，即一旦创建不能改变，改变是销毁原字符串，再用包含新值的字符串填充该变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var str = &apos;java&apos;;</span><br><span class="line">str = str + &apos;script&apos;</span><br></pre></td></tr></table></figure>
+<p>上面的过程创建个能包含’javascript’的新字符串，填充’java’和’script’，最后要销毁’java’和’script’</p>
+<p>字符串转换：<code>toString()</code>和<code>String()</code></p>
+<p>除<code>null</code>和<code>undefined</code>都有<code>toString()</code>方法，注意对于数值类型不能直接调用，要用变量调用</p>
+<p><img src="/img/blogImg/es5-basics/basics12.jpeg" style="max-width:400px"></p>
+<p><code>String()</code>方法，有<code>toString()</code>方法的调用该方法，否则调用<code>String()</code>，所以<code>null</code>和<code>undefined</code>调用不会报错</p>
+<p><img src="/img/blogImg/es5-basics/basics13.jpeg" style="max-width:400px"></p>
+<p><strong>用的最多的方式是加号操作符！！！！</strong></p>
+<h5 id="Object类型"><a href="#Object类型" class="headerlink" title="Object类型"></a>Object类型</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var obj = new Object();</span><br><span class="line">//有效，但不推荐省略括号</span><br><span class="line">var obj = new Object;</span><br><span class="line">//还有字面量方式，后面更详细总结</span><br></pre></td></tr></table></figure>
+<p><code>Object</code>是所有对象的基础，<code>Object</code>每个实例都具有的方法从和属性如下：</p>
+<p><code>object.constructor</code>： 保存用于创建这个对象的函数，上面的例子就是<code>Object()</code></p>
+<p><code>object.hasOwnProperty(propertyName)</code>：给定的属性在此对象实例（非原型）中存在，<code>propertyName</code>参数是<strong>字符串形式</strong></p>
+<p><code>propertyObj.isPrototypeOf(object)</code>：xx是不是<code>object</code>的原型</p>
+<p><img src="/img/blogImg/es5-basics/basics14.jpeg" style="max-width:400px"></p>
+<p><code>object.propertyIsEnumerable(propertyName)</code>：给定的属性是否可以<code>for-in</code>枚举，<code>propertyName</code>参数是<strong>字符串形式</strong></p>
+<p><code>toLocaleString()</code>：返回字符串表示，与执行环境的地区对应</p>
+<p><code>toString()</code>：返回字符串表示</p>
+<p><code>valueOf()</code>：返回对象的字符串、布尔值或数值的表示，通常与<code>toString()</code>返回值一样</p>
+<p>太多了，会有下篇</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JS/" rel="tag"># JS</a>
+          
+            <a href="/tags/ES5/" rel="tag"># ES5</a>
+          
+            <a href="/tags/读书笔记/" rel="tag"># 读书笔记</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/20/ES5-array/" rel="next" title="读书笔记：ES5-Array">
+                <i class="fa fa-chevron-left"></i> 读书笔记：ES5-Array
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/22/ES5-basics2/" rel="prev" title="读书笔记：ES5-basics(下)">
+                读书笔记：ES5-basics(下) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpeg"
+                alt="Yvonne" />
+            
+              <p class="site-author-name" itemprop="name">Yvonne</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">Artikel</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">Tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#所有方法"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x6240;&#x6709;&#x65B9;&#x6CD5;" class="headerlink" title="&#x6240;&#x6709;&#x65B9;&#x6CD5;"></a>&#x6240;&#x6709;&#x65B9;&#x6CD5;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#前提基础"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x524D;&#x63D0;&#x57FA;&#x7840;" class="headerlink" title="&#x524D;&#x63D0;&#x57FA;&#x7840;"></a>&#x524D;&#x63D0;&#x57FA;&#x7840;</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#javaScript"><span class="nav-number">2.0.1.</span> <span class="nav-text"><a href="#javaScript" class="headerlink" title="javaScript"></a>javaScript</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#script标签"><span class="nav-number">2.0.2.</span> <span class="nav-text"><a href="#script&#x6807;&#x7B7E;" class="headerlink" title="script&#x6807;&#x7B7E;"></a>script&#x6807;&#x7B7E;</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本概念"><span class="nav-number">3.</span> <span class="nav-text"><a href="#&#x57FA;&#x672C;&#x6982;&#x5FF5;" class="headerlink" title="&#x57FA;&#x672C;&#x6982;&#x5FF5;"></a>&#x57FA;&#x672C;&#x6982;&#x5FF5;</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#标识符"><span class="nav-number">3.0.1.</span> <span class="nav-text"><a href="#&#x6807;&#x8BC6;&#x7B26;" class="headerlink" title="&#x6807;&#x8BC6;&#x7B26;"></a>&#x6807;&#x8BC6;&#x7B26;</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#关键字"><span class="nav-number">3.0.2.</span> <span class="nav-text"><a href="#&#x5173;&#x952E;&#x5B57;" class="headerlink" title="&#x5173;&#x952E;&#x5B57;"></a>&#x5173;&#x952E;&#x5B57;</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#保留字"><span class="nav-number">3.0.3.</span> <span class="nav-text"><a href="#&#x4FDD;&#x7559;&#x5B57;" class="headerlink" title="&#x4FDD;&#x7559;&#x5B57;"></a>&#x4FDD;&#x7559;&#x5B57;</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#变量"><span class="nav-number">3.0.4.</span> <span class="nav-text"><a href="#&#x53D8;&#x91CF;" class="headerlink" title="&#x53D8;&#x91CF;"></a>&#x53D8;&#x91CF;</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据类型"><span class="nav-number">4.</span> <span class="nav-text"><a href="#&#x6570;&#x636E;&#x7C7B;&#x578B;" class="headerlink" title="&#x6570;&#x636E;&#x7C7B;&#x578B;"></a>&#x6570;&#x636E;&#x7C7B;&#x578B;</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Undefined类型"><span class="nav-number">4.0.1.</span> <span class="nav-text"><a href="#Undefined&#x7C7B;&#x578B;" class="headerlink" title="Undefined&#x7C7B;&#x578B;"></a>Undefined&#x7C7B;&#x578B;</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Null类型"><span class="nav-number">4.0.2.</span> <span class="nav-text"><a href="#Null&#x7C7B;&#x578B;" class="headerlink" title="Null&#x7C7B;&#x578B;"></a>Null&#x7C7B;&#x578B;</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Boolean类型"><span class="nav-number">4.0.3.</span> <span class="nav-text"><a href="#Boolean&#x7C7B;&#x578B;" class="headerlink" title="Boolean&#x7C7B;&#x578B;"></a>Boolean&#x7C7B;&#x578B;</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Number类型"><span class="nav-number">4.0.4.</span> <span class="nav-text"><a href="#Number&#x7C7B;&#x578B;" class="headerlink" title="Number&#x7C7B;&#x578B;"></a>Number&#x7C7B;&#x578B;</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#浮点数"><span class="nav-number">4.0.4.1.</span> <span class="nav-text"><a href="#&#x6D6E;&#x70B9;&#x6570;" class="headerlink" title="-&#x6D6E;&#x70B9;&#x6570;"></a>-&#x6D6E;&#x70B9;&#x6570;</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#数值范围"><span class="nav-number">4.0.4.2.</span> <span class="nav-text"><a href="#&#x6570;&#x503C;&#x8303;&#x56F4;" class="headerlink" title="-&#x6570;&#x503C;&#x8303;&#x56F4;"></a>-&#x6570;&#x503C;&#x8303;&#x56F4;</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#NaN"><span class="nav-number">4.0.4.3.</span> <span class="nav-text"><a href="#NaN" class="headerlink" title="-NaN"></a>-NaN</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#数值转换"><span class="nav-number">4.0.4.4.</span> <span class="nav-text"><a href="#&#x6570;&#x503C;&#x8F6C;&#x6362;" class="headerlink" title="-&#x6570;&#x503C;&#x8F6C;&#x6362;"></a>-&#x6570;&#x503C;&#x8F6C;&#x6362;</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#String类型"><span class="nav-number">4.0.5.</span> <span class="nav-text"><a href="#String&#x7C7B;&#x578B;" class="headerlink" title="String&#x7C7B;&#x578B;"></a>String&#x7C7B;&#x578B;</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Object类型"><span class="nav-number">4.0.6.</span> <span class="nav-text"><a href="#Object&#x7C7B;&#x578B;" class="headerlink" title="Object&#x7C7B;&#x578B;"></a>Object&#x7C7B;&#x578B;</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yvonne</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

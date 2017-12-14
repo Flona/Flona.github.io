@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/favicon.ico?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="CSS," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="垂直居中需求极其常见，实现的方法也多样，总结几个方法 基于绝对定位的垂直居中1234567position: absolute;top: 50%;right: 50%;width: 12em;height: 8em;margin-top: -4em;margin-right: -6em;">
+<meta name="keywords" content="CSS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="垂直居中">
+<meta property="og:url" content="http://www.yvonne.party/2017/04/25/vertical-centering/index.html">
+<meta property="og:site_name" content="Yvonne">
+<meta property="og:description" content="垂直居中需求极其常见，实现的方法也多样，总结几个方法 基于绝对定位的垂直居中1234567position: absolute;top: 50%;right: 50%;width: 12em;height: 8em;margin-top: -4em;margin-right: -6em;">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/vertical-centering1.jpeg">
+<meta property="og:updated_time" content="2017-12-14T11:53:31.049Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="垂直居中">
+<meta name="twitter:description" content="垂直居中需求极其常见，实现的方法也多样，总结几个方法 基于绝对定位的垂直居中1234567position: absolute;top: 50%;right: 50%;width: 12em;height: 8em;margin-top: -4em;margin-right: -6em;">
+<meta name="twitter:image" content="http://www.yvonne.party/img/blogImg/vertical-centering1.jpeg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.yvonne.party/2017/04/25/vertical-centering/"/>
+
+
+
+
+
+  <title>垂直居中 | Yvonne</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Yvonne</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.yvonne.party/2017/04/25/vertical-centering/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yvonne">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yvonne">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">垂直居中</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-25T14:40:14+08:00">
+                2017-04-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>垂直居中需求极其常见，实现的方法也多样，总结几个方法</p>
+<h2 id="基于绝对定位的垂直居中"><a href="#基于绝对定位的垂直居中" class="headerlink" title="基于绝对定位的垂直居中"></a>基于绝对定位的垂直居中</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">position: absolute;</span><br><span class="line">top: 50%;</span><br><span class="line">right: 50%;</span><br><span class="line">width: 12em;</span><br><span class="line">height: 8em;</span><br><span class="line">margin-top: -4em;</span><br><span class="line">margin-right: -6em;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<main style="width:20em;height:12em;position:relative;background:#fb3"><div style="position: absolute;top: 50%;right: 50%;width: 12em;height: 8em;margin-top: -4em;margin-right: -6em;background:#4a4a4a"></div></main>
+
+<p>别忘了，若是垂直居中某个标签当中，需要设置此标签<code>relative</code>定位</p>
+<p>可以借用<code>calc</code>减少两行声明，注意减号前后有空格！！！<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">position: absolute;</span><br><span class="line">top: calc(50% - 4em);</span><br><span class="line">right: calc(50% - 6em);</span><br><span class="line">width: 12em;</span><br><span class="line">height: 8em;</span><br></pre></td></tr></table></figure></p>
+<p><main style="width:20em;height:12em;position:relative;background:#fb3"><div style="position: absolute;top: calc(50% - 4em);right: calc(50% - 6em);width: 12em;height:8em;background:#4a4a4a"></div></main><br>以上方法的局限在于要求元素的宽高固定，如果我们能知道一个属性的百分比能代表元素本身的宽高，那就能解决问题，对于绝大多数CSS属性（包括<code>margin</code>）来说，百分比都是以父元素的尺寸为基准解析的</p>
+<p>但是！！CSS变形属性，在<code>translate()</code>变形函数中使用百分比值时，是以这个元素自身的宽高为基准解析的，这正是我们需要的<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">position: absolute;</span><br><span class="line">top: 50%;</span><br><span class="line">left: 50%;</span><br><span class="line">transform: translate(-50%, -50%);</span><br></pre></td></tr></table></figure></p>
+<p><main style="width:20em;height:12em;position:relative;background:#fb3"><div style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);background:#4a4a4a;width:12em;height:8em"></div></main><br>缺点：<br>首先有时不能选择绝对定位，这对整个布局影响很大；<br>其次当垂直居中的元素高度超过了窗口，它的顶部会被视口裁切掉；<br>最后在某些浏览器里可能会出现元素显示有一些模糊，因为元素可能被放置在半个像素上，可以用<code>transform-style: preserve-3d</code>来解决；</p>
+<h2 id="基于视口单位的垂直居中"><a href="#基于视口单位的垂直居中" class="headerlink" title="基于视口单位的垂直居中"></a>基于视口单位的垂直居中</h2><p>先介绍一下与视口相关的长度单位<br><code>vw</code>与视口宽度相关的，<code>1vw</code>是视口宽度的1%；<br><code>vh</code>与视口高度相关的，<code>1vh</code>是视口高度的1%；<br><code>vmin</code>视口宽度和高度小的那个，视口宽度小于视口高度则<code>1vmin=1vw</code>，反之<code>1vmin=1vh</code>；<br><code>vmax</code>视口宽度和高度大的那个，视口宽度大于视口高度则<code>1vmax=1vw</code>，反之<code>1vmax=1vh</code>；<br>so，如果不用绝对定位，可以用基于视口来达到定位的效果<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">margin: 50vh auto 0;</span><br><span class="line">transform: translateY(-50%);</span><br></pre></td></tr></table></figure></p>
+<p><img src="/img/blogImg/vertical-centering1.jpeg" alt="vertical-centering-vh"></p>
+<p>这种方式的缺点呢，就是只能做基于<strong>视口</strong>的垂直居中</p>
+<h2 id="基于Flexbox的垂直居中"><a href="#基于Flexbox的垂直居中" class="headerlink" title="基于Flexbox的垂直居中"></a>基于Flexbox的垂直居中</h2><p>这种方式是最优解，伸缩盒就是为这种需求所设计的，先给待居中元素的父元素设置<code>display: flex</code>，再给自身元素设置<code>margin: auto</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">.wrapper&#123;</span><br><span class="line">	display: flex;</span><br><span class="line">	width: 20em;</span><br><span class="line">	height: 12em;</span><br><span class="line">	background: <span class="comment">#fb3;</span></span><br><span class="line">&#125;</span><br><span class="line">.inner&#123;</span><br><span class="line">	margin: auto;</span><br><span class="line">	width: 12em;</span><br><span class="line">	height: 8em;</span><br><span class="line">	background: <span class="comment">#4a4a4a;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<div style="display: flex;width: 20em;height: 12em;background: #fb3;"><div style="margin: auto;width: 12em;height: 8em;background: #4a4a4a;"></div></div><br>Flexbox还有一个好处，就是可以为匿名容器（没有被标签包裹的文本节点）垂直居中，例如<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;main&gt;Center me ,Please!&lt;/main&gt;</span><br></pre></td></tr></table></figure><br><br>首先为该元素设定尺寸，然后设置<code>align-items</code>和<code>justify-content</code><br><br><div style="display: flex;width: 20em;height: 12em;background: #fb3;"><main style="background:#4a4a4a;color:white;width:12em;height:8em;margin:auto;display:flex;align-items:center;justify-content:center">Center me ,Please!</main></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CSS/" rel="tag"># CSS</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/21/stripes/" rel="next" title="条纹背景">
+                <i class="fa fa-chevron-left"></i> 条纹背景
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/05/30/steps/" rel="prev" title="步骤条">
+                步骤条 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpeg"
+                alt="Yvonne" />
+            
+              <p class="site-author-name" itemprop="name">Yvonne</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">Artikel</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">Tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基于绝对定位的垂直居中"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x57FA;&#x4E8E;&#x7EDD;&#x5BF9;&#x5B9A;&#x4F4D;&#x7684;&#x5782;&#x76F4;&#x5C45;&#x4E2D;" class="headerlink" title="&#x57FA;&#x4E8E;&#x7EDD;&#x5BF9;&#x5B9A;&#x4F4D;&#x7684;&#x5782;&#x76F4;&#x5C45;&#x4E2D;"></a>&#x57FA;&#x4E8E;&#x7EDD;&#x5BF9;&#x5B9A;&#x4F4D;&#x7684;&#x5782;&#x76F4;&#x5C45;&#x4E2D;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基于视口单位的垂直居中"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x57FA;&#x4E8E;&#x89C6;&#x53E3;&#x5355;&#x4F4D;&#x7684;&#x5782;&#x76F4;&#x5C45;&#x4E2D;" class="headerlink" title="&#x57FA;&#x4E8E;&#x89C6;&#x53E3;&#x5355;&#x4F4D;&#x7684;&#x5782;&#x76F4;&#x5C45;&#x4E2D;"></a>&#x57FA;&#x4E8E;&#x89C6;&#x53E3;&#x5355;&#x4F4D;&#x7684;&#x5782;&#x76F4;&#x5C45;&#x4E2D;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基于Flexbox的垂直居中"><span class="nav-number">3.</span> <span class="nav-text"><a href="#&#x57FA;&#x4E8E;Flexbox&#x7684;&#x5782;&#x76F4;&#x5C45;&#x4E2D;" class="headerlink" title="&#x57FA;&#x4E8E;Flexbox&#x7684;&#x5782;&#x76F4;&#x5C45;&#x4E2D;"></a>&#x57FA;&#x4E8E;Flexbox&#x7684;&#x5782;&#x76F4;&#x5C45;&#x4E2D;</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yvonne</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

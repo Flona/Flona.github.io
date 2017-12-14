@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/favicon.ico?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="JS,ES5,读书笔记," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="操作符一元操作符-递增：    前置型 =&amp;gt; ++a =&amp;gt; 语句求值前先自加    后置型 =&amp;gt; a++ =&amp;gt; 语句求值后再自加">
+<meta name="keywords" content="JS,ES5,读书笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="读书笔记：ES5-basics(下)">
+<meta property="og:url" content="http://www.yvonne.party/2017/11/22/ES5-basics2/index.html">
+<meta property="og:site_name" content="Yvonne">
+<meta property="og:description" content="操作符一元操作符-递增：    前置型 =&amp;gt; ++a =&amp;gt; 语句求值前先自加    后置型 =&amp;gt; a++ =&amp;gt; 语句求值后再自加">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basics/basics15.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basics/basics16.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basics/basics17.jpeg">
+<meta property="og:updated_time" content="2017-12-14T11:25:14.603Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="读书笔记：ES5-basics(下)">
+<meta name="twitter:description" content="操作符一元操作符-递增：    前置型 =&amp;gt; ++a =&amp;gt; 语句求值前先自加    后置型 =&amp;gt; a++ =&amp;gt; 语句求值后再自加">
+<meta name="twitter:image" content="http://www.yvonne.party/img/blogImg/es5-basics/basics15.jpeg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.yvonne.party/2017/11/22/ES5-basics2/"/>
+
+
+
+
+
+  <title>读书笔记：ES5-basics(下) | Yvonne</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Yvonne</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.yvonne.party/2017/11/22/ES5-basics2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yvonne">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yvonne">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">读书笔记：ES5-basics(下)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-22T14:12:02+08:00">
+                2017-11-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="操作符"><a href="#操作符" class="headerlink" title="操作符"></a>操作符</h3><h5 id="一元操作符"><a href="#一元操作符" class="headerlink" title="一元操作符"></a>一元操作符</h5><p>-递增：<br>    前置型 =&gt; <code>++a</code> =&gt; 语句求值前先自加<br>    后置型 =&gt; <code>a++</code> =&gt; 语句求值后再自加</p>
+<a id="more"></a>
+<p>-递减：<br>    前置型 =&gt; <code>--a</code> =&gt; 语句求值前先自减<br>    后置型 =&gt; <code>a--</code> =&gt; 语句求值后再自减</p>
+<p><strong>可以应用于非数值类型</strong>：<br>字符串：转换成数值后进行递增／递减，采用<code>Number</code>方法，不能转换成数值的转换成<code>NaN</code><br><img src="/img/blogImg/es5-basics/basics15.jpeg" style="max-width:400px"><br>布尔：转换成数值后进行递增／递减，<code>false</code>0，<code>true</code>1<br><img src="/img/blogImg/es5-basics/basics16.jpeg" style="max-width:400px"><br>对象：有<code>valueOf</code>就用此值，否则用<code>toString</code><br><img src="/img/blogImg/es5-basics/basics17.jpeg" style="max-width:400px"></p>
+<p>-一元加：<br>    数值：对值无影响<br>    其它类型：<code>Number</code>转换成数值</p>
+<p>-一元减：<br>    数值：变负<br>    其它类型：<code>Number</code>转换成数值后变负</p>
+<h5 id="位操作符"><a href="#位操作符" class="headerlink" title="位操作符"></a>位操作符</h5><p>按内存中表示数值的位来操作数值，以IEE-754 64位格式存储，对数值进行位操作符的时候，会将64位转换成32位再进行位操作，最后将结果转换为64位，<br>所以对于开发者而言64位是透明，直接位操作32位的整数</p>
+<p>⚠️<code>NaN</code>和<code>Infinity</code>会当作0来进行位操作<br>⚠️对于非数值会<code>Number</code>转换成数值</p>
+<p>有符号整数：第32位是符号位，0正1负，正数是二进制，负数是绝对值的二进制补码（反码+1）<br>无符号整数：只能是正数</p>
+<p>按位非<code>～</code>：反码<br>按位与<code>&amp;</code>：都是1才是1<br>按位或<code>|</code>：有1就是1<br>按位异或<code>^</code>：不一样才是1<br>左移<code>&lt;&lt;</code>：右侧的空位用0填充，如果是有符号整数符号位不动<br>右移<code>&gt;&gt;</code>／<code>&gt;&gt;&gt;</code>：有符号位整数<code>&gt;&gt;</code>=&gt;保留符号位，空位用符号位数值填充，无符号位整数<code>&gt;&gt;&gt;</code>=&gt;以0填充空位</p>
+<h5 id="布尔操作符"><a href="#布尔操作符" class="headerlink" title="布尔操作符"></a>布尔操作符</h5><p>逻辑非<code>!</code>：转换成布尔值后再转非，转换规则就是<code>Boolean</code>的那种，双叹号模拟了<code>Boolean</code>方法<br>逻辑与<code>&amp;&amp;</code>：都对则对，短路操作（第一个能决定结果不会执行第二个求值）<br>逻辑或<code>||</code>：有对则对，短路操作，可以用逻辑或避免变量赋值<code>null</code>和<code>undefined</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var myObject = preferredObject || backupObject;</span><br></pre></td></tr></table></figure></p>
+<p>test2</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JS/" rel="tag"># JS</a>
+          
+            <a href="/tags/ES5/" rel="tag"># ES5</a>
+          
+            <a href="/tags/读书笔记/" rel="tag"># 读书笔记</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/31/ES5-basics1/" rel="next" title="读书笔记：ES5-basics(上)">
+                <i class="fa fa-chevron-left"></i> 读书笔记：ES5-basics(上)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/14/hello-world/" rel="prev" title="Hello World">
+                Hello World <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpeg"
+                alt="Yvonne" />
+            
+              <p class="site-author-name" itemprop="name">Yvonne</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">Artikel</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">Tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#操作符"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x64CD;&#x4F5C;&#x7B26;" class="headerlink" title="&#x64CD;&#x4F5C;&#x7B26;"></a>&#x64CD;&#x4F5C;&#x7B26;</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#一元操作符"><span class="nav-number">1.0.1.</span> <span class="nav-text"><a href="#&#x4E00;&#x5143;&#x64CD;&#x4F5C;&#x7B26;" class="headerlink" title="&#x4E00;&#x5143;&#x64CD;&#x4F5C;&#x7B26;"></a>&#x4E00;&#x5143;&#x64CD;&#x4F5C;&#x7B26;</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#位操作符"><span class="nav-number">1.0.2.</span> <span class="nav-text"><a href="#&#x4F4D;&#x64CD;&#x4F5C;&#x7B26;" class="headerlink" title="&#x4F4D;&#x64CD;&#x4F5C;&#x7B26;"></a>&#x4F4D;&#x64CD;&#x4F5C;&#x7B26;</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#布尔操作符"><span class="nav-number">1.0.3.</span> <span class="nav-text"><a href="#&#x5E03;&#x5C14;&#x64CD;&#x4F5C;&#x7B26;" class="headerlink" title="&#x5E03;&#x5C14;&#x64CD;&#x4F5C;&#x7B26;"></a>&#x5E03;&#x5C14;&#x64CD;&#x4F5C;&#x7B26;</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yvonne</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/favicon.ico?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="CSS," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="利用CSS创建条纹背景，主要应用CSS3两个属性，linear-gradient 线性渐变，以及 background-size 渐变尺寸。 水平条纹首先有一条基本的垂直线性渐变">
+<meta name="keywords" content="CSS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="条纹背景">
+<meta property="og:url" content="http://www.yvonne.party/2017/04/21/stripes/index.html">
+<meta property="og:site_name" content="Yvonne">
+<meta property="og:description" content="利用CSS创建条纹背景，主要应用CSS3两个属性，linear-gradient 线性渐变，以及 background-size 渐变尺寸。 水平条纹首先有一条基本的垂直线性渐变">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/stripets1.jpeg">
+<meta property="og:updated_time" content="2017-12-14T11:52:58.068Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="条纹背景">
+<meta name="twitter:description" content="利用CSS创建条纹背景，主要应用CSS3两个属性，linear-gradient 线性渐变，以及 background-size 渐变尺寸。 水平条纹首先有一条基本的垂直线性渐变">
+<meta name="twitter:image" content="http://www.yvonne.party/img/blogImg/stripets1.jpeg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.yvonne.party/2017/04/21/stripes/"/>
+
+
+
+
+
+  <title>条纹背景 | Yvonne</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Yvonne</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.yvonne.party/2017/04/21/stripes/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yvonne">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yvonne">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">条纹背景</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-21T12:00:23+08:00">
+                2017-04-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>利用CSS创建条纹背景，主要应用CSS3两个属性，<code>linear-gradient</code> 线性渐变，以及 <code>background-size</code> 渐变尺寸。</p>
+<h2 id="水平条纹"><a href="#水平条纹" class="headerlink" title="水平条纹"></a>水平条纹</h2><p>首先有一条基本的垂直线性渐变<br><a id="more"></a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">background: linear-gradient(<span class="comment">#fb3, #58a);</span></span><br></pre></td></tr></table></figure>
+<div style="width:160px;height:100px;background:linear-gradient(#fb3,#58a)"></div>
+
+<p>试着把两个色标拉近一点，渐变色从20%位置开始，到80%结束，即两块实色各自占据20%<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">background: linear-gradient(<span class="comment">#fb3 20%, #58a 80%);</span></span><br></pre></td></tr></table></figure></p>
+<div style="width:160px;height:100px;background:linear-gradient(#fb3 20%,#58a 80%)"></div>
+
+<hr>
+<p>若把两个色标重合在一起，会产生一个无限小的过渡区域，效果上看没有任何渐变，两块实色各自占据一半的面积<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">background: linear-gradient(#fb3 50%, #58a 50%);</span><br></pre></td></tr></table></figure></p>
+<div style="width:160px;height:100px;background:linear-gradient(#fb3 50%,#58a 50%)"></div>
+
+<hr>
+<p>通过<code>background-size</code>调整尺寸，背景默认情况下是重复平铺，整个容器便填满了水平条纹<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">background: linear-gradient(#fb3 50%, #58a 50%);</span><br><span class="line">background-size: 100% 20px;</span><br></pre></td></tr></table></figure></p>
+<div style="width:160px;height:100px;background:linear-gradient(#fb3 50%,#58a 50%);background-size:100% 20px"></div>
+
+<hr>
+<p>调整色标的位置，创建不等宽条纹<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">background: linear-gradient(<span class="comment">#fb3 30%, #58a 30%);</span></span><br><span class="line">background-size: 100% 30px;</span><br></pre></td></tr></table></figure></p>
+<div style="width:160px;height:100px;background:linear-gradient(#fb3 30%,#58a 30%);background-size:100% 30px"></div>
+
+<hr>
+<p>根据CSS图像规则</p>
+<blockquote>
+<p>如果某个色标的位置值比整个列表中在它之前的色标的位置值都要小，则该色标的位置值会被设置为它前面所有色标位置值的最大值</p>
+</blockquote>
+<p>即<code>#fb3</code>色块位置值标注到30%，<code>#58a</code>色块位置值从30%开始，倘若<code>#58a</code>位置值写的比<code>#fb3</code>位置值小，则<code>#58a</code>位置值会被设置为它前面最大的位置值开始，即依然是30%，这正是我想要的结果，所以可以简写代码，将<code>#58a</code>位置值写为0，这样需要改动条纹宽度时只需要更改前面的位置值<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">background: linear-gradient(<span class="comment">#fb3 30%, #58a 0);</span></span><br><span class="line">background-size: 100% 30px;</span><br></pre></td></tr></table></figure></p>
+<div style="width:160px;height:100px;background:linear-gradient(#fb3 30%,#58a 0);background-size:100% 30px"></div>
+
+<hr>
+<p>举一反三，创建多种颜色条纹，以三种颜色为例<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">background: linear-gradient(<span class="comment">#fb3 33.3%, #58a 0, #58a 66.6%, yellowgreen 0);</span></span><br><span class="line">background-size: 100% 45px;</span><br></pre></td></tr></table></figure></p>
+<div style="width:160px;height:100px;background:linear-gradient(#fb3 33.3%,#58a 0,#58a 66.6%,yellowgreen 0);background-size:100% 45px"></div>
+
+<p>比较简单的平行条纹就完成啦!</p>
+<h2 id="垂直条纹"><a href="#垂直条纹" class="headerlink" title="垂直条纹"></a>垂直条纹</h2><p>垂直条纹和水平条纹的差别在于，需要在开头加上一个额外的参数指定渐变方向，默认渐变方向是<code>to bottom</code>，同时<code>background-size</code>颠倒一下<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">background: linear-gradient(to right, /* 或 90deg */ <span class="comment">#fb3 50%, #58a 0);</span></span><br><span class="line">background-size: 20px 100%;</span><br></pre></td></tr></table></figure></p>
+<div style="width:160px;height:100px;background:linear-gradient(to right,#fb3 50%,#58a 0);background-size:20px 100%"></div>
+
+<p>so easy~</p>
+<h2 id="斜向条纹"><a href="#斜向条纹" class="headerlink" title="斜向条纹"></a>斜向条纹</h2><p>如果改变<code>background-size</code>的值和渐变方向，貌似可以创建斜向条纹，比如45度倾斜，尝试如下<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">background: linear-gradient(45deg, <span class="comment">#fb3 50%, #58a 0);</span></span><br><span class="line">background-size: 30px 30px;</span><br></pre></td></tr></table></figure></p>
+<div style="width:160px;height:100px;background:linear-gradient(45deg,#fb3 50%,#58a 50%);background-size:30px 30px"></div>
+
+<p>显然直接这样写不行<br>逆向思考如果想要斜向条纹（如下图），基本单元应该是红色圈住的部分，并非上面尝试的2条条纹，而是4条条纹</p>
+<p><img src="/img/blogImg/stripets1.jpeg" alt="斜向条纹图片"></p>
+<p>so，再增加两个色标<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">background: linear-gradient(45deg, <span class="comment">#fb3 25%, #58a 0, #58a 50%, #fb3 0, #fb3 75%, #58a 0);</span></span><br><span class="line">background-size: 30px 30px;</span><br></pre></td></tr></table></figure></p>
+<div style="width:160px;height:100px;background:linear-gradient(45deg,#fb3 25%,#58a 0,#58a 50%,#fb3 0,#fb3 75%,#58a 0);background-size: 30px 30px"></div>
+
+<p>但是最初想要的条纹的宽度是15px，<code>background-size</code>应该是2*15*√2≈42.426406871px，取个整吧42.4px<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">background: linear-gradient(45deg, <span class="comment">#fb3 25%, #58a 0, #58a 50%, #fb3 0, #fb3 75%, #58a 0);</span></span><br><span class="line">background-size: 42.4px 42.4px;</span><br></pre></td></tr></table></figure></p>
+<div style="width:160px;height:100px;background:linear-gradient(45deg,#fb3 25%,#58a 0,#58a 50%,#fb3 0,#fb3 75%,#58a 0);background-size: 42.4px 42.4px"></div>
+
+<p>完成了接近45度的斜向条纹，但是方法不够友好，没办法切换别的角度，比如60度<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">background: linear-gradient(60deg, <span class="comment">#fb3 25%, #58a 0, #58a 50%, #fb3 0, #fb3 75%, #58a 0);</span></span><br><span class="line">background-size: 42.4px 42.4px;</span><br></pre></td></tr></table></figure></p>
+<div style="width:160px;height:100px;background:linear-gradient(60deg,#fb3 25%,#58a 0,#58a 50%,#fb3 0,#fb3 75%,#58a 0);background-size: 42.4px 42.4px"></div>
+
+<p>这种思维是咬死了渐变方向是45度的前提下进行的，不完美</p>
+<h2 id="更好的斜向条纹"><a href="#更好的斜向条纹" class="headerlink" title="更好的斜向条纹"></a>更好的斜向条纹</h2><p>必须要先介绍<code>linear-gradient</code>的循环式加强版<code>repeating-linear-gradient</code>，色标无限循环填满整个背景<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">background: repeating-linear-gradient(45deg, <span class="comment">#fb3, #58a 30px);</span></span><br></pre></td></tr></table></figure></p>
+<div style="width:160px;height:100px;background:repeating-linear-gradient(45deg, #fb3, #58a 30px)"></div>
+
+<p>以上指定渐变宽度为30px的渐变图案自动重复并铺满整个背景，据此做条纹效果，完全不用自己创建无缝拼接的基本单元<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">background: repeating-linear-gradient(60deg, <span class="comment">#fb3, #fb3 15px, #58a 0, #58a 30px);</span></span><br></pre></td></tr></table></figure></p>
+<div style="width:160px;height:100px;background:repeating-linear-gradient(60deg, #fb3, #fb3 15px, #58a 0, #58a 30px)"></div>
+
+<p>优点总结：第一是减少重复，改变任何一个颜色的时候只需改动两处，第二设置的宽度直接代表条纹宽度，无需计算<code>background-size</code>值，同时长度更加直观，第三是最大的好处，随心所欲改变渐变的角度</p>
+<h2 id="灵活的同色系条纹"><a href="#灵活的同色系条纹" class="headerlink" title="灵活的同色系条纹"></a>灵活的同色系条纹</h2><p>大多数情况想要的条纹图案不是由差异极大的几种颜色组成的，这些颜色往往属于同一色系，比如<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">background: repeating-linear-gradient(60deg, <span class="comment">#79b, #79b 15px, #58a 0, #58a 30px);</span></span><br></pre></td></tr></table></figure></p>
+<div style="width:160px;height:100px;background:repeating-linear-gradient(60deg, #79b, #79b 15px, #58a 0, #58a 30px)"></div>
+
+<p>以上可以看成由一个主色调<code>#58a</code>和它的浅色变体组成，如果想改变条纹主色调，需要改四处！</p>
+<p>改进方法：把最深的颜色作为背景色，同时半透明白色条纹叠加在背景色之上来得到浅色条纹<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">background: <span class="comment">#58a;</span></span><br><span class="line">background-image: repeating-linear-gradient(60deg, hsla(0,0%,100%,.15), hsla(0,0%,100%,.15) 15px, transparent 0, transparent 30px);</span><br></pre></td></tr></table></figure></p>
+<div style="width:160px;height:100px;background: #58a;background-image: repeating-linear-gradient(60deg, hsla(0,0%,100%,.15), hsla(0,0%,100%,.15) 15px, transparent 0, transparent 30px)"></div>
+
+<p>这样我可以更改任意的主色调，只改一处！<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">background: yellowgreen;</span><br><span class="line">background-image: repeating-linear-gradient(60deg, hsla(0,0%,100%,.15), hsla(0,0%,100%,.15) 15px, transparent 0, transparent 30px);</span><br></pre></td></tr></table></figure></p>
+<div style="width:160px;height:100px;background: yellowgreen;background-image: repeating-linear-gradient(60deg, hsla(0,0%,100%,.15), hsla(0,0%,100%,.15) 15px, transparent 0, transparent 30px)"></div>
+
+<p>还阔以啊！！😊</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CSS/" rel="tag"># CSS</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/04/25/vertical-centering/" rel="prev" title="垂直居中">
+                垂直居中 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpeg"
+                alt="Yvonne" />
+            
+              <p class="site-author-name" itemprop="name">Yvonne</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">Artikel</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">Tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#水平条纹"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x6C34;&#x5E73;&#x6761;&#x7EB9;" class="headerlink" title="&#x6C34;&#x5E73;&#x6761;&#x7EB9;"></a>&#x6C34;&#x5E73;&#x6761;&#x7EB9;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#垂直条纹"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x5782;&#x76F4;&#x6761;&#x7EB9;" class="headerlink" title="&#x5782;&#x76F4;&#x6761;&#x7EB9;"></a>&#x5782;&#x76F4;&#x6761;&#x7EB9;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#斜向条纹"><span class="nav-number">3.</span> <span class="nav-text"><a href="#&#x659C;&#x5411;&#x6761;&#x7EB9;" class="headerlink" title="&#x659C;&#x5411;&#x6761;&#x7EB9;"></a>&#x659C;&#x5411;&#x6761;&#x7EB9;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更好的斜向条纹"><span class="nav-number">4.</span> <span class="nav-text"><a href="#&#x66F4;&#x597D;&#x7684;&#x659C;&#x5411;&#x6761;&#x7EB9;" class="headerlink" title="&#x66F4;&#x597D;&#x7684;&#x659C;&#x5411;&#x6761;&#x7EB9;"></a>&#x66F4;&#x597D;&#x7684;&#x659C;&#x5411;&#x6761;&#x7EB9;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#灵活的同色系条纹"><span class="nav-number">5.</span> <span class="nav-text"><a href="#&#x7075;&#x6D3B;&#x7684;&#x540C;&#x8272;&#x7CFB;&#x6761;&#x7EB9;" class="headerlink" title="&#x7075;&#x6D3B;&#x7684;&#x540C;&#x8272;&#x7CFB;&#x6761;&#x7EB9;"></a>&#x7075;&#x6D3B;&#x7684;&#x540C;&#x8272;&#x7CFB;&#x6761;&#x7EB9;</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yvonne</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

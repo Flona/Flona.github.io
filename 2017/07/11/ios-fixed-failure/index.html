@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/favicon.ico?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="JS,CSS," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="问题IOS下，当input唤起软键盘，fixed会失效，可以理解为变成了absolute定位，如果说body的长度超过了屏幕长度，也就是说body是滚动的，那么导致的结果就是原本fixed定位的模块都会表现成跟随body一起滚动了 栗子🌰">
+<meta name="keywords" content="JS,CSS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IOS下fixed失效">
+<meta property="og:url" content="http://www.yvonne.party/2017/07/11/ios-fixed-failure/index.html">
+<meta property="og:site_name" content="Yvonne">
+<meta property="og:description" content="问题IOS下，当input唤起软键盘，fixed会失效，可以理解为变成了absolute定位，如果说body的长度超过了屏幕长度，也就是说body是滚动的，那么导致的结果就是原本fixed定位的模块都会表现成跟随body一起滚动了 栗子🌰">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/fixed/fixed1.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/fixed/fixed2.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/fixed/fixed3.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/fixed/fixed4.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/fixed/fixed5.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/fixed/fixed6.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/fixed/fixed7.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/fixed/fixed8.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/fixed/fixed9.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/fixed/fixed10.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/fixed/fixed11.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/fixed/fixed12.jpeg">
+<meta property="og:updated_time" content="2017-12-14T11:52:18.308Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="IOS下fixed失效">
+<meta name="twitter:description" content="问题IOS下，当input唤起软键盘，fixed会失效，可以理解为变成了absolute定位，如果说body的长度超过了屏幕长度，也就是说body是滚动的，那么导致的结果就是原本fixed定位的模块都会表现成跟随body一起滚动了 栗子🌰">
+<meta name="twitter:image" content="http://www.yvonne.party/img/blogImg/fixed/fixed1.jpeg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.yvonne.party/2017/07/11/ios-fixed-failure/"/>
+
+
+
+
+
+  <title>IOS下fixed失效 | Yvonne</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Yvonne</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.yvonne.party/2017/07/11/ios-fixed-failure/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yvonne">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yvonne">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">IOS下fixed失效</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-11T14:46:21+08:00">
+                2017-07-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>IOS下，当<code>input</code>唤起软键盘，<code>fixed</code>会失效，可以理解为变成了<code>absolute</code>定位，如果说<code>body</code>的长度超过了屏幕长度，也就是说<code>body</code>是滚动的，那么导致的结果就是原本<code>fixed</code>定位的模块都会表现成跟随<code>body</code>一起滚动了</p>
+<h3 id="栗子🌰"><a href="#栗子🌰" class="headerlink" title="栗子🌰"></a>栗子🌰</h3><a id="more"></a>
+<p>刚做了个vue测试，接着在vue里跑了，主要就看CSS就好啦～</p>
+<blockquote>
+<ul>
+<li>常规的代码</li>
+</ul>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line">    &lt;header&gt;&lt;/header&gt;</span><br><span class="line">    &lt;main&gt;</span><br><span class="line">      &lt;img src=<span class="string">"./assets/logo.png"</span>&gt;</span><br><span class="line">      &lt;img src=<span class="string">"./assets/logo.png"</span>&gt;</span><br><span class="line">      &lt;img src=<span class="string">"./assets/logo.png"</span>&gt;</span><br><span class="line">      &lt;img src=<span class="string">"./assets/logo.png"</span>&gt;</span><br><span class="line">      &lt;img src=<span class="string">"./assets/logo.png"</span>&gt;</span><br><span class="line">      &lt;img src=<span class="string">"./assets/logo.png"</span>&gt;</span><br><span class="line">    &lt;/main&gt;</span><br><span class="line">    &lt;footer&gt;</span><br><span class="line">      &lt;input <span class="built_in">type</span>=<span class="string">"text"</span> placeholder=<span class="string">"footer..."</span>&gt;</span><br><span class="line">    &lt;/footer&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line"><span class="built_in">export</span> default &#123;</span><br><span class="line">  name: <span class="string">'app'</span></span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line"><span class="comment">#app &#123;</span></span><br><span class="line">  font-family: <span class="string">'Avenir'</span>, Helvetica, Arial, sans-serif;</span><br><span class="line">  -webkit-font-smoothing: antialiased;</span><br><span class="line">  -moz-osx-font-smoothing: grayscale;</span><br><span class="line">  color: <span class="comment">#2c3e50;</span></span><br><span class="line">&#125;</span><br><span class="line">header&#123;</span><br><span class="line">  height:60px;</span><br><span class="line">  width:100%;</span><br><span class="line">  background-color:<span class="comment">#333;</span></span><br><span class="line">  position:fixed;</span><br><span class="line">  top:0;</span><br><span class="line">  left:0;</span><br><span class="line">&#125;</span><br><span class="line">main&#123;</span><br><span class="line">  margin-top:60px;</span><br><span class="line">  margin-bottom:50px;</span><br><span class="line">&#125;</span><br><span class="line">img&#123;</span><br><span class="line">  display:block;</span><br><span class="line">&#125;</span><br><span class="line">footer&#123;</span><br><span class="line">  height:50px;</span><br><span class="line">  width:100%;</span><br><span class="line">  background-color:<span class="comment">#333;</span></span><br><span class="line">  position:fixed;</span><br><span class="line">  bottom:0;</span><br><span class="line">  left:0;</span><br><span class="line">&#125;</span><br><span class="line">input&#123;</span><br><span class="line">  height:30px;</span><br><span class="line">  width:80%;</span><br><span class="line">  margin:7px;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>BUG现象 </li>
+</ul>
+</blockquote>
+<p>页面正常长这样，挺正常的</p>
+<p><img src="/img/blogImg/fixed/fixed1.jpeg" style="max-width:200px"></p>
+<p>唤起软键盘，长这姥姥样儿了</p>
+<p><img src="/img/blogImg/fixed/fixed2.jpeg" style="max-width:200px"></p>
+<p>而且不一样的webview反应不太相同，上面的截图是在钉钉端（非wkwebview内核），在<code>fixed</code>失效的同时，错误定位在失效之前该模块对应在正常文档流中的那个位置，截图展示一下哈</p>
+<p>现在我滚动到底栏在第四个图的中间位置，顶栏大概在第一个位置的1/3处</p>
+<p><img src="/img/blogImg/fixed/fixed3.jpeg" style="max-width:200px"></p>
+<p>然后唤起软键盘，好的，就这样<code>fixed</code>失效并正好定位在失效之前的位置，<code>header</code>和<code>footer</code>都是</p>
+<p><img src="/img/blogImg/fixed/fixed4.jpeg" style="max-width:200px"><br><img src="/img/blogImg/fixed/fixed5.jpeg" style="max-width:200px"></p>
+<p>这种情况除外呢，在safari中以及微信（wkwebview内核）上fixed失效但不会定位到失效前对应的位置，还是正常定位了<code>top:0</code>及<code>bottom:0</code></p>
+<p>如下是在微信上截图，也是在上次的位置唤起软键盘，但是没错误定位，如下：</p>
+<p><img src="/img/blogImg/fixed/fixed6.jpeg" style="max-width:200px"></p>
+<p>分别滚动到底部和顶部，如期就在原始的定位位置上呆着</p>
+<p><img src="/img/blogImg/fixed/fixed7.jpeg" style="max-width:200px"><br><img src="/img/blogImg/fixed/fixed8.jpeg" style="max-width:200px"></p>
+<p>啊呀，就是偶然发现有这种差距吧，不过和这篇博客没关系，哈哈哈，不关心了，反正是<code>fixed</code>失效啦。。。。</p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>我的方式是利用CSS更改布局来搞定，上面我在说这个问题的时候有个前提是<code>body</code>长度超出了屏幕高度，这样的话，<code>fixed</code>失效成为<code>absolute</code>才会有影响，如果说本身<code>body</code>都没有超过高度，那么即便是<code>absolute</code>定位也是能正常在顶部或底部好好呆着的，所以，解决方式一呢就是让<code>body</code>长度不超过屏幕高度，内容多就放在某个元素里滚动，比如这里就放在<code>main</code>中滚，不让<code>body</code>滚动，就解决啦！</p>
+<p>需要更改的代码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">main&#123;</span><br><span class="line">  width:100%;</span><br><span class="line">  position:absolute;</span><br><span class="line">  top:60px;</span><br><span class="line">  bottom:50px;</span><br><span class="line">  overflow-y:scroll;</span><br><span class="line">  -webkit-overflow-scrolling: touch;//解决IOS滑动卡顿问题</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>验证一下，是可以的，不过有个新坑，就是<code>input</code>掉下来一截，没有正好在软键盘的上部，当输入内容后才会再次弹上来在软键盘上面，这和使用的不是原来的软键盘有关，看下差别</p>
+<p>原软键盘，没问题：</p>
+<p><img src="/img/blogImg/fixed/fixed9.jpeg" style="max-width:200px"></p>
+<p>搜狗软键盘，掉下来一截：</p>
+<p><img src="/img/blogImg/fixed/fixed10.jpeg" style="max-width:200px"></p>
+<p>对比可见其实<code>input</code>定位一样，是搜狗软键盘会高一些些，如图：</p>
+<p><img src="/img/blogImg/fixed/fixed11.jpeg" style="max-width:400px"></p>
+<p>应该不少数人用第三方输入法吧，特别是女生，比如我就喜欢更换各种输入法皮肤，哈哈，所以这个bug还是挺严重的<br>查阅资料IOS唤起软键盘的过程是通过滚动可视窗口让输入框滚动上来，也就是<code>document.body.scrollTop()</code>会改变（安卓的方式是改变<code>window.height()</code>）， IOS会遮挡输入框, 是因为,第三方输入法的tool bar或者键盘也被当做可视区域了(包含在键盘弹出时的<code>window.innerHeight</code>)，所以滚动得低了</p>
+<p>针对解决方式也是搜集大量的资料，看别人的总结，方法挺多样，比如说底端<code>input</code>就是个摆设，点击它时展示一个真正让用户输入的<code>input</code>紧贴软键盘上方，光听就够恶心了，我没尝试，更多的方法是说唤起键盘时自己控制下<code>body</code>的滚动，既然之前滚动的不够，那就自己控制让其滚动到最底端，大致思路这样，实际做呢还是有不少形式，比如由于没有监听键盘被唤起的事件，所以监听事件的选择很重要，对于安卓来说唤起键盘后是会有<code>resize</code>事件的，但是IOS不会触发<code>resize</code>，那随之自然想到<code>focus</code>事件，但是唤起键盘是个过程，需要一定的时间，触发<code>focus</code>时可能这个过程还没结束，自然又会想到用<code>setTimeout()</code>事件做延时执行，实际尝试下来呢，不太好，又换成<code>setInterval()</code>不断触发，使用感更好，滚动部分直接复值页面内容高度了，最后总结觉得比较好的方式是：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line">    &lt;header&gt;&lt;/header&gt;</span><br><span class="line">    &lt;main&gt;</span><br><span class="line">        &lt;img src=<span class="string">"./assets/logo.png"</span>&gt;</span><br><span class="line">        &lt;img src=<span class="string">"./assets/logo.png"</span>&gt;</span><br><span class="line">        &lt;img src=<span class="string">"./assets/logo.png"</span>&gt;</span><br><span class="line">        &lt;img src=<span class="string">"./assets/logo.png"</span>&gt;</span><br><span class="line">        &lt;img src=<span class="string">"./assets/logo.png"</span>&gt;</span><br><span class="line">        &lt;img src=<span class="string">"./assets/logo.png"</span>&gt;</span><br><span class="line">    &lt;/main&gt;</span><br><span class="line">    &lt;footer&gt;</span><br><span class="line">      &lt;input <span class="built_in">type</span>=<span class="string">"text"</span> placeholder=<span class="string">"footer..."</span> ref=<span class="string">"input"</span> v-on:focus=<span class="string">"changeScroll"</span>&gt;</span><br><span class="line">    &lt;/footer&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line"><span class="built_in">export</span> default &#123;</span><br><span class="line">  name: <span class="string">'app'</span>,</span><br><span class="line">  data: <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">    <span class="built_in">return</span> &#123;</span><br><span class="line">      timer: null</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    changeScroll: <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">      this.timer = setInterval(<span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">        document.body.scrollTop = document.body.scrollHeight</span><br><span class="line">      &#125;, 100)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>效果：</p>
+<p><img src="/img/blogImg/fixed/fixed12.jpeg" style="max-width:200px"></p>
+<p>PS：这里只是缓解IOS唤起软键盘导致<code>fixed</code>失效导致页面错乱，顺便处理了IOS的输入框被软键盘隐藏的bug，至于安卓软键盘遮住输入框的情况暂时没测，这个待定，等我有安卓测试机的～～</p>
+<p>啊啊啊！！我又优化了代码，失去焦点的时候<code>clearInterval()</code>，代码如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line">    &lt;header&gt;&lt;/header&gt;</span><br><span class="line">    &lt;main&gt;</span><br><span class="line">        &lt;img src=<span class="string">"./assets/logo.png"</span>&gt;</span><br><span class="line">        &lt;img src=<span class="string">"./assets/logo.png"</span>&gt;</span><br><span class="line">        &lt;img src=<span class="string">"./assets/logo.png"</span>&gt;</span><br><span class="line">        &lt;img src=<span class="string">"./assets/logo.png"</span>&gt;</span><br><span class="line">        &lt;img src=<span class="string">"./assets/logo.png"</span>&gt;</span><br><span class="line">        &lt;img src=<span class="string">"./assets/logo.png"</span>&gt;</span><br><span class="line">    &lt;/main&gt;</span><br><span class="line">    &lt;footer&gt;</span><br><span class="line">      &lt;input <span class="built_in">type</span>=<span class="string">"text"</span> placeholder=<span class="string">"footer..."</span> ref=<span class="string">"input"</span> v-on:focus=<span class="string">"changeScroll"</span> v-on:blur=<span class="string">"removeTimer"</span>&gt;</span><br><span class="line">    &lt;/footer&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line"><span class="built_in">export</span> default &#123;</span><br><span class="line">  name: <span class="string">'app'</span>,</span><br><span class="line">  data: <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">    <span class="built_in">return</span> &#123;</span><br><span class="line">      timer: null</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    changeScroll: <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">      this.timer = setInterval(<span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">        document.body.scrollTop = document.body.scrollHeight</span><br><span class="line">      &#125;, 100)</span><br><span class="line">    &#125;,</span><br><span class="line">    removeTimer: <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">      clearInterval(this.timer)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JS/" rel="tag"># JS</a>
+          
+            <a href="/tags/CSS/" rel="tag"># CSS</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/11/window-location-search/" rel="next" title="Why is window.location.search empty?">
+                <i class="fa fa-chevron-left"></i> Why is window.location.search empty?
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/13/em-and-rem/" rel="prev" title="Em VS Rem">
+                Em VS Rem <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpeg"
+                alt="Yvonne" />
+            
+              <p class="site-author-name" itemprop="name">Yvonne</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">Artikel</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">Tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x95EE;&#x9898;" class="headerlink" title="&#x95EE;&#x9898;"></a>&#x95EE;&#x9898;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#栗子🌰"><span class="nav-number">1.1.</span> <span class="nav-text"><a href="#&#x6817;&#x5B50;&#x1F330;" class="headerlink" title="&#x6817;&#x5B50;&#x1F330;"></a>&#x6817;&#x5B50;&#x1F330;</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决方案"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x89E3;&#x51B3;&#x65B9;&#x6848;" class="headerlink" title="&#x89E3;&#x51B3;&#x65B9;&#x6848;"></a>&#x89E3;&#x51B3;&#x65B9;&#x6848;</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yvonne</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

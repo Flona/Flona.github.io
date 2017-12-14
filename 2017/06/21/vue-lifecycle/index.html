@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/favicon.ico?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="JS,Vue," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="稀里糊涂用vue也三周了，边学习边用，好在之前用过react能快速的看文档应付项目。 暂时还没有看过vue源码，本篇仅记录应用型测试了解生命周期各种钩子函数，更好的控制数据流和其对DOM的影响。 基础代码：">
+<meta name="keywords" content="JS,Vue">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue学习系列-生命周期">
+<meta property="og:url" content="http://www.yvonne.party/2017/06/21/vue-lifecycle/index.html">
+<meta property="og:site_name" content="Yvonne">
+<meta property="og:description" content="稀里糊涂用vue也三周了，边学习边用，好在之前用过react能快速的看文档应付项目。 暂时还没有看过vue源码，本篇仅记录应用型测试了解生命周期各种钩子函数，更好的控制数据流和其对DOM的影响。 基础代码：">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/vue/lifecycleResult1.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/vue/lifecycle.png">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/vue/lifecycleResult2.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/vue/lifecycleResult3.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/vue/lifecycleResult4.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/vue/lifecycleResult5.jpeg">
+<meta property="og:updated_time" content="2017-12-14T11:55:11.843Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vue学习系列-生命周期">
+<meta name="twitter:description" content="稀里糊涂用vue也三周了，边学习边用，好在之前用过react能快速的看文档应付项目。 暂时还没有看过vue源码，本篇仅记录应用型测试了解生命周期各种钩子函数，更好的控制数据流和其对DOM的影响。 基础代码：">
+<meta name="twitter:image" content="http://www.yvonne.party/img/blogImg/vue/lifecycleResult1.jpeg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.yvonne.party/2017/06/21/vue-lifecycle/"/>
+
+
+
+
+
+  <title>vue学习系列-生命周期 | Yvonne</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Yvonne</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.yvonne.party/2017/06/21/vue-lifecycle/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yvonne">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yvonne">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">vue学习系列-生命周期</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-21T14:03:16+08:00">
+                2017-06-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>稀里糊涂用<code>vue</code>也三周了，边学习边用，好在之前用过<code>react</code>能快速的看文档应付项目。</p>
+<p>暂时还没有看过<code>vue</code>源码，本篇仅记录应用型测试了解生命周期各种钩子函数，更好的控制数据流和其对<code>DOM</code>的影响。</p>
+<h2 id="基础代码："><a href="#基础代码：" class="headerlink" title="基础代码："></a>基础代码：</h2><a id="more"></a>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;input <span class="built_in">type</span>=<span class="string">"text"</span> name=<span class="string">"lifecycleTest"</span> v-model=<span class="string">"msg"</span> ref=<span class="string">"input"</span>&gt;</span><br><span class="line">    &lt;p&gt;&#123;&#123;msg&#125;&#125;&lt;/p&gt;</span><br><span class="line">    &lt;button @click=<span class="string">"changeMsg"</span>&gt;change&lt;/button&gt;</span><br><span class="line">    &lt;button @click=<span class="string">"destroy"</span>&gt;destroy&lt;/button&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line"><span class="built_in">export</span> default &#123;</span><br><span class="line">  name: <span class="string">'lifecycle'</span>,</span><br><span class="line">  <span class="function"><span class="title">data</span></span> () &#123;</span><br><span class="line">    <span class="built_in">return</span> &#123;</span><br><span class="line">      msg: <span class="string">'lifecycle'</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  // ----------beforeCreat----------</span><br><span class="line">  beforeCreat: <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">    console.log(<span class="string">'beforeCreat---vm'</span>, this.msg)</span><br><span class="line">    console.log(<span class="string">'beforeCreat---Dom'</span>, this.<span class="variable">$refs</span>.input.value)</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  // ----------created----------</span><br><span class="line">  created: <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">    console.log(<span class="string">'created---vm'</span>, this.msg)</span><br><span class="line">    console.log(<span class="string">'created---Dom'</span>, this.<span class="variable">$refs</span>.input ? this.<span class="variable">$refs</span>.input.value : <span class="string">'Dom还未渲染'</span>)</span><br><span class="line">    this.<span class="variable">$nextTick</span>(<span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">      console.log(<span class="string">'created---Dom---nextTick'</span>, this.<span class="variable">$refs</span>.input ? this.<span class="variable">$refs</span>.input.value : <span class="string">'Dom还未渲染'</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  // ----------beforeMount----------</span><br><span class="line">  beforeMount: <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">    console.log(<span class="string">'beforeMount---vm'</span>, this.msg)</span><br><span class="line">    console.log(<span class="string">'beforeMount---Dom'</span>, this.<span class="variable">$refs</span>.input ? this.<span class="variable">$refs</span>.input.value : <span class="string">'Dom还未渲染'</span>)</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  // ----------mounted----------</span><br><span class="line">  mounted: <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">    console.log(<span class="string">'mounted---vm'</span>, this.msg)</span><br><span class="line">    console.log(<span class="string">'mounted---Dom'</span>, this.<span class="variable">$refs</span>.input.value)</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  // ----------watch----------</span><br><span class="line">  watch: &#123;</span><br><span class="line">    msg: <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">      console.log(<span class="string">'watch---'</span>, this.msg)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  // ----------beforeUpdate----------</span><br><span class="line">  beforeUpdate: <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">    console.log(<span class="string">'beforeUpdate---vm'</span>, this.msg)</span><br><span class="line">    console.log(<span class="string">'beforeUpdate---Dom'</span>, this.<span class="variable">$refs</span>.input.value)</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  // ----------updated----------</span><br><span class="line">  updated: <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">    console.log(<span class="string">'updated---vm'</span>, this.msg)</span><br><span class="line">    console.log(<span class="string">'updated---Dom'</span>, this.<span class="variable">$refs</span>.input.value)</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  // ----------beforeDestroy----------</span><br><span class="line">  beforeDestroy: <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">    console.log(<span class="string">'beforeDestroy---vm'</span>, this.msg)</span><br><span class="line">    console.log(<span class="string">'beforeDestroy---Dom'</span>, this.<span class="variable">$refs</span>.input.value)</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  // ----------destroyed----------</span><br><span class="line">  destroyed: <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">    console.log(<span class="string">'destroy---vm'</span>, this.msg)</span><br><span class="line">    console.log(<span class="string">'destroy---Dom'</span>, this.<span class="variable">$refs</span>.input ? this.<span class="variable">$refs</span>.input.value : <span class="string">'vue与Dom解绑了'</span>)</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  methods: &#123;</span><br><span class="line">    changeMsg: <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">      this.msg = <span class="string">'lifecycle2'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    destroy: <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">      this.<span class="variable">$destroy</span>()</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="结果："><a href="#结果：" class="headerlink" title="结果："></a>结果：</h2><p><img src="/img/blogImg/vue/lifecycleResult1.jpeg" style="max-width:400px"></p>
+<h2 id="说明："><a href="#说明：" class="headerlink" title="说明："></a>说明：</h2><blockquote>
+<ul>
+<li><p><code>created</code></p>
+<blockquote>
+<p>vue实例创建完毕，监测数据、初始化事件等等，此阶段能访问vue数据，不能访问到DOM（因为还没有渲染呢），若想在此阶段写DOM操作代码，可以使用nextTick函数回调，在mounted结束后立即执行;</p>
+</blockquote>
+</li>
+<li><p><code>beforeMount</code></p>
+<blockquote>
+<p>确立了挂载点，但是还没渲染DOM，所以依然获取不到DOM，属于重要的过渡阶段;</p>
+</blockquote>
+</li>
+<li><p><code>mounted</code></p>
+<blockquote>
+<p>DOM渲染完毕，可以访问DOM了;</p>
+</blockquote>
+</li>
+<li><p><code>beforeUpdate</code></p>
+<blockquote>
+<p>改变数据后其实先进去watch中的，之后进入此阶段，数据已更新，但是Dom还未更新，其实在这阶段生成了新的绑定vue实例数据的虚拟DOM结构;</p>
+</blockquote>
+</li>
+<li><p><code>updated</code></p>
+<blockquote>
+<p>生成virtual Dom，和之前的虚拟Dom进行differ算法对比，最小变动更新Dom完毕</p>
+</blockquote>
+</li>
+<li><p><code>beforeDestroy</code></p>
+<blockquote>
+<p>实例销毁之前，依然能正常访问数据和DOM;</p>
+</blockquote>
+</li>
+<li><p><code>destroyed</code></p>
+<blockquote>
+<p>销毁之后，数据能访问到，但是不能访问DOM了，改变数据不存在数据驱动;</p>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+<h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><blockquote>
+<ul>
+<li><p><code>beforeCreat</code> ： </p>
+<blockquote>
+<p>vue实例创建之前可以在此加入loding事件</p>
+</blockquote>
+</li>
+<li><p><code>created</code> ： </p>
+<blockquote>
+<p>loding可以消除了，实例已创建，可以在此发起ajax请求拉取数据，来做数据的进一步初始化</p>
+</blockquote>
+</li>
+<li><p><code>mounted</code> ： </p>
+<blockquote>
+<p>操作DOM，也可以发起后端请求，配合路由钩子做事情</p>
+</blockquote>
+</li>
+<li><p><code>updated</code> ： </p>
+<blockquote>
+<p>如果做统一数据处理，可以写上相应函数</p>
+</blockquote>
+</li>
+<li><p><code>beforeDestroy</code> ： </p>
+<blockquote>
+<p>离开前的确认框</p>
+</blockquote>
+</li>
+<li><p><code>nextTick</code> ： </p>
+<blockquote>
+<p>更新数据后立即操作DOM</p>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+<p>最后拉个官方生命周期流程图，后面还有番外篇！</p>
+<p><img src="/img/blogImg/vue/lifecycle.png" alt="生命周期流程图"></p>
+<h2 id="番外篇1："><a href="#番外篇1：" class="headerlink" title="番外篇1："></a>番外篇1：</h2><p>除此之外做了些傻瓜式尝试</p>
+<blockquote>
+<p>连续改变vue数据，例如点击按钮事件中连续两次更改data，更改代码如下：</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">methods: &#123;</span><br><span class="line">    changeMsg: <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">      this.msg = <span class="string">'lifecycle2'</span></span><br><span class="line">      this.msg = <span class="string">'lifecycle3'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">methods: &#123;</span><br><span class="line">    changeMsg: <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">      this.msg = <span class="string">'lifecycle2'</span></span><br><span class="line">      this.changeMsgAgin()</span><br><span class="line">    &#125;,</span><br><span class="line">    changeMsgAgin: <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">      this.msg = <span class="string">'lifecycle3'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>酱紫写只会触发一次<code>beforeUpdate</code>、<code>updated</code>，结果是最终结果</p>
+<p><img src="/img/blogImg/vue/lifecycleResult2.jpeg" style="max-width:400px"></p>
+<p>但是如果我使用<code>timeout</code>，即便是执行时间写成0，也会触发两次<code>beforeUpdate</code>、<code>updated</code>，更改代码如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">methods: &#123;</span><br><span class="line">    changeMsg: <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">      this.msg = <span class="string">'lifecycle2'</span></span><br><span class="line">      setTimeout(<span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">        self.msg = <span class="string">'lifecycle3'</span></span><br><span class="line">      &#125;, 5)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">methods: &#123;</span><br><span class="line">    changeMsg: <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">      this.msg = <span class="string">'lifecycle2'</span></span><br><span class="line">      this.changeMsgAgin()</span><br><span class="line">    &#125;,</span><br><span class="line">    changeMsgAgin: <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">      const self = this</span><br><span class="line">      setTimeout(<span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">        self.msg = <span class="string">'lifecycle3'</span></span><br><span class="line">      &#125;, 5)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>结果如下，跑了两次<code>beforeUpdate</code>、<code>updated</code></p>
+<p><img src="/img/blogImg/vue/lifecycleResult3.jpeg" style="max-width:400px"></p>
+<blockquote>
+<p>在vue实例创建完成后，但是在<code>mounted</code>结束之前，改变data数据</p>
+</blockquote>
+<p>在created钩子函数中改，更改代码如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">created: <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">    console.log(<span class="string">'created---vm'</span>, this.msg)</span><br><span class="line">    console.log(<span class="string">'created---Dom'</span>, this.<span class="variable">$refs</span>.input ? this.<span class="variable">$refs</span>.input.value : <span class="string">'Dom还未渲染'</span>)</span><br><span class="line">    this.<span class="variable">$nextTick</span>(<span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">      console.log(<span class="string">'created---Dom---nextTick'</span>, this.<span class="variable">$refs</span>.input ? this.<span class="variable">$refs</span>.input.value : <span class="string">'Dom还未渲染'</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">    this.msg = <span class="string">'lifecycle4'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果如下</p>
+<p><img src="/img/blogImg/vue/lifecycleResult4.jpeg" style="max-width:400px"></p>
+<p>调用起watch是在意料之中，可能要注意的是调起它的时间，是在首次渲染结束后才会触发起watch，并且<code>nextTick</code>在其之前，所以说<code>nextTick</code>是在DOM完成后立即触发，这个立即很准确啊</p>
+<p>但是如果在<code>mounted</code>中改变的话，还会触发<code>beforeUpdate</code>、<code>updated</code>，因为更新钩子函数就是在<code>mounted</code>完成后每次更改数据来重新渲染DOM时触发哦～</p>
+<h2 id="番外篇2："><a href="#番外篇2：" class="headerlink" title="番外篇2："></a>番外篇2：</h2><p>补充下子组件生命周期和父组件生命周期的交叉情况</p>
+<p>上面的代码其实就是个子组件的，只是我完全独立的看待它本身的生命周期，现在在父组件中，添加一些钩子函数以及props，代码如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line">    &lt;img src=<span class="string">"./assets/logo.png"</span>&gt;</span><br><span class="line">    &lt;router-view :message=<span class="string">"message"</span>&gt;&lt;/router-view&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line"><span class="built_in">export</span> default &#123;</span><br><span class="line">  name: <span class="string">'app'</span>,</span><br><span class="line">  <span class="function"><span class="title">data</span></span> () &#123;</span><br><span class="line">    <span class="built_in">return</span> &#123;</span><br><span class="line">      message: <span class="string">'this is props test'</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  beforeCreat: <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">    console.log(<span class="string">'parent-beforeCreat-------------'</span>)</span><br><span class="line">  &#125;,</span><br><span class="line">  created: <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">    console.log(<span class="string">'parent-created-------------'</span>)</span><br><span class="line">  &#125;,</span><br><span class="line">  beforeMount: <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">    console.log(<span class="string">'parent-beforeMount-------------'</span>)</span><br><span class="line">  &#125;,</span><br><span class="line">  mounted: <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">    console.log(<span class="string">'parent-mounted-------------'</span>)</span><br><span class="line">  &#125;,</span><br><span class="line">  beforeUpdate: <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">    console.log(<span class="string">'parent-beforeUpdate-------------'</span>)</span><br><span class="line">  &#125;,</span><br><span class="line">  updated: <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">    console.log(<span class="string">'parent-updated-------------'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>ok，可以先来看看结果啦！</p>
+<p><img src="/img/blogImg/vue/lifecycleResult5.jpeg" style="max-width:400px"></p>
+<p>首先，props的出现周期和data是一样的，其次子组件的生命周期是在父组件的<code>beforeMounted</code>之后，父组件<code>mounted</code>之前执行完毕，并且<code>nextTick</code>在父组件mounted之后，也就是整个DOM渲染完之后再执行。</p>
+<p>嗯，基本就这些，其他的研究可能需要在实际的开发中碰到了，以及深入的内容等到研究源代码的时候说吧～～</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JS/" rel="tag"># JS</a>
+          
+            <a href="/tags/Vue/" rel="tag"># Vue</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/30/steps/" rel="next" title="步骤条">
+                <i class="fa fa-chevron-left"></i> 步骤条
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/06/vue-custom-event/" rel="prev" title="vue学习系列-自定义事件">
+                vue学习系列-自定义事件 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpeg"
+                alt="Yvonne" />
+            
+              <p class="site-author-name" itemprop="name">Yvonne</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">Artikel</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">Tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基础代码："><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x57FA;&#x7840;&#x4EE3;&#x7801;&#xFF1A;" class="headerlink" title="&#x57FA;&#x7840;&#x4EE3;&#x7801;&#xFF1A;"></a>&#x57FA;&#x7840;&#x4EE3;&#x7801;&#xFF1A;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结果："><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x7ED3;&#x679C;&#xFF1A;" class="headerlink" title="&#x7ED3;&#x679C;&#xFF1A;"></a>&#x7ED3;&#x679C;&#xFF1A;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#说明："><span class="nav-number">3.</span> <span class="nav-text"><a href="#&#x8BF4;&#x660E;&#xFF1A;" class="headerlink" title="&#x8BF4;&#x660E;&#xFF1A;"></a>&#x8BF4;&#x660E;&#xFF1A;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结："><span class="nav-number">4.</span> <span class="nav-text"><a href="#&#x603B;&#x7ED3;&#xFF1A;" class="headerlink" title="&#x603B;&#x7ED3;&#xFF1A;"></a>&#x603B;&#x7ED3;&#xFF1A;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#番外篇1："><span class="nav-number">5.</span> <span class="nav-text"><a href="#&#x756A;&#x5916;&#x7BC7;1&#xFF1A;" class="headerlink" title="&#x756A;&#x5916;&#x7BC7;1&#xFF1A;"></a>&#x756A;&#x5916;&#x7BC7;1&#xFF1A;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#番外篇2："><span class="nav-number">6.</span> <span class="nav-text"><a href="#&#x756A;&#x5916;&#x7BC7;2&#xFF1A;" class="headerlink" title="&#x756A;&#x5916;&#x7BC7;2&#xFF1A;"></a>&#x756A;&#x5916;&#x7BC7;2&#xFF1A;</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yvonne</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
