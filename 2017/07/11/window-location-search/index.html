@@ -79,22 +79,22 @@
 
 
 
-<meta name="description" content="这是一个有趣的问题，其实开发中没有遇到过，是一次面试时被问到的，URL中存在?id=xxx这样的search部分，BUT调用window.location.search是空，一脸懵逼，还有这操作？？？ 测一下吧，测两下就会发现问题，只要search前面有#，window.location.search就会是空">
+<meta name="description" content="这是一个有趣的问题，其实开发中没有遇到过，是一次面试时被问到的，URL中存在?id=xxx这样的search部分，BUT调用window.location.search是空？？？ 测试只要search前面有#，window.location.search就会是空">
 <meta name="keywords" content="JS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Why is window.location.search empty?">
 <meta property="og:url" content="http://www.yvonne.party/2017/07/11/window-location-search/index.html">
 <meta property="og:site_name" content="Yvonne">
-<meta property="og:description" content="这是一个有趣的问题，其实开发中没有遇到过，是一次面试时被问到的，URL中存在?id=xxx这样的search部分，BUT调用window.location.search是空，一脸懵逼，还有这操作？？？ 测一下吧，测两下就会发现问题，只要search前面有#，window.location.search就会是空">
+<meta property="og:description" content="这是一个有趣的问题，其实开发中没有遇到过，是一次面试时被问到的，URL中存在?id=xxx这样的search部分，BUT调用window.location.search是空？？？ 测试只要search前面有#，window.location.search就会是空">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/location/search1.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/location/search2.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/location/search3.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/location/search4.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/location/search5.jpeg">
-<meta property="og:updated_time" content="2017-12-14T11:55:23.107Z">
+<meta property="og:updated_time" content="2017-12-15T09:01:05.482Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Why is window.location.search empty?">
-<meta name="twitter:description" content="这是一个有趣的问题，其实开发中没有遇到过，是一次面试时被问到的，URL中存在?id=xxx这样的search部分，BUT调用window.location.search是空，一脸懵逼，还有这操作？？？ 测一下吧，测两下就会发现问题，只要search前面有#，window.location.search就会是空">
+<meta name="twitter:description" content="这是一个有趣的问题，其实开发中没有遇到过，是一次面试时被问到的，URL中存在?id=xxx这样的search部分，BUT调用window.location.search是空？？？ 测试只要search前面有#，window.location.search就会是空">
 <meta name="twitter:image" content="http://www.yvonne.party/img/blogImg/location/search1.jpeg">
 
 
@@ -315,14 +315,14 @@
       
 
       
-        <p>这是一个有趣的问题，其实开发中没有遇到过，是一次面试时被问到的，URL中存在<code>?id=xxx</code>这样的search部分，BUT调用<code>window.location.search</code>是空，一脸懵逼，还有这操作？？？</p>
-<p>测一下吧，测两下就会发现问题，只要search前面有<code>#</code>，<code>window.location.search</code>就会是空<br><a id="more"></a></p>
-<p>首先是能正确取值的情况：</p>
+        <p>这是一个有趣的问题，其实开发中没有遇到过，是一次面试时被问到的，URL中存在<code>?id=xxx</code>这样的search部分，BUT调用<code>window.location.search</code>是空？？？</p>
+<p>测试只要search前面有<code>#</code>，<code>window.location.search</code>就会是空<br><a id="more"></a></p>
+<p>正确取值的情况：</p>
 <p><img src="/img/blogImg/location/search1.jpeg" style="max-width:400px"></p>
-<p>然后是不能正确取值的情况：<br><img src="/img/blogImg/location/search2.jpeg" style="max-width:400px"></p>
-<p>问题来了，为什么search前面有<code>#</code>就不能取值呢？官方介绍里没有提及呢，Google吧～<br><img src="/img/blogImg/location/search3.jpeg" style="max-width:500px"></p>
+<p>不能正确取值的情况：<br><img src="/img/blogImg/location/search2.jpeg" style="max-width:400px"></p>
+<p>为什么search前面有<code>#</code>就不能取值呢？官方介绍里没有提及，搜索的结果如下：<br><img src="/img/blogImg/location/search3.jpeg" style="max-width:500px"></p>
 <p>结果：<br><img src="/img/blogImg/location/search4.jpeg" style="max-width:500px"></p>
-<p>原因其实也就是你想的那样<code>#</code>后面都被识别为hash了，甚至不识别<code>?</code>部分的search了，所以<code>#</code>后面的search取不到值，要解决的话一是避免这样的URL，二是取值的时候做下判断自己从hash中解析出来，封装好的代码如下：</p>
+<p>原因是<code>#</code>后面都被识别为hash了，甚至不识别<code>?</code>部分的search，所以<code>#</code>后面的search取不到值，要解决的话一是避免这样的URL，二是取值的时候自己处理从hash中解析出来，封装好的代码如下：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> GetQueryString(name)</span><br><span class="line">&#123;</span><br><span class="line">     var search = window.location.search;</span><br><span class="line">     <span class="keyword">if</span>(!search)&#123;</span><br><span class="line">        var <span class="built_in">hash</span> = location.hash;</span><br><span class="line">        search = <span class="built_in">hash</span>?hash.substring(hash.indexOf(<span class="string">'?'</span>)):<span class="string">''</span>;</span><br><span class="line">     &#125;</span><br><span class="line">     var reg = new RegExp(<span class="string">"(^|&amp;)"</span>+ name +<span class="string">"=([^&amp;]*)(&amp;|$)"</span>);</span><br><span class="line">     var r = search.substr(1).match(reg);</span><br><span class="line">     <span class="keyword">if</span>(r!=null)<span class="built_in">return</span>  unescape(r[2]); <span class="built_in">return</span> null;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>另外如果你是直接在框架里操作，比如vue，就不用担心取不到值，利用它的<code>this.$route.query</code>是可以正常取值的</p>
 <p>下面是vue框架的截图<br><img src="/img/blogImg/location/search5.jpeg" style="max-width:500px"></p>

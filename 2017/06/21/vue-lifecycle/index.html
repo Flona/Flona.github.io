@@ -79,23 +79,23 @@
 
 
 
-<meta name="description" content="稀里糊涂用vue也三周了，边学习边用，好在之前用过react能快速的看文档应付项目。 暂时还没有看过vue源码，本篇仅记录应用型测试了解生命周期各种钩子函数，更好的控制数据流和其对DOM的影响。 基础代码：">
+<meta name="description" content="用vue开发也三周了，边学习边用，好在之前用过react能快速的看文档应付项目。 暂时还没有看过vue源码，本篇仅记录应用型测试了解生命周期各种钩子函数，更好的控制数据流和其对DOM的影响。 基础代码：">
 <meta name="keywords" content="JS,Vue">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vue学习系列-生命周期">
 <meta property="og:url" content="http://www.yvonne.party/2017/06/21/vue-lifecycle/index.html">
 <meta property="og:site_name" content="Yvonne">
-<meta property="og:description" content="稀里糊涂用vue也三周了，边学习边用，好在之前用过react能快速的看文档应付项目。 暂时还没有看过vue源码，本篇仅记录应用型测试了解生命周期各种钩子函数，更好的控制数据流和其对DOM的影响。 基础代码：">
+<meta property="og:description" content="用vue开发也三周了，边学习边用，好在之前用过react能快速的看文档应付项目。 暂时还没有看过vue源码，本篇仅记录应用型测试了解生命周期各种钩子函数，更好的控制数据流和其对DOM的影响。 基础代码：">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/vue/lifecycleResult1.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/vue/lifecycle.png">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/vue/lifecycleResult2.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/vue/lifecycleResult3.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/vue/lifecycleResult4.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/vue/lifecycleResult5.jpeg">
-<meta property="og:updated_time" content="2017-12-14T11:55:11.843Z">
+<meta property="og:updated_time" content="2017-12-15T08:54:41.873Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue学习系列-生命周期">
-<meta name="twitter:description" content="稀里糊涂用vue也三周了，边学习边用，好在之前用过react能快速的看文档应付项目。 暂时还没有看过vue源码，本篇仅记录应用型测试了解生命周期各种钩子函数，更好的控制数据流和其对DOM的影响。 基础代码：">
+<meta name="twitter:description" content="用vue开发也三周了，边学习边用，好在之前用过react能快速的看文档应付项目。 暂时还没有看过vue源码，本篇仅记录应用型测试了解生命周期各种钩子函数，更好的控制数据流和其对DOM的影响。 基础代码：">
 <meta name="twitter:image" content="http://www.yvonne.party/img/blogImg/vue/lifecycleResult1.jpeg">
 
 
@@ -316,7 +316,7 @@
       
 
       
-        <p>稀里糊涂用<code>vue</code>也三周了，边学习边用，好在之前用过<code>react</code>能快速的看文档应付项目。</p>
+        <p>用<code>vue</code>开发也三周了，边学习边用，好在之前用过<code>react</code>能快速的看文档应付项目。</p>
 <p>暂时还没有看过<code>vue</code>源码，本篇仅记录应用型测试了解生命周期各种钩子函数，更好的控制数据流和其对<code>DOM</code>的影响。</p>
 <h2 id="基础代码："><a href="#基础代码：" class="headerlink" title="基础代码："></a>基础代码：</h2><a id="more"></a>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;input <span class="built_in">type</span>=<span class="string">"text"</span> name=<span class="string">"lifecycleTest"</span> v-model=<span class="string">"msg"</span> ref=<span class="string">"input"</span>&gt;</span><br><span class="line">    &lt;p&gt;&#123;&#123;msg&#125;&#125;&lt;/p&gt;</span><br><span class="line">    &lt;button @click=<span class="string">"changeMsg"</span>&gt;change&lt;/button&gt;</span><br><span class="line">    &lt;button @click=<span class="string">"destroy"</span>&gt;destroy&lt;/button&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
@@ -395,9 +395,9 @@
 </li>
 </ul>
 </blockquote>
-<p>最后拉个官方生命周期流程图，后面还有番外篇！</p>
+<p>最后上个官方生命周期流程图，后面还有番外篇！</p>
 <p><img src="/img/blogImg/vue/lifecycle.png" alt="生命周期流程图"></p>
-<h2 id="番外篇1："><a href="#番外篇1：" class="headerlink" title="番外篇1："></a>番外篇1：</h2><p>除此之外做了些傻瓜式尝试</p>
+<h2 id="番外篇1："><a href="#番外篇1：" class="headerlink" title="番外篇1："></a>番外篇1：</h2><p>除此之外做了些尝试</p>
 <blockquote>
 <p>连续改变vue数据，例如点击按钮事件中连续两次更改data，更改代码如下：</p>
 </blockquote>
@@ -406,7 +406,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">methods: &#123;</span><br><span class="line">    changeMsg: <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">      this.msg = <span class="string">'lifecycle2'</span></span><br><span class="line">      this.changeMsgAgin()</span><br><span class="line">    &#125;,</span><br><span class="line">    changeMsgAgin: <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">      this.msg = <span class="string">'lifecycle3'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 <p>酱紫写只会触发一次<code>beforeUpdate</code>、<code>updated</code>，结果是最终结果</p>
 <p><img src="/img/blogImg/vue/lifecycleResult2.jpeg" style="max-width:400px"></p>
-<p>但是如果我使用<code>timeout</code>，即便是执行时间写成0，也会触发两次<code>beforeUpdate</code>、<code>updated</code>，更改代码如下</p>
+<p>但是如果使用<code>timeout</code>，即便是执行时间写成0，也会触发两次<code>beforeUpdate</code>、<code>updated</code>，更改代码如下</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">methods: &#123;</span><br><span class="line">    changeMsg: <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">      this.msg = <span class="string">'lifecycle2'</span></span><br><span class="line">      setTimeout(<span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">        self.msg = <span class="string">'lifecycle3'</span></span><br><span class="line">      &#125;, 5)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 <p>或者</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">methods: &#123;</span><br><span class="line">    changeMsg: <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">      this.msg = <span class="string">'lifecycle2'</span></span><br><span class="line">      this.changeMsgAgin()</span><br><span class="line">    &#125;,</span><br><span class="line">    changeMsgAgin: <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">      const self = this</span><br><span class="line">      setTimeout(<span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">        self.msg = <span class="string">'lifecycle3'</span></span><br><span class="line">      &#125;, 5)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
@@ -419,16 +419,16 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">created: <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">    console.log(<span class="string">'created---vm'</span>, this.msg)</span><br><span class="line">    console.log(<span class="string">'created---Dom'</span>, this.<span class="variable">$refs</span>.input ? this.<span class="variable">$refs</span>.input.value : <span class="string">'Dom还未渲染'</span>)</span><br><span class="line">    this.<span class="variable">$nextTick</span>(<span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">      console.log(<span class="string">'created---Dom---nextTick'</span>, this.<span class="variable">$refs</span>.input ? this.<span class="variable">$refs</span>.input.value : <span class="string">'Dom还未渲染'</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">    this.msg = <span class="string">'lifecycle4'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>结果如下</p>
 <p><img src="/img/blogImg/vue/lifecycleResult4.jpeg" style="max-width:400px"></p>
-<p>调用起watch是在意料之中，可能要注意的是调起它的时间，是在首次渲染结束后才会触发起watch，并且<code>nextTick</code>在其之前，所以说<code>nextTick</code>是在DOM完成后立即触发，这个立即很准确啊</p>
-<p>但是如果在<code>mounted</code>中改变的话，还会触发<code>beforeUpdate</code>、<code>updated</code>，因为更新钩子函数就是在<code>mounted</code>完成后每次更改数据来重新渲染DOM时触发哦～</p>
-<h2 id="番外篇2："><a href="#番外篇2：" class="headerlink" title="番外篇2："></a>番外篇2：</h2><p>补充下子组件生命周期和父组件生命周期的交叉情况</p>
-<p>上面的代码其实就是个子组件的，只是我完全独立的看待它本身的生命周期，现在在父组件中，添加一些钩子函数以及props，代码如下：</p>
+<p>调用起watch是在意料之中，可能要注意的是调起它的时间，是在首次渲染结束后才会触发起watch，并且<code>nextTick</code>在其之前，所以说<code>nextTick</code>是在DOM完成后立即触发，这个立即很准确</p>
+<p>但是如果在<code>mounted</code>中改变的话，还会触发<code>beforeUpdate</code>、<code>updated</code>，因为更新钩子函数就是在<code>mounted</code>完成后每次更改数据来重新渲染DOM时触发</p>
+<h2 id="番外篇2："><a href="#番外篇2：" class="headerlink" title="番外篇2："></a>番外篇2：</h2><p>补充子组件生命周期和父组件生命周期的交叉情况</p>
+<p>上面的代码其实是子组件，只是我完全独立的看待它本身的生命周期，现在在父组件中，添加一些钩子函数以及props，代码如下：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line">    &lt;img src=<span class="string">"./assets/logo.png"</span>&gt;</span><br><span class="line">    &lt;router-view :message=<span class="string">"message"</span>&gt;&lt;/router-view&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line"><span class="built_in">export</span> default &#123;</span><br><span class="line">  name: <span class="string">'app'</span>,</span><br><span class="line">  <span class="function"><span class="title">data</span></span> () &#123;</span><br><span class="line">    <span class="built_in">return</span> &#123;</span><br><span class="line">      message: <span class="string">'this is props test'</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  beforeCreat: <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">    console.log(<span class="string">'parent-beforeCreat-------------'</span>)</span><br><span class="line">  &#125;,</span><br><span class="line">  created: <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">    console.log(<span class="string">'parent-created-------------'</span>)</span><br><span class="line">  &#125;,</span><br><span class="line">  beforeMount: <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">    console.log(<span class="string">'parent-beforeMount-------------'</span>)</span><br><span class="line">  &#125;,</span><br><span class="line">  mounted: <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">    console.log(<span class="string">'parent-mounted-------------'</span>)</span><br><span class="line">  &#125;,</span><br><span class="line">  beforeUpdate: <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">    console.log(<span class="string">'parent-beforeUpdate-------------'</span>)</span><br><span class="line">  &#125;,</span><br><span class="line">  updated: <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">    console.log(<span class="string">'parent-updated-------------'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<p>ok，可以先来看看结果啦！</p>
+<p>结果如下</p>
 <p><img src="/img/blogImg/vue/lifecycleResult5.jpeg" style="max-width:400px"></p>
-<p>首先，props的出现周期和data是一样的，其次子组件的生命周期是在父组件的<code>beforeMounted</code>之后，父组件<code>mounted</code>之前执行完毕，并且<code>nextTick</code>在父组件mounted之后，也就是整个DOM渲染完之后再执行。</p>
-<p>嗯，基本就这些，其他的研究可能需要在实际的开发中碰到了，以及深入的内容等到研究源代码的时候说吧～～</p>
+<p>首先，props的出现周期和data是一样的，其次子组件的生命周期是在父组件的<code>beforeMounted</code>之后，父组件<code>mounted</code>之前执行完毕，并且<code>nextTick</code>在父组件mounted之后，即整个DOM渲染完之后再执行。</p>
+<p>暂时这些，其他的研究可能需要在实际的开发中碰到了，以及深入的内容等到研究源代码的时候说吧～～</p>
 
       
     </div>
