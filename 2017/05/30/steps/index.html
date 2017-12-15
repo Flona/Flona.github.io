@@ -79,23 +79,23 @@
 
 
 
-<meta name="description" content="最近有个项目是优化员工信息采集，其中比较有意思的是改进步骤条，步骤条的逻辑上没什么特别的，做好分段，到达每个段落点亮对应的步骤条就好了，再复杂一点的无非就是存在三种样式，，正在编辑的步骤显示一种样式，已完成编辑的显示一种样式，未完成的显示一种样式，做好判断就好了。有意思的地方我觉得在于步骤条的样式多样化，我查看了ant-design步骤条，以及vue插件element-ui步骤条，给的都是简单的圆">
+<meta name="description" content="最近有个项目是优化员工信息采集，其中比较有意思的是改进步骤条，步骤条的逻辑上没特别的，做好分段，到达每个段落点亮对应的步骤条就好了，再复杂一点的无非就是存在三种样式，，正在编辑的步骤显示一种样式，已完成编辑的显示一种样式，未完成的显示一种样式，做好判断即可。有意思的地方在于步骤条的样式多样化，查看ant-design步骤条，以及element-ui步骤条，给的都是简单的圆圈样式，步骤之间隔离无交集">
 <meta name="keywords" content="CSS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="步骤条">
 <meta property="og:url" content="http://www.yvonne.party/2017/05/30/steps/index.html">
 <meta property="og:site_name" content="Yvonne">
-<meta property="og:description" content="最近有个项目是优化员工信息采集，其中比较有意思的是改进步骤条，步骤条的逻辑上没什么特别的，做好分段，到达每个段落点亮对应的步骤条就好了，再复杂一点的无非就是存在三种样式，，正在编辑的步骤显示一种样式，已完成编辑的显示一种样式，未完成的显示一种样式，做好判断就好了。有意思的地方我觉得在于步骤条的样式多样化，我查看了ant-design步骤条，以及vue插件element-ui步骤条，给的都是简单的圆">
+<meta property="og:description" content="最近有个项目是优化员工信息采集，其中比较有意思的是改进步骤条，步骤条的逻辑上没特别的，做好分段，到达每个段落点亮对应的步骤条就好了，再复杂一点的无非就是存在三种样式，，正在编辑的步骤显示一种样式，已完成编辑的显示一种样式，未完成的显示一种样式，做好判断即可。有意思的地方在于步骤条的样式多样化，查看ant-design步骤条，以及element-ui步骤条，给的都是简单的圆圈样式，步骤之间隔离无交集">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/steps/steps1.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/steps/steps2.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/steps/steps3.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/steps/steps4.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/steps/steps5.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/steps/steps6.jpeg">
-<meta property="og:updated_time" content="2017-12-14T11:52:40.194Z">
+<meta property="og:updated_time" content="2017-12-15T07:15:32.076Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="步骤条">
-<meta name="twitter:description" content="最近有个项目是优化员工信息采集，其中比较有意思的是改进步骤条，步骤条的逻辑上没什么特别的，做好分段，到达每个段落点亮对应的步骤条就好了，再复杂一点的无非就是存在三种样式，，正在编辑的步骤显示一种样式，已完成编辑的显示一种样式，未完成的显示一种样式，做好判断就好了。有意思的地方我觉得在于步骤条的样式多样化，我查看了ant-design步骤条，以及vue插件element-ui步骤条，给的都是简单的圆">
+<meta name="twitter:description" content="最近有个项目是优化员工信息采集，其中比较有意思的是改进步骤条，步骤条的逻辑上没特别的，做好分段，到达每个段落点亮对应的步骤条就好了，再复杂一点的无非就是存在三种样式，，正在编辑的步骤显示一种样式，已完成编辑的显示一种样式，未完成的显示一种样式，做好判断即可。有意思的地方在于步骤条的样式多样化，查看ant-design步骤条，以及element-ui步骤条，给的都是简单的圆圈样式，步骤之间隔离无交集">
 <meta name="twitter:image" content="http://www.yvonne.party/img/blogImg/steps/steps1.jpeg">
 
 
@@ -316,28 +316,26 @@
       
 
       
-        <p>最近有个项目是优化员工信息采集，其中比较有意思的是改进步骤条，步骤条的逻辑上没什么特别的，做好分段，到达每个段落点亮对应的步骤条就好了，再复杂一点的无非就是存在三种样式，，正在编辑的步骤显示一种样式，已完成编辑的显示一种样式，未完成的显示一种样式，做好判断就好了。<br>有意思的地方我觉得在于步骤条的样式多样化，我查看了ant-design步骤条，以及vue插件element-ui步骤条，给的都是简单的圆圈样式，步骤之间隔离的，没什么交集，走到当前的步骤时填充下背景色就好了。<br><a id="more"></a></p>
+        <p>最近有个项目是优化员工信息采集，其中比较有意思的是改进步骤条，步骤条的逻辑上没特别的，做好分段，到达每个段落点亮对应的步骤条就好了，再复杂一点的无非就是存在三种样式，，正在编辑的步骤显示一种样式，已完成编辑的显示一种样式，未完成的显示一种样式，做好判断即可。<br>有意思的地方在于步骤条的样式多样化，查看ant-design步骤条，以及element-ui步骤条，给的都是简单的圆圈样式，步骤之间隔离无交集，走到当前的步骤时填充下背景色就好。<br><a id="more"></a></p>
 <p><img src="/img/blogImg/steps/steps1.jpeg" alt="无交集步骤条图片"></p>
 <p>接手的项目之前也是这种步骤条，现在要优化样式如下：</p>
 <p><img src="/img/blogImg/steps/steps2.jpeg" alt="有交集步骤条图片"></p>
-<p>这个就有点意思了，步骤之间有交集了，样式上来说，两个步骤之间有白色的间隔，但是前一个步骤插到了后一个步骤里，有点污（(๑°⌓°๑)）…</p>
-<p>我搜索了下，找到的结果都是利用到了图片，两个步骤之间用图片做背景，我大概截了几个图，凑合看一下</p>
+<p>步骤之间存在交集了，样式上来说，两个步骤之间有白色的间隔，但是前一个步骤插到了后一个步骤里</p>
+<p>万能的搜索，找到的结果都是利用图片，两个步骤之间用图片做背景，我大概截了几个图，凑合看一下</p>
 <p><img src="/img/blogImg/steps/steps3.jpeg" alt="步骤条间隔图片"></p>
 <p><img src="/img/blogImg/steps/steps4.jpeg" alt="步骤条间隔图片"></p>
 <p><img src="/img/blogImg/steps/steps5.jpeg" alt="步骤条间隔图片"></p>
-<p>每个步骤后部分用相应的图片做背景，切换步骤的时候在变换对应的步骤背景色的同时也要更换背景图片，这样确实能实现，问题是我需要几个这样的图片，但是这次的项目优化没有设计和我配合，我不会做图，哈哈哈！！！</p>
-<p>主要的问题还有如果样式作变动，每次更改都要做几个这样的图，我上面截了三个图，对应的情况是已完成的和正在编辑的步骤样式一样，如果不一样，那就需要4个图，这样岂不是很麻烦。</p>
-<p>其实还是自己不会做图，所以我需要一个不需要图片就能完成的方法</p>
-<p>那么现在我就开始抛开图片来解决，每个步骤就是独立的一块元素，重点解决中间叠合部分，向外凸起的尖角可以利用<code>linear-gradient</code></p>
+<p>每个步骤后部分用相应的图片做背景，切换步骤的时候在变换对应的步骤背景色的同时也要更换背景图片，这样确实能实现，问题是如果样式作变动，每次更改都要做几个这样的图，我上面截了三个图，对应的情况是已完成的和正在编辑的步骤样式一样，如果不一样，那就需要4个图，这样很麻烦且不好复用</p>
+<p>抛开图片来解决，每个步骤就是独立的一块元素，重点解决中间叠合部分，向外凸起的尖角可以利用<code>linear-gradient</code></p>
 <p><code>html</code>代码就是个<code>div</code>，核心CSS代码如下</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">display:inline-block;</span><br><span class="line">width:440px;</span><br><span class="line">height:80px;</span><br><span class="line">background-color:<span class="comment">#ec9536;</span></span><br><span class="line">color:white;</span><br><span class="line">text-align:center;</span><br><span class="line">font-size:20px;</span><br><span class="line">background:linear-gradient(-135deg, transparent 28px, <span class="comment">#ec9536 0) top right,</span></span><br><span class="line">	linear-gradient(-45deg, transparent 28px, <span class="comment">#ec9536 0) bottom right;</span></span><br><span class="line">background-size:50% 50%;</span><br><span class="line">background-repeat:no-repeat;</span><br><span class="line">padding-left:220px;</span><br><span class="line">psdding-right:40px;</span><br><span class="line">margin-left:-220px</span><br></pre></td></tr></table></figure>
-<p>最终效果是酱紫的</p>
+<p>最终效果如下</p>
 <div style="display:inline-block;width:440px;height:80px;background-color:#ec9536;color:white;text-align:center;font-size:20px;background:linear-gradient(-135deg, transparent 28px, #ec9536 0)
         top right,
     linear-gradient(-45deg, transparent 28px, #ec9536 0)
         bottom right;background-size:50% 50%;background-repeat:no-repeat;padding-left:220px;padding-right:40px;margin-left:-220px"><br>    单元<br></div>
 
-<p>那如果多个单元排排列（外层包了一层div，然后做了定位）的话就是下面这样的</p>
+<p>如果多个单元排排列（外层包了一层div，然后做了定位）的情况如下</p>
 <div style="position: relative;height:100px;width:100%"><div style="display:inline-block;width:60%;height:80px;background-color:#ec9536;color:white;text-align:center;font-size:20px;background:linear-gradient(-135deg, transparent 28px, #ec9536 0)
         top right,
     linear-gradient(-45deg, transparent 28px, #ec9536 0)
@@ -349,14 +347,14 @@
     linear-gradient(-45deg, transparent 28px, #ec9536 0)
         bottom right;background-size:50% 50%;background-repeat:no-repeat;padding-left:30%;padding-right:40px;margin-left:-30%;position:absolute;left:60%;top:0"><br>    单元<br></div></div>
 
-<p>然后中间步骤的头部都有个向内部的缺角，这部分我的解决方式是，在步骤之间加一个底色的凸起角的单元，然后叠加覆盖在右侧步骤单元上，使其显示有缺角，整体上就是单元一个一个叠加</p>
-<p>最后提炼一下<code>CSS</code>，步骤单元共有的样式如下，默认没走过的步骤是灰色的，（最外层div记得设置relative定位，因为内部元素都是绝对定位的）</p>
+<p>中间步骤的头部都有个向内部的缺角，这部分我的解决方式是，在步骤之间加一个底色的凸起角的单元，然后叠加覆盖在右侧步骤单元上，使其显示有缺角，整体上就是单元一个一个叠加</p>
+<p>最后提炼一下<code>CSS</code>，步骤单元共有的样式如下，默认没走过的步骤是灰色的，（最外层div设置relative定位，内部元素都是绝对定位）</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">width:60%;</span><br><span class="line">height:70px;</span><br><span class="line">background-color:<span class="comment">#a5a5a5;</span></span><br><span class="line">color:white;</span><br><span class="line">text-align:center;</span><br><span class="line">font-size:20px;</span><br><span class="line">line-height:25px;</span><br><span class="line">background:linear-gradient(-135deg, transparent 25px, <span class="comment">#a5a5a5 0) top right,</span></span><br><span class="line">	linear-gradient(-45deg, transparent 25px, <span class="comment">#a5a5a5 0) bottom right;</span></span><br><span class="line">background-size:50% 50%;</span><br><span class="line">background-repeat:no-repeat;</span><br><span class="line">padding-left:30%;</span><br><span class="line">margin-left:-30%;</span><br><span class="line">position:absolute</span><br></pre></td></tr></table></figure>
 <p>中间过渡的底色单元样式是：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">background-color:white;</span><br><span class="line">background:linear-gradient(-135deg, transparent 25px, white 0) top right,</span><br><span class="line">	linear-gradient(-45deg, transparent 25px, white 0) bottom right;</span><br></pre></td></tr></table></figure>
-<p>然后同样是不变动的<code>CSS</code>，就是每个步骤单元有自己的<code>z-index</code>，和定位的具体位置，例如第一个单元是</p>
+<p>每个步骤单元有自己的<code>z-index</code>和定位的具体位置，例如第一个单元是</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">z-index:1000;</span><br><span class="line">top:0;</span><br><span class="line">left:0;</span><br><span class="line">padding-right:35px</span><br></pre></td></tr></table></figure>
-<p>因为第一个没有向内凹的尖角，为了展示内容居中，我加了个<code>padding-right</code></p>
+<p>因为第一个没有向内凹的尖角，为了展示内容居中，加了个<code>padding-right</code></p>
 <p>第二个单元是过渡单元，如下</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">z-index:999;</span><br><span class="line">top:0;</span><br><span class="line">left:25px;</span><br></pre></td></tr></table></figure>
 <p>第三个单元是</p>
@@ -365,8 +363,8 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">z-index:997;</span><br><span class="line">top:0;</span><br><span class="line">left:calc(30%+15px)</span><br></pre></td></tr></table></figure>
 <p>第五个单元是</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">z-index:996;</span><br><span class="line">top:0;</span><br><span class="line">left:calc(60%-20px)</span><br></pre></td></tr></table></figure>
-<p>就这样类推。。。这里定位的距离是需要自己计算的，例如我的突出尖角的部分长度为35px，我设定的过渡单元和前一个单元距离是25px（就是空白的距离），那么过渡单元的定位都是基于前一个单元的定位+25px，所以第一个过渡单元的定位是25px，步骤单元的定位都是基于前一个过渡单元的定位+单元本身的长度-35px，所以第二个步骤单元的定位是25px+30%-35px=30%-10px，以此类推，下一个过渡单元定位是30%-10px+25px=30%+15px，下一个步骤单元定位是30%+15px+30%-35px=60%-20px，为了方便，我直接用了<code>calc</code></p>
-<p>以上做为基本样式后，已经走过的步骤和当前的步骤样式如下，（之后就是来回切换这个样式来改变就好了）</p>
+<p>依次类推，定位的距离需要自己计算，例如突出尖角的部分长度为35px，设定的过渡单元和前一个单元距离是25px（就是空白的距离），那么过渡单元的定位都是基于前一个单元的定位+25px，所以第一个过渡单元的定位是25px，步骤单元的定位都是基于前一个过渡单元的定位+单元本身的长度-35px，所以第二个步骤单元的定位是25px+30%-35px=30%-10px，以此类推，下一个过渡单元定位是30%-10px+25px=30%+15px，下一个步骤单元定位是30%+15px+30%-35px=60%-20px，为方便直接用<code>calc</code></p>
+<p>以上做为基本样式后，已经走过的步骤和当前的步骤样式如下，（之后切换此样式来改变即可）</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">background-color:<span class="comment">#ec9536;</span></span><br><span class="line">background:linear-gradient(-135deg, transparent 25px, <span class="comment">#ec9536 0) top right,</span></span><br><span class="line">	linear-gradient(-45deg, transparent 25px, <span class="comment">#ec9536 0) bottom right;</span></span><br><span class="line">position:absolute;</span><br></pre></td></tr></table></figure>
 <p>最终的效果如下（假装当前就是第一个步骤）</p>
 <div style="position: relative;height:100px"><div style="width:60%;height:70px;background-color:#ec9536;color:white;text-align:center;font-size:20px;line-height:25px;background:linear-gradient(-135deg, transparent 25px, #ec9536 0)
@@ -386,11 +384,11 @@
     linear-gradient(-45deg, transparent 25px, #a5a5a5 0)
         bottom right;background-size:50% 50%;background-repeat:no-repeat;padding-left:30%;margin-left:-30%;position:absolute;left:calc(60% - 20px);top:0;z-index:2"><br>    3<br></div><br></div>
 
-<p>以上就完成了需求，哈哈哈，可是事情永远没有那么简单，在我暗暗自喜自己的设计很完美，完全可以应对随便改颜色时，产品经理给我了一份新的设计，步骤条变成了这样</p>
+<p>以上完成了需求，但是事情永远没有那么简单，在我暗暗自喜自己的设计很完美，完全可以应对随便改颜色时，产品经理给我了一份新的设计，步骤条变成了这样</p>
 <p><img src="/img/blogImg/steps/steps6.jpeg" alt="新步骤条图片"></p>
 <p>有一句妈卖批不知当讲不当讲。。。</p>
-<p>不过整体逻辑可以照搬，得重新做下突出尖角了，具体做法借鉴出处<a href="http://nicolasgallagher.com/pure-css-speech-bubbles/demo/" title="Nicolas Gallagher" target="_blank" rel="noopener">Nicolas Gallagher</a>，具体可以看一下，这里我直接写成我的需求样式啦</p>
-<p>同样先来个单元吧，html是个<code>p</code>元素，<code>class</code>是step-card-interval</p>
+<p>整体逻辑可以照搬，得重新做下突出尖角，具体做法借鉴出处<a href="http://nicolasgallagher.com/pure-css-speech-bubbles/demo/" title="Nicolas Gallagher" target="_blank" rel="noopener">Nicolas Gallagher</a>，具体可以看一下，这里我直接写成我的需求样式啦</p>
+<p>同样先来个单元，html是个<code>p</code>元素，<code>class</code>是step-card-interval</p>
 <p>主要<code>CSS</code>如下</p>
  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">.step-card-interval&#123;</span><br><span class="line">    background: <span class="comment">#63ca9b;</span></span><br><span class="line">    color:white;</span><br><span class="line">    position: absolute;</span><br><span class="line">    padding: 15px;</span><br><span class="line">    margin: 0;</span><br><span class="line">    text-align: center;</span><br><span class="line">    font-size:16px;</span><br><span class="line">    width:200px;</span><br><span class="line">&#125;</span><br><span class="line">.step-card-interval:after&#123;</span><br><span class="line">    content: <span class="string">""</span>;</span><br><span class="line">    position: absolute;</span><br><span class="line">    border-style: solid;</span><br><span class="line">    top: 21px;</span><br><span class="line">    right: -8px;</span><br><span class="line">    border-width: 8px 0 8px 8px;</span><br><span class="line">    border-color: transparent <span class="comment">#63ca9b;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><div style="position: relative;width:250px;height:70px"><p class="step-card-interval">单元</p></div></p>
@@ -416,9 +414,9 @@
     }
 </style>
 
-<p>出来单元就好了，剩下的同样是单元堆叠</p>
-<p>不想写啦，就这样吧～～～</p>
-<p>另外前阵子有个朋友问怎么做等边三角形，我当时还说我靠，等边三角形？不会啊，哈哈哈，这里后面的情况明明就做出了等边三角形的（(๑°⌓°๑)）</p>
+<p>出来单元就OK了，剩下的同样是单元堆叠</p>
+<p>不想写啦～～～</p>
+<p>前阵子有个朋友问怎么做等边三角形，我当时说啥？等边三角形？不会啊，这里后面的情况明明就做出了等边三角形的（(๑°⌓°๑)）</p>
 
       
     </div>
