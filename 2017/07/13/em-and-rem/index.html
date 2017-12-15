@@ -88,7 +88,7 @@
 <meta property="og:description" content="概要说起适配各种移动端，肯定要说em和rem，也看过很多博客介绍，一直的印象是em计算依据父元素font-size，rem计算依据html的font-size，在实际开发中利用的也不是很好，今天发现了一篇好内容，总结什么时候该用，以及用哪一种好，分享链接 这里记录自己的总结">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/em&rem/em&rem.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/em&rem/em&rem2.jpeg">
-<meta property="og:updated_time" content="2017-12-14T12:03:44.708Z">
+<meta property="og:updated_time" content="2017-12-15T06:11:51.033Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Em VS Rem">
 <meta name="twitter:description" content="概要说起适配各种移动端，肯定要说em和rem，也看过很多博客介绍，一直的印象是em计算依据父元素font-size，rem计算依据html的font-size，在实际开发中利用的也不是很好，今天发现了一篇好内容，总结什么时候该用，以及用哪一种好，分享链接 这里记录自己的总结">
@@ -316,18 +316,18 @@
 <p>这里记录自己的总结<br><a id="more"></a></p>
 <h2 id="Em"><a href="#Em" class="headerlink" title="Em"></a>Em</h2><p>之前有个误解，以为<code>em</code>单位是相对于父元素的<code>font-size</code>，但实际是相对于本元素的<code>font-size</code>，之所以会受父元素的影响，完全是因为本元素继承了父元素的<code>font-size</code></p>
 <p>验证这个问题，对比下父元素有<code>font-size</code>时，本元素分别设置和不设置<code>font-size</code></p>
-<p>父元素有<code>font-size:20px</code>，本元素没有设置，从父元素继承而来，本元素设置<code>padding:1.5em</code>，那么<code>padding</code>计算的结果应该是20*1.5=30px：</p>
+<p>父元素有<code>font-size:20px</code>，本元素没有设置，从父元素继承而来，本元素设置<code>padding:1.5em</code>，那么<code>padding</code>计算的结果应该是<code>20*1.5=30px</code></p>
 <p><img src="/img/blogImg/em&rem/em&rem.jpeg" style="max-width:400px"></p>
-<p>以上基础下，本元素设置<code>font-size:30px</code>，如果单纯的理解成<code>em</code>是依据父元素<code>font-size</code>计算，那么<code>padding</code>计算结果应该不变，但是实际不是，<code>padding</code>的最终计算结果是30*1.5=45px，所以<code>em</code>是依据本元素的<code>font-size</code>：</p>
+<p>以上基础下，本元素设置<code>font-size:30px</code>，如果单纯的理解成<code>em</code>是依据父元素<code>font-size</code>计算，那么<code>padding</code>计算结果应该不变，但是实际不是，<code>padding</code>的最终计算结果是<code>30*1.5=45px</code>，所以<code>em</code>是依据本元素的<code>font-size</code></p>
 <p><img src="/img/blogImg/em&rem/em&rem2.jpeg" style="max-width:400px"></p>
 <blockquote>
 <p><code>em</code>单位取决于一个<code>font-size</code>值而非<code>html</code>元素的字体大小。</p>
 <hr>
 <p>为此，<code>em</code>单位的主要目的应该是允许保持在一个特定的设计元素范围内的可扩展性。</p>
 <hr>
-<p>例如，您可能使用<code>em</code>值设置导航菜单项的<code>padding</code>、 <code>margin</code>，<code>line-height</code>等值。</p>
+<p>例如，可能使用<code>em</code>值设置导航菜单项的<code>padding</code>、 <code>margin</code>，<code>line-height</code>等值。</p>
 </blockquote>
-<h2 id="Rem"><a href="#Rem" class="headerlink" title="Rem"></a>Rem</h2><p>以为<code>rem</code>单位是相对于根元素html的<code>font-size</code>，而html的<code>font-size</code>默认继承浏览器的字体大小（所以如果<code>html</code>没有设置字体大小继承浏览器的字体大小，那么使用<code>em</code>直接表现为受浏览器默认字体大小的影响），除非认为设置<code>html</code>的字体大小，而浏览器字体大小通常默认是<code>16px</code>，用户可以更改为<code>9px</code>至<code>72px</code>的任意值，</p>
+<h2 id="Rem"><a href="#Rem" class="headerlink" title="Rem"></a>Rem</h2><p><code>rem</code>单位是相对于根元素html的<code>font-size</code>，而html的<code>font-size</code>默认继承浏览器的字体大小（所以如果<code>html</code>没有设置字体大小继承浏览器的字体大小，那么使用<code>em</code>直接表现为受浏览器默认字体大小的影响），除非设置<code>html</code>的字体大小，而浏览器字体大小通常默认是<code>16px</code>，用户可以更改为<code>9px</code>至<code>72px</code>的任意值，</p>
 <blockquote>
 <p><code>rem</code>单位提供最伟大的力量并不仅仅是他们提供一致尺寸而不是继承。 相反，它给我们的一个途经去获取用户的偏好来影响网站中每一处使用<code>rem</code>的元素大小，不再是使用固定的<code>px</code>单位。</p>
 <hr>
@@ -335,7 +335,7 @@
 </blockquote>
 <p>同时不建议使用结合<code>rem</code>单位的方式给html元素设置了一个固定的<code>px</code>单位，因为它重写继承了用户设置的浏览器字体大小，这剥削了用户自行调整以获得最佳视觉效果的能力，倒是可以通过<code>em</code>或者<code>rem</code>单位来重新设置<code>html</code>的字体大小，这样根元素的值是用户浏览器字体大小的乘积，仍会保留用户的浏览器设置的效果</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h4 id="两者差距对比："><a href="#两者差距对比：" class="headerlink" title="两者差距对比："></a>两者差距对比：</h4><p><span style="color:#f49f65">+++</span><code>rem</code>单位翻译为像素值是由<code>html</code>元素的字体大小决定的。 此字体大小会被浏览器中字体大小的设置影响，除非显式重写一个具体单位。</p>
-<p><span style="color:#f49f65">+++</span><code>em</code>单位转为像素值，取决于他们使用的字体大小。 此字体大小受从父元素继承过来的字体大小，除非显式重写与一个具体单位。</p>
+<p><span style="color:#f49f65">+++</span><code>em</code>单位转为像素值，取决于他们使用的字体大小。 此字体大小受从父元素继承过来的字体大小，除非显式重写一个具体单位。</p>
 <h4 id="使用em情况："><a href="#使用em情况：" class="headerlink" title="使用em情况："></a>使用<code>em</code>情况：</h4><blockquote>
 <p>需要使用<code>em</code>单位的唯一原因是缩放没有默认字体大小的元素，适用于在非默认字体大小的元素上的<code>padding</code>、 <code>margin</code>、 <code>width</code>、 <code>height</code>和<code>line-height</code>等值，比如设计组件比如按钮，菜单和标题，当修改字体大小的时候，希望整个组件都适当缩放；</p>
 <hr>

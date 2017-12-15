@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="为何存在300ms延迟起初做移动端H5时发现对于click事件IOS会延迟300ms，不是很理解为什么移动端网页已经热手很久了还会存在常规的click事件支持度都不高呢，100ms用户就会觉得卡顿，300ms是致命的啊！在没有深入了解原由之前我直接转向用touchstart来替代click，尝试写了两个项目吧就觉得这样鲁莽的替代不适用于所有情况，存在两个问题： 1.点击穿透问题2.滑动操作会触发t">
+<meta name="description" content="为何存在300ms延迟起初做移动端H5时发现对于click事件IOS会延迟300ms，不是很理解为什么移动端网页已经热手很久了还会存在常规的click事件支持度都不高的情况，100ms用户就会觉得卡顿，300ms是致命的！在没有深入了解原由之前我直接转向用touchstart来替代click，尝试写了两个项目就觉得这样鲁莽的替代不适用于所有情况，存在两个问题： 1.点击穿透问题2.滑动操作会触发t">
 <meta name="keywords" content="JS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="click延迟300ms解决方案">
 <meta property="og:url" content="http://www.yvonne.party/2017/09/14/click-delay/index.html">
 <meta property="og:site_name" content="Yvonne">
-<meta property="og:description" content="为何存在300ms延迟起初做移动端H5时发现对于click事件IOS会延迟300ms，不是很理解为什么移动端网页已经热手很久了还会存在常规的click事件支持度都不高呢，100ms用户就会觉得卡顿，300ms是致命的啊！在没有深入了解原由之前我直接转向用touchstart来替代click，尝试写了两个项目吧就觉得这样鲁莽的替代不适用于所有情况，存在两个问题： 1.点击穿透问题2.滑动操作会触发t">
-<meta property="og:updated_time" content="2017-12-14T10:01:49.346Z">
+<meta property="og:description" content="为何存在300ms延迟起初做移动端H5时发现对于click事件IOS会延迟300ms，不是很理解为什么移动端网页已经热手很久了还会存在常规的click事件支持度都不高的情况，100ms用户就会觉得卡顿，300ms是致命的！在没有深入了解原由之前我直接转向用touchstart来替代click，尝试写了两个项目就觉得这样鲁莽的替代不适用于所有情况，存在两个问题： 1.点击穿透问题2.滑动操作会触发t">
+<meta property="og:updated_time" content="2017-12-15T06:05:45.744Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="click延迟300ms解决方案">
-<meta name="twitter:description" content="为何存在300ms延迟起初做移动端H5时发现对于click事件IOS会延迟300ms，不是很理解为什么移动端网页已经热手很久了还会存在常规的click事件支持度都不高呢，100ms用户就会觉得卡顿，300ms是致命的啊！在没有深入了解原由之前我直接转向用touchstart来替代click，尝试写了两个项目吧就觉得这样鲁莽的替代不适用于所有情况，存在两个问题： 1.点击穿透问题2.滑动操作会触发t">
+<meta name="twitter:description" content="为何存在300ms延迟起初做移动端H5时发现对于click事件IOS会延迟300ms，不是很理解为什么移动端网页已经热手很久了还会存在常规的click事件支持度都不高的情况，100ms用户就会觉得卡顿，300ms是致命的！在没有深入了解原由之前我直接转向用touchstart来替代click，尝试写了两个项目就觉得这样鲁莽的替代不适用于所有情况，存在两个问题： 1.点击穿透问题2.滑动操作会触发t">
 
 
 
@@ -309,39 +309,35 @@
       
 
       
-        <h3 id="为何存在300ms延迟"><a href="#为何存在300ms延迟" class="headerlink" title="为何存在300ms延迟"></a>为何存在300ms延迟</h3><p>起初做移动端H5时发现对于<code>click</code>事件IOS会延迟300ms，不是很理解为什么移动端网页已经热手很久了还会存在常规的click事件支持度都不高呢，100ms用户就会觉得卡顿，300ms是致命的啊！在没有深入了解原由之前我直接转向用<code>touchstart</code>来替代<code>click</code>，尝试写了两个项目吧就觉得这样鲁莽的替代不适用于所有情况，存在两个问题：</p>
+        <h3 id="为何存在300ms延迟"><a href="#为何存在300ms延迟" class="headerlink" title="为何存在300ms延迟"></a>为何存在300ms延迟</h3><p>起初做移动端H5时发现对于<code>click</code>事件IOS会延迟300ms，不是很理解为什么移动端网页已经热手很久了还会存在常规的click事件支持度都不高的情况，100ms用户就会觉得卡顿，300ms是致命的！在没有深入了解原由之前我直接转向用<code>touchstart</code>来替代<code>click</code>，尝试写了两个项目就觉得这样鲁莽的替代不适用于所有情况，存在两个问题：</p>
 <p>1.点击穿透问题<br>2.滑动操作会触发<code>touchstart</code></p>
 <a id="more"></a>
-<p>😳先说点击穿透问题，事件的发生顺序是<code>touchstart</code>=&gt;<code>touchend</code>=&gt;<code>click</code>，然后此时我正在用vue做单页面开发，当前展示的组件某个button利用了<code>touchstart</code>来触发切换了组件，之后<code>click</code>触发的时候前一个button已经不在了，这个<code>click</code>就派发给了当前组件同一位置的元素，如果说恰好这个元素是个链接，那么就跳转了，这个可以用阻止默认行为来处理，比如用vue的话，在事件上加上<code>.prevent</code>就不会点击穿透了</p>
-<p>😳第二个问题滑动操作会触发<code>touchstart</code>，同个页面内标签切换还能接受，若是跳转功能的这种，用户在滑动中突然页面跳转了，使用感受太烂！！！</p>
-<p>事已至此不能再做鸵鸟了，要好好研究下<code>click</code>延迟的问题，<strong>事由酱紫：第一版iPhone发布之前还不存在响应式页面开发，当时的网站都是依照大屏幕设计的，那么如何解决在小屏幕上浏览大屏幕网站，苹果的工程师做了一些约定，有名的是双击缩放，即在iOS自带的Safari上快速点击两次，会将网页缩放至原始比例</strong></p>
-<p>那为何酱紫会产生300ms延迟呢，<strong>因为即然存在双击缩放和双击滚动的功能，那么当用户点击一次的时候没办法立即执行<code>click</code>事件，因为不知道用户的意图是单击还是双击，所以就空留一定的时间来确认用户有没有再次点击，300ms就产生了，</strong>鉴于苹果的成功，其他厂商沿用了一些约定，其中就包括双击缩放功能，几乎所有的移动端浏览器都有这个功能，但是随着touch端界面如火如荼的发展，用户对体验要求也逐渐提高，300ms的点击延迟已经无法忍受</p>
-<h3 id="开发商解决方案"><a href="#开发商解决方案" class="headerlink" title="开发商解决方案"></a>开发商解决方案</h3><p>做为开发商意识到这个问题，也逐步的出了一些解决方案</p>
-<h5 id="方案一：禁止缩放"><a href="#方案一：禁止缩放" class="headerlink" title="方案一：禁止缩放"></a>方案一：禁止缩放</h5><p>即然300ms就是由双击功能产生的（几乎所有浏览器都支持双击缩放，iOS除此之外还有个双击滚动的功能），那么直接禁止缩放功能干净利落😂，安卓的chrome率先实现了，随后安卓的Firefox也实现了，通过添加<code>meta</code>：</p>
+<p>先说点击穿透问题，事件的发生顺序是<code>touchstart</code>=&gt;<code>touchend</code>=&gt;<code>click</code>，比方正在用vue做单页面开发，当前展示的组件某个button利用了<code>touchstart</code>来触发切换了组件，之后<code>click</code>触发的时候前一个button已经不在了，这个<code>click</code>就派发给了当前组件同一位置的元素，如果恰好这个元素是个链接，那么就会触发跳转，这个可以用阻止默认行为来处理，比如用vue的话，在事件上加上<code>.prevent</code>就不会点击穿透</p>
+<p>第二个问题滑动操作会触发<code>touchstart</code>，同个页面内标签切换还能接受，若是跳转功能，用户在滑动中突然页面跳转了，使用感受太烂！！！</p>
+<p>研究<code>click</code>延迟的问题需要追踪发展史，<strong>事由酱紫：第一版iPhone发布之前还不存在响应式页面开发，当时的网站都是依照大屏幕设计的，那么如何解决在小屏幕上浏览大屏幕网站，苹果的工程师做了一些约定，有名的是双击缩放，即在iOS自带的Safari上快速点击两次，会将网页缩放至原始比例</strong></p>
+<p>如何产生300ms延迟的？<strong>因为即然存在双击缩放和双击滚动的功能，那么当用户点击一次的时候没办法立即执行<code>click</code>事件，因为不知道用户的意图是单击还是双击，所以就空留一定的时间来确认用户有没有再次点击，300ms就产生了，</strong>鉴于苹果的成功，其他厂商沿用了一些约定，其中就包括双击缩放功能，几乎所有的移动端浏览器都有这个功能，但是随着touch端界面如火如荼的发展，用户对体验要求也逐渐提高，300ms的点击延迟已经无法忍受</p>
+<h3 id="开发商解决方案"><a href="#开发商解决方案" class="headerlink" title="开发商解决方案"></a>开发商解决方案</h3><p>开发商意识到这个问题，也逐步的出了一些解决方案</p>
+<h5 id="方案一：禁止缩放"><a href="#方案一：禁止缩放" class="headerlink" title="方案一：禁止缩放"></a>方案一：禁止缩放</h5><p>即然300ms就是由双击功能产生的（几乎所有浏览器都支持双击缩放，iOS除此之外还有个双击滚动的功能），貌似直接禁止缩放功能可以解决，安卓的chrome率先实现了，随后安卓的Firefox也实现了，通过添加<code>meta</code>：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=&apos;viewport&apos; content=&apos;user-scalable=no&apos;&gt;</span><br><span class="line">&lt;meta name=&apos;viewport&apos; content=&apos;initial-scale=1,maximum-scale=1&apos;&gt;</span><br></pre></td></tr></table></figure>
 <p>这样后页面就不能缩放了，所以就不存在双击缩放了，这样有个问题就是直接禁用的是缩放功能，就代表整个页面都没有缩放功能，那么想放大一个图片或者比较小的文字，sorry办不到！！so，<strong>安卓平台的chrome和Firefox提供的禁用缩放优化，仅使用于web游戏等特定的情境</strong></p>
 <h5 id="方案二：修改窗口可视宽度"><a href="#方案二：修改窗口可视宽度" class="headerlink" title="方案二：修改窗口可视宽度"></a>方案二：修改窗口可视宽度</h5><p>最早之前出现双击缩放功能是为了解决小屏幕浏览器浏览为大屏幕浏览器设计的网站，而且当时在渲染桌面站点的时候，使用980像素的视口宽度，并非移动端实际的视口宽度（其他厂商也这样），如果将可视宽度改为实际的移动端视口宽度，也就是响应式设计，即然网页已经是实际的移动端可视宽度了，客观来说那么就不需要双击缩放功能了，chrome 32版本中就实现了这样一个标识：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=&apos;viewport&apos; content=&apos;width=device-width&apos;&gt;</span><br></pre></td></tr></table></figure>
 <p><strong>当存在这样的标识就知道应用了响应式，自动忽略点击缩放的功能，但是并没有完全禁用缩放，还可以实现双指缩放，但是目前只有chrome 32版本实现了此功能</strong></p>
-<p>对于iOS而言啊如果想要实现此功能，不光抛弃双击缩放还要抛弃双击滚动功能，但是目前没有任何眉目</p>
+<p>对于iOS而言如果想要实现此功能，不光抛弃双击缩放还要抛弃双击滚动功能，但是目前没有任何眉目</p>
 <h5 id="方案三：touch-action"><a href="#方案三：touch-action" class="headerlink" title="方案三：touch-action"></a>方案三：touch-action</h5><p><code>touch-action</code>属于指针事件里面的内容，但是它关系到300ms延迟点击，属性决定“是否触摸操作会触发用户代理的默认行为，这包括但不限于双指缩放等行为”，属性默认值<code>auto</code>，设置<code>none</code>可移除该元素300ms的延迟，目前只有internet explorer实现了指针事件： </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">button&#123;</span><br><span class="line">  &lt;!-- E11 --&gt;</span><br><span class="line">  touch-action: none;</span><br><span class="line">  &lt;!-- E10 --&gt;</span><br><span class="line">  -ms-touch-action: none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="当前解决方案"><a href="#当前解决方案" class="headerlink" title="当前解决方案"></a>当前解决方案</h3><p>目前为止，虽然厂商陆陆续续出了些解决方案，但是还是没有简单通用的方法，开发者带来了一些暂时性的JS跨平台方案，可以分为两大类：指针事件polyfill和点击事件上的自定义处理</p>
 <h5 id="指针事件的polyfill"><a href="#指针事件的polyfill" class="headerlink" title="指针事件的polyfill"></a>指针事件的polyfill</h5><p>比较流行的几个是： </p>
 <p>chrome 的 <a href="&#39;https://www.polymer-project.org/&#39;,&#39;polymer&#39;">polymer</a><br>微软 的 <a href="&#39;http://handjs.codeplex.com/&#39;,&#39;handJS&#39;">handJS</a><br>Rich-Harris 的 <a href="&#39;https://github.com/Rich-Harris/Points&#39;,&#39;Points&#39;">Points</a></p>
-<p>这些<code>ployfill</code>在非IE中模拟CSS的<code>touch-action</code>属性，非IE浏览器是不会识别这个属性的，那么需要利用JS去寻找开发者有没有设置<code>toucn-action:none</code>，handJS的做法是请求并解析所有的样式表，好吓人啊！！！</p>
+<p>这些<code>ployfill</code>在非IE中模拟CSS的<code>touch-action</code>属性，非IE浏览器是不会识别这个属性的，那么需要利用JS去寻找开发者有没有设置<code>toucn-action:none</code>，handJS的做法是请求并解析所有的样式表，有些恐怖</p>
 <p>polymer的做法是为元素设置<code>touch-action</code>属性，不用CSS：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;###&quot; touch-action=&apos;none&apos;&gt;chrome&lt;/a&gt;</span><br></pre></td></tr></table></figure>
-<p>明显用这种方式来解决300    ms延迟，都好重啊，要么是资源密集型方案，要么是<code>touch-action</code>属性非标准模式，我暂时是没有做深入了解，想要研究的可以链接跳过去</p>
+<p>用这种方式来解决300 ms延迟，要么是资源密集型方案，要么是<code>touch-action</code>属性非标准模式，暂时没有做深入了解，想要研究可以链接跳过去</p>
 <h5 id="点击事件自定义处理"><a href="#点击事件自定义处理" class="headerlink" title="点击事件自定义处理"></a>点击事件自定义处理</h5><p>方式上有两种：</p>
-<p>一种是<code>touchend</code>之后通过DOM自定义事件立即触发一个模拟<code>click</code>事件，并禁止之后300ms会发生的<code>click</code>事件，<a href="&#39;https://github.com/ftlabs/fastclick&#39;,&#39;FastClick&#39;">FastClick</a>就是这么干的，我的项目中直接用了这个轻量级裤（10K），在vue中开发直接在main.js中配置：</p>
+<p>一种是<code>touchend</code>之后通过DOM自定义事件立即触发一个模拟<code>click</code>事件，并禁止之后300ms会发生的<code>click</code>事件，<a href="&#39;https://github.com/ftlabs/fastclick&#39;,&#39;FastClick&#39;">FastClick</a>就是这么干的，我的项目中直接用了这个轻量级库（10K），在vue中开发直接在main.js中配置：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import FastClick from &apos;fastclick&apos;</span><br><span class="line">FastClick.attach(document.body);</span><br></pre></td></tr></table></figure>
 <p>直接用在<code>body</code>上这样整个页面就都可以利用啦</p>
-<p>另一种是通过监听<code>tap</code>而非<code>click</code>事件绕过300ms延迟，<a href="&#39;https://github.com/filamentgroup/tappy/&#39;,&#39;tappy&#39;">tappy</a>以及<a href="&#39;https://github.com/alexgibson/tap.js&#39;,&#39;tap.js&#39;">tap.js</a>都是这样做的，两者比FastClick更轻</p>
-<p>我还没用过</p>
-<p>哈哈哈哈哈哈</p>
-<p>希望之后能出一篇两种方式的代码解析，深入探讨下两种方式的实现方案</p>
-<p>😜😜😜</p>
+<p>另一种是通过监听<code>tap</code>而非<code>click</code>事件绕过300ms延迟，<a href="&#39;https://github.com/filamentgroup/tappy/&#39;,&#39;tappy&#39;">tappy</a>以及<a href="&#39;https://github.com/alexgibson/tap.js&#39;,&#39;tap.js&#39;">tap.js</a>都是这样做的，两者比FastClick更轻，不过暂时没有使用过</p>
 
       
     </div>
