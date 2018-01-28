@@ -98,7 +98,7 @@
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/fixed/fixed10.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/fixed/fixed11.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/fixed/fixed12.jpeg">
-<meta property="og:updated_time" content="2017-12-15T06:39:55.170Z">
+<meta property="og:updated_time" content="2017-12-19T08:12:28.136Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="IOS下fixed失效">
 <meta name="twitter:description" content="问题IOS下，当input唤起软键盘，fixed会失效变成absolute定位，如果说body的长度超过了屏幕长度，也就是说body是滚动的，那么导致的结果是原本fixed定位的模块都会表现成跟随body一起滚动了 栗子🌰">
@@ -198,7 +198,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -218,7 +218,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -282,7 +282,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-11T14:46:21+08:00">
                 2017-07-11
@@ -360,7 +360,7 @@
 <p>搜狗软键盘，掉下来一截：</p>
 <p><img src="/img/blogImg/fixed/fixed10.jpeg" style="max-width:200px"></p>
 <p>对比可见其实<code>input</code>定位一样，是搜狗软键盘会高一些些，如图：</p>
-<p><img src="/img/blogImg/fixed/fixed11.jpeg" style="max-width:400px"></p>
+<p><img src="/img/blogImg/fixed/fixed11.jpeg"></p>
 <p>应该不少数人用第三方输入法吧，特别是女生喜欢更换各种输入法皮肤，所以这个bug出现率很高<br>查阅资料IOS唤起软键盘的过程是通过滚动可视窗口让输入框滚动上来，也就是<code>document.body.scrollTop()</code>会改变（安卓的方式是改变<code>window.height()</code>）， IOS会遮挡输入框, 是因为,第三方输入法的tool bar或者键盘也被当做可视区域了(包含在键盘弹出时的<code>window.innerHeight</code>)，所以滚动得低了</p>
 <p>针对解决方式也是搜集大量的资料，看别人的总结，方法多样，比如说底端<code>input</code>就是个摆设，点击它时展示一个真正让用户输入的<code>input</code>紧贴软键盘上方，我觉得方法麻烦没尝试，更多的方法是说唤起键盘时自己控制下<code>body</code>的滚动，既然之前滚动的不够，那就自己控制让其滚动到最底端，大致思路如此，实现存在不少形式，比如由于没有监听键盘被唤起的事件，所以监听事件的选择很重要，对于安卓来说唤起键盘后是会有<code>resize</code>事件，但是IOS不会触发<code>resize</code>，那随之自然想到<code>focus</code>事件，但是唤起键盘是个过程，需要一定的时间，触发<code>focus</code>时可能这个过程还没结束，自然又会想到用<code>setTimeout()</code>事件做延时执行，实际尝试下来，效果不好，又换成<code>setInterval()</code>不断触发，使用感更好，滚动部分直接赋值页面内容高度了，最后总结觉得比较好的方式是：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line">    &lt;header&gt;&lt;/header&gt;</span><br><span class="line">    &lt;main&gt;</span><br><span class="line">        &lt;img src=<span class="string">"./assets/logo.png"</span>&gt;</span><br><span class="line">        &lt;img src=<span class="string">"./assets/logo.png"</span>&gt;</span><br><span class="line">        &lt;img src=<span class="string">"./assets/logo.png"</span>&gt;</span><br><span class="line">        &lt;img src=<span class="string">"./assets/logo.png"</span>&gt;</span><br><span class="line">        &lt;img src=<span class="string">"./assets/logo.png"</span>&gt;</span><br><span class="line">        &lt;img src=<span class="string">"./assets/logo.png"</span>&gt;</span><br><span class="line">    &lt;/main&gt;</span><br><span class="line">    &lt;footer&gt;</span><br><span class="line">      &lt;input <span class="built_in">type</span>=<span class="string">"text"</span> placeholder=<span class="string">"footer..."</span> ref=<span class="string">"input"</span> v-on:focus=<span class="string">"changeScroll"</span>&gt;</span><br><span class="line">    &lt;/footer&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line"><span class="built_in">export</span> default &#123;</span><br><span class="line">  name: <span class="string">'app'</span>,</span><br><span class="line">  data: <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">    <span class="built_in">return</span> &#123;</span><br><span class="line">      timer: null</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    changeScroll: <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">      this.timer = setInterval(<span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">        document.body.scrollTop = document.body.scrollHeight</span><br><span class="line">      &#125;, 100)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
@@ -466,10 +466,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Inhaltsverzeichnis
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Übersicht
+            Overview
           </li>
         </ul>
       
@@ -493,8 +493,8 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">17</span>
-                  <span class="site-state-item-name">Artikel</span>
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">posts</span>
                 </a>
               </div>
             
@@ -507,7 +507,7 @@
               <div class="site-state-item site-state-tags">
                 
                   <span class="site-state-item-count">5</span>
-                  <span class="site-state-item-name">Tags</span>
+                  <span class="site-state-item-name">tags</span>
                 
               </div>
             
@@ -587,7 +587,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -597,7 +597,7 @@
 </div>
 
 
-  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 

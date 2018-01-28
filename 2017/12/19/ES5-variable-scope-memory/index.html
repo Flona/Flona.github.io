@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="CSS," />
+  <meta name="keywords" content="JS,ES5,读书笔记," />
 
 
 
@@ -79,19 +79,21 @@
 
 
 
-<meta name="description" content="垂直居中需求极其常见，实现的方法也多样，总结几个方法 基于绝对定位的垂直居中1234567position: absolute;top: 50%;right: 50%;width: 12em;height: 8em;margin-top: -4em;margin-right: -6em;">
-<meta name="keywords" content="CSS">
+<meta name="description" content="变量数据类型   基本类型 引用类型     简单的数据段 可能由多个值组成的对象   栈 堆内存   按值访问 按引用访问   可以改变保存在变量中实际的值 不能直接操作内存中的位置,操作的是指针不是实际的对象   动态创建属性不会报错，下一步取不到值 可以动态创建属性   复制变量，两个变量不存在关联，是完全独立的两个数据段 复制变量，两个变量引用同一个堆内存中的对象   函数参数按值传递，值">
+<meta name="keywords" content="JS,ES5,读书笔记">
 <meta property="og:type" content="article">
-<meta property="og:title" content="垂直居中">
-<meta property="og:url" content="http://www.yvonne.party/2017/04/25/vertical-centering/index.html">
+<meta property="og:title" content="读书笔记：ES5-变量、作用域和内存问题">
+<meta property="og:url" content="http://www.yvonne.party/2017/12/19/ES5-variable-scope-memory/index.html">
 <meta property="og:site_name" content="Yvonne">
-<meta property="og:description" content="垂直居中需求极其常见，实现的方法也多样，总结几个方法 基于绝对定位的垂直居中1234567position: absolute;top: 50%;right: 50%;width: 12em;height: 8em;margin-top: -4em;margin-right: -6em;">
-<meta property="og:image" content="http://www.yvonne.party/img/blogImg/vertical-centering1.jpeg">
-<meta property="og:updated_time" content="2017-12-14T11:53:31.049Z">
+<meta property="og:description" content="变量数据类型   基本类型 引用类型     简单的数据段 可能由多个值组成的对象   栈 堆内存   按值访问 按引用访问   可以改变保存在变量中实际的值 不能直接操作内存中的位置,操作的是指针不是实际的对象   动态创建属性不会报错，下一步取不到值 可以动态创建属性   复制变量，两个变量不存在关联，是完全独立的两个数据段 复制变量，两个变量引用同一个堆内存中的对象   函数参数按值传递，值">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/variable-scope-memory/variable1.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/variable-scope-memory/variable2.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/variable-scope-memory/variable3.jpeg">
+<meta property="og:updated_time" content="2017-12-20T02:07:05.089Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="垂直居中">
-<meta name="twitter:description" content="垂直居中需求极其常见，实现的方法也多样，总结几个方法 基于绝对定位的垂直居中1234567position: absolute;top: 50%;right: 50%;width: 12em;height: 8em;margin-top: -4em;margin-right: -6em;">
-<meta name="twitter:image" content="http://www.yvonne.party/img/blogImg/vertical-centering1.jpeg">
+<meta name="twitter:title" content="读书笔记：ES5-变量、作用域和内存问题">
+<meta name="twitter:description" content="变量数据类型   基本类型 引用类型     简单的数据段 可能由多个值组成的对象   栈 堆内存   按值访问 按引用访问   可以改变保存在变量中实际的值 不能直接操作内存中的位置,操作的是指针不是实际的对象   动态创建属性不会报错，下一步取不到值 可以动态创建属性   复制变量，两个变量不存在关联，是完全独立的两个数据段 复制变量，两个变量引用同一个堆内存中的对象   函数参数按值传递，值">
+<meta name="twitter:image" content="http://www.yvonne.party/img/blogImg/variable-scope-memory/variable1.jpeg">
 
 
 
@@ -121,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="http://www.yvonne.party/2017/04/25/vertical-centering/"/>
+  <link rel="canonical" href="http://www.yvonne.party/2017/12/19/ES5-variable-scope-memory/"/>
 
 
 
 
 
-  <title>垂直居中 | Yvonne</title>
+  <title>读书笔记：ES5-变量、作用域和内存问题 | Yvonne</title>
   
 
 
@@ -244,7 +246,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.yvonne.party/2017/04/25/vertical-centering/">
+    <link itemprop="mainEntityOfPage" href="http://www.yvonne.party/2017/12/19/ES5-variable-scope-memory/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yvonne">
@@ -261,7 +263,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">垂直居中</h1>
+          <h1 class="post-title" itemprop="name headline">读书笔记：ES5-变量、作用域和内存问题</h1>
         
 
         <div class="post-meta">
@@ -273,8 +275,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-25T14:40:14+08:00">
-                2017-04-25
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-19T10:22:46+08:00">
+                2017-12-19
               </time>
             
 
@@ -311,39 +313,64 @@
       
 
       
-        <p>垂直居中需求极其常见，实现的方法也多样，总结几个方法</p>
-<h2 id="基于绝对定位的垂直居中"><a href="#基于绝对定位的垂直居中" class="headerlink" title="基于绝对定位的垂直居中"></a>基于绝对定位的垂直居中</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">position: absolute;</span><br><span class="line">top: 50%;</span><br><span class="line">right: 50%;</span><br><span class="line">width: 12em;</span><br><span class="line">height: 8em;</span><br><span class="line">margin-top: -4em;</span><br><span class="line">margin-right: -6em;</span><br></pre></td></tr></table></figure>
+        <h3 id="变量数据类型"><a href="#变量数据类型" class="headerlink" title="变量数据类型"></a>变量数据类型</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">基本类型</th>
+<th style="text-align:center">引用类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">简单的数据段</td>
+<td style="text-align:center">可能由多个值组成的对象</td>
+</tr>
+<tr>
+<td style="text-align:center">栈</td>
+<td style="text-align:center">堆内存</td>
+</tr>
+<tr>
+<td style="text-align:center">按值访问</td>
+<td style="text-align:center">按引用访问</td>
+</tr>
+<tr>
+<td style="text-align:center">可以改变保存在变量中实际的值</td>
+<td style="text-align:center">不能直接操作内存中的位置,操作的是指针不是实际的对象</td>
+</tr>
+<tr>
+<td style="text-align:center">动态创建属性不会报错，下一步取不到值</td>
+<td style="text-align:center">可以动态创建属性</td>
+</tr>
+<tr>
+<td style="text-align:center">复制变量，两个变量不存在关联，是完全独立的两个数据段</td>
+<td style="text-align:center">复制变量，两个变量引用同一个堆内存中的对象</td>
+</tr>
+<tr>
+<td style="text-align:center">函数参数按值传递，值复制给给一个局部变量，依然按值访问</td>
+<td style="text-align:center">函数参数按值传递，指针地址复制给一个局部变量，按引用访问，内部重新赋值新对象将解除原指针指向</td>
+</tr>
+<tr>
+<td style="text-align:center">typeof检测</td>
+<td style="text-align:center">typeof只能检测出是对象，不能准确知道对象类型，instanceof检测对象类型</td>
+</tr>
+</tbody>
+</table>
 <a id="more"></a>
-<main style="width:20em;height:12em;position:relative;background:#fb3"><div style="position: absolute;top: 50%;right: 50%;width: 12em;height: 8em;margin-top: -4em;margin-right: -6em;background:#4a4a4a"></div></main>
-
-<p>别忘了，若是垂直居中某个标签当中，需要设置此标签<code>relative</code>定位</p>
-<p>可以借用<code>calc</code>减少两行声明，注意减号前后有空格！！！<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">position: absolute;</span><br><span class="line">top: calc(50% - 4em);</span><br><span class="line">right: calc(50% - 6em);</span><br><span class="line">width: 12em;</span><br><span class="line">height: 8em;</span><br></pre></td></tr></table></figure></p>
-<p><main style="width:20em;height:12em;position:relative;background:#fb3"><div style="position: absolute;top: calc(50% - 4em);right: calc(50% - 6em);width: 12em;height:8em;background:#4a4a4a"></div></main><br>以上方法的局限在于要求元素的宽高固定，如果我们能知道一个属性的百分比能代表元素本身的宽高，那就能解决问题，对于绝大多数CSS属性（包括<code>margin</code>）来说，百分比都是以父元素的尺寸为基准解析的</p>
-<p>但是！！CSS变形属性，在<code>translate()</code>变形函数中使用百分比值时，是以这个元素自身的宽高为基准解析的，这正是我们需要的<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">position: absolute;</span><br><span class="line">top: 50%;</span><br><span class="line">left: 50%;</span><br><span class="line">transform: translate(-50%, -50%);</span><br></pre></td></tr></table></figure></p>
-<p><main style="width:20em;height:12em;position:relative;background:#fb3"><div style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);background:#4a4a4a;width:12em;height:8em"></div></main><br>缺点：<br>首先有时不能选择绝对定位，这对整个布局影响很大；<br>其次当垂直居中的元素高度超过了窗口，它的顶部会被视口裁切掉；<br>最后在某些浏览器里可能会出现元素显示有一些模糊，因为元素可能被放置在半个像素上，可以用<code>transform-style: preserve-3d</code>来解决；</p>
-<h2 id="基于视口单位的垂直居中"><a href="#基于视口单位的垂直居中" class="headerlink" title="基于视口单位的垂直居中"></a>基于视口单位的垂直居中</h2><p>先介绍一下与视口相关的长度单位<br><code>vw</code>与视口宽度相关的，<code>1vw</code>是视口宽度的1%；<br><code>vh</code>与视口高度相关的，<code>1vh</code>是视口高度的1%；<br><code>vmin</code>视口宽度和高度小的那个，视口宽度小于视口高度则<code>1vmin=1vw</code>，反之<code>1vmin=1vh</code>；<br><code>vmax</code>视口宽度和高度大的那个，视口宽度大于视口高度则<code>1vmax=1vw</code>，反之<code>1vmax=1vh</code>；<br>so，如果不用绝对定位，可以用基于视口来达到定位的效果<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">margin: 50vh auto 0;</span><br><span class="line">transform: translateY(-50%);</span><br></pre></td></tr></table></figure></p>
-<p><img src="/img/blogImg/vertical-centering1.jpeg" alt="vertical-centering-vh"></p>
-<p>这种方式的缺点呢，就是只能做基于<strong>视口</strong>的垂直居中</p>
-<h2 id="基于Flexbox的垂直居中"><a href="#基于Flexbox的垂直居中" class="headerlink" title="基于Flexbox的垂直居中"></a>基于Flexbox的垂直居中</h2><p>这种方式是最优解，伸缩盒就是为这种需求所设计的，先给待居中元素的父元素设置<code>display: flex</code>，再给自身元素设置<code>margin: auto</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">.wrapper&#123;</span><br><span class="line">	display: flex;</span><br><span class="line">	width: 20em;</span><br><span class="line">	height: 12em;</span><br><span class="line">	background: <span class="comment">#fb3;</span></span><br><span class="line">&#125;</span><br><span class="line">.inner&#123;</span><br><span class="line">	margin: auto;</span><br><span class="line">	width: 12em;</span><br><span class="line">	height: 8em;</span><br><span class="line">	background: <span class="comment">#4a4a4a;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<div style="display: flex;width: 20em;height: 12em;background: #fb3;"><div style="margin: auto;width: 12em;height: 8em;background: #4a4a4a;"></div></div><br>Flexbox还有一个好处，就是可以为匿名容器（没有被标签包裹的文本节点）垂直居中，例如<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;main&gt;Center me ,Please!&lt;/main&gt;</span><br></pre></td></tr></table></figure><br><br>首先为该元素设定尺寸，然后设置<code>align-items</code>和<code>justify-content</code><br><br><div style="display: flex;width: 20em;height: 12em;background: #fb3;"><main style="background:#4a4a4a;color:white;width:12em;height:8em;margin:auto;display:flex;align-items:center;justify-content:center">Center me ,Please!</main></div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<p>⚠️引用类型复制是操作对象的引用，但设置对象的属性其实还是在操作实际的对象</p>
+<p>⚠️函数参数传递方式例子<br><img src="/img/blogImg/variable-scope-memory/variable1.jpeg"><br><img src="/img/blogImg/variable-scope-memory/variable2.jpeg"></p>
+<p>⚠️类型检测<br><img src="/img/blogImg/variable-scope-memory/variable3.jpeg"></p>
+<h3 id="执行环境和作用域"><a href="#执行环境和作用域" class="headerlink" title="执行环境和作用域"></a>执行环境和作用域</h3><p><strong>执行环境</strong>定义了变量活函数有权访问的其它数据，决定了它们各自的行为<br>类型只有<strong>全局和局部（函数）</strong></p>
+<p>每个执行环境都关联一个<strong>变量对象</strong>，保存着环境中定义的所有变量和函数，编写代码时无法访问，解析器在处理数据时会在后台使用</p>
+<p>执行环境中的所有代码执行完毕，该环境被销毁，保存在其中的所有变量和函数定义也都销毁（全局执行环境直到应用程序退出–例如关闭网页或浏览器–时才会被销毁）</p>
+<p>全局执行函数是最外层的执行环境，宿主环境不同全局执行环境就不同，在web浏览器中，window是全局执行环境，所有的全局变量和函数都作为window对象的属性和方法创建</p>
+<p>函数执行环境的过程：执行流进入函数–〉函数执行环境被推入一个环境栈中–〉函数执行完毕，执行函数被栈推出，控制权交还给原执行环境</p>
+<p>当代码在一个执行环境中执行时，会创建变量对象的<strong>作用域链</strong>，用于保证对执行环境有权访问的所有方法和函数有序访问，作用域链最前端是当前执行环境的变量对象，如果是函数执行环境，变量对象就是活动对象，最开始活动对象只包含一个变量即arguments对象（全局环境中不存在），下一个变量对象来自于包含环境，依次直到全局执行环境</p>
+<h4 id="延长作用域链"><a href="#延长作用域链" class="headerlink" title="延长作用域链"></a>延长作用域链</h4><p>利用某些语句在作用域链前端临时加入一个变量对象，执行结束后该变量对象被销毁</p>
+<p><code>with</code>语句<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function buildUrl()&#123;</span><br><span class="line">	var qs = &apos;?debug=true&apos;;</span><br><span class="line">	with(location)&#123;</span><br><span class="line">		var url = href + qs;</span><br><span class="line">	&#125;</span><br><span class="line">	return url;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><code>try-catch</code>语句中的<code>catch</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">try&#123;</span><br><span class="line">	//dosomething</span><br><span class="line">&#125;catch(err)&#123;</span><br><span class="line">	//创建新的变量对象，其中包含被抛出的错误对象的声明</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="没有块级作用域"><a href="#没有块级作用域" class="headerlink" title="没有块级作用域"></a>没有块级作用域</h4><p>只有全局作用域和函数作用域，不存在<code>{}</code>的块级作用域</p>
+<p>⚠️<code>for</code>循环中<code>var</code>声明的<code>i</code>是会添加到当前的执行环境的（全局/函数）</p>
+<h3 id="垃圾收集"><a href="#垃圾收集" class="headerlink" title="垃圾收集"></a>垃圾收集</h3>
       
     </div>
     
@@ -360,7 +387,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/CSS/" rel="tag"># CSS</a>
+            <a href="/tags/JS/" rel="tag"># JS</a>
+          
+            <a href="/tags/ES5/" rel="tag"># ES5</a>
+          
+            <a href="/tags/读书笔记/" rel="tag"># 读书笔记</a>
           
         </div>
       
@@ -373,8 +404,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/04/21/stripes/" rel="next" title="条纹背景">
-                <i class="fa fa-chevron-left"></i> 条纹背景
+              <a href="/2017/11/22/ES5-basics2/" rel="next" title="读书笔记：ES5-basics(下)">
+                <i class="fa fa-chevron-left"></i> 读书笔记：ES5-basics(下)
               </a>
             
           </div>
@@ -382,10 +413,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/05/30/steps/" rel="prev" title="步骤条">
-                步骤条 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -540,7 +567,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基于绝对定位的垂直居中"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x57FA;&#x4E8E;&#x7EDD;&#x5BF9;&#x5B9A;&#x4F4D;&#x7684;&#x5782;&#x76F4;&#x5C45;&#x4E2D;" class="headerlink" title="&#x57FA;&#x4E8E;&#x7EDD;&#x5BF9;&#x5B9A;&#x4F4D;&#x7684;&#x5782;&#x76F4;&#x5C45;&#x4E2D;"></a>&#x57FA;&#x4E8E;&#x7EDD;&#x5BF9;&#x5B9A;&#x4F4D;&#x7684;&#x5782;&#x76F4;&#x5C45;&#x4E2D;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基于视口单位的垂直居中"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x57FA;&#x4E8E;&#x89C6;&#x53E3;&#x5355;&#x4F4D;&#x7684;&#x5782;&#x76F4;&#x5C45;&#x4E2D;" class="headerlink" title="&#x57FA;&#x4E8E;&#x89C6;&#x53E3;&#x5355;&#x4F4D;&#x7684;&#x5782;&#x76F4;&#x5C45;&#x4E2D;"></a>&#x57FA;&#x4E8E;&#x89C6;&#x53E3;&#x5355;&#x4F4D;&#x7684;&#x5782;&#x76F4;&#x5C45;&#x4E2D;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基于Flexbox的垂直居中"><span class="nav-number">3.</span> <span class="nav-text"><a href="#&#x57FA;&#x4E8E;Flexbox&#x7684;&#x5782;&#x76F4;&#x5C45;&#x4E2D;" class="headerlink" title="&#x57FA;&#x4E8E;Flexbox&#x7684;&#x5782;&#x76F4;&#x5C45;&#x4E2D;"></a>&#x57FA;&#x4E8E;Flexbox&#x7684;&#x5782;&#x76F4;&#x5C45;&#x4E2D;</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#变量数据类型"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x53D8;&#x91CF;&#x6570;&#x636E;&#x7C7B;&#x578B;" class="headerlink" title="&#x53D8;&#x91CF;&#x6570;&#x636E;&#x7C7B;&#x578B;"></a>&#x53D8;&#x91CF;&#x6570;&#x636E;&#x7C7B;&#x578B;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#执行环境和作用域"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x6267;&#x884C;&#x73AF;&#x5883;&#x548C;&#x4F5C;&#x7528;&#x57DF;" class="headerlink" title="&#x6267;&#x884C;&#x73AF;&#x5883;&#x548C;&#x4F5C;&#x7528;&#x57DF;"></a>&#x6267;&#x884C;&#x73AF;&#x5883;&#x548C;&#x4F5C;&#x7528;&#x57DF;</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#延长作用域链"><span class="nav-number">2.1.</span> <span class="nav-text"><a href="#&#x5EF6;&#x957F;&#x4F5C;&#x7528;&#x57DF;&#x94FE;" class="headerlink" title="&#x5EF6;&#x957F;&#x4F5C;&#x7528;&#x57DF;&#x94FE;"></a>&#x5EF6;&#x957F;&#x4F5C;&#x7528;&#x57DF;&#x94FE;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#没有块级作用域"><span class="nav-number">2.2.</span> <span class="nav-text"><a href="#&#x6CA1;&#x6709;&#x5757;&#x7EA7;&#x4F5C;&#x7528;&#x57DF;" class="headerlink" title="&#x6CA1;&#x6709;&#x5757;&#x7EA7;&#x4F5C;&#x7528;&#x57DF;"></a>&#x6CA1;&#x6709;&#x5757;&#x7EA7;&#x4F5C;&#x7528;&#x57DF;</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#垃圾收集"><span class="nav-number">3.</span> <span class="nav-text"><a href="#&#x5783;&#x573E;&#x6536;&#x96C6;" class="headerlink" title="&#x5783;&#x573E;&#x6536;&#x96C6;"></a>&#x5783;&#x573E;&#x6536;&#x96C6;</span></a></li></ol></div>
             
 
           </div>

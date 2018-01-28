@@ -101,7 +101,7 @@
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-array/es5-array13.jpg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-array/es5-array14.jpg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-array/es5-array15.jpg">
-<meta property="og:updated_time" content="2017-12-15T06:26:29.239Z">
+<meta property="og:updated_time" content="2017-12-19T08:14:24.746Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="读书笔记：ES5-Array">
 <meta name="twitter:description" content="突如其来的读书笔记原本计划要系统的学习ES6的，但是中途很容易出现提到一些技术点对比时忘记了原有的技术情况，虽说ES5基本都是会的，但是很多东西不常用就会忘记，最近脑子不好用，经常想用什么的时候想不起来了，还要去查一下来确认，就想再过一遍基础知识了，看了几天又想统一做下笔记，方便自己之后查看～">
@@ -201,7 +201,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -221,7 +221,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -285,7 +285,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-20T11:09:00+08:00">
                 2017-09-20
@@ -376,12 +376,12 @@
 <p>ES5推出<code>Array.isArray()</code>只是判断值是不是数组，不关心值是在哪个全局环境创建的</p>
 <h3 id="转换方法"><a href="#转换方法" class="headerlink" title="转换方法"></a>转换方法</h3><p><strong>toString() &amp; valueOf() &amp; toLocaleString() &amp; join()</strong></p>
 <p><code>toString()</code>，每一项调用<code>toString()</code>方法，返回数组值以逗号分隔的字符串<br><code>valueOf()</code>，返回数组<br><code>toLocaleString()</code>，每一项调用<code>toLocaleString()</code>方法，返回数组值以逗号分隔的字符串<br>以上<strong>不影响原数组</strong></p>
-<p><img src="/img/blogImg/es5-array/es5-array1.jpg" style="max-width:400px"></p>
+<p><img src="/img/blogImg/es5-array/es5-array1.jpg"></p>
 <p>由于<code>alert()</code>要接收字符串，所以<code>alert(array)</code>会在后台调用<code>toString()</code>方法，与显示调用<code>toString()</code>效果一样</p>
 <p>以上返回的是以逗号分隔的字符串，<code>join()</code>可以自定义分隔符，不传递参数或者传<code>undefined</code>则都默认为逗号分隔，注意传递<code>null</code>会以<code>null</code>分隔，<strong>不影响原数组</strong></p>
-<p><img src="/img/blogImg/es5-array/es5-array2.jpg" style="max-width:400px"></p>
+<p><img src="/img/blogImg/es5-array/es5-array2.jpg"></p>
 <p>若数组某一项是<code>undefined</code>或者<code>null</code>，该值在<code>toString()</code>，<code>toLocaleString()</code>，<code>join()</code>返回结果中显示空字符，<code>valueOf()</code>还是原值</p>
-<p><img src="/img/blogImg/es5-array/es5-array3.jpg" style="max-width:400px"></p>
+<p><img src="/img/blogImg/es5-array/es5-array3.jpg"></p>
 <h3 id="栈-amp-队列方法"><a href="#栈-amp-队列方法" class="headerlink" title="栈&amp;队列方法"></a>栈&amp;队列方法</h3><p><strong>push() &amp; pop() &amp; unshift() &amp; shift()</strong></p>
 <p><code>push()</code>,尾部插入，可以传递多个参数，每个参数做为数组项插入，返回数组长度<br><code>pop()</code>,尾部删除一项，返回删除项<br><code>unshift()</code>,头部插入，可以传递多个参数，每个参数做为数组项插入，返回数组长度<br><code>shift()</code>,头部删除一项，返回删除项<br>以上<strong>影响的就是原数组</strong></p>
 <p>栈方法： Last-In-First-Out =&gt; <code>push()</code>和<code>pop()</code>组合</p>
@@ -389,37 +389,37 @@
 <p>反向队列方法： <code>unshift()</code>和<code>pop()</code>组合</p>
 <h3 id="重排序方法"><a href="#重排序方法" class="headerlink" title="重排序方法"></a>重排序方法</h3><p><strong>reverse() &amp; sort()</strong></p>
 <p><code>reverse()</code> =&gt; 反转数组项，返回重排序后的数组，<strong>影响的就是原数组</strong></p>
-<p><img src="/img/blogImg/es5-array/es5-array4.jpg" style="max-width:400px"></p>
+<p><img src="/img/blogImg/es5-array/es5-array4.jpg"></p>
 <p><code>sort()</code> =&gt; 从小到大排序，内部每一项调用<code>toString()</code>转换成字符串进行比较，返回重排序的数组，<strong>影响的就是原数组</strong></p>
-<p><img src="/img/blogImg/es5-array/es5-array5.jpg" style="max-width:400px"></p>
+<p><img src="/img/blogImg/es5-array/es5-array5.jpg"></p>
 <p>由于比较的是字符串，所以不够灵活，会出现20排在了3之前，所以<code>sort()</code>可以接受一个函数，返回值1表示value1排在value2后面，返回值-1表示value1排在value2前面，返回值0表示不动，所以完全可以自定义是从小到大排序还是从大到小排序</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function compare(value1,value2)&#123;</span><br><span class="line">	if(value1&gt;value2)&#123;</span><br><span class="line">		return 1;</span><br><span class="line">	&#125;else if(value1&lt;value2)&#123;</span><br><span class="line">		return -1;</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">[1,20,3].sort(compare);</span><br></pre></td></tr></table></figure>
-<p><img src="/img/blogImg/es5-array/es5-array6.jpg" style="max-width:400px"></p>
+<p><img src="/img/blogImg/es5-array/es5-array6.jpg"></p>
 <p>对于数值类型或者<code>valueOf()</code>返回数值的对象，完全可以利用减法返回值</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function compare(value1,value2)&#123;</span><br><span class="line">	return value1 - value2;</span><br><span class="line">&#125;</span><br><span class="line">var obj = &#123;valueOf: function()&#123;return 4&#125;&#125;;</span><br><span class="line">[1,5,obj].sort(compare);</span><br></pre></td></tr></table></figure>
-<p><img src="/img/blogImg/es5-array/es5-array7.jpg" style="max-width:400px"></p>
+<p><img src="/img/blogImg/es5-array/es5-array7.jpg"></p>
 <h3 id="操作方法"><a href="#操作方法" class="headerlink" title="操作方法"></a>操作方法</h3><p><strong>concat() &amp; slice() &amp; splice()</strong></p>
 <p><code>concat()</code> =&gt; 基于当前数组生成副本，并在副本末尾追加数组项，参数可以是多项，非数组参数直接做为数组项追加，数组参数则里面每一项都做为数组项追加，参数为空则是原数组副本，<strong>不影响原数组</strong></p>
-<p><img src="/img/blogImg/es5-array/es5-array8.jpg" style="max-width:400px"></p>
+<p><img src="/img/blogImg/es5-array/es5-array8.jpg"></p>
 <p><code>slice()</code> =&gt; 基于当前数组截取数组项，生成新的数组，一个参数则从此参数做为起始索引至原数组末尾，两个参数则从第一个参数做为索引起始至第二个参数做为索引的前一项，参数为空则返回原数组副本，若第一个参数大于第二个参数则返回空数组，<strong>不影响原数组</strong></p>
-<p><img src="/img/blogImg/es5-array/es5-array9.jpg" style="max-width:400px"></p>
+<p><img src="/img/blogImg/es5-array/es5-array9.jpg"></p>
 <p>特殊参数为负数情况：若参数为负数，则按照此负数加上数组长度的值为准，同时遵循若第一个参数大于第二个参数则返回空数组的规则</p>
-<p><img src="/img/blogImg/es5-array/es5-array10.jpg" style="max-width:400px"></p>
+<p><img src="/img/blogImg/es5-array/es5-array10.jpg"></p>
 <p><code>splice()</code> =&gt; 从指定索引开始删除某些项再插入某些项，参数为空原数组不变，插入项可以是多项，返回被删除项组成的数组，没删除返回空数组，<strong>影响的就是原数组</strong></p>
-<p><img src="/img/blogImg/es5-array/es5-array11.jpg" style="max-width:400px"></p>
+<p><img src="/img/blogImg/es5-array/es5-array11.jpg"></p>
 <h3 id="位置方法"><a href="#位置方法" class="headerlink" title="位置方法"></a>位置方法</h3><p><strong>indexOf() &amp; lastIndexOf()</strong></p>
 <p><strong>比较时使用全等操作符</strong></p>
 <p><code>indexOf()</code> =&gt; 从前到后搜索第一个出现的查询项，参数一是要查询的项，参数二（可选）是查询的起始索引，查询到返回索引，没查到返回-1</p>
-<p><img src="/img/blogImg/es5-array/es5-array12.jpg" style="max-width:400px"></p>
+<p><img src="/img/blogImg/es5-array/es5-array12.jpg"></p>
 <p><code>lastIndexOf()</code> =&gt; 反向搜索</p>
-<p><img src="/img/blogImg/es5-array/es5-array13.jpg" style="max-width:400px"></p>
+<p><img src="/img/blogImg/es5-array/es5-array13.jpg"></p>
 <h3 id="迭代方法"><a href="#迭代方法" class="headerlink" title="迭代方法"></a>迭代方法</h3><p><strong>every() &amp; some() &amp; filter() &amp; map() &amp; forEach()</strong></p>
 <p>以上都是传入两个参数，一个参数是给数组每项执行的给定函数(函数参数包括<code>item</code>数组项，<code>index</code>索引，<code>array</code>原数组)，第二个参数是执行该函数的作用域对象-<code>this</code>，<strong>都不影响原数组</strong></p>
 <p><code>every()</code> =&gt; 数组每项执行函数都返回<code>true</code>，返回<code>true</code>，否则<code>false</code><br><code>some()</code> =&gt; 只要有一个数组项执行函数返回<code>true</code>，就返回<code>true</code>，否则<code>false</code><br><code>filter()</code> =&gt; 数组每项执行给定函数，返回<code>true</code>的数组项组成新的数组返回<br><code>map()</code> =&gt; 数组每项执行给定函数，函数返回值组成新的数组返回<br><code>forEach()</code> =&gt; 数组每项执行给定函数，没有返回值，本质与使用<code>for</code>循环迭代一样</p>
-<p><img src="/img/blogImg/es5-array/es5-array14.jpg" style="max-width:400px"></p>
+<p><img src="/img/blogImg/es5-array/es5-array14.jpg"></p>
 <h3 id="归并方法"><a href="#归并方法" class="headerlink" title="归并方法"></a>归并方法</h3><p><strong>reduce() &amp; reduceRight()</strong></p>
 <p>两种方法不同于遍历方向，一个正向，一个反向，都传入两个参数，参数一是每项执行函数（函数参数包括<code>prev</code>前一项，<code>cur</code>当前项，<code>index</code>索引，<code>array</code>原数组），参数二（可选）是做为归并基础的初始值</p>
-<p><img src="/img/blogImg/es5-array/es5-array15.jpg" style="max-width:400px"></p>
+<p><img src="/img/blogImg/es5-array/es5-array15.jpg"></p>
 <p>代码纯手打，可能存在错误</p>
 
       
@@ -521,10 +521,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Inhaltsverzeichnis
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Übersicht
+            Overview
           </li>
         </ul>
       
@@ -548,8 +548,8 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">17</span>
-                  <span class="site-state-item-name">Artikel</span>
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">posts</span>
                 </a>
               </div>
             
@@ -562,7 +562,7 @@
               <div class="site-state-item site-state-tags">
                 
                   <span class="site-state-item-count">5</span>
-                  <span class="site-state-item-name">Tags</span>
+                  <span class="site-state-item-name">tags</span>
                 
               </div>
             
@@ -642,7 +642,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -652,7 +652,7 @@
 </div>
 
 
-  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 

@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Yvonne">
 <meta property="og:description" content="背景项目中经常出现格式化时间的情况，比如页面中时间展示或者做为接口参数传递等 时间对象提供了大量的获取日期时间的方法，利用已有方法接口封装好一个格式化方法做为时间对象的原型方法，可以大大方便相关编程">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/date/date-format.jpeg">
-<meta property="og:updated_time" content="2017-12-14T12:03:17.219Z">
+<meta property="og:updated_time" content="2017-12-19T08:14:05.940Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Date-Format">
 <meta name="twitter:description" content="背景项目中经常出现格式化时间的情况，比如页面中时间展示或者做为接口参数传递等 时间对象提供了大量的获取日期时间的方法，利用已有方法接口封装好一个格式化方法做为时间对象的原型方法，可以大大方便相关编程">
@@ -187,7 +187,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -207,7 +207,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -271,7 +271,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-26T10:18:04+08:00">
                 2017-07-26
@@ -314,7 +314,7 @@
         <h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>项目中经常出现格式化时间的情况，比如页面中时间展示或者做为接口参数传递等</p>
 <p>时间对象提供了大量的获取日期时间的方法，利用已有方法接口封装好一个格式化方法做为时间对象的原型方法，可以大大方便相关编程<br><a id="more"></a></p>
 <h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">Date.prototype.Format = function (fmt) &#123;</span><br><span class="line">      var o = &#123;</span><br><span class="line">        &apos;M+&apos; : this.getMonth() + 1,                  //月，占位1-2位</span><br><span class="line">        &apos;d+&apos; : this.getDate(),                       //日，占位1-2位</span><br><span class="line">        &apos;H+&apos; : this.getHours(),                      //时，占位1-2位</span><br><span class="line">        &apos;m+&apos; : this.getMinutes(),                    //分，占位1-2位</span><br><span class="line">        &apos;s+&apos; : this.getSeconds(),                    //秒，占位1-2位</span><br><span class="line">        &apos;S&apos; : this.getMilliseconds(),                //毫秒，占位1位，1-3位数字(不存在前面加零，取到啥值是啥值)</span><br><span class="line">        &apos;q+&apos; : Math.floor((this.getMonth() + 3)/3)   //季度，占位1-2位</span><br><span class="line">      &#125;</span><br><span class="line">      var week = &#123;</span><br><span class="line">        &quot;0&quot; : &quot;\u65e5&quot;,</span><br><span class="line">        &quot;1&quot; : &quot;\u4e00&quot;,</span><br><span class="line">        &quot;2&quot; : &quot;\u4e8c&quot;,</span><br><span class="line">        &quot;3&quot; : &quot;\u4e09&quot;,</span><br><span class="line">        &quot;4&quot; : &quot;\u56db&quot;,</span><br><span class="line">        &quot;5&quot; : &quot;\u4e94&quot;,</span><br><span class="line">        &quot;6&quot; : &quot;\u516d&quot;</span><br><span class="line">      &#125;</span><br><span class="line">      if (/(y+)/.test(fmt)) &#123;</span><br><span class="line">        fmt = fmt.replace( RegExp.$1, (this.getFullYear() + &apos;&apos;).substr( 4 - RegExp.$1.length) )</span><br><span class="line">      &#125;</span><br><span class="line">      for (var k in o) &#123;</span><br><span class="line">        if (new RegExp(&apos;(&apos; + k + &apos;)&apos;).test(fmt) ) &#123;</span><br><span class="line">          fmt = fmt.replace(RegExp.$1, (RegExp.$1.length === 1) ? (o[k]) : ((&quot;00&quot; + o[k]).substr((&quot;&quot; + o[k]).length)))</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      if (/(E+)/.test(fmt)) &#123;</span><br><span class="line">        fmt = fmt.replace(RegExp.$1, ((RegExp.$1.length &gt; 1) ? (RegExp.$1.length &gt; 2 ? &quot;\u661f\u671f&quot;: &quot;\u5468&quot;) : &quot;&quot;) + week[this.getDay() + &quot;&quot;])</span><br><span class="line">      &#125;</span><br><span class="line">      return fmt</span><br><span class="line">    &#125;</span><br><span class="line">    console.log(&apos;fmt&apos;,new Date().Format(&apos;yyyy-MM-dd EEE HH:mm:ss.S qq季度&apos;))</span><br></pre></td></tr></table></figure>
-<h3 id="测试结果"><a href="#测试结果" class="headerlink" title="测试结果"></a>测试结果</h3><p><img src="/img/blogImg/date/date-format.jpeg" style="max-width:400px"></p>
+<h3 id="测试结果"><a href="#测试结果" class="headerlink" title="测试结果"></a>测试结果</h3><p><img src="/img/blogImg/date/date-format.jpeg"></p>
 
       
     </div>
@@ -411,10 +411,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Inhaltsverzeichnis
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Übersicht
+            Overview
           </li>
         </ul>
       
@@ -438,8 +438,8 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">17</span>
-                  <span class="site-state-item-name">Artikel</span>
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">posts</span>
                 </a>
               </div>
             
@@ -452,7 +452,7 @@
               <div class="site-state-item site-state-tags">
                 
                   <span class="site-state-item-count">5</span>
-                  <span class="site-state-item-name">Tags</span>
+                  <span class="site-state-item-name">tags</span>
                 
               </div>
             
@@ -532,7 +532,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -542,7 +542,7 @@
 </div>
 
 
-  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 

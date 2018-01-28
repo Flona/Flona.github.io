@@ -99,8 +99,9 @@
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basics/basics11.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basics/basics12.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basics/basics13.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basics/basics18.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basics/basics14.jpeg">
-<meta property="og:updated_time" content="2017-12-18T09:26:48.648Z">
+<meta property="og:updated_time" content="2018-01-27T11:07:04.205Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="读书笔记：ES5-basics(上)">
 <meta name="twitter:description" content="所有方法-typeof-Boolean-isFinite-isNaN-Number-parseInt-parseFloat">
@@ -200,7 +201,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -220,7 +221,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -284,7 +285,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-31T23:25:07+08:00">
                 2017-10-31
@@ -369,15 +370,15 @@
 <h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><p>5种简单基本数据类型： <code>Undefined</code>,<code>Null</code>,<code>Number</code>,<code>String</code>,<code>Boolean</code></p>
 <p>1种复杂数据类型： <code>Object</code></p>
 <p><code>typeof</code> ：<br>    未定义的值 =&gt; <code>undefined</code><br>    <code>null</code>/对象 =&gt; <code>object</code><br>    布尔 =&gt; <code>boolean</code><br>    字符串 =&gt; <code>string</code><br>    数值 =&gt; <code>number</code><br>    函数 =&gt; <code>function</code></p>
-<p><img src="/img/blogImg/es5-basics/basics1.jpeg" style="max-width:400px"></p>
+<p><img src="/img/blogImg/es5-basics/basics1.jpeg"></p>
 <p><code>tyoeof</code>是操作符，所以后面可以跟括号也可以不跟</p>
 <p><code>typeof</code>针对对象的情况不能细分出是数组还是其他，<code>instanceOf</code>可以</p>
 <p>从技术上讲，函数也是对象，但是函数会有一些特殊的属性，所以能够判断出是函数还是对象很有必要的</p>
-<p>补充正则的情况：<br><img src="/img/blogImg/es5-basics/basics2.jpeg" style="max-width:400px"></p>
+<p>补充正则的情况：<br><img src="/img/blogImg/es5-basics/basics2.jpeg"></p>
 <h4 id="Undefined类型"><a href="#Undefined类型" class="headerlink" title="Undefined类型"></a>Undefined类型</h4><p>该数据类型只有一个值：<code>undefined</code></p>
 <p>表示<code>var</code>声明但未初始化</p>
 <p>对于未声明的变量只能执行一个方法<code>typeof</code>，执行其他操作会报错，但是！！对未声明的变量执行该方法与对声明未初始化的变量执行该方法返回值一样都是<code>undefined</code></p>
-<p><img src="/img/blogImg/es5-basics/basics3.jpeg" style="max-width:400px"></p>
+<p><img src="/img/blogImg/es5-basics/basics3.jpeg"></p>
 <p>所以严格做到用到的变量都声明，这样返回<code>undefined</code>就可以代表未初始化而不是未声明</p>
 <h4 id="Null类型"><a href="#Null类型" class="headerlink" title="Null类型"></a>Null类型</h4><p>该数据类型只有一个值：<code>null</code></p>
 <p>表示空对象指针</p>
@@ -417,7 +418,7 @@
 </tbody>
 </table>
 <p>所以要注意对于没有数据的空对象，<code>[]</code>/<code>{}</code>也会转换成<code>true</code>，只有<code>null</code>才会转换成<code>false</code>，所以在<code>if</code>语句中会自动执行<code>Boolean</code>要仔细⚠️</p>
-<p><img src="/img/blogImg/es5-basics/basics4.jpeg" style="max-width:400px"></p>
+<p><img src="/img/blogImg/es5-basics/basics4.jpeg"></p>
 <h4 id="Number类型"><a href="#Number类型" class="headerlink" title="Number类型"></a>Number类型</h4><p>该数据类型使用IEEE754格式表示整数和浮点数，数值字面量格式包含十进制／八进制（前置0后跟0-7，严格模式下会报错，ES6整体提升到严格模式了哟）／十六进制（前置0x后跟0-9和A-F，A-F大小写都可以），计算时最终都会转变成十进制数值</p>
 <h5 id="浮点数"><a href="#浮点数" class="headerlink" title="-浮点数"></a>-浮点数</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var floatNum = 1.1;</span><br><span class="line">//可以识别但是不推荐小数点前面没有整数的写法</span><br><span class="line">var floatNum = .1;</span><br></pre></td></tr></table></figure>
 <p>保存浮点数占用的内存空间是整数的两倍，所以<code>ECMAScript</code>会不失时机的把浮点数转换成整数，类似1.0/1.的情况</p>
@@ -427,25 +428,25 @@
 <h5 id="数值范围"><a href="#数值范围" class="headerlink" title="-数值范围"></a>-数值范围</h5><p><code>Number.MIN_VALUE</code> - <code>Number.MAX_VALUE</code></p>
 <p>超过范围的值用<code>Infinity</code>表示，具体到<code>-Infinity</code>和<code>+Infinity</code>，分别在<code>Number.NEGATIVE_INFINITY</code>和<code>Nnmber.POSITIVE_INFINITY</code>中存储</p>
 <p><code>isFinite()</code>判断是否在有效数值内</p>
-<p><img src="/img/blogImg/es5-basics/basics5.jpeg" style="max-width:400px"></p>
+<p><img src="/img/blogImg/es5-basics/basics5.jpeg"></p>
 <h5 id="NaN"><a href="#NaN" class="headerlink" title="-NaN"></a>-NaN</h5><p>Not a Number，本应返回数值但是未返回数值</p>
 <p>不会存在像其他编程语言那样任何数值除以0都会导致错误，在<code>ECMAScript</code>中0/0=<code>NaN</code>，整数／0=<code>+Infinity</code>，负数／0=<code>-Infinity</code></p>
 <p>特点： 任何涉及<code>NaN</code>的操作都会返回<code>NaN</code>；<code>NaN</code>与任何值都不相等，包括自己本身</p>
-<p><img src="/img/blogImg/es5-basics/basics6.jpeg" style="max-width:400px"></p>
+<p><img src="/img/blogImg/es5-basics/basics6.jpeg"></p>
 <p><code>isNaN()</code>，参数可以是任何类型数据，对参数进行转换数值操作，不能转换成数值的情况返回<code>true</code></p>
 <p>对于字符串的转换情况，可以看出用的方法应该是<code>Number()</code>，比如<code>&quot;1bule&quot;</code>都没有转换成数值</p>
-<p><img src="/img/blogImg/es5-basics/basics7.jpeg" style="max-width:400px"></p>
+<p><img src="/img/blogImg/es5-basics/basics7.jpeg"></p>
 <p>对于对象转换情况，先调用<code>valueOf()</code>，若不能返回数值再调用<code>toString()</code>，这是参考高级程序设计这本书中说的，但是在实际情况中执行时发现有<code>valueOf()</code>时，不管能不能转换成数值都不会执行<code>toString()</code>，没有<code>valueOf()</code>时才会取<code>toString()</code>的值为基准</p>
-<p><img src="/img/blogImg/es5-basics/basics8.jpeg" style="max-width:400px"></p>
+<p><img src="/img/blogImg/es5-basics/basics8.jpeg"></p>
 <h5 id="数值转换"><a href="#数值转换" class="headerlink" title="-数值转换"></a>-数值转换</h5><p><code>Number()</code>: 将任何数据类型转换成数值类型</p>
-<p>⚠️ 布尔值<code>true</code>=&gt;1，<code>false</code>=&gt;0<br>⚠️ <code>null</code>=&gt;0<br>⚠️ <code>undefined</code>=&gt;NaN<br>⚠️ 字符串，<code>&quot;&quot;</code>=&gt;0，字符串内是正常的数值即转成此数值，不识别八进制，识别十六进制，除此外包含其他非数值的返回<code>NaN</code><br>⚠️ 对象依然是前面提到的问题，只要有<code>valueOf()</code>就不会以<code>toString()</code>为结果</p>
-<p><img src="/img/blogImg/es5-basics/basics9.jpeg" style="max-width:400px"></p>
+<p>⚠️ 布尔值<code>true</code>=&gt;1，<code>false</code>=&gt;0<br>⚠️ <code>null</code>=&gt;0<br>⚠️ <code>undefined</code>=&gt;NaN<br>⚠️ 字符串，<code>&quot;&quot;</code>=&gt;0，字符串内是正常的数值即转成此数值，<strong><em>不识别八进制，识别十六进制</em></strong>，除此外包含其他非数值的返回<code>NaN</code><br>⚠️ 对象依然是前面提到的问题，只要有<code>valueOf()</code>就不会以<code>toString()</code>为结果</p>
+<p><img src="/img/blogImg/es5-basics/basics9.jpeg"></p>
 <p><code>parseInt()</code>: 将字符串转换成整数数值</p>
-<p>⚠️ 从第一个字符开始解析，一直解析到非数值为止，所以空字符返回<code>NaN</code><br>⚠️ ES5开始不能识别八进制，即忽略前导0，能识别十六进制，建议始终传入第二个参数指定几进制解析</p>
-<p><img src="/img/blogImg/es5-basics/basics10.jpeg" style="max-width:400px"></p>
+<p>⚠️ 从第一个字符开始解析，一直解析到非数值为止，所以空字符返回<code>NaN</code><br>⚠️ <strong><em>ES5开始不能识别八进制，即忽略前导0，能识别十六进制，建议始终传入第二个参数指定几进制解析（只有parseInt有第二个参数，Number和parseFloat都没有）</em></strong></p>
+<p><img src="/img/blogImg/es5-basics/basics10.jpeg"></p>
 <p><code>parseFloat</code>: 将字符串转换成浮点数</p>
-<p>⚠️ 从第一个字符开始解析，知道解析到无效的浮点数值，第二个小数点无效<br>⚠️ 只解析十进制，始终忽略前导0，没有第二个参数代表几进制基数<br>⚠️ 可被解析为整数的情况，解析为整数</p>
-<p><img src="/img/blogImg/es5-basics/basics11.jpeg" style="max-width:400px"></p>
+<p>⚠️ 从第一个字符开始解析，知道解析到无效的浮点数值，第二个小数点无效<br>⚠️ <strong><em>只解析十进制，始终忽略前导0，没有第二个参数代表几进制基数</em></strong><br>⚠️ 可被解析为整数的情况，解析为整数</p>
+<p><img src="/img/blogImg/es5-basics/basics11.jpeg"></p>
 <h4 id="String类型"><a href="#String类型" class="headerlink" title="String类型"></a>String类型</h4><p>用法：<code>&quot;&quot;</code>或<code>&#39;&#39;</code>，不能混用</p>
 <p>字符字面量 =&gt; 转义序列 =&gt; 非打印字符或具有其他用途的字符</p>
 <table>
@@ -504,16 +505,16 @@
 <p>上面的过程创建个能包含’javascript’的新字符串，填充’java’和’script’，最后要销毁’java’和’script’</p>
 <p>字符串转换：<code>toString()</code>和<code>String()</code></p>
 <p>除<code>null</code>和<code>undefined</code>都有<code>toString()</code>方法，注意对于数值类型不能直接调用，要用变量调用</p>
-<p><img src="/img/blogImg/es5-basics/basics12.jpeg" style="max-width:400px"></p>
+<p><img src="/img/blogImg/es5-basics/basics12.jpeg"></p>
 <p><code>String()</code>方法，有<code>toString()</code>方法的调用该方法，否则调用<code>String()</code>，所以<code>null</code>和<code>undefined</code>调用不会报错</p>
-<p><img src="/img/blogImg/es5-basics/basics13.jpeg" style="max-width:400px"></p>
-<p><strong>用的最多的方式是加号操作符！！！！</strong></p>
+<p><img src="/img/blogImg/es5-basics/basics13.jpeg"></p>
+<p><strong>用的最多的方式是加号操作符！！！！并且调用的是String()方法</strong>，如下图<br><img src="/img/blogImg/es5-basics/basics18.jpeg"></p>
 <h4 id="Object类型"><a href="#Object类型" class="headerlink" title="Object类型"></a>Object类型</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var obj = new Object();</span><br><span class="line">//有效，但不推荐省略括号</span><br><span class="line">var obj = new Object;</span><br><span class="line">//还有字面量方式，后面更详细总结</span><br></pre></td></tr></table></figure>
 <p><code>Object</code>是所有对象的基础，<code>Object</code>每个实例都具有的方法从和属性如下：</p>
 <p><code>object.constructor</code>： 保存用于创建这个对象的函数，上面的例子就是<code>Object()</code></p>
 <p><code>object.hasOwnProperty(propertyName)</code>：给定的属性在此对象实例（非原型）中存在，<code>propertyName</code>参数是<strong>字符串形式</strong></p>
 <p><code>prototypeObj.isPrototypeOf(object)</code>：xx是不是<code>object</code>的原型</p>
-<p><img src="/img/blogImg/es5-basics/basics14.jpeg" style="max-width:400px"></p>
+<p><img src="/img/blogImg/es5-basics/basics14.jpeg"></p>
 <p><code>object.propertyIsEnumerable(propertyName)</code>：给定的属性是否可以<code>for-in</code>枚举，<code>propertyName</code>参数是<strong>字符串形式</strong></p>
 <p><code>toLocaleString()</code>：返回字符串表示，与执行环境的地区对应</p>
 <p><code>toString()</code>：返回字符串表示</p>
@@ -619,10 +620,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Inhaltsverzeichnis
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Übersicht
+            Overview
           </li>
         </ul>
       
@@ -646,8 +647,8 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">17</span>
-                  <span class="site-state-item-name">Artikel</span>
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">posts</span>
                 </a>
               </div>
             
@@ -660,7 +661,7 @@
               <div class="site-state-item site-state-tags">
                 
                   <span class="site-state-item-count">5</span>
-                  <span class="site-state-item-name">Tags</span>
+                  <span class="site-state-item-name">tags</span>
                 
               </div>
             
@@ -740,7 +741,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -750,7 +751,7 @@
 </div>
 
 
-  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 

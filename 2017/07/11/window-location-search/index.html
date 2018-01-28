@@ -91,7 +91,7 @@
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/location/search3.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/location/search4.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/location/search5.jpeg">
-<meta property="og:updated_time" content="2017-12-15T09:01:05.482Z">
+<meta property="og:updated_time" content="2017-12-19T08:16:28.976Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Why is window.location.search empty?">
 <meta name="twitter:description" content="这是一个有趣的问题，其实开发中没有遇到过，是一次面试时被问到的，URL中存在?id=xxx这样的search部分，BUT调用window.location.search是空？？？ 测试只要search前面有#，window.location.search就会是空">
@@ -191,7 +191,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -211,7 +211,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -275,7 +275,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-11T10:54:47+08:00">
                 2017-07-11
@@ -318,14 +318,14 @@
         <p>这是一个有趣的问题，其实开发中没有遇到过，是一次面试时被问到的，URL中存在<code>?id=xxx</code>这样的search部分，BUT调用<code>window.location.search</code>是空？？？</p>
 <p>测试只要search前面有<code>#</code>，<code>window.location.search</code>就会是空<br><a id="more"></a></p>
 <p>正确取值的情况：</p>
-<p><img src="/img/blogImg/location/search1.jpeg" style="max-width:400px"></p>
-<p>不能正确取值的情况：<br><img src="/img/blogImg/location/search2.jpeg" style="max-width:400px"></p>
-<p>为什么search前面有<code>#</code>就不能取值呢？官方介绍里没有提及，搜索的结果如下：<br><img src="/img/blogImg/location/search3.jpeg" style="max-width:500px"></p>
-<p>结果：<br><img src="/img/blogImg/location/search4.jpeg" style="max-width:500px"></p>
+<p><img src="/img/blogImg/location/search1.jpeg"></p>
+<p>不能正确取值的情况：<br><img src="/img/blogImg/location/search2.jpeg"></p>
+<p>为什么search前面有<code>#</code>就不能取值呢？官方介绍里没有提及，搜索的结果如下：<br><img src="/img/blogImg/location/search3.jpeg"></p>
+<p>结果：<br><img src="/img/blogImg/location/search4.jpeg"></p>
 <p>原因是<code>#</code>后面都被识别为hash了，甚至不识别<code>?</code>部分的search，所以<code>#</code>后面的search取不到值，要解决的话一是避免这样的URL，二是取值的时候自己处理从hash中解析出来，封装好的代码如下：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> GetQueryString(name)</span><br><span class="line">&#123;</span><br><span class="line">     var search = window.location.search;</span><br><span class="line">     <span class="keyword">if</span>(!search)&#123;</span><br><span class="line">        var <span class="built_in">hash</span> = location.hash;</span><br><span class="line">        search = <span class="built_in">hash</span>?hash.substring(hash.indexOf(<span class="string">'?'</span>)):<span class="string">''</span>;</span><br><span class="line">     &#125;</span><br><span class="line">     var reg = new RegExp(<span class="string">"(^|&amp;)"</span>+ name +<span class="string">"=([^&amp;]*)(&amp;|$)"</span>);</span><br><span class="line">     var r = search.substr(1).match(reg);</span><br><span class="line">     <span class="keyword">if</span>(r!=null)<span class="built_in">return</span>  unescape(r[2]); <span class="built_in">return</span> null;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>另外如果你是直接在框架里操作，比如vue，就不用担心取不到值，利用它的<code>this.$route.query</code>是可以正常取值的</p>
-<p>下面是vue框架的截图<br><img src="/img/blogImg/location/search5.jpeg" style="max-width:500px"></p>
+<p>下面是vue框架的截图<br><img src="/img/blogImg/location/search5.jpeg"></p>
 
       
     </div>
@@ -440,8 +440,8 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">17</span>
-                  <span class="site-state-item-name">Artikel</span>
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">posts</span>
                 </a>
               </div>
             
@@ -454,7 +454,7 @@
               <div class="site-state-item site-state-tags">
                 
                   <span class="site-state-item-count">5</span>
-                  <span class="site-state-item-name">Tags</span>
+                  <span class="site-state-item-name">tags</span>
                 
               </div>
             
@@ -518,7 +518,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -528,7 +528,7 @@
 </div>
 
 
-  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 
