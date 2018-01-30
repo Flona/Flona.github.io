@@ -92,7 +92,10 @@
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basics/basics19.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basics/basics20.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basics/basics21.jpeg">
-<meta property="og:updated_time" content="2018-01-28T11:43:15.441Z">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basics/basics22.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basics/basics23.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basics/basics24.jpeg">
+<meta property="og:updated_time" content="2018-01-29T15:42:13.848Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="读书笔记：ES5-basics(下)">
 <meta name="twitter:description" content="操作符一元操作符-递增：    前置型 =&amp;gt; ++a =&amp;gt; 语句求值前先自加    后置型 =&amp;gt; a++ =&amp;gt; 语句求值后再自加">
@@ -192,7 +195,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -212,7 +215,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -276,7 +279,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-22T14:12:02+08:00">
                 2017-11-22
@@ -330,11 +333,25 @@
 <h4 id="乘性操作符"><a href="#乘性操作符" class="headerlink" title="乘性操作符"></a>乘性操作符</h4><p><code>ECMAScript</code>定义了3个乘性操作符，乘法（<code>*</code>）/除法（<code>/</code>）/求模（<code>%</code>）</p>
 <p>非数值类型参与乘性操作符都会先调用<code>number()</code>方法转换成数值类型后再计算</p>
 <h4 id="加性操作符"><a href="#加性操作符" class="headerlink" title="加性操作符"></a>加性操作符</h4><p><code>ECMAScript</code>定义了2个加性操作符，加法（<code>+</code>）/减法（<code>-</code>）</p>
-<p>加法 =&gt; 1⃣️若操作符存在一个是字符串，另一个操作符要转换成字符串（对象/数值/布尔调用<code>toString()</code>，<code>null</code>/<code>undefined</code>调用<code>String()</code>），再进行字符串拼接；2⃣️否则要按照数值来进行加法操作，部分实践结果如下：</p>
+<p>加法规则：<br>1、️若操作数存在一个是字符串，另一个操作数要转换成字符串再拼接<br>2、操作数是对象/数值/布尔会主动调用<code>toString()</code>，<code>null</code>/<code>undefined</code>主动调用调用<code>String()</code>，再字符串拼接<br>3、️否则两个操作数都数数值，要按照数值来进行加法操作<br>部分实践结果如下：</p>
 <p><img src="/img/blogImg/es5-basics/basics19.jpeg"><br><img src="/img/blogImg/es5-basics/basics20.jpeg"></p>
-<p>减法 =&gt; 非数值会调用<code>Number()</code>转换成数值后再做减法运算</p>
+<p>减法规则：<br>1、一个操作数是字符串/布尔值/<code>null</code>/<code>undefined</code>，会主动调用<code>Number()</code>转换成数值后再做减法运算<br>2、操作数是对象，依然是<code>valueOf()</code>/<code>toString()</code><br>3、否则两个操作数都是数值就直接做减法</p>
 <p><img src="/img/blogImg/es5-basics/basics21.jpeg"></p>
-
+<h4 id="关系操作符"><a href="#关系操作符" class="headerlink" title="关系操作符"></a>关系操作符</h4><p><code>&gt;</code>/<code>&gt;=</code>/<code>&lt;</code>/<code>&lt;=</code>，结果返回布尔值</p>
+<p>规则：<br>1、当两个操作符都是字符串时按照顺序依次比较两个字符串的字符编码（大写字母的编码比小写字母编码小）<br>2、一个操作数是数值，另个操作数要转换成数值再进行比较，若有操作符不能转换成数值也就是转换成<code>NaN</code>了，那怎么比较都是<code>false</code><br>3、操作数是布尔值会主动转换成数值<br>3、对象会主动调用<code>valueOf()</code>/<code>toString()</code>，根据结果再按照上面情况比较</p>
+<p><img src="/img/blogImg/es5-basics/basics22.jpeg"></p>
+<p>⚠️上图中标红的根据实际情况不太合理<br>第一种’Black’应该大于’apple’，但是B字母大写的编码比小写的小，解决可以是调用<code>toLowerCase()</code>统一小写后再比较<br>第二种是’23’应该大于’3’，但是首个字符串单元’3’字符编码小于’2’的字符编码，所以不要都是字符串进行比较，应该转换成数值再比较</p>
+<p><img src="/img/blogImg/es5-basics/basics23.jpeg"></p>
+<h4 id="相等操作符"><a href="#相等操作符" class="headerlink" title="相等操作符"></a>相等操作符</h4><p>相等和不相等 =&gt; 先转换再比较（强制转型）<br>全等和不全等 =&gt; 仅比较而不转换</p>
+<h5 id="和"><a href="#和" class="headerlink" title="==和!="></a><code>==</code>和<code>!=</code></h5><p>转型规则：<br>1、操作数存在数值都要转换成数值，再比较<br>2、布尔值会主动被转换成数值，再比较<br>3、<code>null</code>和<code>undefined</code>在比较前不会转换成其他类型，且<code>null == undefined</code><br>4、<code>NaN</code>和任何值都不等，包括自己本身<br>5、仅有一个对象则调用<code>valueOf()</code>/<code>toString()</code>，再比较<br>6、两个都是对象则比较两个对象是否指向同一个对象，是true，否false</p>
+<p><img src="/img/blogImg/es5-basics/basics24.jpeg"></p>
+<h5 id="和-1"><a href="#和-1" class="headerlink" title="===和!=="></a><code>===</code>和<code>!==</code></h5><p>在比较之前不转换任何操作数，除此之外没有什么不同</p>
+<p>相比推荐使用全等和不全等</p>
+<h4 id="条件操作符"><a href="#条件操作符" class="headerlink" title="条件操作符"></a>条件操作符</h4><p><code>a&gt;b ? a : b</code></p>
+<h4 id="赋值操作符"><a href="#赋值操作符" class="headerlink" title="赋值操作符"></a>赋值操作符</h4><p><code>=</code><br>复合赋值操作<br><code>+=</code>、<code>-=</code>、<code>*=</code>、<code>/=</code>、<code>%=</code>、<code>&lt;&lt;=</code>、<code>&gt;&gt;=</code>、<code>&gt;&gt;&gt;=</code></p>
+<h4 id="逗号操作符"><a href="#逗号操作符" class="headerlink" title="逗号操作符"></a>逗号操作符</h4><p>1、声明多个变量<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var a = 1,b = 2;</span><br></pre></td></tr></table></figure></p>
+<p>2、赋值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var num = (1,2,3,4,5)</span><br><span class="line">// num的值是5</span><br></pre></td></tr></table></figure></p>
+<h3 id="语句"><a href="#语句" class="headerlink" title="语句"></a>语句</h3>
       
     </div>
     
@@ -434,10 +451,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
+            Übersicht
           </li>
         </ul>
       
@@ -462,7 +479,7 @@
                 <a href="/archives/">
               
                   <span class="site-state-item-count">18</span>
-                  <span class="site-state-item-name">posts</span>
+                  <span class="site-state-item-name">Artikel</span>
                 </a>
               </div>
             
@@ -475,7 +492,7 @@
               <div class="site-state-item site-state-tags">
                 
                   <span class="site-state-item-count">5</span>
-                  <span class="site-state-item-name">tags</span>
+                  <span class="site-state-item-name">Tags</span>
                 
               </div>
             
@@ -535,7 +552,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#操作符"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x64CD;&#x4F5C;&#x7B26;" class="headerlink" title="&#x64CD;&#x4F5C;&#x7B26;"></a>&#x64CD;&#x4F5C;&#x7B26;</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一元操作符"><span class="nav-number">1.1.</span> <span class="nav-text"><a href="#&#x4E00;&#x5143;&#x64CD;&#x4F5C;&#x7B26;" class="headerlink" title="&#x4E00;&#x5143;&#x64CD;&#x4F5C;&#x7B26;"></a>&#x4E00;&#x5143;&#x64CD;&#x4F5C;&#x7B26;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#位操作符"><span class="nav-number">1.2.</span> <span class="nav-text"><a href="#&#x4F4D;&#x64CD;&#x4F5C;&#x7B26;" class="headerlink" title="&#x4F4D;&#x64CD;&#x4F5C;&#x7B26;"></a>&#x4F4D;&#x64CD;&#x4F5C;&#x7B26;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#布尔操作符"><span class="nav-number">1.3.</span> <span class="nav-text"><a href="#&#x5E03;&#x5C14;&#x64CD;&#x4F5C;&#x7B26;" class="headerlink" title="&#x5E03;&#x5C14;&#x64CD;&#x4F5C;&#x7B26;"></a>&#x5E03;&#x5C14;&#x64CD;&#x4F5C;&#x7B26;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#乘性操作符"><span class="nav-number">1.4.</span> <span class="nav-text"><a href="#&#x4E58;&#x6027;&#x64CD;&#x4F5C;&#x7B26;" class="headerlink" title="&#x4E58;&#x6027;&#x64CD;&#x4F5C;&#x7B26;"></a>&#x4E58;&#x6027;&#x64CD;&#x4F5C;&#x7B26;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#加性操作符"><span class="nav-number">1.5.</span> <span class="nav-text"><a href="#&#x52A0;&#x6027;&#x64CD;&#x4F5C;&#x7B26;" class="headerlink" title="&#x52A0;&#x6027;&#x64CD;&#x4F5C;&#x7B26;"></a>&#x52A0;&#x6027;&#x64CD;&#x4F5C;&#x7B26;</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#操作符"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x64CD;&#x4F5C;&#x7B26;" class="headerlink" title="&#x64CD;&#x4F5C;&#x7B26;"></a>&#x64CD;&#x4F5C;&#x7B26;</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一元操作符"><span class="nav-number">1.1.</span> <span class="nav-text"><a href="#&#x4E00;&#x5143;&#x64CD;&#x4F5C;&#x7B26;" class="headerlink" title="&#x4E00;&#x5143;&#x64CD;&#x4F5C;&#x7B26;"></a>&#x4E00;&#x5143;&#x64CD;&#x4F5C;&#x7B26;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#位操作符"><span class="nav-number">1.2.</span> <span class="nav-text"><a href="#&#x4F4D;&#x64CD;&#x4F5C;&#x7B26;" class="headerlink" title="&#x4F4D;&#x64CD;&#x4F5C;&#x7B26;"></a>&#x4F4D;&#x64CD;&#x4F5C;&#x7B26;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#布尔操作符"><span class="nav-number">1.3.</span> <span class="nav-text"><a href="#&#x5E03;&#x5C14;&#x64CD;&#x4F5C;&#x7B26;" class="headerlink" title="&#x5E03;&#x5C14;&#x64CD;&#x4F5C;&#x7B26;"></a>&#x5E03;&#x5C14;&#x64CD;&#x4F5C;&#x7B26;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#乘性操作符"><span class="nav-number">1.4.</span> <span class="nav-text"><a href="#&#x4E58;&#x6027;&#x64CD;&#x4F5C;&#x7B26;" class="headerlink" title="&#x4E58;&#x6027;&#x64CD;&#x4F5C;&#x7B26;"></a>&#x4E58;&#x6027;&#x64CD;&#x4F5C;&#x7B26;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#加性操作符"><span class="nav-number">1.5.</span> <span class="nav-text"><a href="#&#x52A0;&#x6027;&#x64CD;&#x4F5C;&#x7B26;" class="headerlink" title="&#x52A0;&#x6027;&#x64CD;&#x4F5C;&#x7B26;"></a>&#x52A0;&#x6027;&#x64CD;&#x4F5C;&#x7B26;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关系操作符"><span class="nav-number">1.6.</span> <span class="nav-text"><a href="#&#x5173;&#x7CFB;&#x64CD;&#x4F5C;&#x7B26;" class="headerlink" title="&#x5173;&#x7CFB;&#x64CD;&#x4F5C;&#x7B26;"></a>&#x5173;&#x7CFB;&#x64CD;&#x4F5C;&#x7B26;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#相等操作符"><span class="nav-number">1.7.</span> <span class="nav-text"><a href="#&#x76F8;&#x7B49;&#x64CD;&#x4F5C;&#x7B26;" class="headerlink" title="&#x76F8;&#x7B49;&#x64CD;&#x4F5C;&#x7B26;"></a>&#x76F8;&#x7B49;&#x64CD;&#x4F5C;&#x7B26;</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#和"><span class="nav-number">1.7.1.</span> <span class="nav-text"><a href="#&#x548C;" class="headerlink" title="==&#x548C;!="></a><code>==</code>&#x548C;<code>!=</code></span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#和-1"><span class="nav-number">1.7.2.</span> <span class="nav-text"><a href="#&#x548C;-1" class="headerlink" title="===&#x548C;!=="></a><code>===</code>&#x548C;<code>!==</code></span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#条件操作符"><span class="nav-number">1.8.</span> <span class="nav-text"><a href="#&#x6761;&#x4EF6;&#x64CD;&#x4F5C;&#x7B26;" class="headerlink" title="&#x6761;&#x4EF6;&#x64CD;&#x4F5C;&#x7B26;"></a>&#x6761;&#x4EF6;&#x64CD;&#x4F5C;&#x7B26;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#赋值操作符"><span class="nav-number">1.9.</span> <span class="nav-text"><a href="#&#x8D4B;&#x503C;&#x64CD;&#x4F5C;&#x7B26;" class="headerlink" title="&#x8D4B;&#x503C;&#x64CD;&#x4F5C;&#x7B26;"></a>&#x8D4B;&#x503C;&#x64CD;&#x4F5C;&#x7B26;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#逗号操作符"><span class="nav-number">1.10.</span> <span class="nav-text"><a href="#&#x9017;&#x53F7;&#x64CD;&#x4F5C;&#x7B26;" class="headerlink" title="&#x9017;&#x53F7;&#x64CD;&#x4F5C;&#x7B26;"></a>&#x9017;&#x53F7;&#x64CD;&#x4F5C;&#x7B26;</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#语句"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x8BED;&#x53E5;" class="headerlink" title="&#x8BED;&#x53E5;"></a>&#x8BED;&#x53E5;</span></a></li></ol></div>
             
 
           </div>
@@ -565,7 +582,7 @@
 </div>
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 
