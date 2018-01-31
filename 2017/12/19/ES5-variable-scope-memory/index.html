@@ -88,8 +88,9 @@
 <meta property="og:description" content="变量数据类型   基本类型 引用类型     简单的数据段 可能由多个值组成的对象   栈 堆内存   按值访问 按引用访问   可以改变保存在变量中实际的值 不能直接操作内存中的位置,操作的是指针不是实际的对象   动态创建属性不会报错，下一步取不到值 可以动态创建属性   复制变量，两个变量不存在关联，是完全独立的两个数据段 复制变量，两个变量引用同一个堆内存中的对象   函数参数按值传递，值">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/variable-scope-memory/variable1.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/variable-scope-memory/variable2.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/variable-scope-memory/variable4.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/variable-scope-memory/variable3.jpeg">
-<meta property="og:updated_time" content="2017-12-20T02:07:05.089Z">
+<meta property="og:updated_time" content="2018-01-31T13:51:10.862Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="读书笔记：ES5-变量、作用域和内存问题">
 <meta name="twitter:description" content="变量数据类型   基本类型 引用类型     简单的数据段 可能由多个值组成的对象   栈 堆内存   按值访问 按引用访问   可以改变保存在变量中实际的值 不能直接操作内存中的位置,操作的是指针不是实际的对象   动态创建属性不会报错，下一步取不到值 可以动态创建属性   复制变量，两个变量不存在关联，是完全独立的两个数据段 复制变量，两个变量引用同一个堆内存中的对象   函数参数按值传递，值">
@@ -357,9 +358,10 @@
 </table>
 <a id="more"></a>
 <p>⚠️引用类型复制是操作对象的引用，但设置对象的属性其实还是在操作实际的对象</p>
-<p>⚠️函数参数传递方式例子<br><img src="/img/blogImg/variable-scope-memory/variable1.jpeg"><br><img src="/img/blogImg/variable-scope-memory/variable2.jpeg"></p>
+<p>⚠️函数参数传递方式例子<br><img src="/img/blogImg/variable-scope-memory/variable1.jpeg"><br><img src="/img/blogImg/variable-scope-memory/variable2.jpeg"><br><img src="/img/blogImg/variable-scope-memory/variable4.jpeg"></p>
+<p>⚠️其实这样重新给引用类型变量定义新的对象都是在给它更换引用指针，不会改变原来共同指向同一个堆内存对象的其他变量，其实按照引用访问或者按照引用传递参数，其实这个引用只是一种方式规则，可以理解成是指向不会变更，访问按照引用方式那么就是说访问按照指针的指定来访问，我只是这样依据指针读取，你怎样改变我读取的方式不变指向不变，如果说值是按照引用传递的那么引用这个词落在了传递上，即落在了复制上，也就是说这个函数内的局部变量的指向被这样传递过来指向就不变了，但是实践结果不是的，这个局部变量可以任意更换成别的值别的数据类型</p>
 <p>⚠️类型检测<br><img src="/img/blogImg/variable-scope-memory/variable3.jpeg"></p>
-<h3 id="执行环境和作用域"><a href="#执行环境和作用域" class="headerlink" title="执行环境和作用域"></a>执行环境和作用域</h3><p><strong>执行环境</strong>定义了变量活函数有权访问的其它数据，决定了它们各自的行为<br>类型只有<strong>全局和局部（函数）</strong></p>
+<h3 id="执行环境和作用域"><a href="#执行环境和作用域" class="headerlink" title="执行环境和作用域"></a>执行环境和作用域</h3><p><strong>执行环境</strong>定义了变量或函数有权访问的其它数据，决定了它们各自的行为<br>类型只有<strong>全局和局部（函数）</strong></p>
 <p>每个执行环境都关联一个<strong>变量对象</strong>，保存着环境中定义的所有变量和函数，编写代码时无法访问，解析器在处理数据时会在后台使用</p>
 <p>执行环境中的所有代码执行完毕，该环境被销毁，保存在其中的所有变量和函数定义也都销毁（全局执行环境直到应用程序退出–例如关闭网页或浏览器–时才会被销毁）</p>
 <p>全局执行函数是最外层的执行环境，宿主环境不同全局执行环境就不同，在web浏览器中，window是全局执行环境，所有的全局变量和函数都作为window对象的属性和方法创建</p>
@@ -370,7 +372,16 @@
 <p><code>try-catch</code>语句中的<code>catch</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">try&#123;</span><br><span class="line">	//dosomething</span><br><span class="line">&#125;catch(err)&#123;</span><br><span class="line">	//创建新的变量对象，其中包含被抛出的错误对象的声明</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h4 id="没有块级作用域"><a href="#没有块级作用域" class="headerlink" title="没有块级作用域"></a>没有块级作用域</h4><p>只有全局作用域和函数作用域，不存在<code>{}</code>的块级作用域</p>
 <p>⚠️<code>for</code>循环中<code>var</code>声明的<code>i</code>是会添加到当前的执行环境的（全局/函数）</p>
-<h3 id="垃圾收集"><a href="#垃圾收集" class="headerlink" title="垃圾收集"></a>垃圾收集</h3>
+<h3 id="垃圾收集"><a href="#垃圾收集" class="headerlink" title="垃圾收集"></a>垃圾收集</h3><p>JavaScript采用自动垃圾收集机制，即执行环境会负责管理代码执行过程中使用的内存，开发人员不必关心内存使用问题<br>原理：跟踪变量，为不再使用的变量打上标签，垃圾收集机制会根据固定的时间间隔周期性释放这些标签变量占用的内存<br>打标签的策略：标记清除/引用计数</p>
+<p>标记清除（最常用）：进入执行环境加上进入环境标记，离开加上离开环境标记…</p>
+<p>引用计数（不常见）：当一个变量赋值一个引用类型值时，这个值引用次数是1，当另一个变量又赋值这个值时，该值的引用次数加1，相反当引用该值的变量重新赋值了别的值，则此值引用次数减1，直到引用次数变为0时说明此值已经无用，下次垃圾回收机制运行时会释放引用次数为0值占用的内存<br>导致的问题=&gt;循环引用：声明初始化两个对象变量，变量A存在属性赋值是变量B，同样B变量存在属性赋值是变量A，这样变量AB的值引用次数均是2（一次是变量A/B赋值一次是被B/A属性赋值），永远不会被垃圾回收机制释放内存，如果这种情况是在函数当中，函数被多次调用就会存在大量不能被释放的内存空间，后来IE转而用标记清除法<br>但是即便IE的JS引擎采用标记清除方式，也还存在循环引用的问题，IE的BOM和DOM的对象是C++以COM（Component Object Model）对象的形式实现的，而COM的垃圾回收机制依然是引用计数的方式，只要设计COM对象依然会有问题</p>
+<p>例如DOM和JS建立连接，如下的循环引用情况，即便DOM从页面中移除也不会被回收机制释放<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var element = document.getElementById(&apos;myElement&apos;);</span><br><span class="line">var obj = new Object();</span><br><span class="line">obj.name = element;</span><br><span class="line">element.name = obj;</span><br></pre></td></tr></table></figure></p>
+<p>解决方式是手动解除DOM和JS的连接<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// 赋值null代表切断与之前引用的值的连接</span><br><span class="line">obj.name = null;</span><br><span class="line">element.name = null;</span><br></pre></td></tr></table></figure></p>
+<p><strong>在IE9开始，IE的BOM和DOM不再使用COM形式，而是真正的JS对象形式，消除了常见的内存泄漏</strong></p>
+<p>管理内存：虽然具备自动垃圾回收机制，但是分配给WEB浏览器的内存远比桌面程序的少，由于内存限制不仅会影响给变量分配内存，同时会影响调用栈以及一个线程中可以同时执行的语句数量，所以占用少的内存可以让页面获得更好的性能，做法是及时解除不再需要的变量，<strong>应用的是在全局环境下的全局变量和全局对象的属性，函数执行环境离开后变量自动解除不用管</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var fun = function()&#123;</span><br><span class="line">  //...</span><br><span class="line">&#125;;</span><br><span class="line">var a = fun();</span><br><span class="line">// do something</span><br><span class="line">a = null;</span><br></pre></td></tr></table></figure>
+<p>⚠️赋值为<code>null</code>不是立即释放内存，而是推出执行环境，以便下次回收机制运行时回收</p>
+
       
     </div>
     
