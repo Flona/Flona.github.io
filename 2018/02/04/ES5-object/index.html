@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="JS," />
+  <meta name="keywords" content="JS,ES5,读书笔记," />
 
 
 
@@ -79,23 +79,19 @@
 
 
 
-<meta name="description" content="这是一个有趣的问题，其实开发中没有遇到过，是一次面试时被问到的，URL中存在?id=xxx这样的search部分，BUT调用window.location.search是空？？？ 测试只要search前面有#，window.location.search就会是空">
-<meta name="keywords" content="JS">
+<meta name="description" content="引用类型引用类型是一种数据结构，用于将数据和功能组织在一起，别名：类/对象定义引用类型的值（对象）是引用类型的一个实例，通过new操作符后跟一个构造函数来创建（构造函数本身就是一个函数，只不过该函数是出于创建新对象的目的而定义的）">
+<meta name="keywords" content="JS,ES5,读书笔记">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Why is window.location.search empty?">
-<meta property="og:url" content="http://www.yvonne.party/2017/07/11/window-location-search/index.html">
+<meta property="og:title" content="读书笔记：ES5-Object">
+<meta property="og:url" content="http://www.yvonne.party/2018/02/04/ES5-object/index.html">
 <meta property="og:site_name" content="Yvonne">
-<meta property="og:description" content="这是一个有趣的问题，其实开发中没有遇到过，是一次面试时被问到的，URL中存在?id=xxx这样的search部分，BUT调用window.location.search是空？？？ 测试只要search前面有#，window.location.search就会是空">
-<meta property="og:image" content="http://www.yvonne.party/img/blogImg/location/search1.jpeg">
-<meta property="og:image" content="http://www.yvonne.party/img/blogImg/location/search2.jpeg">
-<meta property="og:image" content="http://www.yvonne.party/img/blogImg/location/search3.jpeg">
-<meta property="og:image" content="http://www.yvonne.party/img/blogImg/location/search4.jpeg">
-<meta property="og:image" content="http://www.yvonne.party/img/blogImg/location/search5.jpeg">
-<meta property="og:updated_time" content="2017-12-19T08:16:28.976Z">
+<meta property="og:description" content="引用类型引用类型是一种数据结构，用于将数据和功能组织在一起，别名：类/对象定义引用类型的值（对象）是引用类型的一个实例，通过new操作符后跟一个构造函数来创建（构造函数本身就是一个函数，只不过该函数是出于创建新对象的目的而定义的）">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basics/basics14.jpeg">
+<meta property="og:updated_time" content="2018-02-04T13:54:19.095Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Why is window.location.search empty?">
-<meta name="twitter:description" content="这是一个有趣的问题，其实开发中没有遇到过，是一次面试时被问到的，URL中存在?id=xxx这样的search部分，BUT调用window.location.search是空？？？ 测试只要search前面有#，window.location.search就会是空">
-<meta name="twitter:image" content="http://www.yvonne.party/img/blogImg/location/search1.jpeg">
+<meta name="twitter:title" content="读书笔记：ES5-Object">
+<meta name="twitter:description" content="引用类型引用类型是一种数据结构，用于将数据和功能组织在一起，别名：类/对象定义引用类型的值（对象）是引用类型的一个实例，通过new操作符后跟一个构造函数来创建（构造函数本身就是一个函数，只不过该函数是出于创建新对象的目的而定义的）">
+<meta name="twitter:image" content="http://www.yvonne.party/img/blogImg/es5-basics/basics14.jpeg">
 
 
 
@@ -125,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://www.yvonne.party/2017/07/11/window-location-search/"/>
+  <link rel="canonical" href="http://www.yvonne.party/2018/02/04/ES5-object/"/>
 
 
 
 
 
-  <title>Why is window.location.search empty? | Yvonne</title>
+  <title>读书笔记：ES5-Object | Yvonne</title>
   
 
 
@@ -248,7 +244,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.yvonne.party/2017/07/11/window-location-search/">
+    <link itemprop="mainEntityOfPage" href="http://www.yvonne.party/2018/02/04/ES5-object/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yvonne">
@@ -265,7 +261,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Why is window.location.search empty?</h1>
+          <h1 class="post-title" itemprop="name headline">读书笔记：ES5-Object</h1>
         
 
         <div class="post-meta">
@@ -277,8 +273,8 @@
               
                 <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-11T10:54:47+08:00">
-                2017-07-11
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-04T18:19:26+08:00">
+                2018-02-04
               </time>
             
 
@@ -315,18 +311,22 @@
       
 
       
-        <p>这是一个有趣的问题，其实开发中没有遇到过，是一次面试时被问到的，URL中存在<code>?id=xxx</code>这样的search部分，BUT调用<code>window.location.search</code>是空？？？</p>
-<p>测试只要search前面有<code>#</code>，<code>window.location.search</code>就会是空<br><a id="more"></a></p>
-<p>正确取值的情况：</p>
-<p><img src="/img/blogImg/location/search1.jpeg"></p>
-<p>不能正确取值的情况：<br><img src="/img/blogImg/location/search2.jpeg"></p>
-<p>为什么search前面有<code>#</code>就不能取值呢？官方介绍里没有提及，搜索的结果如下：<br><img src="/img/blogImg/location/search3.jpeg"></p>
-<p>结果：<br><img src="/img/blogImg/location/search4.jpeg"></p>
-<p>原因是<code>#</code>后面都被识别为hash了，甚至不识别<code>?</code>部分的search，所以<code>#</code>后面的search取不到值，要解决的话一是避免这样的URL，二是取值的时候自己处理从hash中解析出来，封装好的代码如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> GetQueryString(name)</span><br><span class="line">&#123;</span><br><span class="line">     var search = window.location.search;</span><br><span class="line">     <span class="keyword">if</span>(!search)&#123;</span><br><span class="line">        var <span class="built_in">hash</span> = location.hash;</span><br><span class="line">        search = <span class="built_in">hash</span>?hash.substring(hash.indexOf(<span class="string">'?'</span>)):<span class="string">''</span>;</span><br><span class="line">     &#125;</span><br><span class="line">     var reg = new RegExp(<span class="string">"(^|&amp;)"</span>+ name +<span class="string">"=([^&amp;]*)(&amp;|$)"</span>);</span><br><span class="line">     var r = search.substr(1).match(reg);</span><br><span class="line">     <span class="keyword">if</span>(r!=null)<span class="built_in">return</span>  unescape(r[2]); <span class="built_in">return</span> null;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>另外如果你是直接在框架里操作，比如vue，就不用担心取不到值，利用它的<code>this.$route.query</code>是可以正常取值的</p>
-<p>下面是vue框架的截图<br><img src="/img/blogImg/location/search5.jpeg"></p>
-
+        <h3 id="引用类型"><a href="#引用类型" class="headerlink" title="引用类型"></a>引用类型</h3><p><strong>引用类型是一种数据结构，用于将数据和功能组织在一起</strong>，别名：类/对象定义<br><strong>引用类型的值（对象）是引用类型的一个实例</strong>，通过<code>new</code>操作符后跟一个构造函数来创建（构造函数本身就是一个函数，只不过该函数是出于创建新对象的目的而定义的）</p>
+<a id="more"></a>
+<h3 id="Object类型"><a href="#Object类型" class="headerlink" title="Object类型"></a>Object类型</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var obj = new Object();</span><br><span class="line">//有效，但不推荐省略括号</span><br><span class="line">var obj = new Object;</span><br><span class="line"></span><br><span class="line">//还有字面量方式，属性名可以使用字符串，对于5属性名会自动变为字符串</span><br><span class="line">var person = &#123;</span><br><span class="line">  name: xiaohei,</span><br><span class="line">  &apos;age&apos;:24,</span><br><span class="line">  5:true</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>⚠️对象字面量方法不会调用<code>Object</code>构造函数</p>
+<p><code>Object</code>是所有对象的基础，<code>Object</code>每个实例都具有的方法从和属性如下：</p>
+<p><code>object.constructor</code>： 保存用于创建这个对象的函数，上面的例子就是<code>Object()</code></p>
+<p><code>object.hasOwnProperty(propertyName)</code>：给定的属性在此对象实例（非原型）中存在，<code>propertyName</code>参数是<strong>字符串形式</strong></p>
+<p><code>prototypeObj.isPrototypeOf(object)</code>：xx是不是<code>object</code>的原型</p>
+<p><img src="/img/blogImg/es5-basics/basics14.jpeg"></p>
+<p><code>object.propertyIsEnumerable(propertyName)</code>：给定的属性是否可以<code>for-in</code>枚举，<code>propertyName</code>参数是<strong>字符串形式</strong></p>
+<p><code>toLocaleString()</code>：返回字符串表示，与执行环境的地区对应</p>
+<p><code>toString()</code>：返回字符串表示</p>
+<p><code>valueOf()</code>：返回对象的字符串、布尔值或数值的表示，通常与<code>toString()</code>返回值一样</p>
+<p><strong>对象字面量是像函数传递大量可选参数的首选方式：一般必需值使用命名参数，使用对象字面量封装多个可选参数</strong></p>
+<p>访问方式：点表示法/方括号表示法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//点表示法</span><br><span class="line">obj.name</span><br><span class="line">//方括号表示法</span><br><span class="line">obj[&apos;name&apos;]属性名用字符串</span><br><span class="line">obj[&apos;first name&apos;]属性名包含会导致错误的语法就用方括号表示法</span><br><span class="line">obj[propertyName]可以是变量</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -345,6 +345,10 @@
           
             <a href="/tags/JS/" rel="tag"># JS</a>
           
+            <a href="/tags/ES5/" rel="tag"># ES5</a>
+          
+            <a href="/tags/读书笔记/" rel="tag"># 读书笔记</a>
+          
         </div>
       
 
@@ -356,8 +360,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/07/06/vue-custom-event/" rel="next" title="vue学习系列-自定义事件">
-                <i class="fa fa-chevron-left"></i> vue学习系列-自定义事件
+              <a href="/2017/12/19/ES5-variable-scope-memory/" rel="next" title="读书笔记：ES5-变量、作用域和内存问题">
+                <i class="fa fa-chevron-left"></i> 读书笔记：ES5-变量、作用域和内存问题
               </a>
             
           </div>
@@ -365,10 +369,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/07/11/ios-fixed-failure/" rel="prev" title="IOS下fixed失效">
-                IOS下fixed失效 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -420,8 +420,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Übersicht
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -504,6 +513,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#引用类型"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x5F15;&#x7528;&#x7C7B;&#x578B;" class="headerlink" title="&#x5F15;&#x7528;&#x7C7B;&#x578B;"></a>&#x5F15;&#x7528;&#x7C7B;&#x578B;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Object类型"><span class="nav-number">2.</span> <span class="nav-text"><a href="#Object&#x7C7B;&#x578B;" class="headerlink" title="Object&#x7C7B;&#x578B;"></a>Object&#x7C7B;&#x578B;</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
