@@ -89,6 +89,7 @@
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basics/basics15.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basics/basics16.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basics/basics17.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basics/basics26.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basics/basics19.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basics/basics20.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basics/basics21.jpeg">
@@ -96,7 +97,7 @@
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basics/basics23.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basics/basics24.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basics/basics25.jpeg">
-<meta property="og:updated_time" content="2018-01-31T07:41:14.330Z">
+<meta property="og:updated_time" content="2018-02-22T05:48:32.359Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="读书笔记：ES5-basics(下)">
 <meta name="twitter:description" content="操作符一元操作符-递增：    前置型 =&amp;gt; ++a =&amp;gt; 语句求值前先自加    后置型 =&amp;gt; a++ =&amp;gt; 语句求值后再自加">
@@ -196,7 +197,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -216,7 +217,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -280,7 +281,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-22T14:12:02+08:00">
                 2017-11-22
@@ -323,7 +324,7 @@
         <h3 id="操作符"><a href="#操作符" class="headerlink" title="操作符"></a>操作符</h3><h4 id="一元操作符"><a href="#一元操作符" class="headerlink" title="一元操作符"></a>一元操作符</h4><p>-递增：<br>    前置型 =&gt; <code>++a</code> =&gt; 语句求值前先自加<br>    后置型 =&gt; <code>a++</code> =&gt; 语句求值后再自加</p>
 <a id="more"></a>
 <p>-递减：<br>    前置型 =&gt; <code>--a</code> =&gt; 语句求值前先自减<br>    后置型 =&gt; <code>a--</code> =&gt; 语句求值后再自减</p>
-<p><strong>可以应用于非数值类型</strong>：<br>字符串：转换成数值后进行递增／递减，采用<code>Number</code>方法，不能转换成数值的转换成<code>NaN</code><br><img src="/img/blogImg/es5-basics/basics15.jpeg"><br>布尔：转换成数值后进行递增／递减，<code>false</code>0，<code>true</code>1<br><img src="/img/blogImg/es5-basics/basics16.jpeg"><br>对象：有<code>valueOf</code>就用此值，否则用<code>toString</code><br><img src="/img/blogImg/es5-basics/basics17.jpeg"></p>
+<p><strong>可以应用于非数值类型</strong>：<br>字符串：转换成数值后进行递增／递减，采用<code>Number</code>方法，不能转换成数值的转换成<code>NaN</code><br><img src="/img/blogImg/es5-basics/basics15.jpeg"><br>布尔：转换成数值后进行递增／递减，<code>false</code>0，<code>true</code>1<br><img src="/img/blogImg/es5-basics/basics16.jpeg"><br>对象：有<code>valueOf</code>就用此值，否则用<code>toString</code><br><img src="/img/blogImg/es5-basics/basics17.jpeg"><br><img src="/img/blogImg/es5-basics/basics26.jpeg"></p>
 <p>-一元加：<br>    数值：对值无影响<br>    其它类型：<code>Number</code>转换成数值</p>
 <p>-一元减：<br>    数值：变负<br>    其它类型：<code>Number</code>转换成数值后变负</p>
 <h4 id="位操作符"><a href="#位操作符" class="headerlink" title="位操作符"></a>位操作符</h4><p>按内存中表示数值的位来操作数值，以IEEE-754 64位格式存储，对数值进行位操作符的时候，会将64位转换成32位再进行位操作，最后将结果转换为64位，<br>所以对于开发者而言64位是透明，直接位操作32位的整数</p>
@@ -479,10 +480,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Inhaltsverzeichnis
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Übersicht
+            Overview
           </li>
         </ul>
       
@@ -507,7 +508,7 @@
                 <a href="/archives/">
               
                   <span class="site-state-item-count">20</span>
-                  <span class="site-state-item-name">Artikel</span>
+                  <span class="site-state-item-name">posts</span>
                 </a>
               </div>
             
@@ -520,7 +521,7 @@
               <div class="site-state-item site-state-tags">
                 
                   <span class="site-state-item-count">5</span>
-                  <span class="site-state-item-name">Tags</span>
+                  <span class="site-state-item-name">tags</span>
                 
               </div>
             
@@ -610,7 +611,7 @@
 </div>
 
 
-  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 
