@@ -79,28 +79,28 @@
 
 
 
-<meta name="description" content="Date类型Date类型使用自UTC（国际协调时间）1970年1月1日午夜（零时）开始经过的毫秒数来保存日期 12//不传参数自动获取当前的日期和时间，如果传指定参数需要是毫秒数var now = new Date()">
+<meta name="description" content="RegExp类型声明一个正则表达式就是一个模式和标志的组合体定义方式：字面量/构造函数 12var reg1 = /[ba]ct/g;var reg2 = new RegExp(&amp;apos;[ba]ct&amp;apos;,&amp;apos;g&amp;apos;);">
 <meta name="keywords" content="JS,ES5,读书笔记">
 <meta property="og:type" content="article">
-<meta property="og:title" content="读书笔记：ES5-Date">
-<meta property="og:url" content="http://www.yvonne.party/2018/02/05/ES5-Date/index.html">
+<meta property="og:title" content="读书笔记：ES5-RegExp">
+<meta property="og:url" content="http://www.yvonne.party/2018/02/22/ES5-RegExp/index.html">
 <meta property="og:site_name" content="Yvonne">
-<meta property="og:description" content="Date类型Date类型使用自UTC（国际协调时间）1970年1月1日午夜（零时）开始经过的毫秒数来保存日期 12//不传参数自动获取当前的日期和时间，如果传指定参数需要是毫秒数var now = new Date()">
-<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-date/es5-date1.jpeg">
-<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-date/es5-date2.jpeg">
-<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-date/es5-date3.jpeg">
-<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-date/es5-date4.jpeg">
-<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-date/es5-date5.jpeg">
-<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-date/es5-date6.jpeg">
-<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-date/es5-date7.jpeg">
-<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-date/es5-date8.jpeg">
-<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-date/es5-date9.jpeg">
-<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-date/es5-date10.jpeg">
-<meta property="og:updated_time" content="2018-02-21T07:03:23.634Z">
+<meta property="og:description" content="RegExp类型声明一个正则表达式就是一个模式和标志的组合体定义方式：字面量/构造函数 12var reg1 = /[ba]ct/g;var reg2 = new RegExp(&amp;apos;[ba]ct&amp;apos;,&amp;apos;g&amp;apos;);">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-regexp/es5-regexp3.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-regexp/es5-regexp4.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-regexp/es5-regexp5.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-regexp/es5-regexp1.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-regexp/es5-regexp2.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-regexp/es5-regexp6.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-regexp/es5-regexp7.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-regexp/es5-regexp8.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-regexp/es5-regexp9.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-regexp/es5-regexp10.jpeg">
+<meta property="og:updated_time" content="2018-02-23T15:08:35.405Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="读书笔记：ES5-Date">
-<meta name="twitter:description" content="Date类型Date类型使用自UTC（国际协调时间）1970年1月1日午夜（零时）开始经过的毫秒数来保存日期 12//不传参数自动获取当前的日期和时间，如果传指定参数需要是毫秒数var now = new Date()">
-<meta name="twitter:image" content="http://www.yvonne.party/img/blogImg/es5-date/es5-date1.jpeg">
+<meta name="twitter:title" content="读书笔记：ES5-RegExp">
+<meta name="twitter:description" content="RegExp类型声明一个正则表达式就是一个模式和标志的组合体定义方式：字面量/构造函数 12var reg1 = /[ba]ct/g;var reg2 = new RegExp(&amp;apos;[ba]ct&amp;apos;,&amp;apos;g&amp;apos;);">
+<meta name="twitter:image" content="http://www.yvonne.party/img/blogImg/es5-regexp/es5-regexp3.jpeg">
 
 
 
@@ -130,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="http://www.yvonne.party/2018/02/05/ES5-Date/"/>
+  <link rel="canonical" href="http://www.yvonne.party/2018/02/22/ES5-RegExp/"/>
 
 
 
 
 
-  <title>读书笔记：ES5-Date | Yvonne</title>
+  <title>读书笔记：ES5-RegExp | Yvonne</title>
   
 
 
@@ -253,7 +253,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.yvonne.party/2018/02/05/ES5-Date/">
+    <link itemprop="mainEntityOfPage" href="http://www.yvonne.party/2018/02/22/ES5-RegExp/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yvonne">
@@ -270,7 +270,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">读书笔记：ES5-Date</h1>
+          <h1 class="post-title" itemprop="name headline">读书笔记：ES5-RegExp</h1>
         
 
         <div class="post-meta">
@@ -282,8 +282,8 @@
               
                 <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-05T22:08:11+08:00">
-                2018-02-05
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-22T21:49:26+08:00">
+                2018-02-22
               </time>
             
 
@@ -320,39 +320,25 @@
       
 
       
-        <h3 id="Date类型"><a href="#Date类型" class="headerlink" title="Date类型"></a>Date类型</h3><p>Date类型使用自UTC（国际协调时间）1970年1月1日午夜（零时）开始经过的毫秒数来保存日期</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//不传参数自动获取当前的日期和时间，如果传指定参数需要是毫秒数</span><br><span class="line">var now = new Date()</span><br></pre></td></tr></table></figure>
+        <h3 id="RegExp类型"><a href="#RegExp类型" class="headerlink" title="RegExp类型"></a>RegExp类型</h3><h4 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h4><p>一个正则表达式就是一个模式和标志的组合体<br>定义方式：字面量/构造函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var reg1 = /[ba]ct/g;</span><br><span class="line">var reg2 = new RegExp(&apos;[ba]ct&apos;,&apos;g&apos;);</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<p>为简化传参数是毫秒数的情况，<code>ECMAScript</code>提供两个方法：<code>Date.parse()</code>/<code>Date.UTC()</code></p>
-<p><code>Date.parse()</code> =&gt; 参数是日期字符串，根据字符串返回相应日期的毫秒数，但是<strong>没有规定日期格式，所以行为由实现而异，通常因地域而异</strong></p>
-<p><img src="/img/blogImg/es5-date/es5-date1.jpeg"></p>
-<p>⚠️基本上可以识别<strong>月/日/年</strong>格式和<strong>年/月/日</strong>格式，<strong>不能识别的格式会返回<code>NaN</code></strong><br>⚠️如果将日期字符串传递给构造函数，其实会自动调用<code>Date.parse()</code>，最终生成此时间的<strong>日期对象</strong>（注意是先调用<code>Date.parse()</code>生成毫秒数再调用构造函数生成日期对象）如下图：</p>
-<p><img src="/img/blogImg/es5-date/es5-date2.jpeg"></p>
-<p>补充一下，并不是红皮书上介绍的浏览器能识别5月32日的字符串只是浏览器表现各异</p>
-<p><img src="/img/blogImg/es5-date/es5-date3.jpeg"></p>
-<p><code>Date.UTC()</code> =&gt; 参数是年份、基于0的月份（0-11）、哪一天（1-31）、小时数（0-23）、分钟、秒、毫秒，但是只有年份和月份是必须的，天数不传默认是1，分钟/秒/毫秒不传都是0</p>
-<p><img src="/img/blogImg/es5-date/es5-date4.jpeg"></p>
-<p>构造函数同样也会模仿<code>Date.UTC()</code>，但是不同的是，日期和时间都是基于本地时区而非GMT来创建</p>
-<p><img src="/img/blogImg/es5-date/es5-date5.jpeg"></p>
-<p>⚠️传入的月份参数是5代表是4月份</p>
-<p><code>Date.now()</code> =&gt; 调用这个方法时的日期和时间的毫秒数，简化使用<code>Date</code>对象分析代码工作，IE9+<br>不支持的可以使用<code>+new Date()</code>来获取时间戳（其实就是加号操作符吧。。）</p>
-<p><img src="/img/blogImg/es5-date/es5-date6.jpeg"></p>
-<h3 id="继承方法"><a href="#继承方法" class="headerlink" title="继承方法"></a>继承方法</h3><p><code>toLocalString()</code>&amp;<code>toString()</code>，不同浏览器表现不同（我只尝试了Safari和Chrome），仅在调试时有点用，展示时间方面其实没有用处</p>
-<p><img src="/img/blogImg/es5-date/es5-date7.jpeg"><br><img src="/img/blogImg/es5-date/es5-date8.jpeg"></p>
-<p><code>valueOf()</code>，返回日期毫秒数，很方便比较大小</p>
-<p><img src="/img/blogImg/es5-date/es5-date9.jpeg"></p>
-<h3 id="格式化方法"><a href="#格式化方法" class="headerlink" title="格式化方法"></a>格式化方法</h3><p>专门用于将日期格式化为字符串，同<code>toString()</code>和<code>toLocalString()</code>一样结果因浏览器而异<br><code>toDateString()</code>特定于实现的格式显示星期几、月、日、年<br><code>totimeString()</code>特定于实现的格式显示时、分、秒、时区<br><code>toLocalDateString()</code>特定于地区的格式显示星期几、月、日、年<br><code>toLocalTimeString()</code>特定于地区的格式显示时、分、秒、时区<br><code>toUTCString()</code>特定于实现的格式完整的UTC日期</p>
-<p><img src="/img/blogImg/es5-date/es5-date10.jpeg"><br>⚠️没太理解特定于实现的格式/地区的格式到底是哪里来的格式。。</p>
-<h3 id="日期-时间组件方法"><a href="#日期-时间组件方法" class="headerlink" title="日期/时间组件方法"></a>日期/时间组件方法</h3><p><code>getTime()</code>=&gt;结果和<code>valueOf()</code>一样返回日期的毫秒数<br><code>setTime()</code>=&gt;以毫秒数改变日期，会改变整个日期</p>
-<p><code>getFullYear()</code>=&gt;获取4位年份<br><code>setFullYear()</code>=&gt;设置年份，必须是4位数<br><code>getUTCFullYear()</code>=&gt;获取UTC4位年份<br><code>setUTCFullYear()</code>=&gt;设置UTC年份，必须是4位数</p>
-<p><code>getMonth()</code>=&gt;获取月份（0-11）<br><code>setMonth()</code>=&gt;设置月份，超过11会增加年份<br><code>getUTCMonth()</code>=&gt;获取UTC月份（0-11）<br><code>setUTCMonth()</code>=&gt;设置UTC月份，超过11会增加年份</p>
-<p><code>getDate()</code>=&gt;获取月份中的天数（1-31）<br><code>setDate()</code>=&gt;设置月份中的天数，如果超过天数则增加月份<br><code>getUTCDate()</code>=&gt;获取UTC月份中的天数（1-31）<br><code>setUTCDate()</code>=&gt;设置UTC月份中的天数，如果超过天数则增加月份</p>
-<p><code>getDay()</code>=&gt;获取星期几（0代表星期日）<br><code>getUTCDay()</code>=&gt;获取UTC星期几（0代表星期日）</p>
-<p><code>getHours()</code>=&gt;获取小时（0-23）<br><code>setHours()</code>=&gt;设置小时，超过23则增加天数<br><code>getUTCHours()</code>=&gt;获取UTC小时，（0-23）<br><code>setUTCHours()</code>=&gt;设置UTC小时，超过23则增加天数</p>
-<p><code>getMinutes()</code>=&gt;获取分钟（0-59）<br><code>setMinutes()</code>=&gt;设置分钟，超过59增加小时数<br><code>getUTCMinutes()</code>=&gt;获取UTC分钟（0-59）<br><code>setUTCMinutes()</code>=&gt;设置UTC分钟，超过59增加小时数</p>
-<p><code>getSeconds()</code>=&gt;获取秒数（0-59）<br><code>setSeconds()</code>=&gt;设置秒数，超过59增加分钟数<br><code>getUTCSeconds()</code>=&gt;获取UTC秒数（0-59）<br><code>setUTCSeconds()</code>=&gt;设置UTC秒数，超过59增加分钟数</p>
-<p><code>getMilliseconds()</code>=&gt;获取毫秒数（0-999）<br><code>setMilliseconds()</code>=&gt;设置毫秒数，超过999增加秒数<br><code>getUTCMilliseconds()</code>=&gt;获取UTC毫秒数（0-999）<br><code>setUTCMilliseconds()</code>=&gt;设置UTC毫秒数，超过999增加秒数</p>
-<p><code>getTimezoneOffset()</code>=&gt;获取本地时间与UTC时间相差的分钟数</p>
+<p>模式：任何简单或复杂的正则表达式，可以包含字符类、限定符、分组、向前查找、反向引用<br>标志：i(不区分大小写) / g(全局模式应用于所有字符串) / m(多行模式到达文本末尾会继续查找下一行)，每个表达式可以有一个或多个标志</p>
+<h4 id="元字符"><a href="#元字符" class="headerlink" title="元字符"></a>元字符</h4><p><code>( ) [ ] { } \ | ? ^ $ * + .</code>，若要展示元字符是需要转义的</p>
+<p><strong>-元字符</strong><br><code>^</code> 匹配字符串的开始位置(写在单元项前)，如果有m标志，也匹配<code>\n</code>或<code>\r</code><strong>之后</strong>的位置，即重新开始的一行字符串也算是开始位置<br><img src="/img/blogImg/es5-regexp/es5-regexp3.jpeg"></p>
+<p><code>$</code> 匹配字符串的结束位置(写在单元项后)，如果有m标志，也匹配<code>\n</code>或<code>\r</code><strong>之前</strong>的位置，即折行后的一行字符串末尾也算是结束位置<br><img src="/img/blogImg/es5-regexp/es5-regexp4.jpeg"></p>
+<p><code>.</code> 匹配除换行符（<code>\n</code>或<code>\r</code>）以外的所有字符<br><img src="/img/blogImg/es5-regexp/es5-regexp5.jpeg"></p>
+<p><code>\d</code> 匹配数字，0-9<br><code>\D</code> 匹配非数字的字符<br><code>\w</code> 匹配字母/数字/下划线<br><code>\W</code> 匹配非字母数字下划线的字符<br><code>\s</code> 匹配任意不可见字符，空格/换行/制表等<br><code>\S</code> 匹配任意可见字符</p>
+<p><strong>-限制符</strong><br><code>*</code> 重复任意次，相当于<code>{0,}</code>，例<code>/zo*/</code>能匹配<code>z</code>/<code>zo</code>/<code>zoo</code>…<br><code>+</code> 重复1次或多次，相当于<code>{1,}</code>，例<code>/zo+/</code>能匹配<code>zo</code>/<code>zoo</code>，但不能匹配<code>z</code></p>
+<p><code>?</code> 重复0次或1次，相当于<code>{0,1}</code>,例<code>/do(es)?/</code>能匹配’do’中的’do’也能匹配’does’/‘doeses’中的’does’<br><img src="/img/blogImg/es5-regexp/es5-regexp1.jpeg"></p>
+<p>⚠️<code>?</code>还有个功能，当在任意限制符后面时<code>* + ？{}</code>，匹配模式为非贪婪模式(默认是贪婪模式尽可能多的匹配)，尽可能少的匹配<br><img src="/img/blogImg/es5-regexp/es5-regexp2.jpeg"></p>
+<p>⚠️<code>?</code>结合<code>()</code>的其他功能：<br><code>(?:pattern)</code> 非捕获的匹配，可以简化一丢丢<code>|</code>的用法<br><img src="/img/blogImg/es5-regexp/es5-regexp6.jpeg"></p>
+<p><code>(?=pattern)</code> 非捕获的匹配，正向肯定预查，在任何匹配pattern的字符串开始处匹配查找字符串<br><img src="/img/blogImg/es5-regexp/es5-regexp7.jpeg"></p>
+<p><code>(?!pattern)</code> 非捕获的匹配，正向否定预查，在任何不匹配pattern的字符串开始处匹配查找字符串<br><img src="/img/blogImg/es5-regexp/es5-regexp8.jpeg"></p>
+<p><code>(?&lt;=pattern)</code> 非捕获的匹配，反向肯定预查<br><img src="/img/blogImg/es5-regexp/es5-regexp9.jpeg"></p>
+<p><code>(?&lt;!pattern)</code> 非捕获的匹配，反向否定预查<br><img src="/img/blogImg/es5-regexp/es5-regexp10.jpeg"></p>
+<p><code>{n}</code> 重复n次<br><code>{n,}</code> 重复n次或者大于n次<br><code>{n,m}</code> 重复n到m次</p>
+<p><strong>-其他</strong><br><code>x|y</code> 匹配x或y<br><code>[xy]</code> 字符合集，匹配任意一个字符，例<code>/[ba]ct/</code>匹配bat或cat<br><code>[^xy]</code> 反字符合集，匹配非xy的任意字符<br><code>(xy)</code> 捕获分组</p>
 
       
     </div>
@@ -387,8 +373,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/02/04/ES5-object/" rel="next" title="读书笔记：ES5-Object">
-                <i class="fa fa-chevron-left"></i> 读书笔记：ES5-Object
+              <a href="/2018/02/05/ES5-Date/" rel="next" title="读书笔记：ES5-Date">
+                <i class="fa fa-chevron-left"></i> 读书笔记：ES5-Date
               </a>
             
           </div>
@@ -396,10 +382,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/02/22/ES5-RegExp/" rel="prev" title="读书笔记：ES5-RegExp">
-                读书笔记：ES5-RegExp <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -554,7 +536,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Date类型"><span class="nav-number">1.</span> <span class="nav-text"><a href="#Date&#x7C7B;&#x578B;" class="headerlink" title="Date&#x7C7B;&#x578B;"></a>Date&#x7C7B;&#x578B;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#继承方法"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x7EE7;&#x627F;&#x65B9;&#x6CD5;" class="headerlink" title="&#x7EE7;&#x627F;&#x65B9;&#x6CD5;"></a>&#x7EE7;&#x627F;&#x65B9;&#x6CD5;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#格式化方法"><span class="nav-number">3.</span> <span class="nav-text"><a href="#&#x683C;&#x5F0F;&#x5316;&#x65B9;&#x6CD5;" class="headerlink" title="&#x683C;&#x5F0F;&#x5316;&#x65B9;&#x6CD5;"></a>&#x683C;&#x5F0F;&#x5316;&#x65B9;&#x6CD5;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#日期-时间组件方法"><span class="nav-number">4.</span> <span class="nav-text"><a href="#&#x65E5;&#x671F;-&#x65F6;&#x95F4;&#x7EC4;&#x4EF6;&#x65B9;&#x6CD5;" class="headerlink" title="&#x65E5;&#x671F;/&#x65F6;&#x95F4;&#x7EC4;&#x4EF6;&#x65B9;&#x6CD5;"></a>&#x65E5;&#x671F;/&#x65F6;&#x95F4;&#x7EC4;&#x4EF6;&#x65B9;&#x6CD5;</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#RegExp类型"><span class="nav-number">1.</span> <span class="nav-text"><a href="#RegExp&#x7C7B;&#x578B;" class="headerlink" title="RegExp&#x7C7B;&#x578B;"></a>RegExp&#x7C7B;&#x578B;</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#声明"><span class="nav-number">1.1.</span> <span class="nav-text"><a href="#&#x58F0;&#x660E;" class="headerlink" title="&#x58F0;&#x660E;"></a>&#x58F0;&#x660E;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#元字符"><span class="nav-number">1.2.</span> <span class="nav-text"><a href="#&#x5143;&#x5B57;&#x7B26;" class="headerlink" title="&#x5143;&#x5B57;&#x7B26;"></a>&#x5143;&#x5B57;&#x7B26;</span></a></li></ol></li></ol></div>
             
 
           </div>
