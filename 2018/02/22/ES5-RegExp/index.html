@@ -89,6 +89,7 @@
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-regexp/es5-regexp3.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-regexp/es5-regexp4.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-regexp/es5-regexp5.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-regexp/es5-regexp12.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-regexp/es5-regexp1.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-regexp/es5-regexp2.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-regexp/es5-regexp6.jpeg">
@@ -96,7 +97,14 @@
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-regexp/es5-regexp8.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-regexp/es5-regexp9.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-regexp/es5-regexp10.jpeg">
-<meta property="og:updated_time" content="2018-02-23T15:08:35.405Z">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-regexp/es5-regexp11.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-regexp/es5-regexp13.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-regexp/es5-regexp14.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-regexp/es5-regexp15.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-regexp/es5-regexp16.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-regexp/es5-regexp17.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-regexp/es5-regexp18.jpeg">
+<meta property="og:updated_time" content="2018-02-24T14:24:51.855Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="读书笔记：ES5-RegExp">
 <meta name="twitter:description" content="RegExp类型声明一个正则表达式就是一个模式和标志的组合体定义方式：字面量/构造函数 12var reg1 = /[ba]ct/g;var reg2 = new RegExp(&amp;apos;[ba]ct&amp;apos;,&amp;apos;g&amp;apos;);">
@@ -324,11 +332,37 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var reg1 = /[ba]ct/g;</span><br><span class="line">var reg2 = new RegExp(&apos;[ba]ct&apos;,&apos;g&apos;);</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 <p>模式：任何简单或复杂的正则表达式，可以包含字符类、限定符、分组、向前查找、反向引用<br>标志：i(不区分大小写) / g(全局模式应用于所有字符串) / m(多行模式到达文本末尾会继续查找下一行)，每个表达式可以有一个或多个标志</p>
+<p>构造函数方法参数都是字符串，所以正则表达式需要双重转义</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">字面量模式</th>
+<th style="text-align:center">构造函数字符串</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">/[ba]ct/</td>
+<td style="text-align:center">‘\[ba\]ct’</td>
+</tr>
+<tr>
+<td style="text-align:center">/\d{2}/</td>
+<td style="text-align:center">‘\d{2}’</td>
+</tr>
+<tr>
+<td style="text-align:center">/\hello/</td>
+<td style="text-align:center">‘\\hello’</td>
+</tr>
+</tbody>
+</table>
+<p>构造函数和字面量差异：<br>首先字面量方法不会调用构造函数<br>其次在ES3时字面量法共享同一个正则表达式实例，构造函数每次调用都是生成一个新的实例，会导致问题代码如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for(var i=1; i&lt;10; i++)&#123;</span><br><span class="line">	/cat/g.test(&apos;cathssjdhfhudhkshd&apos;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>全局模式下，当第二次查找的时候会从上次匹配项后面开始查找至结尾返回false<br>但是ES5之后规定字面量法像调用构造函数方法一样，每次创建新的实例</p>
 <h4 id="元字符"><a href="#元字符" class="headerlink" title="元字符"></a>元字符</h4><p><code>( ) [ ] { } \ | ? ^ $ * + .</code>，若要展示元字符是需要转义的</p>
 <p><strong>-元字符</strong><br><code>^</code> 匹配字符串的开始位置(写在单元项前)，如果有m标志，也匹配<code>\n</code>或<code>\r</code><strong>之后</strong>的位置，即重新开始的一行字符串也算是开始位置<br><img src="/img/blogImg/es5-regexp/es5-regexp3.jpeg"></p>
 <p><code>$</code> 匹配字符串的结束位置(写在单元项后)，如果有m标志，也匹配<code>\n</code>或<code>\r</code><strong>之前</strong>的位置，即折行后的一行字符串末尾也算是结束位置<br><img src="/img/blogImg/es5-regexp/es5-regexp4.jpeg"></p>
 <p><code>.</code> 匹配除换行符（<code>\n</code>或<code>\r</code>）以外的所有字符<br><img src="/img/blogImg/es5-regexp/es5-regexp5.jpeg"></p>
-<p><code>\d</code> 匹配数字，0-9<br><code>\D</code> 匹配非数字的字符<br><code>\w</code> 匹配字母/数字/下划线<br><code>\W</code> 匹配非字母数字下划线的字符<br><code>\s</code> 匹配任意不可见字符，空格/换行/制表等<br><code>\S</code> 匹配任意可见字符</p>
+<p><code>\d</code> 匹配数字，相当于<code>[0-9]</code><br><code>\D</code> 匹配非数字的字符，相当于<code>[^0-9]</code><br><code>\w</code> 匹配字母/数字/下划线，相当于<code>[A-Za-z0-9_]</code><br><code>\W</code> 匹配非字母数字下划线的字符，相当于<code>[^A-Za-z0-9_]</code><br><code>\s</code> 匹配任意不可见字符，空格/换行/制表等<br><code>\S</code> 匹配任意可见字符<br><code>\b</code> 匹配单词和空格间的位置，<strong>匹配的是位置而不是那个空格</strong><br><img src="/img/blogImg/es5-regexp/es5-regexp12.jpeg"></p>
+<p><code>\B</code> 匹配非单词边界</p>
 <p><strong>-限制符</strong><br><code>*</code> 重复任意次，相当于<code>{0,}</code>，例<code>/zo*/</code>能匹配<code>z</code>/<code>zo</code>/<code>zoo</code>…<br><code>+</code> 重复1次或多次，相当于<code>{1,}</code>，例<code>/zo+/</code>能匹配<code>zo</code>/<code>zoo</code>，但不能匹配<code>z</code></p>
 <p><code>?</code> 重复0次或1次，相当于<code>{0,1}</code>,例<code>/do(es)?/</code>能匹配’do’中的’do’也能匹配’does’/‘doeses’中的’does’<br><img src="/img/blogImg/es5-regexp/es5-regexp1.jpeg"></p>
 <p>⚠️<code>?</code>还有个功能，当在任意限制符后面时<code>* + ？{}</code>，匹配模式为非贪婪模式(默认是贪婪模式尽可能多的匹配)，尽可能少的匹配<br><img src="/img/blogImg/es5-regexp/es5-regexp2.jpeg"></p>
@@ -338,7 +372,59 @@
 <p><code>(?&lt;=pattern)</code> 非捕获的匹配，反向肯定预查<br><img src="/img/blogImg/es5-regexp/es5-regexp9.jpeg"></p>
 <p><code>(?&lt;!pattern)</code> 非捕获的匹配，反向否定预查<br><img src="/img/blogImg/es5-regexp/es5-regexp10.jpeg"></p>
 <p><code>{n}</code> 重复n次<br><code>{n,}</code> 重复n次或者大于n次<br><code>{n,m}</code> 重复n到m次</p>
-<p><strong>-其他</strong><br><code>x|y</code> 匹配x或y<br><code>[xy]</code> 字符合集，匹配任意一个字符，例<code>/[ba]ct/</code>匹配bat或cat<br><code>[^xy]</code> 反字符合集，匹配非xy的任意字符<br><code>(xy)</code> 捕获分组</p>
+<p><strong>-其他</strong><br><code>x|y</code> 匹配x或y<br><code>[xy]</code> 字符合集，匹配任意一个字符，例<code>/[ba]ct/</code>匹配bat或cat，<code>.</code>和<code>*</code>在合集中没有特殊含义<br><code>[^xy]</code> 反字符合集，匹配非xy的任意字符<br><code>[a-z]</code> 字符范围<br><img src="/img/blogImg/es5-regexp/es5-regexp11.jpeg"></p>
+<p><code>[^a-z]</code> 反字符范围<br><code>[\b]</code> 匹配一个退格，不要和<code>\b</code>混淆<br><code>(xy)</code> 捕获分组</p>
+<h4 id="实例属性"><a href="#实例属性" class="headerlink" title="实例属性"></a>实例属性</h4><p><code>global</code> 全局标实<br><code>ignoreCase</code> 忽视大小写标实<br><code>multiline</code> 多行模式标实<br><code>lastIndex</code> 开始搜索下一个匹配项的字符位置<br><code>source</code> 正则表达式的字符串表示，无论声明用什么方式，该属性都是字面量形式的字符串表示</p>
+<p>没有什么用，在声明正则时都标注了属性</p>
+<h4 id="实例方法"><a href="#实例方法" class="headerlink" title="实例方法"></a>实例方法</h4><h5 id="exec"><a href="#exec" class="headerlink" title="exec"></a>exec</h5><p>专门为捕获组而设计<br>1⃣️返回包含匹配项信息的数组，第一项是匹配项，后面项是捕获组匹配项(若没有捕获组则数组只一项)，是Array实例但是包含两个额外属性<code>index</code>（匹配项在字符串中的位置）<code>input</code>（应用正则的字符串）<br>2⃣️若没有匹配项返回<code>null</code><br><img src="/img/blogImg/es5-regexp/es5-regexp13.jpeg"></p>
+<p>⚠️g全局模式每次都返回一个匹配项，但是对同一个字符串多次调用<code>exec</code>会继续查找新的匹配项，否则非全局下每次都返回第一个匹配项<br><img src="/img/blogImg/es5-regexp/es5-regexp14.jpeg"></p>
+<h5 id="test"><a href="#test" class="headerlink" title="test"></a>test</h5><p>只想知道是否匹配，不关心其文本内容<br>返回值匹配<code>true</code>不匹配<code>false</code><br><img src="/img/blogImg/es5-regexp/es5-regexp15.jpeg"></p>
+<h5 id="继承方法"><a href="#继承方法" class="headerlink" title="继承方法"></a>继承方法</h5><p><code>toLocalString()``toString()</code>返回字面量的字符串表示<br><img src="/img/blogImg/es5-regexp/es5-regexp16.jpeg"></p>
+<p><code>valueof</code>返回正则本身<br><img src="/img/blogImg/es5-regexp/es5-regexp17.jpeg"></p>
+<h4 id="构造函数属性"><a href="#构造函数属性" class="headerlink" title="构造函数属性"></a>构造函数属性</h4><p>适用于作用域中所有正则表达式，并跟随最近一次执行正则操作而改变<br>可以通过两种方式长属性名/短属性名访问，短属性名大都不是有效标识符，so必须用方括号法访问</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">长属性名</th>
+<th style="text-align:center">短属性名</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">input</td>
+<td style="text-align:center">$_</td>
+<td style="text-align:center">最近一次要匹配的字符串</td>
+</tr>
+<tr>
+<td style="text-align:center">lastMatch</td>
+<td style="text-align:center">$&amp;</td>
+<td style="text-align:center">最近一次匹配项</td>
+</tr>
+<tr>
+<td style="text-align:center">lastParen</td>
+<td style="text-align:center">$+</td>
+<td style="text-align:center">最近一次匹配的捕获组</td>
+</tr>
+<tr>
+<td style="text-align:center">leftContext</td>
+<td style="text-align:center">$`</td>
+<td style="text-align:center">input中位于匹配项前的文本</td>
+</tr>
+<tr>
+<td style="text-align:center">rightContext</td>
+<td style="text-align:center">$’</td>
+<td style="text-align:center">input中位于匹配项后的文本</td>
+</tr>
+<tr>
+<td style="text-align:center">multiline</td>
+<td style="text-align:center">$*</td>
+<td style="text-align:center">是否所有表达式都使用多行</td>
+</tr>
+</tbody>
+</table>
+<p>浏览器的兼容性未测待定…</p>
+<p>此外还存在9个用于存储捕获组的属性，访问方式依次是<code>RegExp.$1</code>、<code>RegExp.$2</code>…<code>RegExp.$9</code>，分别存储第一个、第二个…第九个捕获组<br>虽然调用<code>test()</code>只返回一个true，但是这些属性会自动填充<br><img src="/img/blogImg/es5-regexp/es5-regexp18.jpeg"></p>
 
       
     </div>
@@ -536,7 +622,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#RegExp类型"><span class="nav-number">1.</span> <span class="nav-text"><a href="#RegExp&#x7C7B;&#x578B;" class="headerlink" title="RegExp&#x7C7B;&#x578B;"></a>RegExp&#x7C7B;&#x578B;</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#声明"><span class="nav-number">1.1.</span> <span class="nav-text"><a href="#&#x58F0;&#x660E;" class="headerlink" title="&#x58F0;&#x660E;"></a>&#x58F0;&#x660E;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#元字符"><span class="nav-number">1.2.</span> <span class="nav-text"><a href="#&#x5143;&#x5B57;&#x7B26;" class="headerlink" title="&#x5143;&#x5B57;&#x7B26;"></a>&#x5143;&#x5B57;&#x7B26;</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#RegExp类型"><span class="nav-number">1.</span> <span class="nav-text"><a href="#RegExp&#x7C7B;&#x578B;" class="headerlink" title="RegExp&#x7C7B;&#x578B;"></a>RegExp&#x7C7B;&#x578B;</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#声明"><span class="nav-number">1.1.</span> <span class="nav-text"><a href="#&#x58F0;&#x660E;" class="headerlink" title="&#x58F0;&#x660E;"></a>&#x58F0;&#x660E;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#元字符"><span class="nav-number">1.2.</span> <span class="nav-text"><a href="#&#x5143;&#x5B57;&#x7B26;" class="headerlink" title="&#x5143;&#x5B57;&#x7B26;"></a>&#x5143;&#x5B57;&#x7B26;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实例属性"><span class="nav-number">1.3.</span> <span class="nav-text"><a href="#&#x5B9E;&#x4F8B;&#x5C5E;&#x6027;" class="headerlink" title="&#x5B9E;&#x4F8B;&#x5C5E;&#x6027;"></a>&#x5B9E;&#x4F8B;&#x5C5E;&#x6027;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实例方法"><span class="nav-number">1.4.</span> <span class="nav-text"><a href="#&#x5B9E;&#x4F8B;&#x65B9;&#x6CD5;" class="headerlink" title="&#x5B9E;&#x4F8B;&#x65B9;&#x6CD5;"></a>&#x5B9E;&#x4F8B;&#x65B9;&#x6CD5;</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#exec"><span class="nav-number">1.4.1.</span> <span class="nav-text"><a href="#exec" class="headerlink" title="exec"></a>exec</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#test"><span class="nav-number">1.4.2.</span> <span class="nav-text"><a href="#test" class="headerlink" title="test"></a>test</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#继承方法"><span class="nav-number">1.4.3.</span> <span class="nav-text"><a href="#&#x7EE7;&#x627F;&#x65B9;&#x6CD5;" class="headerlink" title="&#x7EE7;&#x627F;&#x65B9;&#x6CD5;"></a>&#x7EE7;&#x627F;&#x65B9;&#x6CD5;</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#构造函数属性"><span class="nav-number">1.5.</span> <span class="nav-text"><a href="#&#x6784;&#x9020;&#x51FD;&#x6570;&#x5C5E;&#x6027;" class="headerlink" title="&#x6784;&#x9020;&#x51FD;&#x6570;&#x5C5E;&#x6027;"></a>&#x6784;&#x9020;&#x51FD;&#x6570;&#x5C5E;&#x6027;</span></a></li></ol></li></ol></div>
             
 
           </div>
