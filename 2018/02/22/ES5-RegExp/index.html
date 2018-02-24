@@ -104,7 +104,7 @@
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-regexp/es5-regexp16.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-regexp/es5-regexp17.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-regexp/es5-regexp18.jpeg">
-<meta property="og:updated_time" content="2018-02-24T14:24:51.855Z">
+<meta property="og:updated_time" content="2018-02-24T14:26:32.052Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="读书笔记：ES5-RegExp">
 <meta name="twitter:description" content="RegExp类型声明一个正则表达式就是一个模式和标志的组合体定义方式：字面量/构造函数 12var reg1 = /[ba]ct/g;var reg2 = new RegExp(&amp;apos;[ba]ct&amp;apos;,&amp;apos;g&amp;apos;);">
@@ -380,7 +380,7 @@
 <p>⚠️g全局模式每次都返回一个匹配项，但是对同一个字符串多次调用<code>exec</code>会继续查找新的匹配项，否则非全局下每次都返回第一个匹配项<br><img src="/img/blogImg/es5-regexp/es5-regexp14.jpeg"></p>
 <h5 id="test"><a href="#test" class="headerlink" title="test"></a>test</h5><p>只想知道是否匹配，不关心其文本内容<br>返回值匹配<code>true</code>不匹配<code>false</code><br><img src="/img/blogImg/es5-regexp/es5-regexp15.jpeg"></p>
 <h5 id="继承方法"><a href="#继承方法" class="headerlink" title="继承方法"></a>继承方法</h5><p><code>toLocalString()``toString()</code>返回字面量的字符串表示<br><img src="/img/blogImg/es5-regexp/es5-regexp16.jpeg"></p>
-<p><code>valueof</code>返回正则本身<br><img src="/img/blogImg/es5-regexp/es5-regexp17.jpeg"></p>
+<p><code>valueOf()</code>返回正则本身<br><img src="/img/blogImg/es5-regexp/es5-regexp17.jpeg"></p>
 <h4 id="构造函数属性"><a href="#构造函数属性" class="headerlink" title="构造函数属性"></a>构造函数属性</h4><p>适用于作用域中所有正则表达式，并跟随最近一次执行正则操作而改变<br>可以通过两种方式长属性名/短属性名访问，短属性名大都不是有效标识符，so必须用方括号法访问</p>
 <table>
 <thead>
