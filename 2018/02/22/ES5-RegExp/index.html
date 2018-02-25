@@ -99,12 +99,13 @@
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-regexp/es5-regexp10.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-regexp/es5-regexp11.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-regexp/es5-regexp13.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-regexp/es5-regexp19.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-regexp/es5-regexp14.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-regexp/es5-regexp15.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-regexp/es5-regexp16.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-regexp/es5-regexp17.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-regexp/es5-regexp18.jpeg">
-<meta property="og:updated_time" content="2018-02-24T14:26:32.052Z">
+<meta property="og:updated_time" content="2018-02-25T13:33:05.227Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="读书笔记：ES5-RegExp">
 <meta name="twitter:description" content="RegExp类型声明一个正则表达式就是一个模式和标志的组合体定义方式：字面量/构造函数 12var reg1 = /[ba]ct/g;var reg2 = new RegExp(&amp;apos;[ba]ct&amp;apos;,&amp;apos;g&amp;apos;);">
@@ -342,16 +343,16 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center">/[ba]ct/</td>
-<td style="text-align:center">‘\[ba\]ct’</td>
+<td style="text-align:center"><code>/\[ba\]ct/</code></td>
+<td style="text-align:center"><code>&#39;\\[ba\\]ct&#39;</code></td>
 </tr>
 <tr>
-<td style="text-align:center">/\d{2}/</td>
-<td style="text-align:center">‘\d{2}’</td>
+<td style="text-align:center"><code>/\d{2}/</code></td>
+<td style="text-align:center"><code>&#39;\\d{2}&#39;</code></td>
 </tr>
 <tr>
-<td style="text-align:center">/\hello/</td>
-<td style="text-align:center">‘\\hello’</td>
+<td style="text-align:center"><code>/\\hello/</code></td>
+<td style="text-align:center"><code>&#39;\\\\hello&#39;</code></td>
 </tr>
 </tbody>
 </table>
@@ -374,12 +375,13 @@
 <p><code>{n}</code> 重复n次<br><code>{n,}</code> 重复n次或者大于n次<br><code>{n,m}</code> 重复n到m次</p>
 <p><strong>-其他</strong><br><code>x|y</code> 匹配x或y<br><code>[xy]</code> 字符合集，匹配任意一个字符，例<code>/[ba]ct/</code>匹配bat或cat，<code>.</code>和<code>*</code>在合集中没有特殊含义<br><code>[^xy]</code> 反字符合集，匹配非xy的任意字符<br><code>[a-z]</code> 字符范围<br><img src="/img/blogImg/es5-regexp/es5-regexp11.jpeg"></p>
 <p><code>[^a-z]</code> 反字符范围<br><code>[\b]</code> 匹配一个退格，不要和<code>\b</code>混淆<br><code>(xy)</code> 捕获分组</p>
-<h4 id="实例属性"><a href="#实例属性" class="headerlink" title="实例属性"></a>实例属性</h4><p><code>global</code> 全局标实<br><code>ignoreCase</code> 忽视大小写标实<br><code>multiline</code> 多行模式标实<br><code>lastIndex</code> 开始搜索下一个匹配项的字符位置<br><code>source</code> 正则表达式的字符串表示，无论声明用什么方式，该属性都是字面量形式的字符串表示</p>
+<h4 id="实例属性"><a href="#实例属性" class="headerlink" title="实例属性"></a>实例属性</h4><p><code>global</code> 全局标实<br><code>ignoreCase</code> 忽视大小写标实<br><code>multiline</code> 多行模式标实<br><code>lastIndex</code> 开始搜索下一个匹配项的字符位置<br><code>source</code> 正则表达式的字符串表示，<strong>无论声明用什么方式，该属性都是字面量形式的字符串表示</strong></p>
 <p>没有什么用，在声明正则时都标注了属性</p>
 <h4 id="实例方法"><a href="#实例方法" class="headerlink" title="实例方法"></a>实例方法</h4><h5 id="exec"><a href="#exec" class="headerlink" title="exec"></a>exec</h5><p>专门为捕获组而设计<br>1⃣️返回包含匹配项信息的数组，第一项是匹配项，后面项是捕获组匹配项(若没有捕获组则数组只一项)，是Array实例但是包含两个额外属性<code>index</code>（匹配项在字符串中的位置）<code>input</code>（应用正则的字符串）<br>2⃣️若没有匹配项返回<code>null</code><br><img src="/img/blogImg/es5-regexp/es5-regexp13.jpeg"></p>
-<p>⚠️g全局模式每次都返回一个匹配项，但是对同一个字符串多次调用<code>exec</code>会继续查找新的匹配项，否则非全局下每次都返回第一个匹配项<br><img src="/img/blogImg/es5-regexp/es5-regexp14.jpeg"></p>
+<p><img src="/img/blogImg/es5-regexp/es5-regexp19.jpeg"></p>
+<p>⚠️g全局模式每次都返回一个匹配项，但是对<strong>同一个字符串</strong>多次调用<code>exec</code>会继续查找新的匹配项，否则非全局下每次都返回第一个匹配项<br><img src="/img/blogImg/es5-regexp/es5-regexp14.jpeg"></p>
 <h5 id="test"><a href="#test" class="headerlink" title="test"></a>test</h5><p>只想知道是否匹配，不关心其文本内容<br>返回值匹配<code>true</code>不匹配<code>false</code><br><img src="/img/blogImg/es5-regexp/es5-regexp15.jpeg"></p>
-<h5 id="继承方法"><a href="#继承方法" class="headerlink" title="继承方法"></a>继承方法</h5><p><code>toLocalString()``toString()</code>返回字面量的字符串表示<br><img src="/img/blogImg/es5-regexp/es5-regexp16.jpeg"></p>
+<h5 id="继承方法"><a href="#继承方法" class="headerlink" title="继承方法"></a>继承方法</h5><p><code>toLocalString()</code> <code>toString()</code>返回字面量的字符串表示<br><img src="/img/blogImg/es5-regexp/es5-regexp16.jpeg"></p>
 <p><code>valueOf()</code>返回正则本身<br><img src="/img/blogImg/es5-regexp/es5-regexp17.jpeg"></p>
 <h4 id="构造函数属性"><a href="#构造函数属性" class="headerlink" title="构造函数属性"></a>构造函数属性</h4><p>适用于作用域中所有正则表达式，并跟随最近一次执行正则操作而改变<br>可以通过两种方式长属性名/短属性名访问，短属性名大都不是有效标识符，so必须用方括号法访问</p>
 <table>
@@ -393,32 +395,32 @@
 <tbody>
 <tr>
 <td style="text-align:center">input</td>
-<td style="text-align:center">$_</td>
+<td style="text-align:center"><code>$_</code></td>
 <td style="text-align:center">最近一次要匹配的字符串</td>
 </tr>
 <tr>
 <td style="text-align:center">lastMatch</td>
-<td style="text-align:center">$&amp;</td>
+<td style="text-align:center"><code>$&amp;</code></td>
 <td style="text-align:center">最近一次匹配项</td>
 </tr>
 <tr>
 <td style="text-align:center">lastParen</td>
-<td style="text-align:center">$+</td>
+<td style="text-align:center"><code>$+</code></td>
 <td style="text-align:center">最近一次匹配的捕获组</td>
 </tr>
 <tr>
 <td style="text-align:center">leftContext</td>
-<td style="text-align:center">$`</td>
+<td style="text-align:center"><code>$` </code></td>
 <td style="text-align:center">input中位于匹配项前的文本</td>
 </tr>
 <tr>
 <td style="text-align:center">rightContext</td>
-<td style="text-align:center">$’</td>
+<td style="text-align:center"><code>$&#39;</code></td>
 <td style="text-align:center">input中位于匹配项后的文本</td>
 </tr>
 <tr>
 <td style="text-align:center">multiline</td>
-<td style="text-align:center">$*</td>
+<td style="text-align:center"><code>$*</code></td>
 <td style="text-align:center">是否所有表达式都使用多行</td>
 </tr>
 </tbody>
@@ -468,6 +470,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/02/25/ES5-Function/" rel="prev" title="ES5-Function">
+                ES5-Function <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -548,7 +554,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">Artikel</span>
                 </a>
               </div>
