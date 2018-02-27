@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="JS,ES5,读书笔记," />
 
 
 
@@ -79,13 +79,19 @@
 
 
 
+<meta name="description" content="Function类型函数定义首先函数是对象，函数名是指针，每个函数都是Function类型实例，具备引用类型的属性和方法，实际上函数名是一个指向函数对象的指针，不会与某个函数绑定 定义方式：函数声明/函数表达式/构造函数">
+<meta name="keywords" content="JS,ES5,读书笔记">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ES5-Function">
+<meta property="og:title" content="读书笔记：ES5-Function">
 <meta property="og:url" content="http://www.yvonne.party/2018/02/25/ES5-Function/index.html">
 <meta property="og:site_name" content="Yvonne">
-<meta property="og:updated_time" content="2018-02-25T13:02:57.478Z">
+<meta property="og:description" content="Function类型函数定义首先函数是对象，函数名是指针，每个函数都是Function类型实例，具备引用类型的属性和方法，实际上函数名是一个指向函数对象的指针，不会与某个函数绑定 定义方式：函数声明/函数表达式/构造函数">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-function/es5-function1.jpeg">
+<meta property="og:updated_time" content="2018-02-25T14:27:04.486Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ES5-Function">
+<meta name="twitter:title" content="读书笔记：ES5-Function">
+<meta name="twitter:description" content="Function类型函数定义首先函数是对象，函数名是指针，每个函数都是Function类型实例，具备引用类型的属性和方法，实际上函数名是一个指向函数对象的指针，不会与某个函数绑定 定义方式：函数声明/函数表达式/构造函数">
+<meta name="twitter:image" content="http://www.yvonne.party/img/blogImg/es5-function/es5-function1.jpeg">
 
 
 
@@ -121,7 +127,7 @@
 
 
 
-  <title>ES5-Function | Yvonne</title>
+  <title>读书笔记：ES5-Function | Yvonne</title>
   
 
 
@@ -255,7 +261,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">ES5-Function</h1>
+          <h1 class="post-title" itemprop="name headline">读书笔记：ES5-Function</h1>
         
 
         <div class="post-meta">
@@ -305,7 +311,11 @@
       
 
       
-        
+        <h3 id="Function类型"><a href="#Function类型" class="headerlink" title="Function类型"></a>Function类型</h3><h4 id="函数定义"><a href="#函数定义" class="headerlink" title="函数定义"></a>函数定义</h4><p>首先<strong>函数是对象，函数名是指针</strong>，每个函数都是<code>Function</code>类型实例，具备引用类型的属性和方法，实际上函数名是一个指向函数对象的指针，不会与某个函数绑定</p>
+<p>定义方式：函数声明/函数表达式/构造函数<br><a id="more"></a><br><strong>函数声明</strong> =&gt; 代码执行之前，解析器会率先通过名为<strong>函数声明提升</strong>的过程，读取并将函数声明添加到执行环境中，使其在执行任何代码之前可用<br><strong>函数表达式</strong> =&gt; 必须等到解析器执行到这行代码时才会真正被解释执行，在这之前这个函数名不会不会保存对函数的引用，除此之外与函数声明语法是等价的<br><strong>构造函数</strong> =&gt; 不推荐用，性能不好，会有两次解析代码行为（第一次是常规解析<code>ECMAScript</code>，第二次是解析传入构造函数中的字符串），仅用来理解下函数名是指针<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 函数声明 --&gt;</span><br><span class="line">function sum(num1,num2)&#123;</span><br><span class="line">  return num1+num2</span><br><span class="line">&#125;</span><br><span class="line">&lt;!-- 函数表达式 --&gt;</span><br><span class="line">var sum = function(num1,num2)&#123;</span><br><span class="line">  return num1+num2</span><br><span class="line">&#125;</span><br><span class="line">&lt;!-- 构造函数 --&gt;</span><br><span class="line">var sum = new Function(&apos;num1&apos;,&apos;num2&apos;,&apos;return num1+num2&apos;)</span><br></pre></td></tr></table></figure></p>
+<p>再来感受下函数是对象<br><img src="/img/blogImg/es5-function/es5-function1.jpeg"></p>
+<p>⚠️函数是对象，函数名是指针，所以函数没有重载，声明两个同名函数，后面的函数覆盖了前一个函数，实际上就是覆盖了引用第一个函数的变量指针指向</p>
+
       
     </div>
     
@@ -319,6 +329,16 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JS/" rel="tag"># JS</a>
+          
+            <a href="/tags/ES5/" rel="tag"># ES5</a>
+          
+            <a href="/tags/读书笔记/" rel="tag"># 读书笔记</a>
+          
+        </div>
       
 
       
@@ -389,8 +409,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Übersicht
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -473,6 +502,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Function类型"><span class="nav-number">1.</span> <span class="nav-text"><a href="#Function&#x7C7B;&#x578B;" class="headerlink" title="Function&#x7C7B;&#x578B;"></a>Function&#x7C7B;&#x578B;</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#函数定义"><span class="nav-number">1.1.</span> <span class="nav-text"><a href="#&#x51FD;&#x6570;&#x5B9A;&#x4E49;" class="headerlink" title="&#x51FD;&#x6570;&#x5B9A;&#x4E49;"></a>&#x51FD;&#x6570;&#x5B9A;&#x4E49;</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
