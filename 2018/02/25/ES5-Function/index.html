@@ -94,7 +94,7 @@
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-function/es5-function6.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-function/es5-function7.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-function/es5-function8.jpeg">
-<meta property="og:updated_time" content="2018-03-01T14:43:57.270Z">
+<meta property="og:updated_time" content="2018-03-01T14:57:36.552Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="读书笔记：ES5-Function">
 <meta name="twitter:description" content="Function类型函数定义首先函数是对象，函数名是指针，每个函数都是Function类型实例，具备引用类型的属性和方法，实际上函数名是一个指向函数对象的指针，不会与某个函数绑定 定义方式：函数声明/函数表达式/构造函数">
@@ -194,7 +194,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -214,7 +214,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -278,7 +278,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-25T21:02:57+08:00">
                 2018-02-25
@@ -328,7 +328,7 @@
 <p><img src="/img/blogImg/es5-function/es5-function2.jpeg"></p>
 <h4 id="函数内部属性"><a href="#函数内部属性" class="headerlink" title="函数内部属性"></a>函数内部属性</h4><h5 id="arguments"><a href="#arguments" class="headerlink" title="arguments"></a>arguments</h5><p>包含参数的类数组，主要用途保存函数参数<br><code>arguments.callee</code> 属性是指针，指向拥有此<code>arguments</code>对象的函数<br>递归中解除函数执行与函数名紧密耦合的现象可以用，但是<strong>严格模式下会报错</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function factorial(num)&#123;</span><br><span class="line">	if(num &lt;= 1)&#123;</span><br><span class="line">		return 1</span><br><span class="line">	&#125;else&#123;</span><br><span class="line">		return num * arguments.callee(num-1)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;!-- 函数执行中不用解除函数名耦合，其他变量引用该函数对象执行也不会出错 --&gt;</span><br></pre></td></tr></table></figure></p>
 <p><code>arguments.caller</code> ES5新增，为了区分函数的<code>caller</code>属性，非严格模式下始终是<code>undefined</code>，<strong>严格模式报错</strong></p>
-<h5 id="this"><a href="#this" class="headerlink" title="this"></a>this</h5><p>函数据以执行的环境对象（当在网页全局环境下调用，<code>this</code>指<code>window</code>），执行时确定<code>this</code>非定义时</p>
+<h5 id="this"><a href="#this" class="headerlink" title="this"></a>this</h5><p>函数据以执行的环境对象（当在网页全局环境下调用，<code>this</code>指<code>window</code>），执行时确定<code>this</code>非定义时确定</p>
 <p><img src="/img/blogImg/es5-function/es5-function3.jpeg"></p>
 <h5 id="caller"><a href="#caller" class="headerlink" title="caller"></a>caller</h5><p>ES5新增属性<br>该属性保存调用当前函数的函数的引用，如果是<strong>全局作用域调用，该值是<code>null</code></strong><br><img src="/img/blogImg/es5-function/es5-function4.jpeg"></p>
 <p>⚠️严格模式下不能为<code>caller</code>属性赋值，会报错</p>
@@ -338,7 +338,7 @@
 <p>⚠️两者选取取决于哪种给函数传递参数更方便，<strong>如果直接打算传递<code>arguments</code>，或者包含函数中先接收到的也是一个数组，那就用<code>apply</code>，否则就用<code>call</code>更合适</strong>，不传递函数参数的情况下哪种都一样</p>
 <p>⚠️两者强大的地方在于<strong>扩充函数赖以运行的作用域</strong>，最大好处是<strong>对象不需要与方法有任何耦合关系</strong><br><img src="/img/blogImg/es5-function/es5-function6.jpeg"></p>
 <p><code>bind</code> 创建一个函数实例，其<code>this</code>值会被绑定到传给<code>bind()</code>的值，在任何执行环境中执行此函数实例其<code>this</code>都会是绑定的值不变，IE9+<br><img src="/img/blogImg/es5-function/es5-function7.jpeg"></p>
-<p><code>toString()``toLocaleString()</code>返回函数代码，返回格式因浏览器而异<br><code>valueOf()</code>返回函数本身<br><img src="/img/blogImg/es5-function/es5-function8.jpeg"></p>
+<p><code>toString()</code>和<code>toLocaleString()</code>返回函数代码，返回格式因浏览器而异<br><code>valueOf()</code>返回函数本身<br><img src="/img/blogImg/es5-function/es5-function8.jpeg"></p>
 
       
     </div>
@@ -435,10 +435,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
+            Übersicht
           </li>
         </ul>
       
@@ -463,7 +463,7 @@
                 <a href="/archives/">
               
                   <span class="site-state-item-count">22</span>
-                  <span class="site-state-item-name">posts</span>
+                  <span class="site-state-item-name">Artikel</span>
                 </a>
               </div>
             
@@ -476,7 +476,7 @@
               <div class="site-state-item site-state-tags">
                 
                   <span class="site-state-item-count">5</span>
-                  <span class="site-state-item-name">tags</span>
+                  <span class="site-state-item-name">Tags</span>
                 
               </div>
             
@@ -566,7 +566,7 @@
 </div>
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 
