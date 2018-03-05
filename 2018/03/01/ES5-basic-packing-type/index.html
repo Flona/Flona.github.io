@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="JS,ES5,读书笔记," />
 
 
 
@@ -79,16 +79,23 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+<meta name="description" content="基本包装类型为便于操作基本类型，ECMAScript提供了特殊的引用类型：Boolean Number String，这些包装类型与引用类型相似，同时具有各自的基本类型的相应地特殊行为 创建方法：">
+<meta name="keywords" content="JS,ES5,读书笔记">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://www.yvonne.party/2016/06/28/hello-world/index.html">
+<meta property="og:title" content="读书笔记：ES5-基本包装类型">
+<meta property="og:url" content="http://www.yvonne.party/2018/03/01/ES5-basic-packing-type/index.html">
 <meta property="og:site_name" content="Yvonne">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
-<meta property="og:updated_time" content="2017-12-15T09:12:05.737Z">
+<meta property="og:description" content="基本包装类型为便于操作基本类型，ECMAScript提供了特殊的引用类型：Boolean Number String，这些包装类型与引用类型相似，同时具有各自的基本类型的相应地特殊行为 创建方法：">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basic-packing-type/es5-basic-packing-type1.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basic-packing-type/es5-basic-packing-type2.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basic-packing-type/es5-basic-packing-type3.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basic-packing-type/es5-basic-packing-type4.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basic-packing-type/es5-basic-packing-type5.jpeg">
+<meta property="og:updated_time" content="2018-03-05T13:30:32.784Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+<meta name="twitter:title" content="读书笔记：ES5-基本包装类型">
+<meta name="twitter:description" content="基本包装类型为便于操作基本类型，ECMAScript提供了特殊的引用类型：Boolean Number String，这些包装类型与引用类型相似，同时具有各自的基本类型的相应地特殊行为 创建方法：">
+<meta name="twitter:image" content="http://www.yvonne.party/img/blogImg/es5-basic-packing-type/es5-basic-packing-type1.jpeg">
 
 
 
@@ -118,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://www.yvonne.party/2016/06/28/hello-world/"/>
+  <link rel="canonical" href="http://www.yvonne.party/2018/03/01/ES5-basic-packing-type/"/>
 
 
 
 
 
-  <title>Hello World | Yvonne</title>
+  <title>读书笔记：ES5-基本包装类型 | Yvonne</title>
   
 
 
@@ -241,7 +248,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.yvonne.party/2016/06/28/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://www.yvonne.party/2018/03/01/ES5-basic-packing-type/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yvonne">
@@ -258,7 +265,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World</h1>
+          <h1 class="post-title" itemprop="name headline">读书笔记：ES5-基本包装类型</h1>
         
 
         <div class="post-meta">
@@ -270,8 +277,8 @@
               
                 <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-06-28T14:46:21+08:00">
-                2016-06-28
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-01T23:01:24+08:00">
+                2018-03-01
               </time>
             
 
@@ -308,17 +315,17 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<a id="more"></a>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
+        <h3 id="基本包装类型"><a href="#基本包装类型" class="headerlink" title="基本包装类型"></a>基本包装类型</h3><p>为便于操作基本类型，<code>ECMAScript</code>提供了特殊的引用类型：<code>Boolean</code> <code>Number</code> <code>String</code>，这些包装类型与引用类型相似，同时具有各自的基本类型的相应地特殊行为</p>
+<p>创建方法：<br><a id="more"></a><br>自动创建 =&gt; 在<strong>读取</strong>对应的基本类型时会自动创建一个对应的基本包装类型，实际的过程是：<strong>创建基本包装类型实例=&gt;在实例上调用指定的方法=&gt;销毁这个实例</strong>，因此在读取模式下能直接调用一些方法来操作这些数据，但是对象只存在于这行代码执行的瞬间</p>
+<p><code>Object</code>构造函数法 =&gt; 工厂方法一样，通过传入值的类型返回相应基本包装类型的实例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var obj = new Object(&apos;text&apos;)</span><br><span class="line">var obj = new Object(3)</span><br><span class="line">var obj = new Object(false)</span><br></pre></td></tr></table></figure></p>
+<p><code>Boolean</code> <code>Number</code> <code>String</code>构造函数法 =&gt; 绝对必要情况下再做，不然容易分不清处理的是基本类型还是基本包装类型<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var obj = new Boolean(true)</span><br><span class="line">var obj = new Number(1)</span><br><span class="line">var obj = new String(&apos;text&apos;)</span><br></pre></td></tr></table></figure></p>
+<h3 id="Boolean类型"><a href="#Boolean类型" class="headerlink" title="Boolean类型"></a>Boolean类型</h3><p>建议永远不要用Boolean类型<br><img src="/img/blogImg/es5-basic-packing-type/es5-basic-packing-type1.jpeg"></p>
+<h3 id="Number类型"><a href="#Number类型" class="headerlink" title="Number类型"></a>Number类型</h3><p>⚠️也是由于<code>typeof</code>和<code>instanceof</code>的问题，所以也不建议直接实例化Number类型</p>
+<h4 id="继承方法"><a href="#继承方法" class="headerlink" title="继承方法"></a>继承方法</h4><p><img src="/img/blogImg/es5-basic-packing-type/es5-basic-packing-type2.jpeg"></p>
+<h4 id="Number类型新增方法"><a href="#Number类型新增方法" class="headerlink" title="Number类型新增方法"></a>Number类型新增方法</h4><p><code>toFixed()</code> 按照指定的小数位返回数值的字符串表示<br><img src="/img/blogImg/es5-basic-packing-type/es5-basic-packing-type3.jpeg"></p>
+<p><code>toExponential()</code> 按照指定的小数位返回数值的指数表示法表示的数值字符串<br><img src="/img/blogImg/es5-basic-packing-type/es5-basic-packing-type4.jpeg"></p>
+<p><code>toPrecision()</code> 按照指定的数值所有数字位数（不包含指数部分），更合理的调用<code>toFixed</code>或<code>toExponential</code><br><img src="/img/blogImg/es5-basic-packing-type/es5-basic-packing-type5.jpeg"></p>
+<h3 id="String类型"><a href="#String类型" class="headerlink" title="String类型"></a>String类型</h3>
       
     </div>
     
@@ -333,6 +340,16 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/JS/" rel="tag"># JS</a>
+          
+            <a href="/tags/ES5/" rel="tag"># ES5</a>
+          
+            <a href="/tags/读书笔记/" rel="tag"># 读书笔记</a>
+          
+        </div>
+      
 
       
       
@@ -342,15 +359,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/02/25/ES5-Function/" rel="next" title="读书笔记：ES5-Function">
+                <i class="fa fa-chevron-left"></i> 读书笔记：ES5-Function
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/04/21/stripes/" rel="prev" title="条纹背景">
-                条纹背景 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -505,7 +522,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本包装类型"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x57FA;&#x672C;&#x5305;&#x88C5;&#x7C7B;&#x578B;" class="headerlink" title="&#x57FA;&#x672C;&#x5305;&#x88C5;&#x7C7B;&#x578B;"></a>&#x57FA;&#x672C;&#x5305;&#x88C5;&#x7C7B;&#x578B;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Boolean类型"><span class="nav-number">2.</span> <span class="nav-text"><a href="#Boolean&#x7C7B;&#x578B;" class="headerlink" title="Boolean&#x7C7B;&#x578B;"></a>Boolean&#x7C7B;&#x578B;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Number类型"><span class="nav-number">3.</span> <span class="nav-text"><a href="#Number&#x7C7B;&#x578B;" class="headerlink" title="Number&#x7C7B;&#x578B;"></a>Number&#x7C7B;&#x578B;</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#继承方法"><span class="nav-number">3.1.</span> <span class="nav-text"><a href="#&#x7EE7;&#x627F;&#x65B9;&#x6CD5;" class="headerlink" title="&#x7EE7;&#x627F;&#x65B9;&#x6CD5;"></a>&#x7EE7;&#x627F;&#x65B9;&#x6CD5;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Number类型新增方法"><span class="nav-number">3.2.</span> <span class="nav-text"><a href="#Number&#x7C7B;&#x578B;&#x65B0;&#x589E;&#x65B9;&#x6CD5;" class="headerlink" title="Number&#x7C7B;&#x578B;&#x65B0;&#x589E;&#x65B9;&#x6CD5;"></a>Number&#x7C7B;&#x578B;&#x65B0;&#x589E;&#x65B9;&#x6CD5;</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#String类型"><span class="nav-number">4.</span> <span class="nav-text"><a href="#String&#x7C7B;&#x578B;" class="headerlink" title="String&#x7C7B;&#x578B;"></a>String&#x7C7B;&#x578B;</span></a></li></ol></div>
             
 
           </div>
