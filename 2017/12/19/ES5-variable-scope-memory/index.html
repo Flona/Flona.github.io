@@ -90,7 +90,7 @@
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/variable-scope-memory/variable2.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/variable-scope-memory/variable4.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/variable-scope-memory/variable3.jpeg">
-<meta property="og:updated_time" content="2018-01-31T13:51:10.862Z">
+<meta property="og:updated_time" content="2018-03-08T12:05:11.464Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="读书笔记：ES5-变量、作用域和内存问题">
 <meta name="twitter:description" content="变量数据类型   基本类型 引用类型     简单的数据段 可能由多个值组成的对象   栈 堆内存   按值访问 按引用访问   可以改变保存在变量中实际的值 不能直接操作内存中的位置,操作的是指针不是实际的对象   动态创建属性不会报错，下一步取不到值 可以动态创建属性   复制变量，两个变量不存在关联，是完全独立的两个数据段 复制变量，两个变量引用同一个堆内存中的对象   函数参数按值传递，值">
@@ -364,7 +364,7 @@
 <h3 id="执行环境和作用域"><a href="#执行环境和作用域" class="headerlink" title="执行环境和作用域"></a>执行环境和作用域</h3><p><strong>执行环境</strong>定义了变量或函数有权访问的其它数据，决定了它们各自的行为<br>类型只有<strong>全局和局部（函数）</strong></p>
 <p>每个执行环境都关联一个<strong>变量对象</strong>，保存着环境中定义的所有变量和函数，编写代码时无法访问，解析器在处理数据时会在后台使用</p>
 <p>执行环境中的所有代码执行完毕，该环境被销毁，保存在其中的所有变量和函数定义也都销毁（全局执行环境直到应用程序退出–例如关闭网页或浏览器–时才会被销毁）</p>
-<p>全局执行函数是最外层的执行环境，宿主环境不同全局执行环境就不同，在web浏览器中，window是全局执行环境，所有的全局变量和函数都作为window对象的属性和方法创建</p>
+<p>全局执行环境是最外层的执行环境，宿主环境不同全局执行环境就不同，在web浏览器中，window是全局执行环境，所有的全局变量和函数都作为window对象的属性和方法创建</p>
 <p>函数执行环境的过程：执行流进入函数–〉函数执行环境被推入一个环境栈中–〉函数执行完毕，执行函数被栈推出，控制权交还给原执行环境</p>
 <p>当代码在一个执行环境中执行时，会创建变量对象的<strong>作用域链</strong>，用于保证对执行环境有权访问的所有方法和函数有序访问，作用域链最前端是当前执行环境的变量对象，如果是函数执行环境，变量对象就是活动对象，最开始活动对象只包含一个变量即arguments对象（全局环境中不存在），下一个变量对象来自于包含环境，依次直到全局执行环境</p>
 <h4 id="延长作用域链"><a href="#延长作用域链" class="headerlink" title="延长作用域链"></a>延长作用域链</h4><p>利用某些语句在作用域链前端临时加入一个变量对象，执行结束后该变量对象被销毁</p>

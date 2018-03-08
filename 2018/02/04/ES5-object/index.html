@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Yvonne">
 <meta property="og:description" content="引用类型引用类型是一种数据结构，用于将数据和功能组织在一起，别名：类/对象定义引用类型的值（对象）是引用类型的一个实例，通过new操作符后跟一个构造函数来创建（构造函数本身就是一个函数，只不过该函数是出于创建新对象的目的而定义的）">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basics/basics14.jpeg">
-<meta property="og:updated_time" content="2018-02-04T13:54:19.095Z">
+<meta property="og:updated_time" content="2018-03-08T12:16:37.187Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="读书笔记：ES5-Object">
 <meta name="twitter:description" content="引用类型引用类型是一种数据结构，用于将数据和功能组织在一起，别名：类/对象定义引用类型的值（对象）是引用类型的一个实例，通过new操作符后跟一个构造函数来创建（构造函数本身就是一个函数，只不过该函数是出于创建新对象的目的而定义的）">
@@ -315,7 +315,7 @@
 <a id="more"></a>
 <h3 id="Object类型"><a href="#Object类型" class="headerlink" title="Object类型"></a>Object类型</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var obj = new Object();</span><br><span class="line">//有效，但不推荐省略括号</span><br><span class="line">var obj = new Object;</span><br><span class="line"></span><br><span class="line">//还有字面量方式，属性名可以使用字符串，对于5属性名会自动变为字符串</span><br><span class="line">var person = &#123;</span><br><span class="line">  name: xiaohei,</span><br><span class="line">  &apos;age&apos;:24,</span><br><span class="line">  5:true</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p>⚠️对象字面量方法不会调用<code>Object</code>构造函数</p>
-<p><code>Object</code>是所有对象的基础，<code>Object</code>每个实例都具有的方法从和属性如下：</p>
+<p><code>Object</code>是所有对象的基础，<code>Object</code>每个实例都具有的方法和属性如下：</p>
 <p><code>object.constructor</code>： 保存用于创建这个对象的函数，上面的例子就是<code>Object()</code></p>
 <p><code>object.hasOwnProperty(propertyName)</code>：给定的属性在此对象实例（非原型）中存在，<code>propertyName</code>参数是<strong>字符串形式</strong></p>
 <p><code>prototypeObj.isPrototypeOf(object)</code>：xx是不是<code>object</code>的原型</p>

@@ -96,7 +96,7 @@
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-date/es5-date8.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-date/es5-date9.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-date/es5-date10.jpeg">
-<meta property="og:updated_time" content="2018-02-21T07:03:23.634Z">
+<meta property="og:updated_time" content="2018-03-08T12:44:58.705Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="读书笔记：ES5-Date">
 <meta name="twitter:description" content="Date类型Date类型使用自UTC（国际协调时间）1970年1月1日午夜（零时）开始经过的毫秒数来保存日期 12//不传参数自动获取当前的日期和时间，如果传指定参数需要是毫秒数var now = new Date()">
@@ -334,7 +334,7 @@
 <p><img src="/img/blogImg/es5-date/es5-date4.jpeg"></p>
 <p>构造函数同样也会模仿<code>Date.UTC()</code>，但是不同的是，日期和时间都是基于本地时区而非GMT来创建</p>
 <p><img src="/img/blogImg/es5-date/es5-date5.jpeg"></p>
-<p>⚠️传入的月份参数是5代表是4月份</p>
+<p>⚠️传入的月份参数是5代表是6月份</p>
 <p><code>Date.now()</code> =&gt; 调用这个方法时的日期和时间的毫秒数，简化使用<code>Date</code>对象分析代码工作，IE9+<br>不支持的可以使用<code>+new Date()</code>来获取时间戳（其实就是加号操作符吧。。）</p>
 <p><img src="/img/blogImg/es5-date/es5-date6.jpeg"></p>
 <h3 id="继承方法"><a href="#继承方法" class="headerlink" title="继承方法"></a>继承方法</h3><p><code>toLocalString()</code>&amp;<code>toString()</code>，不同浏览器表现不同（我只尝试了Safari和Chrome），仅在调试时有点用，展示时间方面其实没有用处</p>
@@ -343,7 +343,7 @@
 <p><img src="/img/blogImg/es5-date/es5-date9.jpeg"></p>
 <h3 id="格式化方法"><a href="#格式化方法" class="headerlink" title="格式化方法"></a>格式化方法</h3><p>专门用于将日期格式化为字符串，同<code>toString()</code>和<code>toLocalString()</code>一样结果因浏览器而异<br><code>toDateString()</code>特定于实现的格式显示星期几、月、日、年<br><code>totimeString()</code>特定于实现的格式显示时、分、秒、时区<br><code>toLocalDateString()</code>特定于地区的格式显示星期几、月、日、年<br><code>toLocalTimeString()</code>特定于地区的格式显示时、分、秒、时区<br><code>toUTCString()</code>特定于实现的格式完整的UTC日期</p>
 <p><img src="/img/blogImg/es5-date/es5-date10.jpeg"><br>⚠️没太理解特定于实现的格式/地区的格式到底是哪里来的格式。。</p>
-<h3 id="日期-时间组件方法"><a href="#日期-时间组件方法" class="headerlink" title="日期/时间组件方法"></a>日期/时间组件方法</h3><p><code>getTime()</code>=&gt;结果和<code>valueOf()</code>一样返回日期的毫秒数<br><code>setTime()</code>=&gt;以毫秒数改变日期，会改变整个日期</p>
+<h3 id="日期-时间组件方法-实例方法"><a href="#日期-时间组件方法-实例方法" class="headerlink" title="日期/时间组件方法(实例方法)"></a>日期/时间组件方法(实例方法)</h3><p><code>getTime()</code>=&gt;结果和<code>valueOf()</code>一样返回日期的毫秒数<br><code>setTime()</code>=&gt;以毫秒数改变日期，会改变整个日期</p>
 <p><code>getFullYear()</code>=&gt;获取4位年份<br><code>setFullYear()</code>=&gt;设置年份，必须是4位数<br><code>getUTCFullYear()</code>=&gt;获取UTC4位年份<br><code>setUTCFullYear()</code>=&gt;设置UTC年份，必须是4位数</p>
 <p><code>getMonth()</code>=&gt;获取月份（0-11）<br><code>setMonth()</code>=&gt;设置月份，超过11会增加年份<br><code>getUTCMonth()</code>=&gt;获取UTC月份（0-11）<br><code>setUTCMonth()</code>=&gt;设置UTC月份，超过11会增加年份</p>
 <p><code>getDate()</code>=&gt;获取月份中的天数（1-31）<br><code>setDate()</code>=&gt;设置月份中的天数，如果超过天数则增加月份<br><code>getUTCDate()</code>=&gt;获取UTC月份中的天数（1-31）<br><code>setUTCDate()</code>=&gt;设置UTC月份中的天数，如果超过天数则增加月份</p>
@@ -554,7 +554,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Date类型"><span class="nav-number">1.</span> <span class="nav-text"><a href="#Date&#x7C7B;&#x578B;" class="headerlink" title="Date&#x7C7B;&#x578B;"></a>Date&#x7C7B;&#x578B;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#继承方法"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x7EE7;&#x627F;&#x65B9;&#x6CD5;" class="headerlink" title="&#x7EE7;&#x627F;&#x65B9;&#x6CD5;"></a>&#x7EE7;&#x627F;&#x65B9;&#x6CD5;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#格式化方法"><span class="nav-number">3.</span> <span class="nav-text"><a href="#&#x683C;&#x5F0F;&#x5316;&#x65B9;&#x6CD5;" class="headerlink" title="&#x683C;&#x5F0F;&#x5316;&#x65B9;&#x6CD5;"></a>&#x683C;&#x5F0F;&#x5316;&#x65B9;&#x6CD5;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#日期-时间组件方法"><span class="nav-number">4.</span> <span class="nav-text"><a href="#&#x65E5;&#x671F;-&#x65F6;&#x95F4;&#x7EC4;&#x4EF6;&#x65B9;&#x6CD5;" class="headerlink" title="&#x65E5;&#x671F;/&#x65F6;&#x95F4;&#x7EC4;&#x4EF6;&#x65B9;&#x6CD5;"></a>&#x65E5;&#x671F;/&#x65F6;&#x95F4;&#x7EC4;&#x4EF6;&#x65B9;&#x6CD5;</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Date类型"><span class="nav-number">1.</span> <span class="nav-text"><a href="#Date&#x7C7B;&#x578B;" class="headerlink" title="Date&#x7C7B;&#x578B;"></a>Date&#x7C7B;&#x578B;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#继承方法"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x7EE7;&#x627F;&#x65B9;&#x6CD5;" class="headerlink" title="&#x7EE7;&#x627F;&#x65B9;&#x6CD5;"></a>&#x7EE7;&#x627F;&#x65B9;&#x6CD5;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#格式化方法"><span class="nav-number">3.</span> <span class="nav-text"><a href="#&#x683C;&#x5F0F;&#x5316;&#x65B9;&#x6CD5;" class="headerlink" title="&#x683C;&#x5F0F;&#x5316;&#x65B9;&#x6CD5;"></a>&#x683C;&#x5F0F;&#x5316;&#x65B9;&#x6CD5;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#日期-时间组件方法-实例方法"><span class="nav-number">4.</span> <span class="nav-text"><a href="#&#x65E5;&#x671F;-&#x65F6;&#x95F4;&#x7EC4;&#x4EF6;&#x65B9;&#x6CD5;-&#x5B9E;&#x4F8B;&#x65B9;&#x6CD5;" class="headerlink" title="&#x65E5;&#x671F;/&#x65F6;&#x95F4;&#x7EC4;&#x4EF6;&#x65B9;&#x6CD5;(&#x5B9E;&#x4F8B;&#x65B9;&#x6CD5;)"></a>&#x65E5;&#x671F;/&#x65F6;&#x95F4;&#x7EC4;&#x4EF6;&#x65B9;&#x6CD5;(&#x5B9E;&#x4F8B;&#x65B9;&#x6CD5;)</span></a></li></ol></div>
             
 
           </div>
