@@ -99,7 +99,18 @@
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basic-packing-type/es5-basic-packing-type11.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basic-packing-type/es5-basic-packing-type12.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basic-packing-type/es5-basic-packing-type13.jpeg">
-<meta property="og:updated_time" content="2018-03-06T14:14:05.556Z">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basic-packing-type/es5-basic-packing-type14.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basic-packing-type/es5-basic-packing-type15.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basic-packing-type/es5-basic-packing-type16.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basic-packing-type/es5-basic-packing-type17.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basic-packing-type/es5-basic-packing-type18.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basic-packing-type/es5-basic-packing-type19.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basic-packing-type/es5-basic-packing-type20.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basic-packing-type/es5-basic-packing-type21.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basic-packing-type/es5-basic-packing-type22.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basic-packing-type/es5-basic-packing-type23.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basic-packing-type/es5-basic-packing-type24.jpeg">
+<meta property="og:updated_time" content="2018-03-11T11:56:05.511Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="读书笔记：ES5-基本包装类型">
 <meta name="twitter:description" content="基本包装类型为便于操作基本类型，ECMAScript提供了特殊的引用类型：Boolean Number String，这些包装类型与引用类型相似，同时具有各自的基本类型的相应地特殊行为 创建方法：">
@@ -347,7 +358,64 @@
 <h4 id="字符串位置方法"><a href="#字符串位置方法" class="headerlink" title="字符串位置方法"></a>字符串位置方法</h4><p><code>indexOf()</code>/<code>lastIndexOf()</code> 正向/反向搜索子字符串位置，参数一是给定搜索的子字符串，参数二是开始搜索的起始位置（选参），返回给定子字符串的索引，没查到返-1<br><img src="/img/blogImg/es5-basic-packing-type/es5-basic-packing-type12.jpeg"></p>
 <p>通过循环查找所有匹配的字符串<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var str = new String(&apos;hsianfjsdhfuaskdshfahdfakhfjyhfhsjdh&apos;)</span><br><span class="line">var arr = []</span><br><span class="line">var pos = str.indexOf(&apos;h&apos;)</span><br><span class="line">while(pos&gt;-1)&#123;</span><br><span class="line">  arr.push(pos)</span><br><span class="line">  pos = str.indexOf(&apos;h&apos;,pos+1)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p><img src="/img/blogImg/es5-basic-packing-type/es5-basic-packing-type13.jpeg"></p>
-<h4 id="trim-方法"><a href="#trim-方法" class="headerlink" title="trim()方法"></a>trim()方法</h4>
+<h4 id="trim-方法"><a href="#trim-方法" class="headerlink" title="trim()方法"></a>trim()方法</h4><p><code>trim()</code> 返回删除前置和后缀的所有空格的字符串副本，<strong>原字符串不变</strong>（IE9+）<br>此外safari5+，Chrome8+，Firefox3.5+支持<strong>非标准的<code>trimLeft()</code> <code>trimRight</code></strong>分别用于删除开头和末尾空格</p>
+<h4 id="大小写转换方法"><a href="#大小写转换方法" class="headerlink" title="大小写转换方法"></a>大小写转换方法</h4><p><strong>原字符串不变</strong>，返回新字符串<br><code>toLowerCase()</code> <code>toUpperCase()</code> 经典通用方法<br><code>toLocaleLowerCase()</code> <code>toLocaleUpperCase()</code> 针对特定地区的实现，一些地区和通用方法返回值一样，但是少数语言（如土耳其语）会为unicode大小写转换应用特殊的规则，就必须用针对地区的方法来保证实现正确的转换</p>
+<p>⚠️一般不知道代码在哪种语言环境中运行的情况，用针对地区的方法更稳妥</p>
+<h4 id="模式匹配方法"><a href="#模式匹配方法" class="headerlink" title="模式匹配方法"></a>模式匹配方法</h4><p><code>match()</code> 参数是正则表达式或者字符串，本质上与<code>RegExp</code>调用<code>exec()</code>方法一样，返回数组，第一项是匹配项，之后都是捕获组匹配项，同时具备两个额外属性<code>index</code> <code>input</code><br><img src="/img/blogImg/es5-basic-packing-type/es5-basic-packing-type14.jpeg"></p>
+<p><img src="/img/blogImg/es5-basic-packing-type/es5-basic-packing-type15.jpeg"></p>
+<p>⚠️全局模式下存在差异，如上图</p>
+<p><code>search()</code> 参数是正则表达式或者字符串，<strong>始终返回第一个匹配项索引</strong>，没有返回-1<br><img src="/img/blogImg/es5-basic-packing-type/es5-basic-packing-type16.jpeg"></p>
+<p><code>replace()</code> <strong>原字符串不变</strong>，返回新字符串<br>参数一是<strong>字符串</strong>（只能替换第一个子字符串）/<strong>正则</strong>（g标志可以替换全部子字符串）；<br><img src="/img/blogImg/es5-basic-packing-type/es5-basic-packing-type17.jpeg"></p>
+<p>参数二是<strong>字符串</strong>（可以将正则表达式得到的值插入到结果字符串，由一些特殊字符序列表示）/<strong>函数</strong>（返回被替换的匹配项，情况1：仅一个匹配项，即无捕获组，函数参数是匹配项、匹配位置、原始字符串；情况2：存在捕获组时，函数参数是匹配项、第一个捕获组、第二个捕获组…、最后两项依然是匹配位置、原始字符串）</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">特殊字符</th>
+<th style="text-align:center">替换文本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>$$</code></td>
+<td style="text-align:center">$</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>$&amp;</code></td>
+<td style="text-align:center">最近一次匹配项RegExp.lastMatch</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>$` </code></td>
+<td style="text-align:center">RegExp.leftContext</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>$&#39;</code></td>
+<td style="text-align:center">RegExp.rightContext</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>$n</code></td>
+<td style="text-align:center">n是1-9，n个捕获组匹配项</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>$nn</code></td>
+<td style="text-align:center">nn是01-99，nn个捕获组匹配项</td>
+</tr>
+</tbody>
+</table>
+<p><img src="/img/blogImg/es5-basic-packing-type/es5-basic-packing-type18.jpeg"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function htmlEscape(text)&#123;</span><br><span class="line">  return text.replace(/[&lt;&gt;&quot;&amp;]/g, function(match,pos,text)&#123;</span><br><span class="line">    console.log(arguments);</span><br><span class="line">    switch(match)&#123;</span><br><span class="line">      case &apos;&lt;&apos;:</span><br><span class="line">        return &apos;&amp;1t;&apos;;</span><br><span class="line">      case &apos;&gt;&apos;:</span><br><span class="line">        return &apos;&amp;gt;&apos;;</span><br><span class="line">      case &apos;\&quot;&apos;:</span><br><span class="line">        return &apos;&amp;quot;&apos;;</span><br><span class="line">      case &apos;&amp;&apos;:</span><br><span class="line">        return &apos;&amp;amp;&apos;;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/img/blogImg/es5-basic-packing-type/es5-basic-packing-type19.jpeg"></p>
+<p><img src="/img/blogImg/es5-basic-packing-type/es5-basic-packing-type20.jpeg"></p>
+<p><code>split()</code> 以指定分隔符分割成多个子字符串作为数组项<strong>返回数组</strong>，参数一分隔符是字符串/正则，参数二（可选）指定数组大小</p>
+<p><img src="/img/blogImg/es5-basic-packing-type/es5-basic-packing-type21.jpeg"></p>
+<p>⚠️那个正则<code>\</code>没懂啊，尝试也并不能匹配到<code>\</code>。。。</p>
+<p>规定应把捕获组拼接到结果数组中（IE9+），捕获组没匹配到返回<code>undefined</code>，下图延续上图上下文<br><img src="/img/blogImg/es5-basic-packing-type/es5-basic-packing-type22.jpeg"></p>
+<p>⚠️但是浏览器实现各异，需要用前测试好各浏览器</p>
+<h4 id="localeCompare-方法"><a href="#localeCompare-方法" class="headerlink" title="localeCompare()方法"></a>localeCompare()方法</h4><p><code>localeCompare()</code> 与传参字符串比较字符编码位置，返回逻辑和数组的<code>sort</code>传参函数一样，排在参数后面说明大返回正数（未必是1），等于返回0，否则返回负数（未必是-1）</p>
+<p>⚠️由于此方法返回值不一定是1/-1，所以用大于0小于0比较稳妥<br>⚠️此方法实现所支持的地区决定方法行为，即美国区分大小写，大写字母字符编码小于小写字母，而其他地区不一定是这种情况</p>
+<h4 id="fromCharCode-方法"><a href="#fromCharCode-方法" class="headerlink" title="fromCharCode()方法"></a>fromCharCode()方法</h4><p><code>fromCharCode()</code> <strong>String构造函数的静态方法</strong>，接收多个字符编码参数，<strong>返回字符串</strong>，本质与实例的<code>charCodeAt()</code>相反功能<br><img src="/img/blogImg/es5-basic-packing-type/es5-basic-packing-type23.jpeg"></p>
+<h4 id="HTML方法"><a href="#HTML方法" class="headerlink" title="HTML方法"></a>HTML方法</h4><p>专门用于简化常见HTML格式任务的方法<br><strong>不推荐用</strong>，因为无法表达语义</p>
+<p><img src="/img/blogImg/es5-basic-packing-type/es5-basic-packing-type24.jpeg"></p>
+
       
     </div>
     
@@ -544,7 +612,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本包装类型"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x57FA;&#x672C;&#x5305;&#x88C5;&#x7C7B;&#x578B;" class="headerlink" title="&#x57FA;&#x672C;&#x5305;&#x88C5;&#x7C7B;&#x578B;"></a>&#x57FA;&#x672C;&#x5305;&#x88C5;&#x7C7B;&#x578B;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Boolean类型"><span class="nav-number">2.</span> <span class="nav-text"><a href="#Boolean&#x7C7B;&#x578B;" class="headerlink" title="Boolean&#x7C7B;&#x578B;"></a>Boolean&#x7C7B;&#x578B;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Number类型"><span class="nav-number">3.</span> <span class="nav-text"><a href="#Number&#x7C7B;&#x578B;" class="headerlink" title="Number&#x7C7B;&#x578B;"></a>Number&#x7C7B;&#x578B;</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#继承方法"><span class="nav-number">3.1.</span> <span class="nav-text"><a href="#&#x7EE7;&#x627F;&#x65B9;&#x6CD5;" class="headerlink" title="&#x7EE7;&#x627F;&#x65B9;&#x6CD5;"></a>&#x7EE7;&#x627F;&#x65B9;&#x6CD5;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Number类型新增方法"><span class="nav-number">3.2.</span> <span class="nav-text"><a href="#Number&#x7C7B;&#x578B;&#x65B0;&#x589E;&#x65B9;&#x6CD5;" class="headerlink" title="Number&#x7C7B;&#x578B;&#x65B0;&#x589E;&#x65B9;&#x6CD5;"></a>Number&#x7C7B;&#x578B;&#x65B0;&#x589E;&#x65B9;&#x6CD5;</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#String类型"><span class="nav-number">4.</span> <span class="nav-text"><a href="#String&#x7C7B;&#x578B;" class="headerlink" title="String&#x7C7B;&#x578B;"></a>String&#x7C7B;&#x578B;</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#继承方法-1"><span class="nav-number">4.1.</span> <span class="nav-text"><a href="#&#x7EE7;&#x627F;&#x65B9;&#x6CD5;-1" class="headerlink" title="&#x7EE7;&#x627F;&#x65B9;&#x6CD5;"></a>&#x7EE7;&#x627F;&#x65B9;&#x6CD5;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字符方法"><span class="nav-number">4.2.</span> <span class="nav-text"><a href="#&#x5B57;&#x7B26;&#x65B9;&#x6CD5;" class="headerlink" title="&#x5B57;&#x7B26;&#x65B9;&#x6CD5;"></a>&#x5B57;&#x7B26;&#x65B9;&#x6CD5;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字符串操作方法"><span class="nav-number">4.3.</span> <span class="nav-text"><a href="#&#x5B57;&#x7B26;&#x4E32;&#x64CD;&#x4F5C;&#x65B9;&#x6CD5;" class="headerlink" title="&#x5B57;&#x7B26;&#x4E32;&#x64CD;&#x4F5C;&#x65B9;&#x6CD5;"></a>&#x5B57;&#x7B26;&#x4E32;&#x64CD;&#x4F5C;&#x65B9;&#x6CD5;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字符串位置方法"><span class="nav-number">4.4.</span> <span class="nav-text"><a href="#&#x5B57;&#x7B26;&#x4E32;&#x4F4D;&#x7F6E;&#x65B9;&#x6CD5;" class="headerlink" title="&#x5B57;&#x7B26;&#x4E32;&#x4F4D;&#x7F6E;&#x65B9;&#x6CD5;"></a>&#x5B57;&#x7B26;&#x4E32;&#x4F4D;&#x7F6E;&#x65B9;&#x6CD5;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#trim-方法"><span class="nav-number">4.5.</span> <span class="nav-text"><a href="#trim-&#x65B9;&#x6CD5;" class="headerlink" title="trim()&#x65B9;&#x6CD5;"></a>trim()&#x65B9;&#x6CD5;</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本包装类型"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x57FA;&#x672C;&#x5305;&#x88C5;&#x7C7B;&#x578B;" class="headerlink" title="&#x57FA;&#x672C;&#x5305;&#x88C5;&#x7C7B;&#x578B;"></a>&#x57FA;&#x672C;&#x5305;&#x88C5;&#x7C7B;&#x578B;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Boolean类型"><span class="nav-number">2.</span> <span class="nav-text"><a href="#Boolean&#x7C7B;&#x578B;" class="headerlink" title="Boolean&#x7C7B;&#x578B;"></a>Boolean&#x7C7B;&#x578B;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Number类型"><span class="nav-number">3.</span> <span class="nav-text"><a href="#Number&#x7C7B;&#x578B;" class="headerlink" title="Number&#x7C7B;&#x578B;"></a>Number&#x7C7B;&#x578B;</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#继承方法"><span class="nav-number">3.1.</span> <span class="nav-text"><a href="#&#x7EE7;&#x627F;&#x65B9;&#x6CD5;" class="headerlink" title="&#x7EE7;&#x627F;&#x65B9;&#x6CD5;"></a>&#x7EE7;&#x627F;&#x65B9;&#x6CD5;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Number类型新增方法"><span class="nav-number">3.2.</span> <span class="nav-text"><a href="#Number&#x7C7B;&#x578B;&#x65B0;&#x589E;&#x65B9;&#x6CD5;" class="headerlink" title="Number&#x7C7B;&#x578B;&#x65B0;&#x589E;&#x65B9;&#x6CD5;"></a>Number&#x7C7B;&#x578B;&#x65B0;&#x589E;&#x65B9;&#x6CD5;</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#String类型"><span class="nav-number">4.</span> <span class="nav-text"><a href="#String&#x7C7B;&#x578B;" class="headerlink" title="String&#x7C7B;&#x578B;"></a>String&#x7C7B;&#x578B;</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#继承方法-1"><span class="nav-number">4.1.</span> <span class="nav-text"><a href="#&#x7EE7;&#x627F;&#x65B9;&#x6CD5;-1" class="headerlink" title="&#x7EE7;&#x627F;&#x65B9;&#x6CD5;"></a>&#x7EE7;&#x627F;&#x65B9;&#x6CD5;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字符方法"><span class="nav-number">4.2.</span> <span class="nav-text"><a href="#&#x5B57;&#x7B26;&#x65B9;&#x6CD5;" class="headerlink" title="&#x5B57;&#x7B26;&#x65B9;&#x6CD5;"></a>&#x5B57;&#x7B26;&#x65B9;&#x6CD5;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字符串操作方法"><span class="nav-number">4.3.</span> <span class="nav-text"><a href="#&#x5B57;&#x7B26;&#x4E32;&#x64CD;&#x4F5C;&#x65B9;&#x6CD5;" class="headerlink" title="&#x5B57;&#x7B26;&#x4E32;&#x64CD;&#x4F5C;&#x65B9;&#x6CD5;"></a>&#x5B57;&#x7B26;&#x4E32;&#x64CD;&#x4F5C;&#x65B9;&#x6CD5;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字符串位置方法"><span class="nav-number">4.4.</span> <span class="nav-text"><a href="#&#x5B57;&#x7B26;&#x4E32;&#x4F4D;&#x7F6E;&#x65B9;&#x6CD5;" class="headerlink" title="&#x5B57;&#x7B26;&#x4E32;&#x4F4D;&#x7F6E;&#x65B9;&#x6CD5;"></a>&#x5B57;&#x7B26;&#x4E32;&#x4F4D;&#x7F6E;&#x65B9;&#x6CD5;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#trim-方法"><span class="nav-number">4.5.</span> <span class="nav-text"><a href="#trim-&#x65B9;&#x6CD5;" class="headerlink" title="trim()&#x65B9;&#x6CD5;"></a>trim()&#x65B9;&#x6CD5;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#大小写转换方法"><span class="nav-number">4.6.</span> <span class="nav-text"><a href="#&#x5927;&#x5C0F;&#x5199;&#x8F6C;&#x6362;&#x65B9;&#x6CD5;" class="headerlink" title="&#x5927;&#x5C0F;&#x5199;&#x8F6C;&#x6362;&#x65B9;&#x6CD5;"></a>&#x5927;&#x5C0F;&#x5199;&#x8F6C;&#x6362;&#x65B9;&#x6CD5;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模式匹配方法"><span class="nav-number">4.7.</span> <span class="nav-text"><a href="#&#x6A21;&#x5F0F;&#x5339;&#x914D;&#x65B9;&#x6CD5;" class="headerlink" title="&#x6A21;&#x5F0F;&#x5339;&#x914D;&#x65B9;&#x6CD5;"></a>&#x6A21;&#x5F0F;&#x5339;&#x914D;&#x65B9;&#x6CD5;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#localeCompare-方法"><span class="nav-number">4.8.</span> <span class="nav-text"><a href="#localeCompare-&#x65B9;&#x6CD5;" class="headerlink" title="localeCompare()&#x65B9;&#x6CD5;"></a>localeCompare()&#x65B9;&#x6CD5;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#fromCharCode-方法"><span class="nav-number">4.9.</span> <span class="nav-text"><a href="#fromCharCode-&#x65B9;&#x6CD5;" class="headerlink" title="fromCharCode()&#x65B9;&#x6CD5;"></a>fromCharCode()&#x65B9;&#x6CD5;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTML方法"><span class="nav-number">4.10.</span> <span class="nav-text"><a href="#HTML&#x65B9;&#x6CD5;" class="headerlink" title="HTML&#x65B9;&#x6CD5;"></a>HTML&#x65B9;&#x6CD5;</span></a></li></ol></li></ol></div>
             
 
           </div>
