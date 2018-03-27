@@ -94,7 +94,7 @@
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-single-object/es5-single-object6.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-single-object/es5-single-object7.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-single-object/es5-single-object8.jpeg">
-<meta property="og:updated_time" content="2018-03-12T00:57:24.679Z">
+<meta property="og:updated_time" content="2018-03-27T14:35:59.749Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="读书笔记：ES5-单体内置对象">
 <meta name="twitter:description" content="单体内置对象内置对象定义： 由ECMAScript实现提供的、不依赖于宿主环境的对象，即这些对象在ECMAScript程序执行之前就已经存在了Object Array String等都是内置对象同时还定义了两个单体内置对象：Global Math">
@@ -459,7 +459,7 @@
 <p><img src="/img/blogImg/es5-single-object/es5-single-object6.jpeg"></p>
 <h5 id="舍入方法"><a href="#舍入方法" class="headerlink" title="舍入方法"></a>舍入方法</h5><p><code>ceil()</code> 向上舍入<br><code>floor()</code> 向下舍入<br><code>round()</code> 四舍五入<br><img src="/img/blogImg/es5-single-object/es5-single-object7.jpeg"></p>
 <h5 id="random-方法"><a href="#random-方法" class="headerlink" title="random()方法"></a>random()方法</h5><p>返回&gt;=0同时&lt;1的随机数<br>可利用此生成一个指定范围内的随机整数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function selectFrom(lowerValue,upperValue)&#123;</span><br><span class="line">  var choices = upperValue - lowerValue + 1;</span><br><span class="line">  return Math.floor(Math.random() * choices + lowerValue)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 包含lowerValue和upperValue --&gt;</span><br><span class="line">function selectFrom(lowerValue,upperValue)&#123;</span><br><span class="line">  var choices = upperValue - lowerValue + 1;</span><br><span class="line">  return Math.floor(Math.random() * choices + lowerValue)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><img src="/img/blogImg/es5-single-object/es5-single-object8.jpeg"></p>
 <h5 id="其他方法"><a href="#其他方法" class="headerlink" title="其他方法"></a>其他方法</h5><table>
 <thead>
@@ -471,35 +471,51 @@
 <tbody>
 <tr>
 <td style="text-align:center"><code>Math.abs(num)</code></td>
-<td style="text-align:center">自然对数的底数，即常量e的值</td>
+<td style="text-align:center">返回num绝对值</td>
 </tr>
 <tr>
-<td style="text-align:center"><code>Math.LN10</code></td>
-<td style="text-align:center">10的自然对数</td>
+<td style="text-align:center"><code>Math.exp(num)</code></td>
+<td style="text-align:center">返回Math.E的num次幂</td>
 </tr>
 <tr>
-<td style="text-align:center"><code>Math.LN2</code></td>
-<td style="text-align:center">2的自然对数</td>
+<td style="text-align:center"><code>Math.log(num)</code></td>
+<td style="text-align:center">返回num的自然对数</td>
 </tr>
 <tr>
-<td style="text-align:center"><code>Math.LOG2E</code></td>
-<td style="text-align:center">以2为底e的对数</td>
+<td style="text-align:center"><code>Math.pow(num,power)</code></td>
+<td style="text-align:center">返回num的power次幂</td>
 </tr>
 <tr>
-<td style="text-align:center"><code>Math.LOG10E</code></td>
-<td style="text-align:center">以10为底e的对数</td>
+<td style="text-align:center"><code>Math.sqrt(num)</code></td>
+<td style="text-align:center">返回num的平方根</td>
 </tr>
 <tr>
-<td style="text-align:center"><code>Math.PI</code></td>
-<td style="text-align:center">π</td>
+<td style="text-align:center"><code>Math.acos(x)</code></td>
+<td style="text-align:center">返回x的反余弦</td>
 </tr>
 <tr>
-<td style="text-align:center"><code>Math.SQRT1_2</code></td>
-<td style="text-align:center">1/2的平方跟根</td>
+<td style="text-align:center"><code>Math.asin(x)</code></td>
+<td style="text-align:center">返回x的反正弦</td>
 </tr>
 <tr>
-<td style="text-align:center"><code>Math.SQRT2</code></td>
-<td style="text-align:center">2的平方根</td>
+<td style="text-align:center"><code>Math.atan(x)</code></td>
+<td style="text-align:center">返回x的反正切</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Math.atan2(y,x)</code></td>
+<td style="text-align:center">返回y/x的反正切</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Math.cos(x)</code></td>
+<td style="text-align:center">返回x的余弦</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Math.sin(x)</code></td>
+<td style="text-align:center">返回x的正弦值</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>Math.tan(x)</code></td>
+<td style="text-align:center">返回x的正切值</td>
 </tr>
 </tbody>
 </table>
@@ -546,6 +562,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/22/ES5-面相对象/" rel="prev" title="读书笔记：ES5-面相对象">
+                读书笔记：ES5-面相对象 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -626,7 +646,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">Artikel</span>
                 </a>
               </div>

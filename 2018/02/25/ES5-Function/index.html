@@ -87,6 +87,10 @@
 <meta property="og:site_name" content="Yvonne">
 <meta property="og:description" content="Function类型函数定义首先函数是对象，函数名是指针，每个函数都是Function类型实例，具备引用类型的属性和方法，实际上函数名是一个指向函数对象的指针，不会与某个函数绑定 定义方式：函数声明/函数表达式/构造函数">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-function/es5-function1.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-function/es5-function9.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-function/es5-function10.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-function/es5-function11.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-function/es5-function12.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-function/es5-function2.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-function/es5-function3.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-function/es5-function4.jpeg">
@@ -94,7 +98,7 @@
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-function/es5-function6.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-function/es5-function7.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-function/es5-function8.jpeg">
-<meta property="og:updated_time" content="2018-03-08T15:14:41.767Z">
+<meta property="og:updated_time" content="2018-03-27T15:24:46.509Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="读书笔记：ES5-Function">
 <meta name="twitter:description" content="Function类型函数定义首先函数是对象，函数名是指针，每个函数都是Function类型实例，具备引用类型的属性和方法，实际上函数名是一个指向函数对象的指针，不会与某个函数绑定 定义方式：函数声明/函数表达式/构造函数">
@@ -322,6 +326,10 @@
 <p>定义方式：函数声明/函数表达式/构造函数<br><a id="more"></a><br><strong>函数声明</strong> =&gt; 代码执行之前，解析器会率先通过名为<strong>函数声明提升</strong>的过程，读取并将函数声明添加到执行环境中，使其在执行任何代码之前可用<br><strong>函数表达式</strong> =&gt; 必须等到解析器执行到这行代码时才会真正被解释执行，在这之前这个函数名不会保存对函数的引用，除此之外与函数声明语法是等价的<br><strong>构造函数</strong> =&gt; 不推荐用，性能不好，会有两次解析代码行为（第一次是常规解析<code>ECMAScript</code>，第二次是解析传入构造函数中的字符串），仅用来理解下函数名是指针<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 函数声明 --&gt;</span><br><span class="line">function sum(num1,num2)&#123;</span><br><span class="line">  return num1+num2</span><br><span class="line">&#125;</span><br><span class="line">&lt;!-- 函数表达式 --&gt;</span><br><span class="line">var sum = function(num1,num2)&#123;</span><br><span class="line">  return num1+num2</span><br><span class="line">&#125;</span><br><span class="line">&lt;!-- 构造函数 --&gt;</span><br><span class="line">var sum = new Function(&apos;num1&apos;,&apos;num2&apos;,&apos;return num1+num2&apos;)</span><br></pre></td></tr></table></figure></p>
 <p>再来感受下函数是对象<br><img src="/img/blogImg/es5-function/es5-function1.jpeg"></p>
 <p>⚠️函数是对象，函数名是指针，所以函数没有重载，声明两个同名函数，后面的函数覆盖了前一个函数，实际上就是覆盖了引用第一个函数的变量指针指向</p>
+<p>函数声明提升与变量提升测试demo，<strong>函数声明提升会提升到最顶部，var变量提升会紧跟其后，但是赋值还是在原位置</strong><br><img src="/img/blogImg/es5-function/es5-function9.jpeg"></p>
+<p><img src="/img/blogImg/es5-function/es5-function10.jpeg"></p>
+<p><img src="/img/blogImg/es5-function/es5-function11.jpeg"></p>
+<p><img src="/img/blogImg/es5-function/es5-function12.jpeg"></p>
 <h4 id="作为值的函数"><a href="#作为值的函数" class="headerlink" title="作为值的函数"></a>作为值的函数</h4><p>函数名本身是变量，所以可以作为值使用：作为函数参数/作为函数返回值</p>
 <p>作为参数传入函数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 此函数不关心传进来的是什么函数 --&gt;</span><br><span class="line">function callSomeFunction(someFunction,someArgument)&#123;</span><br><span class="line">	someFunction(someArgument)</span><br><span class="line">&#125;</span><br><span class="line">function add(num)&#123;</span><br><span class="line">  return num + 10</span><br><span class="line">&#125;</span><br><span class="line">callSomeFunction(add,1)</span><br></pre></td></tr></table></figure></p>
 <p>作为函数返回值：<br>🌰排序数组，但数组的每一项是对象，希望按照对象的某个属性值进行排序<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">function createComparisonFunction(property)&#123;</span><br><span class="line">  return function(obj1,obj2)&#123;</span><br><span class="line">	  var value1 = obj1[property]</span><br><span class="line">          value2 = obj2[property]</span><br><span class="line">       if(value1 &gt; value2)&#123;</span><br><span class="line">       	  return 1</span><br><span class="line">       &#125;else if(value1 &lt; value2)&#123;</span><br><span class="line">       	  return -1</span><br><span class="line">       &#125;else&#123;</span><br><span class="line">       	  return 0</span><br><span class="line">       &#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
@@ -333,7 +341,7 @@
 <h5 id="caller"><a href="#caller" class="headerlink" title="caller"></a>caller</h5><p>ES5新增属性<br>该属性保存调用当前函数的函数的引用，如果是<strong>全局作用域调用，该值是<code>null</code></strong><br><img src="/img/blogImg/es5-function/es5-function4.jpeg"></p>
 <p>⚠️严格模式下不能为<code>caller</code>属性赋值，会报错</p>
 <h4 id="函数属性和方法"><a href="#函数属性和方法" class="headerlink" title="函数属性和方法"></a>函数属性和方法</h4><h5 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h5><p><code>length</code> 属性保存函数希望接收的命名参数个数，即定义函数时写的参数个数</p>
-<p><code>prototype</code> 对于引用类型，该属性是保存它们所有实例方法的真正所在(<code>toString()</code> <code>valueOf()</code>等都保存在<code>proptotype</code>下)，只不过是通过各自的对象实例访问<br>ES5开始<code>prototype</code>不可枚举</p>
+<p><code>prototype</code> 指向原型，对于引用类型，该属性是保存它们所有实例方法的真正所在(<code>toString()</code> <code>valueOf()</code>等都保存在<code>proptotype</code>下)，只不过是通过各自的对象实例访问<br>ES5开始<code>prototype</code>不可枚举</p>
 <h5 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h5><p><code>apply</code>和<code>call</code> 在特定的作用域中调用函数，即定义了<strong>函数体内<code>this</code>对象的值</strong>，两者功能相同，差异在于接收参数方式不同<br><code>apply()</code>=&gt;第一个参数是运行函数的作用域，第二个参数是函数要接收的参数数组（可以是<code>Array</code>实例/<code>arguments</code>对象）<br><code>call()</code>=&gt;第一个参数同样是运行函数的作用域，第二个函数接收参数的形式是直接传递并非数组<br><img src="/img/blogImg/es5-function/es5-function5.jpeg"></p>
 <p>⚠️两者选取取决于哪种给函数传递参数更方便，<strong>如果直接打算传递<code>arguments</code>，或者包含函数中先接收到的也是一个数组，那就用<code>apply</code>，否则就用<code>call</code>更合适</strong>，不传递函数参数的情况下哪种都一样</p>
 <p>⚠️两者强大的地方在于<strong>扩充函数赖以运行的作用域</strong>，最大好处是<strong>对象不需要与方法有任何耦合关系</strong><br><img src="/img/blogImg/es5-function/es5-function6.jpeg"></p>
@@ -466,7 +474,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">Artikel</span>
                 </a>
               </div>
