@@ -308,10 +308,15 @@
 
       
         
-          
-            <h3 id="理解对象"><a href="#理解对象" class="headerlink" title="理解对象"></a>理解对象</h3><h4 id="属性类型"><a href="#属性类型" class="headerlink" title="属性类型"></a>属性类型</h4><p>数据属性：<br>描述行为的特性有[[configurable]]</p>
-
-          
+          <h3 id="理解对象"><a href="#理解对象" class="headerlink" title="理解对象"></a>理解对象</h3><h4 id="属性类型"><a href="#属性类型" class="headerlink" title="属性类型"></a>属性类型</h4><p>ES有两种属性：数据属性/访问器属性</p>
+<p>数据属性：包含一个数据值的位置，此位置可以读取和写入<br>描述行为的特性有以下：<br><code>[[Configurable]]</code> 是否能通过<code>delete</code>删除属性从而重新定义属性，能否修改属性的特性，或者能否修改为访问器属性。开发人员直接在对象定义的属性该特性默认值是<code>true</code><br><code>[[Enumerable]]</code> 能否通过<code>for-in</code>返回。…默认值是<code>true</code><br><code>[[Writable]]</code> 能否修改属性的值。…默认值是<code>true</code><br><code>[[Value]]</code> 包含属性的数据值，读取和修改就在此位置。…默认值是<code>undefined</code><br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/03/22/ES5-面相对象/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>

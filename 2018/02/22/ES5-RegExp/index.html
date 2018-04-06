@@ -97,6 +97,7 @@
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-regexp/es5-regexp8.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-regexp/es5-regexp9.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-regexp/es5-regexp10.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-regexp/es5-regexp20.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-regexp/es5-regexp11.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-regexp/es5-regexp13.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-regexp/es5-regexp19.jpeg">
@@ -105,7 +106,7 @@
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-regexp/es5-regexp16.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-regexp/es5-regexp17.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-regexp/es5-regexp18.jpeg">
-<meta property="og:updated_time" content="2018-02-25T13:33:05.227Z">
+<meta property="og:updated_time" content="2018-04-06T14:55:03.357Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="读书笔记：ES5-RegExp">
 <meta name="twitter:description" content="RegExp类型声明一个正则表达式就是一个模式和标志的组合体定义方式：字面量/构造函数 12var reg1 = /[ba]ct/g;var reg2 = new RegExp(&amp;apos;[ba]ct&amp;apos;,&amp;apos;g&amp;apos;);">
@@ -373,7 +374,9 @@
 <p><code>(?&lt;=pattern)</code> 非捕获的匹配，反向肯定预查<br><img src="/img/blogImg/es5-regexp/es5-regexp9.jpeg"></p>
 <p><code>(?&lt;!pattern)</code> 非捕获的匹配，反向否定预查<br><img src="/img/blogImg/es5-regexp/es5-regexp10.jpeg"></p>
 <p><code>{n}</code> 重复n次<br><code>{n,}</code> 重复n次或者大于n次<br><code>{n,m}</code> 重复n到m次</p>
-<p><strong>-其他</strong><br><code>x|y</code> 匹配x或y<br><code>[xy]</code> 字符合集，匹配任意一个字符，例<code>/[ba]ct/</code>匹配bat或cat，<code>.</code>和<code>*</code>在合集中没有特殊含义<br><code>[^xy]</code> 反字符合集，匹配非xy的任意字符<br><code>[a-z]</code> 字符范围<br><img src="/img/blogImg/es5-regexp/es5-regexp11.jpeg"></p>
+<p><strong>-其他</strong><br><code>x|y</code> 匹配x或y<br><code>[xy]</code> 字符合集，匹配任意一个字符，例<code>/[ba]ct/</code>匹配bat或cat，<code>.</code>和<code>*</code>在合集中没有特殊含义</p>
+<p><img src="/img/blogImg/es5-regexp/es5-regexp20.jpeg"></p>
+<p><code>[^xy]</code> 反字符合集，匹配非xy的任意字符<br><code>[a-z]</code> 字符范围<br><img src="/img/blogImg/es5-regexp/es5-regexp11.jpeg"></p>
 <p><code>[^a-z]</code> 反字符范围<br><code>[\b]</code> 匹配一个退格，不要和<code>\b</code>混淆<br><code>(xy)</code> 捕获分组</p>
 <h4 id="实例属性"><a href="#实例属性" class="headerlink" title="实例属性"></a>实例属性</h4><p><code>global</code> 全局标实<br><code>ignoreCase</code> 忽视大小写标实<br><code>multiline</code> 多行模式标实<br><code>lastIndex</code> 开始搜索下一个匹配项的字符位置<br><code>source</code> 正则表达式的字符串表示，<strong>无论声明用什么方式，该属性都是字面量形式的字符串表示</strong></p>
 <p>没有什么用，在声明正则时都标注了属性</p>

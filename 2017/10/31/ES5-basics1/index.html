@@ -101,7 +101,7 @@
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basics/basics13.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basics/basics18.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basics/basics14.jpeg">
-<meta property="og:updated_time" content="2018-03-08T11:25:45.154Z">
+<meta property="og:updated_time" content="2018-04-06T13:58:45.731Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="读书笔记：ES5-basics(上)">
 <meta name="twitter:description" content="所有方法-typeof-Boolean-isFinite-isNaN-Number-parseInt-parseFloat">
@@ -422,7 +422,7 @@
 <h4 id="Number类型"><a href="#Number类型" class="headerlink" title="Number类型"></a>Number类型</h4><p>该数据类型使用IEEE754格式表示整数和浮点数，数值字面量格式包含十进制／八进制（前置0后跟0-7，严格模式下会报错，ES6整体提升到严格模式了哟）／十六进制（前置0x后跟0-9和A-F，A-F大小写都可以），计算时最终都会转变成十进制数值</p>
 <h5 id="浮点数"><a href="#浮点数" class="headerlink" title="-浮点数"></a>-浮点数</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var floatNum = 1.1;</span><br><span class="line">//可以识别但是不推荐小数点前面没有整数的写法</span><br><span class="line">var floatNum = .1;</span><br></pre></td></tr></table></figure>
 <p>保存浮点数占用的内存空间是整数的两倍，所以<code>ECMAScript</code>会不失时机的把浮点数转换成整数，类似1.0/1.的情况</p>
-<p>e表示法：0.4e7 =&gt; $ 0.4*10^7 $，e大小写均可以</p>
+<p>e表示法：0.4e7 =&gt; <code>0.4*10^7</code>，e大小写均可以</p>
 <p>对于极小数值，默认当小数点后面0超过6个就自动转变成e表示法</p>
 <p>浮点数值计算时精准度不够，例0.1+0.2会等于0.30000000000000004，这是IEEE754的问题，所以不要做这样的判断</p>
 <h5 id="数值范围"><a href="#数值范围" class="headerlink" title="-数值范围"></a>-数值范围</h5><p><code>Number.MIN_VALUE</code> - <code>Number.MAX_VALUE</code></p>
@@ -503,8 +503,8 @@
 <p>特点：字符串不可变，即一旦创建不能改变，改变是销毁原字符串，再用包含新值的字符串填充该变量</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var str = &apos;java&apos;;</span><br><span class="line">str = str + &apos;script&apos;</span><br></pre></td></tr></table></figure>
 <p>上面的过程创建个能包含’javascript’的新字符串，填充’java’和’script’，最后要销毁’java’和’script’</p>
-<p>字符串转换：<code>toString()</code>和<code>String()</code></p>
-<p>除<code>null</code>和<code>undefined</code>都有<code>toString()</code>方法，注意对于数值类型不能直接调用，要用变量调用</p>
+<p>字符串转换：<code>toString()</code>和<code>String()</code>，前者是各数值类型方法(<code>XXX.toString()</code>)，后者是静态方法(<code>String(XXX)</code>)</p>
+<p>除<code>null</code>和<code>undefined</code>都有<code>toString()</code>方法，注意对于数值类型不能直接调用，要用变量调用，<code>NaN.toString()</code>是<code>NaN</code></p>
 <p><img src="/img/blogImg/es5-basics/basics12.jpeg"></p>
 <p><code>String()</code>方法，有<code>toString()</code>方法的调用该方法，否则调用<code>String()</code>，所以<code>null</code>和<code>undefined</code>调用不会报错</p>
 <p><img src="/img/blogImg/es5-basics/basics13.jpeg"></p>

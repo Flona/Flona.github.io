@@ -90,14 +90,15 @@
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basics/basics16.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basics/basics17.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basics/basics26.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basics/basics27.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basics/basics19.jpeg">
-<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basics/basics20.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basics/basics21.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basics/basics22.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basics/basics23.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basics/basics24.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basics/basics28.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basics/basics25.jpeg">
-<meta property="og:updated_time" content="2018-02-22T05:48:32.359Z">
+<meta property="og:updated_time" content="2018-04-06T13:24:37.632Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="读书笔记：ES5-basics(下)">
 <meta name="twitter:description" content="操作符一元操作符-递增：    前置型 =&amp;gt; ++a =&amp;gt; 语句求值前先自加    后置型 =&amp;gt; a++ =&amp;gt; 语句求值后再自加">
@@ -335,9 +336,9 @@
 <h4 id="乘性操作符"><a href="#乘性操作符" class="headerlink" title="乘性操作符"></a>乘性操作符</h4><p><code>ECMAScript</code>定义了3个乘性操作符，乘法（<code>*</code>）/除法（<code>/</code>）/求模（<code>%</code>）</p>
 <p>非数值类型参与乘性操作符都会先调用<code>number()</code>方法转换成数值类型后再计算</p>
 <h4 id="加性操作符"><a href="#加性操作符" class="headerlink" title="加性操作符"></a>加性操作符</h4><p><code>ECMAScript</code>定义了2个加性操作符，加法（<code>+</code>）/减法（<code>-</code>）</p>
-<p>加法规则：<br>1、️若操作数存在一个是字符串，另一个操作数要转换成字符串再拼接<br>2、有一个操作数是对象/数值/布尔会主动调用<code>toString()</code>，<code>null</code>/<code>undefined</code>主动调用调用<code>String()</code>，再字符串拼接<br>3、️否则两个操作数都是数值，要按照数值来进行加法操作<br>部分实践结果如下：</p>
-<p><img src="/img/blogImg/es5-basics/basics19.jpeg"><br><img src="/img/blogImg/es5-basics/basics20.jpeg"></p>
-<p>减法规则：<br>1、一个操作数是字符串/布尔值/<code>null</code>/<code>undefined</code>，会主动调用<code>Number()</code>转换成数值后再做减法运算<br>2、操作数是对象，依然是<code>valueOf()</code>/<code>toString()</code><br>3、否则两个操作数都是数值就直接做减法</p>
+<p>加法规则：<br>1、️若操作数存在一个是字符串，另一个操作数要转换成字符串再拼接<br>2、有一个操作数是对象/数组会主动调用<code>toString()</code>，转换的结果再按照规则操作<br>3、️否则非数值会<code>Number</code>转换成数值来进行加法操作<br>部分实践结果如下：</p>
+<p><img src="/img/blogImg/es5-basics/basics27.jpeg"><br><img src="/img/blogImg/es5-basics/basics19.jpeg"><br><!-- <img src="/img/blogImg/es5-basics/basics20.jpeg">
+ --><br>减法规则：<br>1、一个操作数是字符串/布尔值/<code>null</code>/<code>undefined</code>，会主动调用<code>Number()</code>转换成数值后再做减法运算<br>2、操作数是对象，依然是<code>valueOf()</code>/<code>toString()</code><br>3、否则两个操作数都是数值就直接做减法</p>
 <p><img src="/img/blogImg/es5-basics/basics21.jpeg"></p>
 <h4 id="关系操作符"><a href="#关系操作符" class="headerlink" title="关系操作符"></a>关系操作符</h4><p><code>&gt;</code>/<code>&gt;=</code>/<code>&lt;</code>/<code>&lt;=</code>，结果返回布尔值</p>
 <p>规则：<br>1、当两个操作符都是字符串时按照顺序依次比较两个字符串的字符编码（大写字母的编码比小写字母编码小）<br>2、一个操作数是数值，另个操作数要转换成数值再进行比较，若有操作符不能转换成数值也就是转换成<code>NaN</code>了，那怎么比较都是<code>false</code><br>3、操作数是布尔值会主动转换成数值<br>3、对象会主动调用<code>valueOf()</code>/<code>toString()</code>，根据结果再按照上面情况比较</p>
@@ -358,6 +359,7 @@
 <h4 id="do-while语句求值前先自减"><a href="#do-while语句求值前先自减" class="headerlink" title="do-while语句求值前先自减"></a><code>do-while</code>语句求值前先自减</h4><p>后测试语句，循环体至少会被执行一次</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">do&#123;</span><br><span class="line">  //do something</span><br><span class="line">&#125;while(expression)</span><br></pre></td></tr></table></figure>
 <h4 id="while语句"><a href="#while语句" class="headerlink" title="while语句"></a><code>while</code>语句</h4><p>前测试语句，循环体可能一次都不会执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">while(expression)&#123;</span><br><span class="line">  //do something</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>之前面试时有道题是随机生成10个1-100之间不重复的数值，从中取得最高值和最低值，当时还被懵住了尴尬，<code>while</code>和<code>for</code>都行<br><img src="/img/blogImg/es5-basics/basics28.jpeg"></p>
 <h4 id="for语句"><a href="#for语句" class="headerlink" title="for语句"></a><code>for</code>语句</h4><p>前测试语句，循环体可能一次都不会执行，相比<code>while</code>语句具有初始化变量和定义循环后要执行的代码的能力<br>⚠️使用<code>while</code>做不到的<code>for</code>也做不到</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">for(var i=0; i&lt;10; i++)&#123;</span><br><span class="line">  //do something</span><br><span class="line">&#125;</span><br><span class="line">alert(i)</span><br><span class="line">// 10</span><br><span class="line">// var 声明不存在块级作用域，所以外部可以访问到</span><br></pre></td></tr></table></figure>
 <p>⚠️初始化表达式，控制表达式，循环后表达式都是可选的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 无限循环</span><br><span class="line">for(;;)&#123;</span><br><span class="line">  //do something</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
@@ -366,7 +368,7 @@
 <h4 id="label语句"><a href="#label语句" class="headerlink" title="label语句"></a><code>label</code>语句</h4><p>在代码中添加标签以便将来由<code>break</code>或<code>continue</code>语句引用，加标签的语句一般要与<code>for</code>语句等循环语句搭配使用</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// label:statement</span><br><span class="line">start:for(...)&#123;</span><br><span class="line">  //do something</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="break和continue语句"><a href="#break和continue语句" class="headerlink" title="break和continue语句"></a><code>break</code>和<code>continue</code>语句</h4><p><code>break</code> =&gt; 退出循环，执行循环后面的语句<br><code>continue</code> =&gt; 退出循环，从循环体顶部继续执行（即执行下一个循环）</p>
-<p>两者与<code>label</code>联合使用，返回代码特定位置，多发生下循环嵌套的情况下</p>
+<p>两者与<code>label</code>联合使用，返回代码特定位置，多发生在循环嵌套的情况下</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">outermost:</span><br><span class="line">for(...)&#123;</span><br><span class="line">	for(...)&#123;</span><br><span class="line">	  //break outermost</span><br><span class="line">	  //continue outermost</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>⚠️使用过度不易调试，建议用描述性的标签，且不要嵌套过多循环</p>
 <h4 id="with语句"><a href="#with语句" class="headerlink" title="with语句"></a><code>with</code>语句</h4><p>将代码作用域设置到特定的对象中，目的是简化多次编写同一个对象<br>⚠️首先查找局部变量，没有再查制定的对象中是否有同名属性<br>⚠️<strong><em>严格模式下报错！！！</em></strong></p>
@@ -376,7 +378,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">switch(expression)&#123;</span><br><span class="line">	case value1: </span><br><span class="line">		statement;</span><br><span class="line">		break;</span><br><span class="line">	//value2和value3情况合并</span><br><span class="line">	case value2: </span><br><span class="line">	case value3:</span><br><span class="line">		statement;</span><br><span class="line">		break;</span><br><span class="line">	default: </span><br><span class="line">		statememt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>⚠️<code>switch</code>里可是是任何类型数据<br>⚠️<code>case</code>可以是<strong><em>常量/变量/表达式</em></strong><br>⚠️比较用的<strong><em>全等操作符</em></strong></p>
 <h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><p>返回值相关：<br>函数可以没有<code>return</code>返回值，当不<code>return</code>时，其实返回了<code>undefined</code><br>函数可以在任何时候<code>return</code>，当<code>return</code>后面没有跟具体值时会返回<code>undefined</code><br><code>return</code>后面的语句不会执行<br>推荐一个函数要么始终有一个返回值，要么就没有返回值，便于调试</p>
-<p>严格模式限制：（以下会导致语法错误无法执行）<br>不能吧函数名字和参数名字命名为<code>eval</code>或者<code>arguments</code><br>参数名不能相同</p>
+<p>严格模式限制：（以下会导致语法错误无法执行）<br>不能把函数名字和参数名字命名为<code>eval</code>或者<code>arguments</code><br>参数名不能相同</p>
 <p>参数：<br>函数参数是以一个包含零或多个值的数组的形式传递，函数接受的始终是这个数组，并不关心数组中包含哪些参数，函数内通过<code>arguments</code>对象访问这个数组<br>平时写的函数中命名的参数只提供便利，不是必须的<br><code>arguments</code>不是<code>Arrary</code>的实例，类似数组，可以通过方括号语法<code>arguments[0]</code>读值<br><code>arguments</code>的值始终与命名参数的值保持同步，<strong><em>但内存空间是独立的</em></strong>，当改变<code>arguments</code>的值时会同步到命名参数中，前提是参数值有被传递进来，若没有传递进来，<code>arguments</code>取值是<code>undifined</code>,<strong><em><code>arguments</code>长度由实际传递进来的参数个数决定，不由定义的决定</em></strong></p>
 <p><img src="/img/blogImg/es5-basics/basics25.jpeg"></p>
 <p>重载：<br>没有签名、没有重载<br>先后定义两个同名函数，后定义的函数会覆盖前一个函数<br>通过检查传入函数中参数的类型和数量做不同的响应，来模仿重载</p>
