@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/favicon.ico?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="JS,ES5,读书笔记," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="理解对象属性类型ES有两种属性：数据属性/访问器属性默认对象字面量设置的属性都是数据属性，访问器属性需要defineProperty()/definePropertise()方法设置 数据属性：包含一个数据值的位置，此位置可以读取和写入定义行为的特征值有以下：[[Configurable]] 是否能通过delete删除属性从而重新定义属性，能否修改属性的特性，或者能否修改为访问器属性。开发人员直接">
+<meta name="keywords" content="JS,ES5,读书笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="读书笔记：ES5-面向对象">
+<meta property="og:url" content="http://www.yvonne.party/2018/03/22/ES5-面向对象/index.html">
+<meta property="og:site_name" content="Yvonne">
+<meta property="og:description" content="理解对象属性类型ES有两种属性：数据属性/访问器属性默认对象字面量设置的属性都是数据属性，访问器属性需要defineProperty()/definePropertise()方法设置 数据属性：包含一个数据值的位置，此位置可以读取和写入定义行为的特征值有以下：[[Configurable]] 是否能通过delete删除属性从而重新定义属性，能否修改属性的特性，或者能否修改为访问器属性。开发人员直接">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/object-oriented/object-oriented1.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/object-oriented/object-oriented2.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/object-oriented/object-oriented3.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/object-oriented/object-oriented4.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/object-oriented/object-oriented5.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/object-oriented/object-oriented6.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/object-oriented/object-oriented9.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/object-oriented/object-oriented7.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/object-oriented/object-oriented8.jpeg">
+<meta property="og:updated_time" content="2018-04-11T16:09:39.306Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="读书笔记：ES5-面向对象">
+<meta name="twitter:description" content="理解对象属性类型ES有两种属性：数据属性/访问器属性默认对象字面量设置的属性都是数据属性，访问器属性需要defineProperty()/definePropertise()方法设置 数据属性：包含一个数据值的位置，此位置可以读取和写入定义行为的特征值有以下：[[Configurable]] 是否能通过delete删除属性从而重新定义属性，能否修改属性的特性，或者能否修改为访问器属性。开发人员直接">
+<meta name="twitter:image" content="http://www.yvonne.party/img/blogImg/object-oriented/object-oriented1.jpeg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.yvonne.party/2018/03/22/ES5-面向对象/"/>
+
+
+
+
+
+  <title>读书笔记：ES5-面向对象 | Yvonne</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Yvonne</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Accueil
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.yvonne.party/2018/03/22/ES5-面向对象/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yvonne">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yvonne">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">读书笔记：ES5-面向对象</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posté le</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-22T23:34:29+08:00">
+                2018-03-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="理解对象"><a href="#理解对象" class="headerlink" title="理解对象"></a>理解对象</h3><h4 id="属性类型"><a href="#属性类型" class="headerlink" title="属性类型"></a>属性类型</h4><p>ES有两种属性：数据属性/访问器属性<br>默认对象字面量设置的属性都是数据属性，访问器属性需要<code>defineProperty()</code>/<code>definePropertise()</code>方法设置</p>
+<p>数据属性：包含一个数据值的位置，此位置可以读取和写入<br>定义行为的特征值有以下：<br><code>[[Configurable]]</code> 是否能通过<code>delete</code>删除属性从而重新定义属性，能否修改属性的特性，或者能否修改为访问器属性。开发人员直接在对象定义的属性该特性默认值是<code>true</code><br><code>[[Enumerable]]</code> 能否通过<code>for-in</code>返回。…默认值是<code>true</code><br><code>[[Writable]]</code> 能否修改属性的值。…默认值是<code>true</code><br><code>[[Value]]</code> 包含属性的数据值，读取和修改就在此位置。…默认值是<code>undefined</code><br><a id="more"></a><br>修改属性特性方法： <code>Object.defineProperty()</code>，参数一对象，参数二属性名，参数三特性对象（可设置一或多个值）<br>⚠️IE9+<br>⚠️特性对象中不指定的特性默认是<code>false</code>/<code>undefined</code></p>
+<p><img src="/img/blogImg/object-oriented/object-oriented1.jpeg"></p>
+<p>访问器属性：包含一对<code>getter()</code>/<code>setter()</code>函数，不包含数据值<br>定义行为的特征值有以下：<br><code>[[Configurable]]</code> 是否能通过<code>delete</code>删除属性从而重新定义属性，能否修改属性的特性，或者能否修改为数据属性。开发人员直接在对象定义的属性该特性默认值是<code>true</code><br><code>[[Enumerable]]</code> 能否通过<code>for-in</code>返回。…默认值是<code>true</code><br><code>[[get]]</code> 读取属性时调用的函数，默认值<code>undefined</code><br><code>[[set]]</code> 写入属性时调用的函数，默认值<code>undefined</code></p>
+<p>利用<code>Object.defineProperty()</code>设置特性，不设置<code>get</code>不能读，不设置<code>set</code>不能写：</p>
+<p><img src="/img/blogImg/object-oriented/object-oriented2.jpeg"></p>
+<p>一次性定义多个属性：<code>Object.definePropertise()</code> 参数一对象，参数二（属性：特性对象）格式的对象<br>⚠️IE9+<br>⚠️可以针对任何对象包括DOM/BOM使用此方法</p>
+<p><img src="/img/blogImg/object-oriented/object-oriented3.jpeg"></p>
+<p>读取属性特性：<code>Object.getOwnPropertyDescriptor()</code> 参数一对象，参数二属性名，返回特性对象，<strong>仅是实例的非原型的属性描述</strong><br>⚠️IE9+</p>
+<p><img src="/img/blogImg/object-oriented/object-oriented4.jpeg"></p>
+<h3 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h3><p>Object构造函数或者对象字面量创建单个对象缺点：同一个接口创建很多对象，产生大量的重复代码</p>
+<h4 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function createPerson(name,age)&#123;</span><br><span class="line">  var o = new Object();</span><br><span class="line"></span><br><span class="line">  o.name = name;</span><br><span class="line">  o.age = age;</span><br><span class="line">  o.sayName = function()&#123;</span><br><span class="line">  	console.log(this.name);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  return o;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/img/blogImg/object-oriented/object-oriented5.jpeg"></p>
+<p><strong>解决：封装函数，创建多个相似对象<br>问题：对象识别问题-怎样知道对象类型</strong></p>
+<h4 id="构造函数模式"><a href="#构造函数模式" class="headerlink" title="构造函数模式"></a>构造函数模式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function CreatePerson(name,age)&#123;</span><br><span class="line">  this.name = name;</span><br><span class="line">  this.age = age;</span><br><span class="line">  this.sayName = function()&#123;</span><br><span class="line">  	console.log(this.name);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/img/blogImg/object-oriented/object-oriented6.jpeg"></p>
+<p>⚠️构造函数规定大写字母开头，为了区别于其他函数，<strong>构造函数本身也是函数，只不过是用途于创建对象</strong><br>⚠️<code>new</code>调用构造函数过程：<br> 1.创建一个新对象<br> 2.构造函数作用域指向新对象<br> 3.执行构造函数中代码<br> 4.返回新对象<br>⚠️不存在构造函数特殊语法，<strong>通过<code>new</code>调用就是构造函数，不通过<code>new</code>调用就是普通函数</strong></p>
+<p><strong>解决：实例标识为一种特定类型，能够<code>instanceof</code>判断具体对象类型<br>问题：每个实例上都实例化一遍函数对象，创建多个同样功能的函数没有必要，也不必要耦合函数方法和对象</strong>(在构造函数外即全局作用域下写函数方法，然后在构造函数中定义新对象方法时指向全局函数，并不是好方法，虽然解决了共享同一个方法，但是全局函数仅被某个对象使用导致全局作用域名副其实、同时会污染全局环境、也失去了自定义的引用类型的封装性)</p>
+<h4 id="原型模式"><a href="#原型模式" class="headerlink" title="原型模式"></a>原型模式</h4><p>过程：<br>创建一个新函数，根据一组特定规则为该函数创建属性<code>prototype</code>，属性是指向原型对象的指针<br>原型对象自动获取<code>constructor</code>(构造函数)属性，是指向新函数的指针，其他方法均继承自<code>Object</code><br>创建新实例，实例将包含<code>[[prototype]]</code>内部属性指针，指向原型，是其与原型关联(并非与构造函数关联)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function Person()&#123;&#125;</span><br><span class="line"></span><br><span class="line">Person.prototype.name = &apos;Nicholas&apos;;</span><br><span class="line">Person.prototype.age = 29;</span><br><span class="line">Person.prototype.job = &apos;software Engineer&apos;;</span><br><span class="line">Person.prototype.sayName = function()&#123;</span><br><span class="line">  console.log(this.name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var person1 = new Person();</span><br><span class="line">var person2 = new Person();</span><br></pre></td></tr></table></figure>
+<p><img src="/img/blogImg/object-oriented/object-oriented9.jpeg"></p>
+<p><img src="/img/blogImg/object-oriented/object-oriented7.jpeg"></p>
+<p><code>Object.getPrototypeOf()</code> 获取实例的原型，IE9+<br><img src="/img/blogImg/object-oriented/object-oriented8.jpeg"></p>
+<p>解决：所有实例通过原型共享属性和方法</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JS/" rel="tag"># JS</a>
+          
+            <a href="/tags/ES5/" rel="tag"># ES5</a>
+          
+            <a href="/tags/读书笔记/" rel="tag"># 读书笔记</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/11/ES5-单体内置对象/" rel="next" title="读书笔记：ES5-单体内置对象">
+                <i class="fa fa-chevron-left"></i> 读书笔记：ES5-单体内置对象
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table Des Matières
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Ensemble
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpeg"
+                alt="Yvonne" />
+            
+              <p class="site-author-name" itemprop="name">Yvonne</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">articles</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/Flona" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://linll.github.io" target="_blank" title="LGrok">
+                    
+                      <i class="fa fa-fw fa-globe"></i>LGrok</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://hedychen.github.io" target="_blank" title="Hedychen">
+                    
+                      <i class="fa fa-fw fa-globe"></i>Hedychen</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://blog.8i88.cn" target="_blank" title="Armo">
+                    
+                      <i class="fa fa-fw fa-globe"></i>Armo</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#理解对象"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x7406;&#x89E3;&#x5BF9;&#x8C61;" class="headerlink" title="&#x7406;&#x89E3;&#x5BF9;&#x8C61;"></a>&#x7406;&#x89E3;&#x5BF9;&#x8C61;</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#属性类型"><span class="nav-number">1.1.</span> <span class="nav-text"><a href="#&#x5C5E;&#x6027;&#x7C7B;&#x578B;" class="headerlink" title="&#x5C5E;&#x6027;&#x7C7B;&#x578B;"></a>&#x5C5E;&#x6027;&#x7C7B;&#x578B;</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建对象"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x521B;&#x5EFA;&#x5BF9;&#x8C61;" class="headerlink" title="&#x521B;&#x5EFA;&#x5BF9;&#x8C61;"></a>&#x521B;&#x5EFA;&#x5BF9;&#x8C61;</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#工厂模式"><span class="nav-number">2.1.</span> <span class="nav-text"><a href="#&#x5DE5;&#x5382;&#x6A21;&#x5F0F;" class="headerlink" title="&#x5DE5;&#x5382;&#x6A21;&#x5F0F;"></a>&#x5DE5;&#x5382;&#x6A21;&#x5F0F;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#构造函数模式"><span class="nav-number">2.2.</span> <span class="nav-text"><a href="#&#x6784;&#x9020;&#x51FD;&#x6570;&#x6A21;&#x5F0F;" class="headerlink" title="&#x6784;&#x9020;&#x51FD;&#x6570;&#x6A21;&#x5F0F;"></a>&#x6784;&#x9020;&#x51FD;&#x6570;&#x6A21;&#x5F0F;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#原型模式"><span class="nav-number">2.3.</span> <span class="nav-text"><a href="#&#x539F;&#x578B;&#x6A21;&#x5F0F;" class="headerlink" title="&#x539F;&#x578B;&#x6A21;&#x5F0F;"></a>&#x539F;&#x578B;&#x6A21;&#x5F0F;</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yvonne</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Thème &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
