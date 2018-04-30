@@ -79,13 +79,13 @@
 
 
 
-<meta name="description" content="所有方法 Object.defineProperty() Object.definePropertise() Object.getOwnPropertyDescriptor() Object.getPrototypeOf() instanceof isPrototypeOf() hasOwnProperty() in for-in Object.keys() Object.getOwnProper">
+<meta name="description" content="所有方法 Object.defineProperty() Object.definePropertise() Object.getOwnPropertyDescriptor() Object.getPrototypeOf() instanceof isPrototypeOf() hasOwnProperty() in">
 <meta name="keywords" content="JS,ES5,读书笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="读书笔记：ES5-面向对象">
 <meta property="og:url" content="http://www.yvonne.party/2018/03/22/ES5-面向对象/index.html">
 <meta property="og:site_name" content="Yvonne">
-<meta property="og:description" content="所有方法 Object.defineProperty() Object.definePropertise() Object.getOwnPropertyDescriptor() Object.getPrototypeOf() instanceof isPrototypeOf() hasOwnProperty() in for-in Object.keys() Object.getOwnProper">
+<meta property="og:description" content="所有方法 Object.defineProperty() Object.definePropertise() Object.getOwnPropertyDescriptor() Object.getPrototypeOf() instanceof isPrototypeOf() hasOwnProperty() in">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/object-oriented/object-oriented1.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/object-oriented/object-oriented2.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/object-oriented/object-oriented3.jpeg">
@@ -106,10 +106,10 @@
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/object-oriented/object-oriented18.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/object-oriented/object-oriented19.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/object-oriented/object-oriented19.jpeg">
-<meta property="og:updated_time" content="2018-04-30T14:55:47.196Z">
+<meta property="og:updated_time" content="2018-04-30T15:02:16.879Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="读书笔记：ES5-面向对象">
-<meta name="twitter:description" content="所有方法 Object.defineProperty() Object.definePropertise() Object.getOwnPropertyDescriptor() Object.getPrototypeOf() instanceof isPrototypeOf() hasOwnProperty() in for-in Object.keys() Object.getOwnProper">
+<meta name="twitter:description" content="所有方法 Object.defineProperty() Object.definePropertise() Object.getOwnPropertyDescriptor() Object.getPrototypeOf() instanceof isPrototypeOf() hasOwnProperty() in">
 <meta name="twitter:image" content="http://www.yvonne.party/img/blogImg/object-oriented/object-oriented1.jpeg">
 
 
@@ -338,14 +338,15 @@
 <li><code>instanceof</code></li>
 <li><code>isPrototypeOf()</code></li>
 <li><code>hasOwnProperty()</code></li>
-<li><code>in</code></li>
+<li><code>in</code><a id="more"></a></li>
 <li><code>for-in</code></li>
 <li><code>Object.keys()</code></li>
 <li><code>Object.getOwnPropertyNames()</code></li>
 <li><code>Object.create()</code></li>
 </ul>
 <h3 id="理解对象"><a href="#理解对象" class="headerlink" title="理解对象"></a>理解对象</h3><h4 id="属性类型"><a href="#属性类型" class="headerlink" title="属性类型"></a>属性类型</h4><p>ES有两种属性：数据属性/访问器属性<br>默认对象字面量设置的属性都是数据属性，访问器属性需要<code>defineProperty()</code>/<code>definePropertise()</code>方法设置</p>
-<p>数据属性：包含一个数据值的位置，此位置可以读取和写入<br>定义行为的特征值有以下：<br><code>[[Configurable]]</code> 是否能通过<code>delete</code>删除属性从而重新定义属性，能否修改属性的特性，或者能否修改为访问器属性。开发人员直接在对象定义的属性该特性默认值是<code>true</code><br><code>[[Enumerable]]</code> 能否通过<code>for-in</code>返回。…默认值是<code>true</code><br><code>[[Writable]]</code> 能否修改属性的值。…默认值是<code>true</code><br><code>[[Value]]</code> 包含属性的数据值，读取和修改就在此位置。…默认值是<code>undefined</code><br><a id="more"></a><br>修改属性特性方法： <code>Object.defineProperty()</code>，参数一对象，参数二属性名，参数三特性对象（可设置一或多个值）<br>⚠️IE9+<br>⚠️特性对象中不指定的特性默认是<code>false</code>/<code>undefined</code></p>
+<p>数据属性：包含一个数据值的位置，此位置可以读取和写入<br>定义行为的特征值有以下：<br><code>[[Configurable]]</code> 是否能通过<code>delete</code>删除属性从而重新定义属性，能否修改属性的特性，或者能否修改为访问器属性。开发人员直接在对象定义的属性该特性默认值是<code>true</code><br><code>[[Enumerable]]</code> 能否通过<code>for-in</code>返回。…默认值是<code>true</code><br><code>[[Writable]]</code> 能否修改属性的值。…默认值是<code>true</code><br><code>[[Value]]</code> 包含属性的数据值，读取和修改就在此位置。…默认值是<code>undefined</code></p>
+<p>修改属性特性方法： <code>Object.defineProperty()</code>，参数一对象，参数二属性名，参数三特性对象（可设置一或多个值）<br>⚠️IE9+<br>⚠️特性对象中不指定的特性默认是<code>false</code>/<code>undefined</code></p>
 <p><img src="/img/blogImg/object-oriented/object-oriented1.jpeg"></p>
 <p>访问器属性：包含一对<code>getter()</code>/<code>setter()</code>函数，不包含数据值<br>定义行为的特征值有以下：<br><code>[[Configurable]]</code> 是否能通过<code>delete</code>删除属性从而重新定义属性，能否修改属性的特性，或者能否修改为数据属性。开发人员直接在对象定义的属性该特性默认值是<code>true</code><br><code>[[Enumerable]]</code> 能否通过<code>for-in</code>返回。…默认值是<code>true</code><br><code>[[get]]</code> 读取属性时调用的函数，默认值<code>undefined</code><br><code>[[set]]</code> 写入属性时调用的函数，默认值<code>undefined</code></p>
 <p>利用<code>Object.defineProperty()</code>设置特性，不设置<code>get</code>不能读，不设置<code>set</code>不能写：</p>
@@ -462,6 +463,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2018/04/30/ES5-BOM-window/" rel="prev" title="ES5-BOM-window">
+                ES5-BOM-window <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -541,7 +546,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
