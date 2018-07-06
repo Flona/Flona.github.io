@@ -91,7 +91,7 @@
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-window/es5-window3.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-window/es5-window4.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-window/es5-window5.jpeg">
-<meta property="og:updated_time" content="2018-05-02T15:18:41.697Z">
+<meta property="og:updated_time" content="2018-05-27T05:31:44.177Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ES5-BOM-window">
 <meta name="twitter:description" content="window对象表示浏览器的一个实例具有双重角色：是通过JS访问浏览器的一个接口；是ES规定的Global对象 全局作用域所有全局作用域中声明的变量、函数都会变成window的属性和方法">
@@ -334,7 +334,10 @@
 <p>⚠️<strong>差异导致不存在跨浏览器取得窗口左边和上边的精准坐标值！！！</strong></p>
 <h5 id="移动"><a href="#移动" class="headerlink" title="移动"></a>移动</h5><p><code>moveTo()</code> - 两个参数：<strong>新位置的x和y坐标值</strong><br><code>moveBy()</code> - 两个参数：<strong>水平和垂直方向上移动的像素数</strong></p>
 <p>⚠️需要注意的一点是这个坐标轴和正常数学不一样，基于屏幕左上角位置是<code>0,0</code>，<strong>向下y轴是正数不是负数</strong><br>⚠️两个方法都可能会被浏览器禁用，Opera、IE7+默认就是禁用的，<strong>我在Safari、Chrome上测试都无效</strong><br>⚠️两个方法不适用框架，<strong>只对最外层window使用</strong></p>
-<h4 id="窗口大小"><a href="#窗口大小" class="headerlink" title="窗口大小"></a>窗口大小</h4>
+<h4 id="窗口大小"><a href="#窗口大小" class="headerlink" title="窗口大小"></a>窗口大小</h4><p>IE9+等所有浏览器都提供了4个属性：<br><code>innerWidth</code> <code>innerHeight</code> <code>outerWidth</code> <code>outerHeight</code></p>
+<p>⚠️浏览器差异：<br>IE9+、Safari、Firebox，outer的返回浏览器本身的尺寸(顶层window对象或框架访问都是)<br>Opera，outer返回页面视图容器的大小(单个标签页对应的浏览器窗口)，inner是该容器中页面视图区的大小(减去边框宽度)<br>Chrome，outer和inner返回值一样，都是视口大小非浏览器大小</p>
+<p>结论是不能取得浏览器窗口大小但可以取得视口大小</p>
+
       
     </div>
     
@@ -377,6 +380,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/06/vue-design-patterns/" rel="prev" title="vue源码解析-设计模式">
+                vue源码解析-设计模式 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -457,7 +464,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">Artikel</span>
                 </a>
               </div>
@@ -470,7 +477,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">Tags</span>
                 
               </div>
