@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/favicon.ico?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="JS,Algorithm," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="排序快速排序1234567891011121314151617181920function quickSort(arr) &amp;#123;    if (arr.length &amp;lt;= 1) &amp;#123; return arr; &amp;#125;    // 基准索引    const pivotIndex = Math.floor(arr.length/2);    // 基准值，并删除arr中基准值">
+<meta name="keywords" content="JS,Algorithm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="algorithm">
+<meta property="og:url" content="http://www.yvonne.party/2018/07/25/algorithm/index.html">
+<meta property="og:site_name" content="Yvonne">
+<meta property="og:description" content="排序快速排序1234567891011121314151617181920function quickSort(arr) &amp;#123;    if (arr.length &amp;lt;= 1) &amp;#123; return arr; &amp;#125;    // 基准索引    const pivotIndex = Math.floor(arr.length/2);    // 基准值，并删除arr中基准值">
+<meta property="og:updated_time" content="2018-07-25T15:24:44.596Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="algorithm">
+<meta name="twitter:description" content="排序快速排序1234567891011121314151617181920function quickSort(arr) &amp;#123;    if (arr.length &amp;lt;= 1) &amp;#123; return arr; &amp;#125;    // 基准索引    const pivotIndex = Math.floor(arr.length/2);    // 基准值，并删除arr中基准值">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.yvonne.party/2018/07/25/algorithm/"/>
+
+
+
+
+
+  <title>algorithm | Yvonne</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Yvonne</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.yvonne.party/2018/07/25/algorithm/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yvonne">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yvonne">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">algorithm</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-25T23:13:35+08:00">
+                2018-07-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h3><h4 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">function quickSort(arr) &#123;</span><br><span class="line">    if (arr.length &lt;= 1) &#123; return arr; &#125;</span><br><span class="line">    // 基准索引</span><br><span class="line">    const pivotIndex = Math.floor(arr.length/2);</span><br><span class="line">    // 基准值，并删除arr中基准值才能递归化小对比范围，不然是死循环</span><br><span class="line">    const pivot = arr.splice(pivotIndex,1)[0];</span><br><span class="line">    // 基准左右值数组</span><br><span class="line">    const left = [],right = [];</span><br><span class="line">    // 遍历剩下的所有值与基准值对比</span><br><span class="line">    arr.forEach((item)=&gt;&#123;</span><br><span class="line">        if (item &lt; pivot) &#123;</span><br><span class="line">            left.push(item);</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            right.push(item);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    // 递归left|right（提取各自的基准值再对比，直至arr长度&lt;=1不再对比而返回arr）</span><br><span class="line">    // 最终返回left+基准值+right</span><br><span class="line">    return quickSort(left).concat(pivot,quickSort(right))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h4 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">function selectionSort(arr) &#123;</span><br><span class="line">    var len = arr.length;</span><br><span class="line">    var minIndex, temp;</span><br><span class="line">    // 少循环最后一项，因为最后一项肯定是被更换到该位置的最大值</span><br><span class="line">    for (var i = 0; i &lt; len - 1; i++) &#123;</span><br><span class="line">        minIndex = i;</span><br><span class="line">        for (var j = i + 1; j &lt; len; j++) &#123;</span><br><span class="line">            // 循环寻找最小的数</span><br><span class="line">            if (arr[j] &lt; arr[minIndex]) &#123;</span><br><span class="line">                // 将最小数的索引保存</span><br><span class="line">                minIndex = j;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        // 每次循环都将两值进行动态对调</span><br><span class="line">        temp = arr[i];</span><br><span class="line">        arr[i] = arr[minIndex];</span><br><span class="line">        arr[minIndex] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">    return arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">function mergeSort(arr) &#123;</span><br><span class="line">    // 不会出现空数组的情况，即便是3的时候也是划分为1和2，2再划分为1和1，所以最低是1</span><br><span class="line">    if (arr.length===1) &#123;return arr&#125;</span><br><span class="line">    const middle = Math.floor(arr.length/2);</span><br><span class="line">    const leftArr = arr.slice(0,middle);</span><br><span class="line">    const rightArr = arr.slice(middle);</span><br><span class="line">    // 递归到将数组全部拆开再依次merge</span><br><span class="line">    return merge(mergeSort(leftArr), mergeSort(rightArr))</span><br><span class="line">&#125;</span><br><span class="line">function merge(leftArr,rightArr) &#123;</span><br><span class="line">    const result = [];</span><br><span class="line">    // 第一次merge是两个包含一项的数组，逐步到最初的leftArr|rightArr</span><br><span class="line">    while (leftArr.length&gt;0 &amp;&amp; rightArr.length&gt;0) &#123;</span><br><span class="line">        // 两个数组比较第一个值（两个数组都各自排序过）</span><br><span class="line">        if (leftArr[0] &lt; rightArr[0]) &#123;</span><br><span class="line">            // 取较小值并移除</span><br><span class="line">            result.push(leftArr.shift())</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">                result.push(rightArr.shift())</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return result.concat(leftArr).concat(rightArr)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">function insertionSort(arr) &#123;</span><br><span class="line">    var len = arr.length,i,j,temp;</span><br><span class="line">    for (i = 1; i &lt; len; i++) &#123;</span><br><span class="line">        // 留存需要插入的值，j循环比较中会变更赋值</span><br><span class="line">        temp = arr[i]</span><br><span class="line">        // 从当前i索引开始向前循环</span><br><span class="line">        // i索引前的序列是排好序的</span><br><span class="line">        for (j = i; j &gt;= 0; j--) &#123;</span><br><span class="line">            // 始终比较的是初始留存的temp</span><br><span class="line">            if (arr[j-1]&gt;temp) &#123;</span><br><span class="line">                // 前一个值大于要插入的值</span><br><span class="line">                // 需要插入的值位置赋值前一个较大的值</span><br><span class="line">                // 此条件下不将要插入的值插入，减少交换次数</span><br><span class="line">                arr[j] = arr[j-1]</span><br><span class="line">            &#125;else&#123;</span><br><span class="line">                // 前一个值小于要插入的值</span><br><span class="line">                // 确定位置后，再将需要插入的值插入在此位置</span><br><span class="line">                arr[j] = temp</span><br><span class="line">                // 停止循环比较查找</span><br><span class="line">                break</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return arr</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="希尔排序（插入排序的优化）"><a href="#希尔排序（插入排序的优化）" class="headerlink" title="希尔排序（插入排序的优化）"></a>希尔排序（插入排序的优化）</h3><p>希尔排序对增量序列的选择没有严格规定<br>一般选 d1 约为 n/2，d2 为 d1/2， d3 为 d2/2 ，…， di = 1<br>事例以3+1=4为第二基数（1是第一基数），3倍递增生成gap，即1、4、13…</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">function shellSort(arr) &#123;</span><br><span class="line">    var len = arr.length,</span><br><span class="line">    temp,</span><br><span class="line">    gap = 1;</span><br><span class="line">    // 动态定义间隔序列</span><br><span class="line">    while(gap &lt; len/3) &#123;</span><br><span class="line">        gap = gap*3+1;</span><br><span class="line">    &#125;   </span><br><span class="line">    for (gap; gap &gt; 0; gap = Math.floor(gap/3)) &#123;</span><br><span class="line">        console.log(gap)</span><br><span class="line">        for (var i = gap; i &lt; len; i++) &#123;</span><br><span class="line">            temp = arr[i];</span><br><span class="line">            for (var j = i-gap; j &gt;= 0 &amp;&amp; arr[j] &gt; temp; j -= gap) &#123;</span><br><span class="line">                arr[j+gap] = arr[j];</span><br><span class="line">            &#125;</span><br><span class="line">            arr[j+gap] = temp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>d1 约为 n/2，d2 为 d1/2， d3 为 d2/2 ，…， di = 1的Demo:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">function shellSort2(array) &#123;</span><br><span class="line">    function swap(array, i, k) &#123;</span><br><span class="line">        var temp = array[i];</span><br><span class="line">        array[i] = array[k];</span><br><span class="line">        array[k] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">    var length = array.length,</span><br><span class="line">    gap = Math.floor(length / 2);</span><br><span class="line">    while (gap &gt; 0) &#123;</span><br><span class="line">        for (var i = gap; i &lt; length; i++) &#123;</span><br><span class="line">            for (var j = i; 0 &lt; j; j -= gap) &#123;</span><br><span class="line">                if (array[j - gap] &gt; array[j]) &#123;</span><br><span class="line">                    swap(array, j - gap, j);</span><br><span class="line">                    &#125; else &#123;</span><br><span class="line">                        break;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            gap = Math.floor(gap / 2);</span><br><span class="line">        &#125;</span><br><span class="line">        return array;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">// 循环比较好相邻的两个值，每次循环冒泡出来一个排好序的值，以此不断减小循环数量</span><br><span class="line">function bubbleSort(arr) &#123;</span><br><span class="line">    var len = arr.length, i, j, temp;</span><br><span class="line">    // 外层不断减小j循环数量，每次都排好一个，第一次最后一位肯定是最大的，第二次排好后两位</span><br><span class="line">    // i&gt;0，当=0时只剩一位即是最小值，不再需要排序</span><br><span class="line">    for (var i = len-1; i &gt; 0; i--) &#123;</span><br><span class="line">        // 循环比较未排好序的值，循环到i的前一个值</span><br><span class="line">        for (var j = 0; j &lt; i; j++) &#123;</span><br><span class="line">            if (arr[j] &gt; arr[j+1]) &#123;</span><br><span class="line">                temp = arr[j];</span><br><span class="line">                arr[j] = arr[j+1];</span><br><span class="line">                arr[j+1] = temp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return arr</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="https://github.com/Flona/Algorithm-demo" title="链接" target="_blank" rel="noopener">代码链接</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JS/" rel="tag"># JS</a>
+          
+            <a href="/tags/Algorithm/" rel="tag"># Algorithm</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/06/vue-design-patterns/" rel="next" title="vue源码解析-设计模式">
+                <i class="fa fa-chevron-left"></i> vue源码解析-设计模式
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpeg"
+                alt="Yvonne" />
+            
+              <p class="site-author-name" itemprop="name">Yvonne</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-name">Artikel</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">Tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/Flona" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://linll.github.io" target="_blank" title="LGrok">
+                    
+                      <i class="fa fa-fw fa-globe"></i>LGrok</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://hedychen.github.io" target="_blank" title="Hedychen">
+                    
+                      <i class="fa fa-fw fa-globe"></i>Hedychen</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://blog.8i88.cn" target="_blank" title="Armo">
+                    
+                      <i class="fa fa-fw fa-globe"></i>Armo</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#排序"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x6392;&#x5E8F;" class="headerlink" title="&#x6392;&#x5E8F;"></a>&#x6392;&#x5E8F;</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#快速排序"><span class="nav-number">1.1.</span> <span class="nav-text"><a href="#&#x5FEB;&#x901F;&#x6392;&#x5E8F;" class="headerlink" title="&#x5FEB;&#x901F;&#x6392;&#x5E8F;"></a>&#x5FEB;&#x901F;&#x6392;&#x5E8F;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#选择排序"><span class="nav-number">1.2.</span> <span class="nav-text"><a href="#&#x9009;&#x62E9;&#x6392;&#x5E8F;" class="headerlink" title="&#x9009;&#x62E9;&#x6392;&#x5E8F;"></a>&#x9009;&#x62E9;&#x6392;&#x5E8F;</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#归并排序"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x5F52;&#x5E76;&#x6392;&#x5E8F;" class="headerlink" title="&#x5F52;&#x5E76;&#x6392;&#x5E8F;"></a>&#x5F52;&#x5E76;&#x6392;&#x5E8F;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#插入排序"><span class="nav-number">3.</span> <span class="nav-text"><a href="#&#x63D2;&#x5165;&#x6392;&#x5E8F;" class="headerlink" title="&#x63D2;&#x5165;&#x6392;&#x5E8F;"></a>&#x63D2;&#x5165;&#x6392;&#x5E8F;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#希尔排序（插入排序的优化）"><span class="nav-number">4.</span> <span class="nav-text"><a href="#&#x5E0C;&#x5C14;&#x6392;&#x5E8F;&#xFF08;&#x63D2;&#x5165;&#x6392;&#x5E8F;&#x7684;&#x4F18;&#x5316;&#xFF09;" class="headerlink" title="&#x5E0C;&#x5C14;&#x6392;&#x5E8F;&#xFF08;&#x63D2;&#x5165;&#x6392;&#x5E8F;&#x7684;&#x4F18;&#x5316;&#xFF09;"></a>&#x5E0C;&#x5C14;&#x6392;&#x5E8F;&#xFF08;&#x63D2;&#x5165;&#x6392;&#x5E8F;&#x7684;&#x4F18;&#x5316;&#xFF09;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#冒泡排序"><span class="nav-number">5.</span> <span class="nav-text"><a href="#&#x5192;&#x6CE1;&#x6392;&#x5E8F;" class="headerlink" title="&#x5192;&#x6CE1;&#x6392;&#x5E8F;"></a>&#x5192;&#x6CE1;&#x6392;&#x5E8F;</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yvonne</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

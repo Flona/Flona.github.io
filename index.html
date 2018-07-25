@@ -238,6 +238,130 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.yvonne.party/2018/07/25/algorithm/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yvonne">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yvonne">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/25/algorithm/" itemprop="url">algorithm</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-25T23:13:35+08:00">
+                2018-07-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h3><h4 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">function quickSort(arr) &#123;</span><br><span class="line">    if (arr.length &lt;= 1) &#123; return arr; &#125;</span><br><span class="line">    // 基准索引</span><br><span class="line">    const pivotIndex = Math.floor(arr.length/2);</span><br><span class="line">    // 基准值，并删除arr中基准值才能递归化小对比范围，不然是死循环</span><br><span class="line">    const pivot = arr.splice(pivotIndex,1)[0];</span><br><span class="line">    // 基准左右值数组</span><br><span class="line">    const left = [],right = [];</span><br><span class="line">    // 遍历剩下的所有值与基准值对比</span><br><span class="line">    arr.forEach((item)=&gt;&#123;</span><br><span class="line">        if (item &lt; pivot) &#123;</span><br><span class="line">            left.push(item);</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            right.push(item);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    // 递归left|right（提取各自的基准值再对比，直至arr长度&lt;=1不再对比而返回arr）</span><br><span class="line">    // 最终返回left+基准值+right</span><br><span class="line">    return quickSort(left).concat(pivot,quickSort(right))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/07/25/algorithm/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.yvonne.party/2018/07/06/vue-design-patterns/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1354,171 +1478,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.yvonne.party/2017/12/19/ES5-variable-scope-memory/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yvonne">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yvonne">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/12/19/ES5-variable-scope-memory/" itemprop="url">读书笔记：ES5-变量、作用域和内存问题</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-19T10:22:46+08:00">
-                2017-12-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="变量数据类型"><a href="#变量数据类型" class="headerlink" title="变量数据类型"></a>变量数据类型</h3><table>
-<thead>
-<tr>
-<th style="text-align:center">基本类型</th>
-<th style="text-align:center">引用类型</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">简单的数据段</td>
-<td style="text-align:center">可能由多个值组成的对象</td>
-</tr>
-<tr>
-<td style="text-align:center">栈</td>
-<td style="text-align:center">堆内存</td>
-</tr>
-<tr>
-<td style="text-align:center">按值访问</td>
-<td style="text-align:center">按引用访问</td>
-</tr>
-<tr>
-<td style="text-align:center">可以改变保存在变量中实际的值</td>
-<td style="text-align:center">不能直接操作内存中的位置,操作的是指针不是实际的对象</td>
-</tr>
-<tr>
-<td style="text-align:center">动态创建属性不会报错，下一步取不到值</td>
-<td style="text-align:center">可以动态创建属性</td>
-</tr>
-<tr>
-<td style="text-align:center">复制变量，两个变量不存在关联，是完全独立的两个数据段</td>
-<td style="text-align:center">复制变量，两个变量引用同一个堆内存中的对象</td>
-</tr>
-<tr>
-<td style="text-align:center">函数参数按值传递，值复制给给一个局部变量，依然按值访问</td>
-<td style="text-align:center">函数参数按值传递，指针地址复制给一个局部变量，按引用访问，内部重新赋值新对象将解除原指针指向</td>
-</tr>
-<tr>
-<td style="text-align:center">typeof检测</td>
-<td style="text-align:center">typeof只能检测出是对象，不能准确知道对象类型，instanceof检测对象类型</td>
-</tr>
-</tbody>
-</table>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/12/19/ES5-variable-scope-memory/#more" rel="contents">
-              Weiterlesen &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1573,7 +1532,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">Artikel</span>
                 </a>
               </div>
@@ -1586,7 +1545,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">Tags</span>
                 
               </div>
