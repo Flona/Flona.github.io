@@ -95,13 +95,17 @@
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basics/basics7.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basics/basics8.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basics/basics9.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basics/basics29.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basics/basics32.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basics/basics10.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basics/basics11.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basics/basics12.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basics/basics13.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basics/basics30.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basics/basics31.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basics/basics18.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basics/basics14.jpeg">
-<meta property="og:updated_time" content="2018-04-06T13:58:45.731Z">
+<meta property="og:updated_time" content="2018-08-05T13:22:55.568Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="读书笔记：ES5-basics(上)">
 <meta name="twitter:description" content="所有方法-typeof-Boolean-isFinite-isNaN-Number-parseInt-parseFloat">
@@ -201,7 +205,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -221,7 +225,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -285,7 +289,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-31T23:25:07+08:00">
                 2017-10-31
@@ -436,11 +440,10 @@
 <p><code>isNaN()</code>，参数可以是任何类型数据，对参数进行转换数值操作，不能转换成数值的情况返回<code>true</code></p>
 <p>对于字符串的转换情况，可以看出用的方法应该是<code>Number()</code>，比如<code>&quot;1bule&quot;</code>都没有转换成数值</p>
 <p><img src="/img/blogImg/es5-basics/basics7.jpeg"></p>
-<p>对于对象转换情况，先调用<code>valueOf()</code>，若不能返回数值再调用<code>toString()</code>，这是参考高级程序设计这本书中说的，但是在实际情况中执行时发现有<code>valueOf()</code>时，不管能不能转换成数值都不会执行<code>toString()</code>，没有<code>valueOf()</code>时才会取<code>toString()</code>的值为基准</p>
-<p><img src="/img/blogImg/es5-basics/basics8.jpeg"></p>
+<p>对于对象转换情况，先调用<code>valueOf()</code>，若不能返回数值再调用<code>toString()</code>，这是参考高级程序设计这本书中说的，但是在实际情况中执行时发现有<code>valueOf()</code>时，不管能不能转换成数值都不会执行<code>toString()</code>，没有<code>valueOf()</code>时才会取<code>toString()</code>的值为基准<br>⚠️⚠️⚠️对以上内容更改，对象调用<code>Number()</code>时，先调用<code>valueOf()</code>方法，如果此方法返回的是基本类型值则依照基本类型转换规则转换，如果返回的是复杂类型，则调用<code>toString()</code>方法，如此方法返回的是基本类型值则依照基本类型转换规则转换，如返回的是复杂类型则报错<br>补充的例子图在下面数值转换中…<br><img src="/img/blogImg/es5-basics/basics8.jpeg"></p>
 <h5 id="数值转换"><a href="#数值转换" class="headerlink" title="-数值转换"></a>-数值转换</h5><p><code>Number()</code>: 将任何数据类型转换成数值类型</p>
-<p>⚠️ 布尔值<code>true</code>=&gt;1，<code>false</code>=&gt;0<br>⚠️ <code>null</code>=&gt;0<br>⚠️ <code>undefined</code>=&gt;NaN<br>⚠️ 字符串，<code>&quot;&quot;</code>=&gt;0，字符串内是正常的数值即转成此数值，<strong><em>不识别八进制，识别十六进制</em></strong>，除此外包含其他非数值的返回<code>NaN</code><br>⚠️ 对象依然是前面提到的问题，只要有<code>valueOf()</code>就不会以<code>toString()</code>为结果</p>
-<p><img src="/img/blogImg/es5-basics/basics9.jpeg"></p>
+<p>⚠️ 布尔值<code>true</code>=&gt;1，<code>false</code>=&gt;0<br>⚠️ <code>null</code>=&gt;0<br>⚠️ <code>undefined</code>=&gt;NaN<br>⚠️ 字符串，<code>&quot;&quot;</code>=&gt;0，字符串内是正常的数值即转成此数值，<strong><em>不识别八进制，识别十六进制</em></strong>，除此外包含其他非数值的返回<code>NaN</code><br>⚠️ 对象，先调用<code>valueOf()</code>方法，如果此方法返回的是基本类型值则依照基本类型转换规则转换，如果返回的是复杂类型，则调用<code>toString()</code>方法，如此方法返回的是基本类型值则依照基本类型转换规则转换，如返回的是复杂类型则报错</p>
+<p><img src="/img/blogImg/es5-basics/basics9.jpeg"><br><img src="/img/blogImg/es5-basics/basics29.jpeg"><br><img src="/img/blogImg/es5-basics/basics32.jpeg"></p>
 <p><code>parseInt()</code>: 将字符串转换成整数数值</p>
 <p>⚠️ 从第一个字符开始解析，一直解析到非数值为止，所以空字符返回<code>NaN</code><br>⚠️ <strong><em>ES5开始不能识别八进制，即忽略前导0，能识别十六进制，建议始终传入第二个参数指定几进制解析（只有parseInt有第二个参数，Number和parseFloat都没有）</em></strong></p>
 <p><img src="/img/blogImg/es5-basics/basics10.jpeg"></p>
@@ -507,7 +510,8 @@
 <p>除<code>null</code>和<code>undefined</code>都有<code>toString()</code>方法，注意对于数值类型不能直接调用，要用变量调用，<code>NaN.toString()</code>是<code>NaN</code></p>
 <p><img src="/img/blogImg/es5-basics/basics12.jpeg"></p>
 <p><code>String()</code>方法，有<code>toString()</code>方法的调用该方法，否则调用<code>String()</code>，所以<code>null</code>和<code>undefined</code>调用不会报错</p>
-<p><img src="/img/blogImg/es5-basics/basics13.jpeg"></p>
+<p>⚠️⚠️⚠️对于对象调用<code>String()</code>方法做以说明：首先调用<code>toString()</code>方法，默认的返回值是<code>&#39;[object Object]&#39;</code>，如果重写了<code>toString()</code>会依据重写函数返回值，如果返回值是基本类型则按照基本类型的转换规则转换，如返回复杂类型则调用<code>valueOf()</code>方法，如果返回值是基本类型则按照基本类型转换，如果返回值是复杂类型则报错</p>
+<p><img src="/img/blogImg/es5-basics/basics13.jpeg"><br>补充对象调用<code>String()</code>方法的例子<br><img src="/img/blogImg/es5-basics/basics30.jpeg"><br><img src="/img/blogImg/es5-basics/basics31.jpeg"></p>
 <p><strong>用的最多的方式是加号操作符！！！！并且调用的是String()方法</strong>，如下图<br><img src="/img/blogImg/es5-basics/basics18.jpeg"></p>
 <h4 id="Object类型"><a href="#Object类型" class="headerlink" title="Object类型"></a>Object类型</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var obj = new Object();</span><br><span class="line">//有效，但不推荐省略括号</span><br><span class="line">var obj = new Object;</span><br><span class="line">//还有字面量方式，后面更详细总结</span><br></pre></td></tr></table></figure>
 <p><code>Object</code>是所有对象的基础，<code>Object</code>每个实例都具有的方法从和属性如下：</p>
@@ -517,7 +521,7 @@
 <p><img src="/img/blogImg/es5-basics/basics14.jpeg"></p>
 <p><code>object.propertyIsEnumerable(propertyName)</code>：给定的属性是否可以<code>for-in</code>枚举，<code>propertyName</code>参数是<strong>字符串形式</strong></p>
 <p><code>toLocaleString()</code>：返回字符串表示，与执行环境的地区对应</p>
-<p><code>toString()</code>：返回字符串表示</p>
+<p><code>toString()</code>：返回字符串表示，不重写函数的情况下返回<code>[object Object]</code></p>
 <p><code>valueOf()</code>：返回对象的字符串、布尔值或数值的表示，通常与<code>toString()</code>返回值一样</p>
 <p>太多了，会有下篇</p>
 
@@ -620,10 +624,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Inhaltsverzeichnis
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Übersicht
+            Overview
           </li>
         </ul>
       
@@ -648,7 +652,7 @@
                 <a href="/archives/">
               
                   <span class="site-state-item-count">28</span>
-                  <span class="site-state-item-name">Artikel</span>
+                  <span class="site-state-item-name">posts</span>
                 </a>
               </div>
             
@@ -661,7 +665,7 @@
               <div class="site-state-item site-state-tags">
                 
                   <span class="site-state-item-count">8</span>
-                  <span class="site-state-item-name">Tags</span>
+                  <span class="site-state-item-name">tags</span>
                 
               </div>
             
@@ -751,7 +755,7 @@
 </div>
 
 
-  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 
