@@ -101,6 +101,7 @@
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basic-packing-type/es5-basic-packing-type13.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basic-packing-type/es5-basic-packing-type14.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basic-packing-type/es5-basic-packing-type15.jpeg">
+<meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basic-packing-type/es5-basic-packing-type26.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basic-packing-type/es5-basic-packing-type16.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basic-packing-type/es5-basic-packing-type17.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basic-packing-type/es5-basic-packing-type18.jpeg">
@@ -111,7 +112,7 @@
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basic-packing-type/es5-basic-packing-type25.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basic-packing-type/es5-basic-packing-type23.jpeg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/es5-basic-packing-type/es5-basic-packing-type24.jpeg">
-<meta property="og:updated_time" content="2018-04-07T12:54:00.563Z">
+<meta property="og:updated_time" content="2018-08-08T14:06:10.694Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="读书笔记：ES5-基本包装类型">
 <meta name="twitter:description" content="基本包装类型为便于操作基本类型，ECMAScript提供了特殊的引用类型：Boolean Number String，这些包装类型与引用类型相似，同时具有各自的基本类型的相应地特殊行为 创建方法：">
@@ -211,7 +212,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -231,7 +232,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -295,7 +296,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-01T23:01:24+08:00">
                 2018-03-01
@@ -364,7 +365,8 @@
 <p>⚠️一般不知道代码在哪种语言环境中运行的情况，用针对地区的方法更稳妥</p>
 <h4 id="模式匹配方法"><a href="#模式匹配方法" class="headerlink" title="模式匹配方法"></a>模式匹配方法</h4><p><code>match()</code> 参数是正则表达式或者字符串，本质上与<code>RegExp</code>调用<code>exec()</code>方法一样，返回数组，第一项是匹配项，之后都是捕获组匹配项，同时具备两个额外属性<code>index</code> <code>input</code><br><img src="/img/blogImg/es5-basic-packing-type/es5-basic-packing-type14.jpeg"></p>
 <p><img src="/img/blogImg/es5-basic-packing-type/es5-basic-packing-type15.jpeg"></p>
-<p>⚠️全局模式下存在差异，如上图</p>
+<p>⚠️全局模式下存在差异，如上图<br>补充存在捕获组的情况，如下图</p>
+<p><img src="/img/blogImg/es5-basic-packing-type/es5-basic-packing-type26.jpeg"></p>
 <p><code>search()</code> 参数是正则表达式或者字符串，<strong>始终返回第一个匹配项索引</strong>，没有返回-1<br><img src="/img/blogImg/es5-basic-packing-type/es5-basic-packing-type16.jpeg"></p>
 <p><code>replace()</code> <strong>原字符串不变</strong>，返回新字符串<br>参数一是<strong>字符串</strong>（只能替换第一个子字符串）/<strong>正则</strong>（g标志可以替换全部子字符串）；<br><img src="/img/blogImg/es5-basic-packing-type/es5-basic-packing-type17.jpeg"></p>
 <p>参数二是<strong>字符串</strong>（可以将正则表达式得到的值插入到结果字符串，由一些特殊字符序列表示）/<strong>函数</strong>（返回被替换的匹配项，情况1：仅一个匹配项，即无捕获组，函数参数是匹配项、匹配位置、原始字符串；情况2：存在捕获组时，函数参数是匹配项、第一个捕获组、第二个捕获组…、最后两项依然是匹配位置、原始字符串）</p>
@@ -517,10 +519,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
+            Übersicht
           </li>
         </ul>
       
@@ -545,7 +547,7 @@
                 <a href="/archives/">
               
                   <span class="site-state-item-count">28</span>
-                  <span class="site-state-item-name">posts</span>
+                  <span class="site-state-item-name">Artikel</span>
                 </a>
               </div>
             
@@ -558,7 +560,7 @@
               <div class="site-state-item site-state-tags">
                 
                   <span class="site-state-item-count">8</span>
-                  <span class="site-state-item-name">tags</span>
+                  <span class="site-state-item-name">Tags</span>
                 
               </div>
             
@@ -648,7 +650,7 @@
 </div>
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 
