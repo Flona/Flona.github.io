@@ -94,7 +94,7 @@
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/webpack-sprites/sprites6.jpg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/webpack-sprites/sprites7.jpg">
 <meta property="og:image" content="http://www.yvonne.party/img/blogImg/webpack-sprites/sprites8.jpg">
-<meta property="og:updated_time" content="2019-07-07T15:11:45.107Z">
+<meta property="og:updated_time" content="2019-07-08T01:47:44.891Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="webpack-sprites">
 <meta name="twitter:description" content="说明研究了一通在webpack中生成雪碧图，尝试了两种方式：方式一：webpack-spritesmith方式二：postcss-sprites参考链接：webpack-spritesmith、postcss-sprites代码地址：demo">
@@ -194,7 +194,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -214,7 +214,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -278,7 +278,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-07T21:16:54+08:00">
                 2019-07-07
@@ -320,7 +320,7 @@
       
         <h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><p>研究了一通在<code>webpack</code>中生成雪碧图，尝试了两种方式：<br>方式一：<code>webpack-spritesmith</code><br>方式二：<code>postcss-sprites</code><br>参考链接：<a href="https://github.com/mixtur/webpack-spritesmith" title="链接" target="_blank" rel="noopener">webpack-spritesmith</a>、<a href="https://github.com/2createstudio/postcss-sprites" title="链接" target="_blank" rel="noopener">postcss-sprites</a><br>代码地址：<a href="https://github.com/Flona/webpack-sprites" title="链接" target="_blank" rel="noopener">demo</a></p>
 <a id="more"></a>
-<h3 id="webpack-spritesmith"><a href="#webpack-spritesmith" class="headerlink" title="webpack-spritesmith"></a>webpack-spritesmith</h3><p>先将图片生成雪碧图，同时自动生成引用雪碧图的样式文件(css/less等预处理文件)，使用时手动使用样式文件中的内容</p>
+<h3 id="webpack-spritesmith"><a href="#webpack-spritesmith" class="headerlink" title="webpack-spritesmith"></a>webpack-spritesmith</h3><p>预处理：先将图片生成雪碧图，同时自动生成引用雪碧图的样式文件(css/less等预处理文件)，使用时手动使用样式文件中的内容</p>
 <p>项目路径<br><img src="/img/blogImg/webpack-sprites/sprites1.jpg" style="max-width:200px"></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">webpack.config.js</span><br><span class="line"></span><br><span class="line">const path = require(&apos;path&apos;)</span><br><span class="line">const SpritesmithPlugin = require(&quot;webpack-spritesmith&quot;)</span><br><span class="line">...</span><br><span class="line">module.exports = &#123;</span><br><span class="line">    ...</span><br><span class="line">    plugins: [</span><br><span class="line">        ...</span><br><span class="line">        new SpritesmithPlugin(&#123;</span><br><span class="line">            &lt;!-- 需要转雪碧图的原图片路径 --&gt;</span><br><span class="line">            src: &#123;</span><br><span class="line">                cwd: path.resolve(__dirname, &apos;../src/assets/image/sp/&apos;),</span><br><span class="line">                glob: &apos;**/*.png&apos;</span><br><span class="line">            &#125;,</span><br><span class="line">            target: &#123;</span><br><span class="line">                image: path.resolve(__dirname, &apos;../src/css/spritesmith-generated/sprite.png&apos;),</span><br><span class="line">                css: path.resolve(__dirname, &apos;../src/css/spritesmith-generated/sprite.less&apos;)</span><br><span class="line">                &lt;!-- 自定义 --&gt;</span><br><span class="line">                &lt;!-- css: [[path.resolve(__dirname, &apos;../src/css/spritesmith-generated/sprite.less&apos;),&#123;format: &apos;function_based_template&apos;&#125;]] --&gt;</span><br><span class="line">            &#125;,</span><br><span class="line">            &lt;!-- customTemplates: &#123;</span><br><span class="line">                 &apos;function_based_template&apos;: templateFunction,</span><br><span class="line">            &#125;, --&gt;</span><br><span class="line">            apiOptions: &#123;</span><br><span class="line">                &lt;!-- 需要使用雪碧图的css文件相对路径，不是生成的sprite.less的相对路径，demo中是base.less文件中使用 --&gt;</span><br><span class="line">                cssImageRef: &quot;./spritesmith-generated/sprite.png&quot;</span><br><span class="line">            &#125;,</span><br><span class="line">            &lt;!-- 支持retina， 需要同时存在@1x @2x图片 --&gt;</span><br><span class="line">            retina: &quot;@2x&quot;</span><br><span class="line">        &#125;)</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;!-- 自定义，这种方式是输出写好的class，将class使用在dom中即可 --&gt;</span><br><span class="line">&lt;!-- const templateFunction = function (data) &#123;</span><br><span class="line">    var shared = &apos;.ico &#123; background-image: url(I) &#125;&apos;</span><br><span class="line">        .replace(&apos;I&apos;, data.sprites[0].image);</span><br><span class="line"></span><br><span class="line">    var perSprite = data.sprites.map(function (sprite) &#123;</span><br><span class="line">        return &apos;.ico-N &#123; width: Wpx; height: Hpx; background-position: Xpx Ypx; &#125;&apos;</span><br><span class="line">            .replace(&apos;N&apos;, sprite.name)</span><br><span class="line">            .replace(&apos;W&apos;, sprite.width)</span><br><span class="line">            .replace(&apos;H&apos;, sprite.height)</span><br><span class="line">            .replace(&apos;X&apos;, sprite.offset_x)</span><br><span class="line">            .replace(&apos;Y&apos;, sprite.offset_y);</span><br><span class="line">    &#125;).join(&apos;\n&apos;);</span><br><span class="line"></span><br><span class="line">    return shared + &apos;\n&apos; + perSprite;</span><br><span class="line">&#125;; --&gt;</span><br></pre></td></tr></table></figure>
 <p>在配置的target路径下生成图片和样式文件(demo中生成的是less文件)，如下<br><img src="/img/blogImg/webpack-sprites/sprites2.jpg"></p>
@@ -328,7 +328,7 @@
 <p>sprite.less文件没有截全，上部分主要都是变量，主要使用的方法是图中.sprites和.retina-sprites方法，分别处理1@x图片和2@x图片</p>
 <p>在base.less文件中使用方式如下(具体使用方法在生成的文件注释中有说明)：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">base.less</span><br><span class="line"></span><br><span class="line">@import  &quot;./spritesmith-generated/sprite.less&quot;;</span><br><span class="line">...</span><br><span class="line">.img1 &#123;</span><br><span class="line">        .retina-sprite(@china-group)</span><br><span class="line">&#125;</span><br><span class="line">.img2 &#123;</span><br><span class="line">        .sprite(@japan)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>效果如下：<br><img src="/img/blogImg/webpack-sprites/sprites4.jpg"><br><img src="/img/blogImg/webpack-sprites/sprites5.jpg"></p>
-<h3 id="postcss-sprites"><a href="#postcss-sprites" class="headerlink" title="postcss-sprites"></a>postcss-sprites</h3><p>是<code>postcss-loader</code>的插件，两者差异：此种方式配置好后自动全部替换成引入雪碧图，不用手动再使用，但是需要自己配置宽高！！(因为只是切换了引用雪碧图以及定位位置，但是div需要自己根据图片大小设置宽高)，而webpack-spritesmith是根据图片的大小自动设置了div的宽高(见上图)</p>
+<h3 id="postcss-sprites"><a href="#postcss-sprites" class="headerlink" title="postcss-sprites"></a>postcss-sprites</h3><p>后处理：是<code>postcss-loader</code>的插件，两者差异在于此种方式配置好后自动全部替换成引入雪碧图，不用手动再使用，但是需要自己配置宽高！！(因为只是切换了引用雪碧图以及定位位置，但是div需要自己根据图片大小设置宽高)，而webpack-spritesmith是根据图片的大小自动设置了div的宽高(见上图)</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">webpack.config.js</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line">module.exports = &#123;</span><br><span class="line">    ...</span><br><span class="line">    module: &#123;</span><br><span class="line">       rules: [</span><br><span class="line">            ...</span><br><span class="line">            &#123;</span><br><span class="line">                test: /\.less$/,</span><br><span class="line">                use: [</span><br><span class="line">                    &apos;style-loader&apos;,</span><br><span class="line">                    &#123;</span><br><span class="line">                        loader: &apos;css-loader&apos;,</span><br><span class="line">                        options: &#123;</span><br><span class="line">                            importLoaders:2</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;,</span><br><span class="line">                    &apos;postcss-loader&apos;,</span><br><span class="line">                    &quot;less-loader&quot;</span><br><span class="line">                ]</span><br><span class="line">            &#125;</span><br><span class="line">       ]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">postcss.config.js</span><br><span class="line"></span><br><span class="line">module.exports = &#123;</span><br><span class="line">    ident: &apos;postcss&apos;,</span><br><span class="line">    plugins: [</span><br><span class="line">        require(&quot;autoprefixer&quot;)(),</span><br><span class="line">        require(&quot;cssnano&quot;)(),</span><br><span class="line">        require(&quot;postcss-sprites&quot;)(&#123;</span><br><span class="line">            &lt;!-- 初始雪碧图的位置，未压缩前的图片 --&gt;</span><br><span class="line">            spritePath: &quot;dist/assets/imgs/sp/&quot;,</span><br><span class="line">            &lt;!-- 需要将图片命名为@2x --&gt;</span><br><span class="line">            retina: true,</span><br><span class="line">            &lt;!-- 根据文件路径过滤，筛选需要转换的图片 --&gt;</span><br><span class="line">            filterBy: function(image)&#123;</span><br><span class="line">                const flag = /\/image\/sp\//.test(image.url)</span><br><span class="line">                return flag ? Promise.resolve() : Promise.reject()</span><br><span class="line">            &#125;,</span><br><span class="line">            &lt;!-- 根据文件路径过滤分组，生成多个雪碧图 --&gt;</span><br><span class="line">            groupBy: [</span><br><span class="line">                function(image)&#123;</span><br><span class="line">                    const flag = /\/sp1\//.test(image.url)</span><br><span class="line">                    return flag ? Promise.resolve(&quot;sprite1&quot;) : Promise.reject()</span><br><span class="line">                &#125;,</span><br><span class="line">                function(image)&#123;</span><br><span class="line">                    const flag = /\/sp2\//.test(image.url)</span><br><span class="line">                    return flag ? Promise.resolve(&quot;sprite2&quot;) : Promise.reject()</span><br><span class="line">                &#125;</span><br><span class="line">            ]</span><br><span class="line">        &#125;)</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>css的使用按照原图片引用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">base.less</span><br><span class="line"></span><br><span class="line">&lt;!-- 需手动根据图片原大小设置宽高，这一点不太好，需要自己计算 --&gt;</span><br><span class="line">.img &#123;</span><br><span class="line">    width: 100px;</span><br><span class="line">    height: 100px;</span><br><span class="line">    float: left</span><br><span class="line">&#125;</span><br><span class="line">.img1 &#123;</span><br><span class="line">    background-image: url(&quot;../assets/image/sp/sp1/china@2x.png&quot;)</span><br><span class="line">&#125;</span><br><span class="line">.img2 &#123;</span><br><span class="line">    background-image: url(&quot;../assets/image/sp/sp1/japan@2x.png&quot;)</span><br><span class="line">&#125;</span><br><span class="line">.img3 &#123;</span><br><span class="line">    background-image: url(&quot;../assets/image/sp/sp2/korea@2x.png&quot;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
@@ -429,10 +429,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
+            Übersicht
           </li>
         </ul>
       
@@ -457,7 +457,7 @@
                 <a href="/archives/">
               
                   <span class="site-state-item-count">29</span>
-                  <span class="site-state-item-name">posts</span>
+                  <span class="site-state-item-name">Artikel</span>
                 </a>
               </div>
             
@@ -470,7 +470,7 @@
               <div class="site-state-item site-state-tags">
                 
                   <span class="site-state-item-count">10</span>
-                  <span class="site-state-item-name">tags</span>
+                  <span class="site-state-item-name">Tags</span>
                 
               </div>
             
@@ -560,7 +560,7 @@
 </div>
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 
